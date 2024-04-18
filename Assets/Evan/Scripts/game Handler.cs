@@ -7,6 +7,16 @@ public class gameHandler : MonoBehaviour
     public string playerOneControls = "---";
     public string playerTwoControls = "---";
 
+    public void setPlayerOneAsKeyboard()
+    {
+        playerOneControls = "Keyboard";
+        playerTwoControls = "Controller";
+
+        print("Player One will now use keyboard.");
+    }
+
+    ////////////////////////////////////////////////////////
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +37,5 @@ public class gameHandler : MonoBehaviour
         print("Player One will now use controller.");
     }
     
-    public void setPlayerOneAsKeyboard()
-    {
-        playerOneControls = "Keyboard";
-        playerTwoControls = "Controller";
-
-        print("Player One will now use keyboard.");
-    }
+    
 }
