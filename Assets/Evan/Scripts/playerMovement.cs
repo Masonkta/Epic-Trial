@@ -52,7 +52,6 @@ public class playerMovement : MonoBehaviour
         verticalTurns();
 
         // Moving //
-        movePlayer();
 
         // Camera
         handleCamera();
