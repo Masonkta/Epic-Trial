@@ -30,6 +30,7 @@ public class playerMovement : MonoBehaviour
     [Header("Camera")]
     public float camDistance;
     public float camHeight;
+    public float minHeightOverGround;
 
 
     Rigidbody rb;
@@ -168,6 +169,16 @@ public class playerMovement : MonoBehaviour
             float turnStrength = gameScript.playerTwoControls == "Keyboard" ? verticalTurnSensitivityKeyboard : verticalTurnSensitivityController;
             forwardTransform.Rotate(Vector3.right * verticalTurnAmount * -turnStrength * Time.deltaTime);
         }
+
+//        print(forwardTransform.localEulerAngles.x);
+        if (forwardTransform.localEulerAngles.x < 0f)
+        {
+            print("UP");
+        }
+        if (forwardTransform.localEulerAngles.x > 45f)
+        {
+            print("DOWN");
+        }
     }
 
 
@@ -199,24 +210,31 @@ public class playerMovement : MonoBehaviour
 
 
     //// CAMERA ////
+    
     void handleCamera()
     {
         // Position the camera behind and above the player
         cameraTransform.localPosition = new Vector3(0f, camHeight, -camDistance);
 
+
         // Find height of ground under the camera
-        RaycastHit hit; float groundHeightUnderCamera = 0f;
-        if (Physics.Raycast(cameraTransform.position + Vector3.up * 5f, Vector3.down, out hit, 20f))
+        RaycastHit hit; float heightAboveGround = 0f;
+        if (Physics.Raycast(cameraTransform.position, Vector3.down, out hit, 20f))
         {
-            groundHeightUnderCamera = hit.point.y;
-            Debug.DrawRay(cameraTransform.position, Vector3.down * 4f, Color.red);
+            heightAboveGround = cameraTransform.position.y - hit.point.y;
+            
+            if (heightAboveGround < 0) // We need to move up the camera
+                cameraTransform.Translate(Vector3.up * -heightAboveGround);
         }
-        print(cameraTransform.position);
-        // We are under the ground, move up the camera
-        if (cameraTransform.position.y < groundHeightUnderCamera)
+
+        // Check if we are below the ground
+        RaycastHit hit2; float distUnderGround = 0f;
+        if (Physics.Raycast(cameraTransform.position, Vector3.up, out hit2, 30f))
         {
-            print("AHHH");
+            heightAboveGround = hit.point.y - cameraTransform.position.y;
+            cameraTransform.Translate(Vector3.up * heightAboveGround);
         }
+
 
         // Look at the player
         cameraTransform.LookAt(transform);

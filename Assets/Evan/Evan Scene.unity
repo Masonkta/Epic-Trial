@@ -921,6 +921,7 @@ MonoBehaviour:
   sideMoveAm: 0
   camDistance: 5.5
   camHeight: 0.6
+  minHeightOverGround: 1
 --- !u!54 &457386681
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1063,7 +1064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1044519095}
   m_Layer: 0
-  m_Name: Forward
+  m_Name: Look Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1224,6 +1225,7 @@ MonoBehaviour:
   sideMoveAm: 0
   camDistance: 5.5
   camHeight: 0.6
+  minHeightOverGround: 1
 --- !u!114 &1113855220
 MonoBehaviour:
   m_ObjectHideFlags: 0
