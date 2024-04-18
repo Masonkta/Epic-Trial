@@ -15,10 +15,21 @@ public class playerMovement : MonoBehaviour
 
     [Header("Turning")]
     public float horizontalTurnAmount;
-    public float horizontalTurnSensitivity;
+    public float horizontalTurnSensitivityController;
+    public float horizontalTurnSensitivityKeyboard;
     public float verticalTurnAmount;
-    public float verticalTurnSensitivity;
-    public Transform Camera;
+    public float verticalTurnSensitivityController;
+    public float verticalTurnSensitivityKeyboard;
+    public Transform forwardTransform;
+    public Transform cameraTransform;
+
+    [Header("Moving")]
+    public float forwardMoveAm;
+    public float sideMoveAm;
+
+    [Header("Camera")]
+    public float camDistance;
+    public float camHeight;
 
 
     Rigidbody rb;
@@ -38,6 +49,14 @@ public class playerMovement : MonoBehaviour
 
         // Turning // 
         horizontalTurns();
+        verticalTurns();
+
+        // Moving //
+        movePlayer();
+
+        // Camera
+        handleCamera();
+        cameraTransform.LookAt(transform);
     }
 
 
@@ -89,14 +108,13 @@ public class playerMovement : MonoBehaviour
         float turnX = turnInput[0];
         float turnY = turnInput[1];
 
-
-        if (isPlayerOne && gameScript.playerOneControls == "Controller")
+        if (isPlayerOne && gameScript.playerOneControls == "Controller") // This is player 1 and player 1 uses controller
         {
             horizontalTurnAmount = turnX;
             verticalTurnAmount = turnY;
         }
 
-        if (!isPlayerOne && gameScript.playerTwoControls == "Controller")
+        if (!isPlayerOne && gameScript.playerTwoControls == "Controller") // This is player 2 and player 2 uses controller
         {
             horizontalTurnAmount = turnX;
             verticalTurnAmount = turnY;
@@ -127,6 +145,81 @@ public class playerMovement : MonoBehaviour
 
     void horizontalTurns()
     {
-        transform.Rotate(Vector3.up * horizontalTurnAmount * Time.deltaTime * horizontalTurnSensitivity);
+        if (isPlayerOne)
+        {
+            float turnStrength = gameScript.playerOneControls == "Keyboard" ? horizontalTurnSensitivityKeyboard : horizontalTurnSensitivityController;
+            transform.Rotate(Vector3.up * horizontalTurnAmount * turnStrength * Time.deltaTime);
+        }
+        else
+        {
+            float turnStrength = gameScript.playerTwoControls == "Keyboard" ? horizontalTurnSensitivityKeyboard : horizontalTurnSensitivityController;
+            transform.Rotate(Vector3.up * horizontalTurnAmount * turnStrength * Time.deltaTime);
+        }
+    }
+
+    void verticalTurns()
+    {
+        if (isPlayerOne)
+        {
+            float turnStrength = gameScript.playerOneControls == "Keyboard" ? verticalTurnSensitivityKeyboard : verticalTurnSensitivityController;
+            forwardTransform.Rotate(Vector3.right * verticalTurnAmount * -turnStrength * Time.deltaTime);
+        }
+        else
+        {
+            float turnStrength = gameScript.playerTwoControls == "Keyboard" ? verticalTurnSensitivityKeyboard : verticalTurnSensitivityController;
+            forwardTransform.Rotate(Vector3.right * verticalTurnAmount * -turnStrength * Time.deltaTime);
+        }
+    }
+
+
+
+    //// Moving ////
+
+    void OnControllerMove(InputValue value)
+    {
+        Vector2 turnInput = value.Get<Vector2>();
+
+        float moveX = turnInput[0];
+        float moveY = turnInput[1];
+
+        if (isPlayerOne && gameScript.playerOneControls == "Controller") // This is player 1 and player 1 uses controller
+        {
+            sideMoveAm = moveX;
+            forwardMoveAm = moveY;
+        }
+
+        if (!isPlayerOne && gameScript.playerTwoControls == "Controller") // This is player 2 and player 2 uses controller
+        {
+            sideMoveAm = moveX;
+            forwardMoveAm = moveY;
+        }
+
+    }
+
+
+
+
+    //// CAMERA ////
+    void handleCamera()
+    {
+        // Position the camera behind and above the player
+        cameraTransform.localPosition = new Vector3(0f, camHeight, -camDistance);
+
+        // Find height of ground under the camera
+        RaycastHit hit; float groundHeightUnderCamera = 0f;
+        if (Physics.Raycast(cameraTransform.position + Vector3.up * 5f, Vector3.down, out hit, 20f))
+        {
+            groundHeightUnderCamera = hit.point.y;
+            Debug.DrawRay(cameraTransform.position, Vector3.down * 4f, Color.red);
+        }
+        print(cameraTransform.position);
+        // We are under the ground, move up the camera
+        if (cameraTransform.position.y < groundHeightUnderCamera)
+        {
+            print("AHHH");
+        }
+
+        // Look at the player
+        cameraTransform.LookAt(transform);
     }
 }
