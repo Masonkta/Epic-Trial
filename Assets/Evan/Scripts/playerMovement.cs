@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,42 +9,48 @@ public class playerMovement : MonoBehaviour
 {
     public gameHandler gameScript;
     public bool isPlayerOne;
-
-    [Header("Jumping")]
-    public float jumpStrength;
-    public bool isGrounded;
-
-    [Header("Turning")]
-    public float horizontalTurnAmount;
-    public float horizontalTurnSensitivityController;
-    public float horizontalTurnSensitivityKeyboard;
-    public float verticalTurnAmount;
-    public float verticalTurnSensitivityController;
-    public float verticalTurnSensitivityKeyboard;
     public Transform forwardTransform;
     public Transform cameraTransform;
 
+
+    [Header("Turning")]
+    public float xSensController;
+    public float xSensKeyboard;
+    public float ySensController;
+    public float ySensKeyboard;
+
+    private float horizontalTurnAmount;
+    private float verticalTurnAmount;
+
+
     [Header("Moving")]
-    public float forwardMoveAm;
-    public float sideMoveAm;
+    public bool sprinting;
+    public float walkSpeed;
+    public float sprintSpeed;
+    public float jumpHeight;
 
+    private CharacterController controller;
+    private Vector3 playerVelocity;
+    private float forwardMoveAm;
+    private float sideMoveAm;
+    private bool isGrounded;
+    private float speed;
+    private float gravity = Physics.gravity.y;
+
+    
     [Header("Camera")]
-    public float camDistance;
+    public float camSideOffset;
     public float camHeight;
+    public float camDistance;
     public float minHeightOverGround;
+    public float xRotation;
 
 
-    Rigidbody rb;
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         checkIsGrounded();
@@ -53,49 +60,45 @@ public class playerMovement : MonoBehaviour
         verticalTurns();
 
         // Moving //
+        move();
 
         // Camera
         handleCamera();
-        cameraTransform.LookAt(transform);
     }
 
 
     ///////// Jumping //////////
 
+    void Jump()
+    {
+        playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
     void OnControllerJump()
     {
-        //if (isGrounded)
-        if (isPlayerOne && gameScript.playerOneControls == "Controller")
-            rb.AddForce(Vector3.up * 10f, ForceMode.Impulse);
+        if (isGrounded)
+            if (isPlayerOne && gameScript.playerOneControls == "Controller")
+                Jump();
 
-        //if (isGrounded)
-        if (!isPlayerOne && gameScript.playerTwoControls == "Controller")
-            rb.AddForce(Vector3.up * 10f, ForceMode.Impulse);
+        if (isGrounded)
+            if (!isPlayerOne && gameScript.playerTwoControls == "Controller")
+                Jump();
     }
 
     void OnKeyboardJump()
     {
-        if (isPlayerOne && gameScript.playerOneControls == "Keyboard")
-            rb.AddForce(Vector3.up * 10f, ForceMode.Impulse);
+        if (isGrounded)
+            if (isPlayerOne && gameScript.playerOneControls == "Keyboard")
+                Jump();
 
-        if (!isPlayerOne && gameScript.playerTwoControls == "Keyboard")
-            rb.AddForce(Vector3.up * 10f, ForceMode.Impulse);
+        if (isGrounded)
+            if (!isPlayerOne && gameScript.playerTwoControls == "Keyboard")
+                Jump();
     }
 
     void checkIsGrounded()
     {
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, Vector3.down * 2f);
-        if (Physics.Raycast(transform.position, Vector3.down, 2f))
-        {
-            // Check if the raycast hits an object on the terrain layer
-            isGrounded = true;
-        }
-        else
-        {
-            // If no hit, return false
-            isGrounded = false;
-        }
+        isGrounded = controller.isGrounded;
     }
 
 
@@ -147,12 +150,12 @@ public class playerMovement : MonoBehaviour
     {
         if (isPlayerOne)
         {
-            float turnStrength = gameScript.playerOneControls == "Keyboard" ? horizontalTurnSensitivityKeyboard : horizontalTurnSensitivityController;
+            float turnStrength = gameScript.playerOneControls == "Keyboard" ? xSensKeyboard : xSensController;
             transform.Rotate(Vector3.up * horizontalTurnAmount * turnStrength * Time.deltaTime);
         }
         else
         {
-            float turnStrength = gameScript.playerTwoControls == "Keyboard" ? horizontalTurnSensitivityKeyboard : horizontalTurnSensitivityController;
+            float turnStrength = gameScript.playerTwoControls == "Keyboard" ? xSensKeyboard : xSensController;
             transform.Rotate(Vector3.up * horizontalTurnAmount * turnStrength * Time.deltaTime);
         }
     }
@@ -161,24 +164,18 @@ public class playerMovement : MonoBehaviour
     {
         if (isPlayerOne)
         {
-            float turnStrength = gameScript.playerOneControls == "Keyboard" ? verticalTurnSensitivityKeyboard : verticalTurnSensitivityController;
-            forwardTransform.Rotate(Vector3.right * verticalTurnAmount * -turnStrength * Time.deltaTime);
+            float turnStrength = gameScript.playerOneControls == "Keyboard" ? ySensKeyboard : ySensController;
+            xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
         }
         else
         {
-            float turnStrength = gameScript.playerTwoControls == "Keyboard" ? verticalTurnSensitivityKeyboard : verticalTurnSensitivityController;
-            forwardTransform.Rotate(Vector3.right * verticalTurnAmount * -turnStrength * Time.deltaTime);
+            float turnStrength = gameScript.playerTwoControls == "Keyboard" ? ySensKeyboard : ySensController;
+            xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
         }
 
-//        print(forwardTransform.localEulerAngles.x);
-        if (forwardTransform.localEulerAngles.x < 0f)
-        {
-            print("UP");
-        }
-        if (forwardTransform.localEulerAngles.x > 45f)
-        {
-            print("DOWN");
-        }
+        xRotation = Mathf.Clamp(xRotation, -55f, 55f);
+        forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
     }
 
 
@@ -206,6 +203,54 @@ public class playerMovement : MonoBehaviour
 
     }
 
+    void OnKeyboardMove(InputValue value)
+    {
+        Vector2 turnInput = value.Get<Vector2>();
+
+        float moveX = turnInput[0];
+        float moveY = turnInput[1];
+
+        if (isPlayerOne && gameScript.playerOneControls == "Keyboard") // This is player 1 and player 1 uses controller
+        {
+            sideMoveAm = moveX;
+            forwardMoveAm = moveY;
+        }
+
+        if (!isPlayerOne && gameScript.playerTwoControls == "Keyboard") // This is player 2 and player 2 uses controller
+        {
+            sideMoveAm = moveX;
+            forwardMoveAm = moveY;
+        }
+
+    }
+
+    void OnControllerSprint()
+    {
+        print("SPRINT");
+        sprinting = !sprinting;
+    }
+
+    void setSpeed()
+    {
+        print(playerVelocity.magnitude);
+        if (sprinting && (Mathf.Abs(forwardMoveAm) > 0.05f || Mathf.Abs(sideMoveAm) > 0.05f))
+            speed = sprintSpeed;
+        else
+            speed = walkSpeed;
+    }
+
+    void move()
+    {
+        setSpeed();
+
+        Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm);
+
+        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+        playerVelocity.y += gravity * Time.deltaTime;
+        if (isGrounded && playerVelocity.y < 0)
+            playerVelocity.y = -1f;
+        controller.Move(playerVelocity * Time.deltaTime);
+    }
 
 
 
@@ -214,29 +259,26 @@ public class playerMovement : MonoBehaviour
     void handleCamera()
     {
         // Position the camera behind and above the player
-        cameraTransform.localPosition = new Vector3(0f, camHeight, -camDistance);
+        cameraTransform.localPosition = new Vector3(camSideOffset, camHeight, -camDistance);
 
 
         // Find height of ground under the camera
-        RaycastHit hit; float heightAboveGround = 0f;
-        if (Physics.Raycast(cameraTransform.position, Vector3.down, out hit, 20f))
+        RaycastHit hit; float heightOfGround = 0f;
+        if (Physics.Raycast(cameraTransform.position + Vector3.up * camDistance, Vector3.down, out hit, 20f))
         {
-            heightAboveGround = cameraTransform.position.y - hit.point.y;
-            
-            if (heightAboveGround < 0) // We need to move up the camera
-                cameraTransform.Translate(Vector3.up * -heightAboveGround);
+            heightOfGround = hit.point.y + minHeightOverGround;
         }
 
-        // Check if we are below the ground
-        RaycastHit hit2; float distUnderGround = 0f;
-        if (Physics.Raycast(cameraTransform.position, Vector3.up, out hit2, 30f))
+        if (cameraTransform.transform.position.y < heightOfGround)
         {
-            heightAboveGround = hit.point.y - cameraTransform.position.y;
-            cameraTransform.Translate(Vector3.up * heightAboveGround);
+            Vector3 prev = cameraTransform.transform.position;
+            cameraTransform.transform.position = new Vector3(prev.x, heightOfGround, prev.z);
         }
 
 
         // Look at the player
-        cameraTransform.LookAt(transform);
+        cameraTransform.LookAt(transform.position + transform.forward * 2f);
     }
+
+
 }

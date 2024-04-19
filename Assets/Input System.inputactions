@@ -62,11 +62,29 @@
                 {
                     "name": "Controller Move",
                     "type": "Value",
-                    "id": "6234dad5-1d28-4129-9364-25d64daea8bd",
-                    "expectedControlType": "Stick",
+                    "id": "3cf229d9-41b8-4be7-8827-08bb5115e4c2",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Keyboard Move",
+                    "type": "Value",
+                    "id": "54ad8996-e0ab-4591-896e-fdf6d1cf2543",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Controller Sprint",
+                    "type": "Button",
+                    "id": "b0e8c812-b95e-4e0a-9d05-0033ccb36dd9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -313,13 +331,79 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "WASD",
+                    "id": "c90303c9-655c-44e7-ae23-f8f43f195914",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Keyboard Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "6cae8118-c65e-4771-b61e-a57585dc5d5a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Keyboard Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "7b5d8623-4125-43c2-a145-c6a27cbbba0f",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Keyboard Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "aad46f31-631e-44fb-a4ed-9219dec95faa",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Keyboard Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "5ecedac2-29c8-403b-bbe8-3a5f9eca68a9",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Keyboard Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
-                    "id": "fc7ecc1c-f3b7-4adc-9c66-3e68d5c1cf19",
+                    "id": "1cc9cff0-f2ba-4eec-b092-f93b23b1144d",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Controller Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bbf06cba-8c4d-45fa-a53d-2a80d56387ff",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Controller Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
