@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class playerMovement : MonoBehaviour
@@ -37,7 +38,10 @@ public class playerMovement : MonoBehaviour
     private float speed;
     private float gravity = Physics.gravity.y;
 
-    
+    [Header("Air Dashing")]
+    public bool ableToAirDash;
+
+
     [Header("Camera")]
     public float camSideOffset;
     public float camHeight;
@@ -76,29 +80,38 @@ public class playerMovement : MonoBehaviour
 
     void OnControllerJump()
     {
-        if (isGrounded)
-            if (isPlayerOne && gameScript.playerOneControls == "Controller")
+        if ((isPlayerOne && gameScript.playerOneControls == "Controller") || (!isPlayerOne && gameScript.playerTwoControls == "Controller"))
+        {
+            if (isGrounded)
                 Jump();
-
-        if (isGrounded)
-            if (!isPlayerOne && gameScript.playerTwoControls == "Controller")
-                Jump();
+            else if (playerVelocity.y > 0f && ableToAirDash) // Player is not on ground and has not started falling down
+            {
+                controller.Move(transform.TransformDirection(transform.forward * 20f));
+                ableToAirDash = false;
+            }
+        }
     }
 
     void OnKeyboardJump()
     {
-        if (isGrounded)
-            if (isPlayerOne && gameScript.playerOneControls == "Keyboard")
+        if ((isPlayerOne && gameScript.playerOneControls == "Keyboard") || (!isPlayerOne && gameScript.playerTwoControls == "Keyboard"))
+        {
+            if (isGrounded)
                 Jump();
+            else if (playerVelocity.y > 0f && ableToAirDash) // Player is not on ground and has not started falling down
+            {
+                controller.Move( forwardTransform.transform.forward*3f);
+                ableToAirDash = false;
+            }
+        }
 
-        if (isGrounded)
-            if (!isPlayerOne && gameScript.playerTwoControls == "Keyboard")
-                Jump();
+        
     }
 
     void checkIsGrounded()
     {
         isGrounded = controller.isGrounded;
+        if (isGrounded) ableToAirDash = true;
     }
 
 
@@ -189,13 +202,7 @@ public class playerMovement : MonoBehaviour
         float moveX = turnInput[0];
         float moveY = turnInput[1];
 
-        if (isPlayerOne && gameScript.playerOneControls == "Controller") // This is player 1 and player 1 uses controller
-        {
-            sideMoveAm = moveX;
-            forwardMoveAm = moveY;
-        }
-
-        if (!isPlayerOne && gameScript.playerTwoControls == "Controller") // This is player 2 and player 2 uses controller
+        if ((isPlayerOne && gameScript.playerOneControls == "Controller") || (!isPlayerOne && gameScript.playerTwoControls == "Controller")) // This is player 1 and player 1 uses controller
         {
             sideMoveAm = moveX;
             forwardMoveAm = moveY;
@@ -210,13 +217,7 @@ public class playerMovement : MonoBehaviour
         float moveX = turnInput[0];
         float moveY = turnInput[1];
 
-        if (isPlayerOne && gameScript.playerOneControls == "Keyboard") // This is player 1 and player 1 uses controller
-        {
-            sideMoveAm = moveX;
-            forwardMoveAm = moveY;
-        }
-
-        if (!isPlayerOne && gameScript.playerTwoControls == "Keyboard") // This is player 2 and player 2 uses controller
+        if ((isPlayerOne && gameScript.playerOneControls == "Keyboard") || (!isPlayerOne && gameScript.playerTwoControls == "Keyboard")) // This is player 1 and player 1 uses controller
         {
             sideMoveAm = moveX;
             forwardMoveAm = moveY;
@@ -226,13 +227,16 @@ public class playerMovement : MonoBehaviour
 
     void OnControllerSprint()
     {
-        print("SPRINT");
+        sprinting = !sprinting;
+    }
+
+    void OnKeyboardSprint()
+    {
         sprinting = !sprinting;
     }
 
     void setSpeed()
     {
-        print(playerVelocity.magnitude);
         if (sprinting && (Mathf.Abs(forwardMoveAm) > 0.05f || Mathf.Abs(sideMoveAm) > 0.05f))
             speed = sprintSpeed;
         else
