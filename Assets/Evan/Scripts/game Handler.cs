@@ -7,13 +7,9 @@ public class gameHandler : MonoBehaviour
     public string playerOneControls = "---";
     public string playerTwoControls = "---";
 
-    public void setPlayerOneAsKeyboard()
-    {
-        playerOneControls = "Keyboard";
-        playerTwoControls = "Controller";
+    public bool mouseLocked = false;
 
-        print("Player One will now use keyboard.");
-    }
+    
 
     ////////////////////////////////////////////////////////
 
@@ -28,6 +24,15 @@ public class gameHandler : MonoBehaviour
     {
         
     }
+    
+   
+    public void setPlayerOneAsKeyboard()
+    {
+        playerOneControls = "Keyboard";
+        playerTwoControls = "Controller";
+
+        print("Player One will now use keyboard.");
+    }
 
     public void setPlayerOneAsController()
     {
@@ -36,6 +41,9 @@ public class gameHandler : MonoBehaviour
 
         print("Player One will now use controller.");
     }
-    
-    
+    void OnQuitGame()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+        //Application.Quit();
+    }
 }

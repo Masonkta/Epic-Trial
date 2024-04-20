@@ -38,4 +38,6 @@ public class determinePlayerInput : MonoBehaviour
             gameScript.setPlayerOneAsKeyboard();
         }
     }
+
+
 }

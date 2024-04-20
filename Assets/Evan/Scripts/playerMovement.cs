@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public class playerMovement : MonoBehaviour
 {
-    public gameHandler gameScript;
+    gameHandler gameScript;
     public bool isPlayerOne;
     public Transform forwardTransform;
     public Transform cameraTransform;
@@ -40,6 +40,7 @@ public class playerMovement : MonoBehaviour
 
     [Header("Air Dashing")]
     public bool ableToAirDash;
+    public float airDashSpeed;
 
 
     [Header("Camera")]
@@ -52,6 +53,7 @@ public class playerMovement : MonoBehaviour
 
     void Start()
     {
+        gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         controller = GetComponent<CharacterController>();
     }
 
@@ -84,9 +86,10 @@ public class playerMovement : MonoBehaviour
         {
             if (isGrounded)
                 Jump();
-            else if (playerVelocity.y > 0f && ableToAirDash) // Player is not on ground and has not started falling down
+            else if (playerVelocity.y > 0f && ableToAirDash) // Dash if Player is not on ground and has not started falling down
             {
-                controller.Move(transform.TransformDirection(transform.forward * 20f));
+                Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed + Vector3.up;
+                playerVelocity += (transform.TransformDirection(moveDirection));
                 ableToAirDash = false;
             }
         }
@@ -98,9 +101,10 @@ public class playerMovement : MonoBehaviour
         {
             if (isGrounded)
                 Jump();
-            else if (playerVelocity.y > 0f && ableToAirDash) // Player is not on ground and has not started falling down
+            else if (playerVelocity.y > 0f && ableToAirDash) // Dash if Player is not on ground and has not started falling down
             {
-                controller.Move( forwardTransform.transform.forward*3f);
+                Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed + Vector3.up;
+                playerVelocity += (transform.TransformDirection(moveDirection));
                 ableToAirDash = false;
             }
         }
@@ -241,18 +245,22 @@ public class playerMovement : MonoBehaviour
             speed = sprintSpeed;
         else
             speed = walkSpeed;
+
+        
     }
 
     void move()
     {
         setSpeed();
 
-        Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm);
 
+        Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm);
         controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
-        playerVelocity.y += gravity * Time.deltaTime;
+
         if (isGrounded && playerVelocity.y < 0)
-            playerVelocity.y = -1f;
+            playerVelocity = Vector3.down * 2f;
+
+        playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
