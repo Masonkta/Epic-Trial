@@ -40,15 +40,18 @@ public class playerMovement : MonoBehaviour
 
     [Header("Air Dashing")]
     public bool ableToAirDash;
+    public bool airDashing;
     public float airDashSpeed;
 
 
     [Header("Camera")]
     public float camSideOffset;
     public float camHeight;
-    public float actualCamHeight;
+    float initialCamHeight;
+    float actualCamHeight;
     public float camDistance;
-    public float actualCamDistance;
+    float initialCamDistance;
+    float actualCamDistance;
     public float minHeightOverGround;
     public float xRotation;
 
@@ -58,8 +61,8 @@ public class playerMovement : MonoBehaviour
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         controller = GetComponent<CharacterController>();
 
-        actualCamDistance = camDistance;
-        actualCamHeight = camHeight;
+        initialCamDistance = camDistance; actualCamDistance = camDistance;
+        initialCamHeight = camHeight; actualCamHeight = camHeight;
     }
 
     void Update()
@@ -91,11 +94,11 @@ public class playerMovement : MonoBehaviour
         {
             if (isGrounded)
                 Jump();
-            else if (playerVelocity.y > 0f && ableToAirDash) // Dash if Player is not on ground and has not started falling down
+            else if (playerVelocity.y > -1f && ableToAirDash) // Dash if Player is not on ground and has not started falling down
             {
                 Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed + Vector3.up;
                 playerVelocity += (transform.TransformDirection(moveDirection));
-                ableToAirDash = false;
+                ableToAirDash = false; airDashing = true;
             }
         }
     }
@@ -106,11 +109,11 @@ public class playerMovement : MonoBehaviour
         {
             if (isGrounded)
                 Jump();
-            else if (playerVelocity.y > 0f && ableToAirDash) // Dash if Player is not on ground and has not started falling down
+            else if (playerVelocity.y > -1f && ableToAirDash) // Dash if Player is not on ground and has not started falling down
             {
                 Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed + Vector3.up;
                 playerVelocity += (transform.TransformDirection(moveDirection));
-                ableToAirDash = false;
+                ableToAirDash = false; airDashing = true;
             }
         }
 
@@ -121,6 +124,7 @@ public class playerMovement : MonoBehaviour
     {
         isGrounded = controller.isGrounded;
         if (isGrounded) ableToAirDash = true;
+        if (isGrounded) airDashing = false;
     }
 
 
@@ -195,7 +199,7 @@ public class playerMovement : MonoBehaviour
             xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
         }
 
-        xRotation = Mathf.Clamp(xRotation, -55f, 55f);
+        xRotation = Mathf.Clamp(xRotation, -50f, 55f);
         forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
     }
@@ -246,7 +250,7 @@ public class playerMovement : MonoBehaviour
 
     void setSpeed()
     {
-        if (sprinting && (Mathf.Abs(forwardMoveAm) > 0.05f || Mathf.Abs(sideMoveAm) > 0.05f))
+        if (sprinting)
             speed = sprintSpeed;
         else
             speed = walkSpeed;
@@ -258,9 +262,11 @@ public class playerMovement : MonoBehaviour
     {
         setSpeed();
 
-
-        Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm);
-        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+        if (!airDashing)
+        {
+            Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm);
+            controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+        }
 
         if (isGrounded && playerVelocity.y < 0)
             playerVelocity = Vector3.down * 2f;
@@ -276,34 +282,37 @@ public class playerMovement : MonoBehaviour
     void handleCamera()
     {
         float magOfMovement = (Mathf.Sqrt(sideMoveAm * sideMoveAm + forwardMoveAm * forwardMoveAm));
+        float playerVelocityMagnitude = new Vector2(playerVelocity.x, playerVelocity.z).magnitude;
 
-        float scaledCamDistance = camDistance;
-        if (magOfMovement > 0.5f)
-            scaledCamDistance += (magOfMovement-0.5f);
+        float speedHeight = playerVelocityMagnitude / 6f;
+        float speedDepth = magOfMovement + playerVelocityMagnitude / 3f;
 
-
-        // Position the camera behind
+        camHeight = initialCamHeight + speedHeight;
+        camDistance = initialCamDistance + speedDepth;
+        
+        // Position the camera behind the player
         cameraTransform.localPosition = new Vector3(camSideOffset, actualCamHeight, -actualCamDistance);
+
         float distToCam = Vector3.Distance(transform.position, cameraTransform.position);
 
-
-        Vector3 toCamera = Vector3.Normalize(cameraTransform.position - transform.position); RaycastHit hit2;
-        if (Physics.Raycast(transform.position, toCamera, out hit2, distToCam * 1.25f))
+        Vector3 toCamera = Vector3.Normalize(cameraTransform.position - transform.position); RaycastHit hit;
+        if (Physics.Raycast(transform.position, toCamera, out hit, distToCam * 1.25f))
         {
-            float DistToObject = Vector3.Distance(hit2.point, transform.position);
-            actualCamHeight += 0.025f;
-            if (actualCamDistance < camDistance * 3f && DistToObject < actualCamDistance)
+            if (hit.transform.gameObject.layer != 6) // Does not hit ground
             {
-                actualCamDistance += (DistToObject - actualCamDistance) / 10f; // Smaller number is faster
+                float DistToObject = Vector3.Distance(hit.point, transform.position);
+                if (actualCamDistance < camDistance * 2f && DistToObject < actualCamDistance)
+                    actualCamDistance += (DistToObject - actualCamDistance) / 30f; // Smaller number is Slower
             }
         }
-        else
-            actualCamDistance += (camDistance - actualCamDistance) / 150f; // Bigger number is faster
 
-        if (actualCamHeight > camHeight)
-        {
-            actualCamHeight += (camHeight - actualCamHeight) / 100f;
-        }
+        RaycastHit hit2;
+        if (Physics.Raycast(cameraTransform.position + Vector3.up * 10f, Vector3.down, out hit2, 10f + minHeightOverGround))
+            if (hit2.transform.gameObject.layer == 6)
+                actualCamHeight += 0.05f;
+
+        actualCamHeight += (camHeight - actualCamHeight) / 100f;
+        actualCamDistance += (camDistance - actualCamDistance) / 150f; // Bigger number is faster
 
         // Finally, Look at the player
         cameraTransform.LookAt(transform.position);

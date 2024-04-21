@@ -41,8 +41,23 @@ public class gameHandler : MonoBehaviour
         playerOneControls = "Controller";
         playerTwoControls = "Keyboard";
 
+        Cursor.lockState = CursorLockMode.Locked;
+
         print("Player One will now use controller.");
     }
+
+    void OnToggleCursor()
+    {
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else if (Cursor.lockState == CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
     void OnQuitGame()
     {
         UnityEditor.EditorApplication.isPlaying = false;

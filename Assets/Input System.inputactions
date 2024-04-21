@@ -24,6 +24,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Toggle Cursor",
+                    "type": "Button",
+                    "id": "0ed5933e-5c8d-4b48-aafa-aadc7b4bade8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Quit Game",
                     "type": "Button",
                     "id": "af41cfe3-423b-4602-bf66-1e39d925ddf6",
@@ -88,12 +97,12 @@
                 },
                 {
                     "name": "Controller Sprint",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "b0e8c812-b95e-4e0a-9d05-0033ccb36dd9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Keyboard Sprint",
@@ -444,6 +453,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Keyboard Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27744fc8-2824-42c1-98fe-c8665a34e1b8",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle Cursor",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
