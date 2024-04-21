@@ -46,7 +46,9 @@ public class playerMovement : MonoBehaviour
     [Header("Camera")]
     public float camSideOffset;
     public float camHeight;
+    public float actualCamHeight;
     public float camDistance;
+    public float actualCamDistance;
     public float minHeightOverGround;
     public float xRotation;
 
@@ -55,6 +57,9 @@ public class playerMovement : MonoBehaviour
     {
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         controller = GetComponent<CharacterController>();
+
+        actualCamDistance = camDistance;
+        actualCamHeight = camHeight;
     }
 
     void Update()
@@ -270,26 +275,38 @@ public class playerMovement : MonoBehaviour
     
     void handleCamera()
     {
-        // Position the camera behind and above the player
-        cameraTransform.localPosition = new Vector3(camSideOffset, camHeight, -camDistance);
+        float magOfMovement = (Mathf.Sqrt(sideMoveAm * sideMoveAm + forwardMoveAm * forwardMoveAm));
+
+        float scaledCamDistance = camDistance;
+        if (magOfMovement > 0.5f)
+            scaledCamDistance += (magOfMovement-0.5f);
 
 
-        // Find height of ground under the camera
-        RaycastHit hit; float heightOfGround = 0f;
-        if (Physics.Raycast(cameraTransform.position + Vector3.up * camDistance, Vector3.down, out hit, 20f))
+        // Position the camera behind
+        cameraTransform.localPosition = new Vector3(camSideOffset, actualCamHeight, -actualCamDistance);
+        float distToCam = Vector3.Distance(transform.position, cameraTransform.position);
+
+
+        Vector3 toCamera = Vector3.Normalize(cameraTransform.position - transform.position); RaycastHit hit2;
+        if (Physics.Raycast(transform.position, toCamera, out hit2, distToCam * 1.25f))
         {
-            heightOfGround = hit.point.y + minHeightOverGround;
+            float DistToObject = Vector3.Distance(hit2.point, transform.position);
+            actualCamHeight += 0.025f;
+            if (actualCamDistance < camDistance * 3f && DistToObject < actualCamDistance)
+            {
+                actualCamDistance += (DistToObject - actualCamDistance) / 10f; // Smaller number is faster
+            }
+        }
+        else
+            actualCamDistance += (camDistance - actualCamDistance) / 150f; // Bigger number is faster
+
+        if (actualCamHeight > camHeight)
+        {
+            actualCamHeight += (camHeight - actualCamHeight) / 100f;
         }
 
-        if (cameraTransform.transform.position.y < heightOfGround)
-        {
-            Vector3 prev = cameraTransform.transform.position;
-            cameraTransform.transform.position = new Vector3(prev.x, heightOfGround, prev.z);
-        }
-
-
-        // Look at the player
-        cameraTransform.LookAt(transform.position + transform.forward * 2f);
+        // Finally, Look at the player
+        cameraTransform.LookAt(transform.position);
     }
 
 

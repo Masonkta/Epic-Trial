@@ -233,7 +233,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 60
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
@@ -961,7 +961,9 @@ MonoBehaviour:
   airDashSpeed: 10
   camSideOffset: 0.8
   camHeight: 2
+  actualCamHeight: 0
   camDistance: 5.5
+  actualCamDistance: 0
   minHeightOverGround: 1.3
   xRotation: 0
 --- !u!114 &1113855220
@@ -1054,6 +1056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOneControls: --
   playerTwoControls: --
+  mouseLocked: 0
 --- !u!4 &1712671654
 Transform:
   m_ObjectHideFlags: 0
@@ -1162,6 +1165,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277813746452973341, guid: 94d8ea049d3dd2c43acd0d11909e17a6,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8885364380435433633, guid: 94d8ea049d3dd2c43acd0d11909e17a6,
         type: 3}

@@ -31,6 +31,8 @@ public class gameHandler : MonoBehaviour
         playerOneControls = "Keyboard";
         playerTwoControls = "Controller";
 
+        Cursor.lockState = CursorLockMode.Locked;
+
         print("Player One will now use keyboard.");
     }
 
