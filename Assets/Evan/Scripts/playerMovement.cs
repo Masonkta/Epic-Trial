@@ -25,6 +25,7 @@ public class playerMovement : MonoBehaviour
 
 
     [Header("Moving")]
+    public float currentVelocity;
     public bool sprinting;
     public float walkSpeed;
     public float sprintSpeed;
@@ -46,6 +47,8 @@ public class playerMovement : MonoBehaviour
 
     [Header("Camera")]
     public float camSideOffset;
+    float initialCamSideOffset;
+    float actualCamSideOffset;
     public float camHeight;
     float initialCamHeight;
     float actualCamHeight;
@@ -53,7 +56,7 @@ public class playerMovement : MonoBehaviour
     float initialCamDistance;
     float actualCamDistance;
     public float minHeightOverGround;
-    public float xRotation;
+    float xRotation;
 
 
     void Start()
@@ -61,6 +64,7 @@ public class playerMovement : MonoBehaviour
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         controller = GetComponent<CharacterController>();
 
+        initialCamSideOffset = camSideOffset; actualCamSideOffset = camSideOffset;
         initialCamDistance = camDistance; actualCamDistance = camDistance;
         initialCamHeight = camHeight; actualCamHeight = camHeight;
     }
@@ -76,7 +80,7 @@ public class playerMovement : MonoBehaviour
         // Moving //
         move();
 
-        // Camera
+        // Camera //
         handleCamera();
     }
 
@@ -273,6 +277,8 @@ public class playerMovement : MonoBehaviour
 
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+
     }
 
 
@@ -284,17 +290,21 @@ public class playerMovement : MonoBehaviour
         float magOfMovement = (Mathf.Sqrt(sideMoveAm * sideMoveAm + forwardMoveAm * forwardMoveAm));
         float playerVelocityMagnitude = new Vector2(playerVelocity.x, playerVelocity.z).magnitude;
 
-        float speedHeight = playerVelocityMagnitude / 6f;
-        float speedDepth = magOfMovement + playerVelocityMagnitude / 3f;
+        currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;
 
+        float speedHeight = currentVelocity / 6f;
+        float speedDepth = currentVelocity / 3f;
+
+        camSideOffset = Mathf.Max(0f, initialCamSideOffset - currentVelocity / walkSpeed * initialCamSideOffset);
         camHeight = initialCamHeight + speedHeight;
         camDistance = initialCamDistance + speedDepth;
         
         // Position the camera behind the player
-        cameraTransform.localPosition = new Vector3(camSideOffset, actualCamHeight, -actualCamDistance);
+        cameraTransform.localPosition = new Vector3(actualCamSideOffset, actualCamHeight, -actualCamDistance);
+
+
 
         float distToCam = Vector3.Distance(transform.position, cameraTransform.position);
-
         Vector3 toCamera = Vector3.Normalize(cameraTransform.position - transform.position); RaycastHit hit;
         if (Physics.Raycast(transform.position, toCamera, out hit, distToCam * 1.25f))
         {
@@ -311,10 +321,13 @@ public class playerMovement : MonoBehaviour
             if (hit2.transform.gameObject.layer == 6)
                 actualCamHeight += 0.05f;
 
+
+
+        actualCamSideOffset += (camSideOffset - actualCamSideOffset) / 200f;
         actualCamHeight += (camHeight - actualCamHeight) / 100f;
         actualCamDistance += (camDistance - actualCamDistance) / 150f; // Bigger number is faster
 
-        // Finally, Look at the player
+        // Finally Look at the player
         cameraTransform.LookAt(transform.position);
     }
 
