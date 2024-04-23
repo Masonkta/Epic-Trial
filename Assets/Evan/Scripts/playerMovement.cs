@@ -312,20 +312,20 @@ public class playerMovement : MonoBehaviour
             {
                 float DistToObject = Vector3.Distance(hit.point, transform.position);
                 if (actualCamDistance < camDistance * 2f && DistToObject < actualCamDistance)
-                    actualCamDistance += (DistToObject - actualCamDistance) / 30f; // Smaller number is Slower
+                    actualCamDistance += (DistToObject - actualCamDistance) / 30f; // Smaller number is faster
             }
         }
 
         RaycastHit hit2;
         if (Physics.Raycast(cameraTransform.position + Vector3.up * 10f, Vector3.down, out hit2, 10f + minHeightOverGround))
             if (hit2.transform.gameObject.layer == 6)
-                actualCamHeight += 0.05f;
+                actualCamHeight += 0.03f;
 
 
 
-        actualCamSideOffset += (camSideOffset - actualCamSideOffset) / 200f;
-        actualCamHeight += (camHeight - actualCamHeight) / 100f;
-        actualCamDistance += (camDistance - actualCamDistance) / 150f; // Bigger number is faster
+        actualCamSideOffset += (camSideOffset - actualCamSideOffset) / 30f;
+        actualCamHeight += (camHeight - actualCamHeight) / 150f;
+        actualCamDistance += (camDistance - actualCamDistance) / 75f; // Bigger number is slower
 
         // Finally Look at the player
         cameraTransform.LookAt(transform.position);
