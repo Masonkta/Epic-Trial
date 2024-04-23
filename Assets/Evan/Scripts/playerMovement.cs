@@ -16,8 +16,8 @@ public class playerMovement : MonoBehaviour
 
     [Header("Turning")]
     public float xSensController;
-    public float xSensKeyboard;
     public float ySensController;
+    public float xSensKeyboard;
     public float ySensKeyboard;
 
     private float horizontalTurnAmount;
