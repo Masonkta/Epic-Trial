@@ -30,11 +30,11 @@ public class Weapon : MonoBehaviour
         yield break;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (tag == ("Starter Sword")) {
+            if (tag == ("Gladius")) {
                 piercing = false;
                 if (buff == true) {
                     Damage = 10;
@@ -45,11 +45,14 @@ public class Weapon : MonoBehaviour
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
                 {
-                    enemy.EnemyHealth -= (Damage);
+                    enemy.EnemyHealth -= Damage;
+                    Debug.Log("Dealt " + Damage + " damage to the enemy.");
                 }
                 else
                 {
-                    enemy.EnemyHealth -= (Damage - enemy.EnemyDefence);
+                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
+                    enemy.EnemyHealth -= damageDealt;
+                    Debug.Log("Dealt " + damageDealt + " damage to the enemy.");
                 }
                 
             }
@@ -68,11 +71,15 @@ public class Weapon : MonoBehaviour
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
                 {
-                    enemy.EnemyHealth -= (Damage);
+                    enemy.EnemyHealth -= Damage;
+                    Debug.Log("Dealt " + Damage + " damage to the enemy.");
                 }
                 else
                 {
-                    enemy.EnemyHealth -= (Damage - enemy.EnemyDefence);
+                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
+                    enemy.EnemyHealth -= damageDealt;
+                    Debug.Log("Dealt " + damageDealt + " damage to the enemy.");
+                    
                 }
             }
 
