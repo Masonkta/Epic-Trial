@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class PlayerB : MonoBehaviour
 {
-    public int PlayerHealth;
-    public int PlayerDefence;
+    public float PlayerHealth;
+    public float PlayerDefence;
+
+
     // Start is called before the first frame update
     void Start()
     {

@@ -291,6 +291,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8439993602389734327, guid: 3a1caac6e7622894db5e027462ef3e78,
+        type: 3}
+      propertyPath: camSideOffset
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -621,17 +626,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.4326837, y: 1.5866566, z: -10.677052}
-  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_LocalScale: {x: 540, y: 1, z: 540}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1841039820}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &676185440 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2307632148076139387, guid: 402ec7135aa05a24aa3e498d7c8ba5aa,
-    type: 3}
-  m_PrefabInstance: {fileID: 5012970236844765975}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1047457049
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,12 +961,12 @@ PrefabInstance:
     - target: {fileID: 3839795735573719404, guid: 402ec7135aa05a24aa3e498d7c8ba5aa,
         type: 3}
       propertyPath: camSideOffset
-      value: 4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3955818648269655450, guid: 402ec7135aa05a24aa3e498d7c8ba5aa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.028064
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3955818648269655450, guid: 402ec7135aa05a24aa3e498d7c8ba5aa,
         type: 3}
@@ -1018,7 +1017,7 @@ PrefabInstance:
         type: 3}
       propertyPath: grabPoint
       value: 
-      objectReference: {fileID: 676185440}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
