@@ -114,9 +114,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack",
+                    "name": "Keyboard Attack",
                     "type": "Button",
                     "id": "21cbb086-4a4a-47f5-a5a3-f7a58ec129a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Controller Attack",
+                    "type": "Button",
+                    "id": "e743a634-552c-4f8d-85da-0ff1af0883cb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -483,7 +492,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Keyboard Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14820bf8-c05c-463a-8f6b-c815fc13e6d3",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Controller Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

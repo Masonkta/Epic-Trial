@@ -11,6 +11,12 @@ public class SwordTest : MonoBehaviour
     public bool canAtt = true;
     public Weapon Wep;
 
+    [Header("Audio")]
+    public AudioSource swingSounds;
+    public AudioClip swing1;
+    public AudioClip swing2;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +24,14 @@ public class SwordTest : MonoBehaviour
     }
 
     void OnKeyboardAttack()
+    {
+        if (canAtt)
+        {
+            Attacking();
+        }
+    }
+    
+    void OnControllerAttack()
     {
         if (canAtt)
         {

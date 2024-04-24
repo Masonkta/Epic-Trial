@@ -26,17 +26,20 @@ public class playerMovement : MonoBehaviour
 
     [Header("Moving")]
     public float currentVelocity;
-    public bool sprinting;
+    public bool isMoving;
     public float walkSpeed;
     public float sprintSpeed;
+    public bool sprinting;
+
+    [Header("Jumping")]
+    public bool isGrounded;
+    public float groundCheckDistance;
     public float jumpHeight;
-    public bool isMoving;
 
     private CharacterController controller;
     private Vector3 playerVelocity;
     private float forwardMoveAm;
     private float sideMoveAm;
-    private bool isGrounded;
     private float speed;
     private float gravity = Physics.gravity.y;
 
@@ -60,8 +63,11 @@ public class playerMovement : MonoBehaviour
     float xRotation;
 
     [Header("Audio")]
-    public GameObject footsteps;
-    public GameObject jumpSound;
+    public AudioSource footstepsSound;
+    public AudioSource jumpSound;
+    public AudioClip jumpSoundEffect;
+    public AudioSource landingOnGrass;
+    public AudioClip landingOnGrassSound;
     
 
     void Start()
@@ -98,6 +104,7 @@ public class playerMovement : MonoBehaviour
     void Jump()
     {
         playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        jumpSound.PlayOneShot(jumpSoundEffect);
     }
 
     void OnControllerJump()
@@ -134,7 +141,16 @@ public class playerMovement : MonoBehaviour
 
     void checkIsGrounded()
     {
-        isGrounded = controller.isGrounded;
+        bool prev = isGrounded;
+        Debug.DrawRay(transform.position + Vector3.down, Vector3.down * groundCheckDistance, Color.red);
+        isGrounded = Physics.Raycast(transform.position + Vector3.down, Vector3.down, groundCheckDistance);
+        if (!prev && isGrounded)
+        {
+            // We just landed
+            landingOnGrass.PlayOneShot(landingOnGrassSound);
+        }
+
+
         if (isGrounded) ableToAirDash = true;
         if (isGrounded) airDashing = false;
     }
@@ -281,7 +297,7 @@ public class playerMovement : MonoBehaviour
         }
 
         if (isGrounded && playerVelocity.y < 0)
-            playerVelocity = Vector3.down * 2f;
+            playerVelocity = Vector3.down * 4f;
 
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
@@ -340,9 +356,15 @@ public class playerMovement : MonoBehaviour
         cameraTransform.LookAt(transform.position);
     }
 
+
+
+    //// AUDIO ////
+    
     void handleAudio()
     {
-        footsteps.SetActive(isMoving && isGrounded);
+        footstepsSound.enabled = (isMoving && isGrounded);
+        // Set Pitch of Footsteps Audio based on the player speed
+
 
 
     }
