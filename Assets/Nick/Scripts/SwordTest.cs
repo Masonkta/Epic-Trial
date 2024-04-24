@@ -9,11 +9,12 @@ public class SwordTest : MonoBehaviour
     public GameObject Sword;
     public float timer = 1.0f;
     public bool canAtt = true;
+    public Weapon Wep;
 
     // Start is called before the first frame update
     void Start()
     {
-        Sword.GetComponent<BoxCollider>().enabled = false;
+        Wep.enabled = false;
     }
 
     void OnAttack()
@@ -27,7 +28,7 @@ public class SwordTest : MonoBehaviour
     public void Attacking()
     {
         canAtt = false;
-        Sword.GetComponent<BoxCollider>().enabled = true;
+        Wep.enabled = true;
         Animator anim = Sword.GetComponent<Animator>();
         anim.SetTrigger("Attack");
         StartCoroutine(ResetAtt());
@@ -36,7 +37,7 @@ public class SwordTest : MonoBehaviour
     IEnumerator ResetAtt()
     {
         yield return new WaitForSeconds(timer);
-        Sword.GetComponent<BoxCollider>().enabled = false;
+        Wep.enabled = false;
         canAtt = true;
     }
 }
