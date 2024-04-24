@@ -13,7 +13,7 @@ public class SwordTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
+        Sword.GetComponent<BoxCollider>().enabled = false;
     }
 
     void OnAttack()
@@ -27,14 +27,16 @@ public class SwordTest : MonoBehaviour
     public void Attacking()
     {
         canAtt = false;
+        Sword.GetComponent<BoxCollider>().enabled = true;
         Animator anim = Sword.GetComponent<Animator>();
-        anim.SetTrigger("Atack");
+        anim.SetTrigger("Attack");
         StartCoroutine(ResetAtt());
     }
 
     IEnumerator ResetAtt()
     {
         yield return new WaitForSeconds(timer);
+        Sword.GetComponent<BoxCollider>().enabled = false;
         canAtt = true;
     }
 }
