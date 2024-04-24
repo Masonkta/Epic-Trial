@@ -30,6 +30,7 @@ public class playerMovement : MonoBehaviour
     public float walkSpeed;
     public float sprintSpeed;
     public float jumpHeight;
+    public bool isMoving;
 
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -58,6 +59,10 @@ public class playerMovement : MonoBehaviour
     public float minHeightOverGround;
     float xRotation;
 
+    [Header("Audio")]
+    public GameObject footsteps;
+    public GameObject jumpSound;
+    
 
     void Start()
     {
@@ -82,6 +87,9 @@ public class playerMovement : MonoBehaviour
 
         // Camera //
         handleCamera();
+
+        // Audio //
+        handleAudio();
     }
 
 
@@ -278,7 +286,7 @@ public class playerMovement : MonoBehaviour
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
-
+        
     }
 
 
@@ -291,6 +299,7 @@ public class playerMovement : MonoBehaviour
         float playerVelocityMagnitude = new Vector2(playerVelocity.x, playerVelocity.z).magnitude;
 
         currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;
+        isMoving = currentVelocity > 2f;
 
         float speedHeight = currentVelocity / 6f;
         float speedDepth = currentVelocity / 3f;
@@ -331,5 +340,10 @@ public class playerMovement : MonoBehaviour
         cameraTransform.LookAt(transform.position);
     }
 
+    void handleAudio()
+    {
+        footsteps.SetActive(isMoving && isGrounded);
 
+
+    }
 }

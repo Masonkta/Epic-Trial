@@ -17,7 +17,7 @@ public class SwordTest : MonoBehaviour
         Wep.enabled = false;
     }
 
-    void OnAttack()
+    void OnKeyboardAttack()
     {
         if (canAtt)
         {
