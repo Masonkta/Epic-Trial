@@ -143,6 +143,7 @@ public class playerMovement : MonoBehaviour
     {
         bool prev = isGrounded;
         isGrounded = Physics.Raycast(transform.position + Vector3.down, Vector3.down, groundCheckDistance);
+        Debug.DrawRay(transform.position + Vector3.down, Vector3.down * groundCheckDistance);
         if (!prev && isGrounded && playerVelocity.y < -6f)
         {
             // We just landed
