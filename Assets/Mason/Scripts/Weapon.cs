@@ -36,14 +36,11 @@ public class Weapon : MonoBehaviour
         {
             if (tag == ("Gladius"))
             {
+                Damage = 5;
                 piercing = false;
                 if (buff == true)
                 {
-                    Damage = 10;
-                }
-                else
-                {
-                    Damage = 5;
+                    Damage *= 2;
                 }
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
@@ -62,14 +59,11 @@ public class Weapon : MonoBehaviour
 
             if (tag == ("Spear"))
             {
+                Damage = 10;
                 piercing = true;
                 if (buff == true)
                 {
-                    Damage = 20;
-                }
-                else
-                {
-                    Damage = 10;
+                    Damage *= 2;
                 }
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
@@ -90,14 +84,11 @@ public class Weapon : MonoBehaviour
         {
             if (tag == ("Gladius"))
             {
+                Damage = 5;
                 piercing = false;
                 if (buff == true)
                 {
-                    Damage = 10;
-                }
-                else
-                {
-                    Damage = 5;
+                    Damage *= 2;
                 }
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
@@ -116,14 +107,11 @@ public class Weapon : MonoBehaviour
 
             if (tag == ("Spear"))
             {
+                Damage = 10;
                 piercing = true;
                 if (buff == true)
                 {
-                    Damage = 20;
-                }
-                else
-                {
-                    Damage = 10;
+                    Damage *= 2;
                 }
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
@@ -144,14 +132,11 @@ public class Weapon : MonoBehaviour
         {
             if (tag == ("Gladius"))
             {
+                Damage = 5;
                 piercing = false;
                 if (buff == true)
                 {
-                    Damage = 10;
-                }
-                else
-                {
-                    Damage = 5;
+                    Damage *= 2;
                 }
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
@@ -170,14 +155,11 @@ public class Weapon : MonoBehaviour
 
             if (tag == ("Spear"))
             {
+                Damage = 10;
                 piercing = true;
                 if (buff == true)
                 {
-                    Damage = 20;
-                }
-                else
-                {
-                    Damage = 10;
+                    Damage *= 2;
                 }
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
@@ -198,14 +180,11 @@ public class Weapon : MonoBehaviour
         {
             if (tag == ("Gladius"))
             {
+                Damage = 5;
                 piercing = false;
                 if (buff == true)
                 {
-                    Damage = 10;
-                }
-                else
-                {
-                    Damage = 5;
+                    Damage *= 2;
                 }
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
@@ -224,14 +203,11 @@ public class Weapon : MonoBehaviour
 
             if (tag == ("Spear"))
             {
+                Damage = 10;
                 piercing = true;
                 if (buff == true)
                 {
-                    Damage = 20;
-                }
-                else
-                {
-                    Damage = 10;
+                    Damage *= 2;
                 }
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
