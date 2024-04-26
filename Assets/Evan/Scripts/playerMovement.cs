@@ -142,8 +142,8 @@ public class playerMovement : MonoBehaviour
     void checkIsGrounded()
     {
         bool prev = isGrounded;
-        isGrounded = Physics.Raycast(transform.position + Vector3.down, Vector3.down, groundCheckDistance);
-        Debug.DrawRay(transform.position + Vector3.down, Vector3.down * groundCheckDistance);
+        isGrounded = controller.isGrounded || Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
+        Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
         if (!prev && isGrounded && playerVelocity.y < -6f)
         {
             // We just landed
@@ -343,7 +343,7 @@ public class playerMovement : MonoBehaviour
         RaycastHit hit2;
         if (Physics.Raycast(cameraTransform.position + Vector3.up * 10f, Vector3.down, out hit2, 10f + minHeightOverGround))
             if (hit2.transform.gameObject.layer == 6)
-                actualCamHeight += 0.03f;
+                actualCamHeight += 0.05f;
 
 
 

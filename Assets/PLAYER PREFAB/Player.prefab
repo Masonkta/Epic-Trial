@@ -1080,7 +1080,7 @@ MonoBehaviour:
   sprintSpeed: 10
   sprinting: 0
   isGrounded: 0
-  groundCheckDistance: 1.2
+  groundCheckDistance: 2.2
   jumpHeight: 3
   ableToAirDash: 1
   airDashing: 0
