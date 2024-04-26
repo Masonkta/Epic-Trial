@@ -5,11 +5,13 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class playerMovement : MonoBehaviour
 {
     gameHandler gameScript;
     public bool isPlayerOne;
+    public GameObject player;
     public Transform forwardTransform;
     public Transform cameraTransform;
 
@@ -292,6 +294,8 @@ public class playerMovement : MonoBehaviour
 
         if (!airDashing)
         {
+            Animator anim = player.GetComponent<Animator>();
+            anim.SetTrigger("Go");
             Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm);
             controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
         }
