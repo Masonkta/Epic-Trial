@@ -291,11 +291,18 @@ public class playerMovement : MonoBehaviour
     void move()
     {
         setSpeed();
+
+        Animator anim = player.GetComponent<Animator>();
+
         if (isMoving)
         {
-            Animator anim = player.GetComponent<Animator>();
             anim.SetTrigger("Go");
         }
+        if (!isMoving)
+        {
+            anim.SetTrigger("Stop");
+        }
+
 
         if (!airDashing)
         {
