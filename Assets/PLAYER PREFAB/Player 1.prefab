@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerOne: 1
-  player: {fileID: 0}
+  player: {fileID: 1880216615993404427}
   forwardTransform: {fileID: 8704237950312879899}
   cameraTransform: {fileID: 5830161805637306124}
   xSensController: 250
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   sprintSpeed: 10
   sprinting: 0
   isGrounded: 0
-  groundCheckDistance: 1.2
+  groundCheckDistance: 2.2
   jumpHeight: 3
   ableToAirDash: 1
   airDashing: 0

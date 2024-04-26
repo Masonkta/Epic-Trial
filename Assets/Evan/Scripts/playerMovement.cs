@@ -106,6 +106,14 @@ public class playerMovement : MonoBehaviour
     void Jump()
     {
         playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
+    void airDash()
+    {
+        Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed + Vector3.up;
+        playerVelocity += (transform.TransformDirection(moveDirection));
+        ableToAirDash = false; airDashing = true;
+
         jumpSound.PlayOneShot(jumpSoundEffect);
     }
 
@@ -116,11 +124,7 @@ public class playerMovement : MonoBehaviour
             if (isGrounded)
                 Jump();
             else if (playerVelocity.y > -1f && ableToAirDash) // Dash if Player is not on ground and has not started falling down
-            {
-                Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed + Vector3.up;
-                playerVelocity += (transform.TransformDirection(moveDirection));
-                ableToAirDash = false; airDashing = true;
-            }
+                airDash();
         }
     }
 
@@ -131,11 +135,7 @@ public class playerMovement : MonoBehaviour
             if (isGrounded)
                 Jump();
             else if (playerVelocity.y > -1f && ableToAirDash) // Dash if Player is not on ground and has not started falling down
-            {
-                Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed + Vector3.up;
-                playerVelocity += (transform.TransformDirection(moveDirection));
-                ableToAirDash = false; airDashing = true;
-            }
+                airDash();
         }
 
         
