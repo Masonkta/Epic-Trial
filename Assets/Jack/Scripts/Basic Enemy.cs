@@ -7,7 +7,7 @@ public class BasicEnemy : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public Transform player;
+    Transform player;
 
     public LayerMask ground, playerArea;
 
@@ -26,7 +26,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player 1").transform;
+        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         agent = GetComponent<NavMeshAgent>();
     }
 

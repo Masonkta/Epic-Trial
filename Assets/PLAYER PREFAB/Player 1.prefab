@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4634978264341770016}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2073073530689874163}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm move R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3538343130389136268}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Prethumb L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5671637566463537847}
   - component: {fileID: 6387557546107498825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jump Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5159937279831076222}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shoulder L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5386893236658394864}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Palm R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8697473117639484925}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Knee R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8769668907827142530}
   - component: {fileID: 3085418425850908910}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eyebol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 4674792917793152334}
   - component: {fileID: 1670200088467848764}
   - component: {fileID: 7010409628326061024}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5139881337757024222}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: waist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,8 @@ GameObject:
   - component: {fileID: 4861367878293705970}
   - component: {fileID: 8122371701934893985}
   - component: {fileID: 2336551445598887570}
-  m_Layer: 0
+  - component: {fileID: 6605278634033012249}
+  m_Layer: 7
   m_Name: Gladius
   m_TagString: Gladius
   m_Icon: {fileID: 0}
@@ -636,6 +637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 5
+  type: 0
 --- !u!65 &8122371701934893985
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -684,6 +686,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6605278634033012249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179372989798569142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: c74bdedd228dfeb428c5fe2a38f30217,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1281673328261447646
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,7 +726,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 122988275508812640}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fingy L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8386411732425829838}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Knee L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8466912067105247341}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,7 +820,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414404443723873758}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +851,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3000712700084845152}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thumb R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -850,7 +883,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3271851552077515576}
   - component: {fileID: 7723464896467405245}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sbeve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -905,7 +938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8886252694149604140}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Control
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -939,7 +972,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7117679948139959117}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fingy R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -976,9 +1009,9 @@ GameObject:
   - component: {fileID: 345662420337318189}
   - component: {fileID: 2466160006996513118}
   - component: {fileID: 3185390080546525948}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1149,7 +1182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5124290820222771553}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Move R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1180,7 +1213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2102645148881766031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Move L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,7 +1245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6188875152177912836}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1248,7 +1281,7 @@ GameObject:
   - component: {fileID: 8526119649633868903}
   - component: {fileID: 6819249096486819163}
   - component: {fileID: 4564220008704240323}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sbeve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1430,7 +1463,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2857126250184959048}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foot R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1461,7 +1494,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 611166010358987562}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Elbpw L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1493,7 +1526,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9205106425165178937}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thumb R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1528,7 +1561,7 @@ GameObject:
   - component: {fileID: 6229988880456327811}
   - component: {fileID: 8748870842441131714}
   - component: {fileID: 80834791923231690}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1631,7 +1664,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7968262138844751585}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Elbpw L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1662,7 +1695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5317717683474774809}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thumb L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1694,7 +1727,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4960592746819595202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fingy L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1726,7 +1759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2595354728642943248}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Elbpw R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1759,7 +1792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6960150367078375043}
   - component: {fileID: 2498604698790296766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Landing On Grass Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1888,7 +1921,7 @@ GameObject:
   - component: {fileID: 902969267709485050}
   - component: {fileID: 3324705860227287920}
   - component: {fileID: 6222650762478717464}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1969,7 +2002,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6223267626483834922}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: arm L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2001,7 +2034,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7959422409867492630}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Move R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2033,7 +2066,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8413636117054119477}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2066,7 +2099,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3377601435812825608}
   - component: {fileID: 8851325053157420782}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Walking On Grass Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2193,7 +2226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1410750780164652319}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg Move L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2224,7 +2257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8450823741313441523}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Knee R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2255,7 +2288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4961941172022520773}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thumb L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2286,7 +2319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2566250597024357698}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm move L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2317,7 +2350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3584421514190849722}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2349,7 +2382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8867752069686280173}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Elbpw R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2380,7 +2413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8704237950312879899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Look Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2413,7 +2446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6600543099644621320}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: arm R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2445,7 +2478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2248100886276126320}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sbeve Bones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2477,7 +2510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8137473989910478052}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm move R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2508,7 +2541,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8467163489852883013}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foot L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2539,7 +2572,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2486177130634291183}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ankle L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2571,7 +2604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8892076378514612313}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2603,7 +2636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2476684975405580071}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foot L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2635,7 +2668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5056211295302403805}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wrist R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2668,7 +2701,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7486924721719839291}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wrist L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2701,7 +2734,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8940077936381963582}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm move L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2735,7 +2768,7 @@ GameObject:
   - component: {fileID: 3565895040220341506}
   - component: {fileID: 4345912308506680057}
   - component: {fileID: 6410241163103006582}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2816,7 +2849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5492519267626780232}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bcep L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2848,7 +2881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4457738503848242631}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2880,7 +2913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6342259546804617100}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foot R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2912,7 +2945,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2845850866718222743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2943,7 +2976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6509132049481049589}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ankle R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2975,7 +3008,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7449294653908388480}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Palm L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3007,7 +3040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4924514329644619661}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fingy R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3040,7 +3073,7 @@ GameObject:
   - component: {fileID: 7203335226446797252}
   - component: {fileID: 3046275433763986822}
   - component: {fileID: 2681339032422830015}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3121,7 +3154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1594488243497537802}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Prethumb R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3153,7 +3186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 132303994490700744}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Knee L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3185,7 +3218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7338345164258611959}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shoulder R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3217,7 +3250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2192689470503763649}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3252,7 +3285,7 @@ GameObject:
   - component: {fileID: 5942137571750534132}
   - component: {fileID: 1541431920653354541}
   - component: {fileID: 6654539449851917019}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player 1 Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -3386,7 +3419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 80164841106043418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Big Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3426,7 +3459,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4961564678209795599}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bcep R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3458,7 +3491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7598547966088250463}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

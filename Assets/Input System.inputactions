@@ -130,6 +130,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Keyboard Buff",
+                    "type": "Button",
+                    "id": "bb4ebcf9-b5a6-4a4a-a740-cc85c649fd37",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -504,6 +513,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Controller Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87843d7a-64bf-45b8-ba5e-b22161f53cc3",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Keyboard Buff",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

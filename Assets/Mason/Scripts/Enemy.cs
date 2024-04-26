@@ -16,13 +16,15 @@ public class Enemy : MonoBehaviour
 {
     public int EnemyHealth;
     public int EnemyDefence;
-    public HighScoreTest hs;
+    HighScoreTest hs;
     public EnemyType Etype;
  
 
     // Start is called before the first frame update
     void Start()
     {
+        hs = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<HighScoreTest>();
+
         if (EnemyType.Weak == Etype)
         {
             EnemyHealth = 10;
