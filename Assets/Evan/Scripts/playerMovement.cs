@@ -291,11 +291,14 @@ public class playerMovement : MonoBehaviour
     void move()
     {
         setSpeed();
-
-        if (!airDashing)
+        if (isMoving)
         {
             Animator anim = player.GetComponent<Animator>();
             anim.SetTrigger("Go");
+        }
+
+        if (!airDashing)
+        {
             Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm);
             controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
         }
