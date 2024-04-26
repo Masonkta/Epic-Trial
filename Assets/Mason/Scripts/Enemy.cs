@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public int EnemyHealth;
     public int EnemyDefence;
+    public HighScoreTest hs;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,5 +39,25 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         string tag = gameObject.tag;
+        if (EnemyHealth <= 0) {
+            if (tag ==("Enemy"))
+            {
+                hs.score += 10;
+            }
+            if (tag == ("MediumEnemy"))
+            {
+                hs.score += 100;
+            }
+            if (tag == ("HeavyEnemy"))
+            {
+                hs.score += 1000;
+            }
+            if (tag == ("Boss"))
+            {
+                hs.score += 10000;
+            }
+            Debug.Log("Current Score is " + hs.score);
+            Destroy(gameObject);
+        }
     }
 }
