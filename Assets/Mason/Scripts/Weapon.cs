@@ -4,12 +4,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
+public enum WeaponType
+{
+    Gladius,
+    Spear,
+}
+
 public class Weapon : MonoBehaviour
 {
     private bool buff;
     private bool tired;
     private bool piercing;
     public int Damage;
+    public WeaponType type;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,192 +41,42 @@ public class Weapon : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (tag == ("Gladius"))
+            if (WeaponType.Gladius == type)
             {
                 Damage = 5;
                 piercing = false;
-                if (buff == true)
-                {
-                    Damage *= 2;
-                }
+                if (buff == true)  Damage *= 2;
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
                 {
                     enemy.EnemyHealth -= Damage;
-                    Debug.Log("Dealt " + Damage + " damage to the enemy.");
+                    Debug.Log("Dealt " + Damage + " damage to the " + enemy.Etype.ToString() + " enemy.");
                 }
                 else
                 {
                     int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
                     enemy.EnemyHealth -= damageDealt;
-                    Debug.Log("Dealt " + damageDealt + " damage to the enemy.");
+                    Debug.Log("Dealt " + damageDealt + " damage to the " + enemy.Etype.ToString() + " enemy.");
                 }
 
             }
 
-            if (tag == ("Spear"))
+            if (WeaponType.Spear == type)
             {
                 Damage = 10;
                 piercing = true;
-                if (buff == true)
-                {
-                    Damage *= 2;
-                }
+                if (buff == true)  Damage *= 2;
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 if (piercing == true)
                 {
                     enemy.EnemyHealth -= Damage;
-                    Debug.Log("Dealt " + Damage + " damage to the enemy.");
+                    Debug.Log("Dealt " + Damage + " damage to the " + enemy.Etype.ToString() + " enemy.");
                 }
                 else
                 {
                     int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
                     enemy.EnemyHealth -= damageDealt;
-                    Debug.Log("Dealt " + damageDealt + " damage to the enemy.");
-
-                }
-            }
-        }
-        if (collision.gameObject.CompareTag("MediumEnemy"))
-        {
-            if (tag == ("Gladius"))
-            {
-                Damage = 5;
-                piercing = false;
-                if (buff == true)
-                {
-                    Damage *= 2;
-                }
-                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-                if (piercing == true)
-                {
-                    enemy.EnemyHealth -= Damage;
-                    Debug.Log("Dealt " + Damage + " damage to the enemy.");
-                }
-                else
-                {
-                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
-                    enemy.EnemyHealth -= damageDealt;
-                    Debug.Log("Dealt " + damageDealt + " damage to the enemy.");
-                }
-
-            }
-
-            if (tag == ("Spear"))
-            {
-                Damage = 10;
-                piercing = true;
-                if (buff == true)
-                {
-                    Damage *= 2;
-                }
-                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-                if (piercing == true)
-                {
-                    enemy.EnemyHealth -= Damage;
-                    Debug.Log("Dealt " + Damage + " damage to the enemy.");
-                }
-                else
-                {
-                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
-                    enemy.EnemyHealth -= damageDealt;
-                    Debug.Log("Dealt " + damageDealt + " damage to the enemy.");
-
-                }
-            }
-        }
-        if (collision.gameObject.CompareTag("HeavyEnemy"))
-        {
-            if (tag == ("Gladius"))
-            {
-                Damage = 5;
-                piercing = false;
-                if (buff == true)
-                {
-                    Damage *= 2;
-                }
-                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-                if (piercing == true)
-                {
-                    enemy.EnemyHealth -= Damage;
-                    Debug.Log("Dealt " + Damage + " damage to the enemy.");
-                }
-                else
-                {
-                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
-                    enemy.EnemyHealth -= damageDealt;
-                    Debug.Log("Dealt " + damageDealt + " damage to the enemy.");
-                }
-
-            }
-
-            if (tag == ("Spear"))
-            {
-                Damage = 10;
-                piercing = true;
-                if (buff == true)
-                {
-                    Damage *= 2;
-                }
-                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-                if (piercing == true)
-                {
-                    enemy.EnemyHealth -= Damage;
-                    Debug.Log("Dealt " + Damage + " damage to the enemy.");
-                }
-                else
-                {
-                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
-                    enemy.EnemyHealth -= damageDealt;
-                    Debug.Log("Dealt " + damageDealt + " damage to the enemy.");
-
-                }
-            }
-        }
-        if (collision.gameObject.CompareTag("Boss"))
-        {
-            if (tag == ("Gladius"))
-            {
-                Damage = 5;
-                piercing = false;
-                if (buff == true)
-                {
-                    Damage *= 2;
-                }
-                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-                if (piercing == true)
-                {
-                    enemy.EnemyHealth -= Damage;
-                    Debug.Log("Dealt " + Damage + " damage to the enemy.");
-                }
-                else
-                {
-                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
-                    enemy.EnemyHealth -= damageDealt;
-                    Debug.Log("Dealt " + damageDealt + " damage to the enemy.");
-                }
-
-            }
-
-            if (tag == ("Spear"))
-            {
-                Damage = 10;
-                piercing = true;
-                if (buff == true)
-                {
-                    Damage *= 2;
-                }
-                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-                if (piercing == true)
-                {
-                    enemy.EnemyHealth -= Damage;
-                    Debug.Log("Dealt " + Damage + " damage to the enemy.");
-                }
-                else
-                {
-                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
-                    enemy.EnemyHealth -= damageDealt;
-                    Debug.Log("Dealt " + damageDealt + " damage to the enemy.");
+                    Debug.Log("Dealt " + damageDealt + " damage to the " + enemy.Etype.ToString() +  " enemy.");
 
                 }
             }
@@ -229,6 +86,6 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string tag = gameObject.tag;
+
     }
 }
