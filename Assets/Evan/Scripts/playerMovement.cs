@@ -115,12 +115,13 @@ public class playerMovement : MonoBehaviour
 
     void Jump()
     {
-        playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        if (!isDodging)
+            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
 
     void airDash()
     {
-        Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed + Vector3.up;
+        Vector3 moveDirection = new Vector3(sideMoveAm, 0.5f, forwardMoveAm) * airDashSpeed + Vector3.up;
         playerVelocity += (transform.TransformDirection(moveDirection));
         ableToAirDash = false; airDashing = true;
 
@@ -167,7 +168,10 @@ public class playerMovement : MonoBehaviour
         if (isGrounded) airDashing = false;
     }
 
-    /// rOTATE playerening ///
+    /// rOTATE playerening /// <summary>
+    /// Hey evan if youre looking at this, this is to rotate the player not via the camera
+    /// The issue as it is now is that the player doesnt move in terms of the camera position via the front left back and forth
+    /// </summary>
     void Turning()
     {
         Vector3 View = player.transform.position - new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -263,7 +267,7 @@ public class playerMovement : MonoBehaviour
 
         //// Moving ////
 
-        void OnControllerMove(InputValue value)
+    void OnControllerMove(InputValue value)
     {
         Vector2 turnInput = value.Get<Vector2>();
 
