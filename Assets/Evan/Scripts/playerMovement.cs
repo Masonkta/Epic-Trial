@@ -29,6 +29,7 @@ public class playerMovement : MonoBehaviour
     [Header("Moving")]
     public float currentVelocity;
     public bool isMoving;
+    public bool isDodging;
     public float walkSpeed;
     public float sprintSpeed;
     public bool sprinting;
@@ -43,6 +44,7 @@ public class playerMovement : MonoBehaviour
     private float forwardMoveAm;
     private float sideMoveAm;
     private float speed;
+    private float dodgeTime; //Will use with dodge animation
     private float gravity = Physics.gravity.y;
 
     [Header("Air Dashing")]
@@ -278,14 +280,41 @@ public class playerMovement : MonoBehaviour
         sprinting = !sprinting;
     }
 
+    void OnControllerDodge()
+    {
+        StartCoroutine(Dodging());
+    }
+
+    void OnKeyboardDodge()
+    {
+        StartCoroutine(Dodging());
+    }
+
     void setSpeed()
     {
         if (sprinting)
             speed = sprintSpeed;
         else
             speed = walkSpeed;
+    }
 
-        
+    IEnumerator Dodging()
+    {
+        if (isGrounded)
+        {
+            isDodging = true;
+            float timer = 0;
+            while (timer < .5f)
+            {
+                speed = sprintSpeed;
+                Vector3 dod = (transform.forward * (speed * 2)) + (Vector3.up * (Time.deltaTime * gravity));
+                controller.Move(dod * Time.deltaTime);
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            speed = walkSpeed;
+            isDodging = false;
+        }
     }
 
     void move()
