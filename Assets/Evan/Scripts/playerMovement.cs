@@ -333,7 +333,7 @@ public class playerMovement : MonoBehaviour
         }
 
 
-        if (!airDashing)
+        if (!airDashing && !isDodging)
         {
             Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm);
             controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
