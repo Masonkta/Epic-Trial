@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UIElements;
 using static UnityEngine.Rendering.DebugUI;
 
+/*
 public class playerMovement : MonoBehaviour
 {
     gameHandler gameScript;
@@ -17,8 +16,6 @@ public class playerMovement : MonoBehaviour
     public GameObject player;
     public Transform forwardTransform;
     public Transform cameraTransform;
-    public Transform orientation;
-    public Transform playerObj;
 
 
     [Header("Turning")]
@@ -77,7 +74,7 @@ public class playerMovement : MonoBehaviour
     public AudioClip jumpSoundEffect;
     public AudioSource landingOnGrass;
     public AudioClip landingOnGrassSound;
-    
+
 
     void Start()
     {
@@ -94,11 +91,8 @@ public class playerMovement : MonoBehaviour
         checkIsGrounded();
 
         // Turning // 
-        /*
         horizontalTurns();
         verticalTurns();
-        */
-        Turning();
 
         // Moving //
         move();
@@ -148,7 +142,7 @@ public class playerMovement : MonoBehaviour
                 airDash();
         }
 
-        
+
     }
 
     void checkIsGrounded()
@@ -167,103 +161,88 @@ public class playerMovement : MonoBehaviour
         if (isGrounded) airDashing = false;
     }
 
-    /// rOTATE playerening ///
-    void Turning()
+
+    //////// Turning ///////////
+
+    void OnControllerTurn(InputValue value)
     {
-        Vector3 View = player.transform.position - new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        orientation.forward = View.normalized;
+        Vector2 turnInput = value.Get<Vector2>();
 
-        float horInp = Input.GetAxis("Horizontal");
-        float verInp = Input.GetAxis("Vertical");
-        Vector3 inputDir = orientation.forward * verInp + orientation.right * horInp;
+        float turnX = turnInput[0];
+        float turnY = turnInput[1];
 
-        if (inputDir != Vector3.zero)
+        if (isPlayerOne && gameScript.playerOneControls == "Controller") // This is player 1 and player 1 uses controller
         {
-            playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * 10);
+            horizontalTurnAmount = turnX;
+            verticalTurnAmount = turnY;
+        }
+
+        if (!isPlayerOne && gameScript.playerTwoControls == "Controller") // This is player 2 and player 2 uses controller
+        {
+            horizontalTurnAmount = turnX;
+            verticalTurnAmount = turnY;
+        }
+
+    }
+
+    void OnKeyboardTurn(InputValue value)
+    {
+        Vector2 turnInput = value.Get<Vector2>();
+
+        float turnX = turnInput[0];
+        float turnY = turnInput[1];
+
+        if (isPlayerOne && gameScript.playerOneControls == "Keyboard")
+        {
+            horizontalTurnAmount = turnX;
+            verticalTurnAmount = turnY;
+        }
+
+        if (!isPlayerOne && gameScript.playerTwoControls == "Keyboard")
+        {
+            horizontalTurnAmount = turnX;
+            verticalTurnAmount = turnY;
+        }
+
+    }
+
+    void horizontalTurns()
+    {
+        if (isPlayerOne)
+        {
+            float turnStrength = gameScript.playerOneControls == "Keyboard" ? xSensKeyboard : xSensController;
+            transform.Rotate(Vector3.up * horizontalTurnAmount * turnStrength * Time.deltaTime);
+        }
+        else
+        {
+            float turnStrength = gameScript.playerTwoControls == "Keyboard" ? xSensKeyboard : xSensController;
+            transform.Rotate(Vector3.up * horizontalTurnAmount * turnStrength * Time.deltaTime);
         }
     }
 
-        //////// Turning ///////////
-        /*
-        void OnControllerTurn(InputValue value)
+    void verticalTurns()
+    {
+        if (isPlayerOne)
         {
-            Vector2 turnInput = value.Get<Vector2>();
-
-            float turnX = turnInput[0];
-            float turnY = turnInput[1];
-
-            if (isPlayerOne && gameScript.playerOneControls == "Controller") // This is player 1 and player 1 uses controller
-            {
-                horizontalTurnAmount = turnX;
-                verticalTurnAmount = turnY;
-            }
-
-            if (!isPlayerOne && gameScript.playerTwoControls == "Controller") // This is player 2 and player 2 uses controller
-            {
-                horizontalTurnAmount = turnX;
-                verticalTurnAmount = turnY;
-            }
-
+            float turnStrength = gameScript.playerOneControls == "Keyboard" ? ySensKeyboard : ySensController;
+            xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
+        }
+        else
+        {
+            float turnStrength = gameScript.playerTwoControls == "Keyboard" ? ySensKeyboard : ySensController;
+            xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
         }
 
-        void OnKeyboardTurn(InputValue value)
-        {
-            Vector2 turnInput = value.Get<Vector2>();
+        xRotation = Mathf.Clamp(xRotation, -50f, 55f);
+        forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
-            float turnX = turnInput[0];
-            float turnY = turnInput[1];
+    }
 
-            if (isPlayerOne && gameScript.playerOneControls == "Keyboard")
-            {
-                horizontalTurnAmount = turnX;
-                verticalTurnAmount = turnY;
-            }
 
-            if (!isPlayerOne && gameScript.playerTwoControls == "Keyboard")
-            {
-                horizontalTurnAmount = turnX;
-                verticalTurnAmount = turnY;
-            }
 
-        }
+    //// Moving ////
 
-        void horizontalTurns()
-        {
-            if (isPlayerOne)
-            {
-                float turnStrength = gameScript.playerOneControls == "Keyboard" ? xSensKeyboard : xSensController;
-                transform.Rotate(Vector3.up * horizontalTurnAmount * turnStrength * Time.deltaTime);
-            }
-            else
-            {
-                float turnStrength = gameScript.playerTwoControls == "Keyboard" ? xSensKeyboard : xSensController;
-                transform.Rotate(Vector3.up * horizontalTurnAmount * turnStrength * Time.deltaTime);
-            }
-        }
-
-        void verticalTurns()
-        {
-            if (isPlayerOne)
-            {
-                float turnStrength = gameScript.playerOneControls == "Keyboard" ? ySensKeyboard : ySensController;
-                xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
-            }
-            else
-            {
-                float turnStrength = gameScript.playerTwoControls == "Keyboard" ? ySensKeyboard : ySensController;
-                xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
-            }
-
-            xRotation = Mathf.Clamp(xRotation, -50f, 55f);
-            forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-
-        }
-
-        */
-
-        //// Moving ////
-
-        void OnControllerMove(InputValue value)
+    void OnControllerMove(InputValue value)
     {
         Vector2 turnInput = value.Get<Vector2>();
 
@@ -373,7 +352,7 @@ public class playerMovement : MonoBehaviour
 
 
     //// CAMERA ////
-    
+
     void handleCamera()
     {
         float magOfMovement = (Mathf.Sqrt(sideMoveAm * sideMoveAm + forwardMoveAm * forwardMoveAm));
@@ -388,7 +367,7 @@ public class playerMovement : MonoBehaviour
         camSideOffset = Mathf.Max(0f, initialCamSideOffset - currentVelocity / walkSpeed * initialCamSideOffset);
         camHeight = initialCamHeight + speedHeight;
         camDistance = initialCamDistance + speedDepth;
-        
+
         // Position the camera behind the player
         cameraTransform.localPosition = new Vector3(actualCamSideOffset, actualCamHeight, -actualCamDistance);
 
@@ -424,7 +403,7 @@ public class playerMovement : MonoBehaviour
 
 
     //// AUDIO ////
-    
+
     void handleAudio()
     {
         footstepsSound.enabled = (isMoving && isGrounded);
@@ -434,3 +413,4 @@ public class playerMovement : MonoBehaviour
 
     }
 }
+*/
