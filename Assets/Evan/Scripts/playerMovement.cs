@@ -329,8 +329,9 @@ public class playerMovement : MonoBehaviour
             float timer = 0;
             while (timer < .5f)
             {
+                
                 speed = sprintSpeed;
-                Vector3 dod = (transform.forward * (speed * 2)) + (Vector3.up * (Time.deltaTime * gravity));
+                Vector3 dod = (new Vector3(sideMoveAm, 0f, forwardMoveAm) * (speed * 2)) + (Vector3.up * (Time.deltaTime * gravity));
                 controller.Move(dod * Time.deltaTime);
                 timer += Time.deltaTime;
                 yield return null;
