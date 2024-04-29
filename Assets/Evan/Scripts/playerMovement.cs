@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 using static UnityEngine.Rendering.DebugUI;
+using static UnityEngine.Tilemaps.Tilemap;
 
 public class playerMovement : MonoBehaviour
 {
@@ -21,14 +22,7 @@ public class playerMovement : MonoBehaviour
     public Transform playerObj;
 
 
-    [Header("Turning")]
-    public float xSensController;
-    public float ySensController;
-    public float xSensKeyboard;
-    public float ySensKeyboard;
-
-    private float horizontalTurnAmount;
-    private float verticalTurnAmount;
+    
 
 
     [Header("Moving")]
@@ -57,6 +51,15 @@ public class playerMovement : MonoBehaviour
     public bool airDashing;
     public float airDashSpeed;
 
+    [Header("Turning")]
+    public float xSensController;
+    public float ySensController;
+    public float xSensKeyboard;
+    public float ySensKeyboard;
+
+    private float horizontalTurnAmount;
+    private float verticalTurnAmount;
+
 
     [Header("Camera")]
     public float camSideOffset;
@@ -71,18 +74,27 @@ public class playerMovement : MonoBehaviour
     public float minHeightOverGround;
     float xRotation;
 
+    [Header("Camera Follow")]
+    public float cameraAngle;
+
     [Header("Audio")]
     public AudioSource footstepsSound;
     public AudioSource jumpSound;
     public AudioClip jumpSoundEffect;
     public AudioSource landingOnGrass;
     public AudioClip landingOnGrassSound;
-    
+
+    [Header("Animation")]
+    Animator playerAnimator;
+
+
 
     void Start()
     {
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         controller = GetComponent<CharacterController>();
+        playerAnimator = player.GetComponent<Animator>();
+
 
         initialCamSideOffset = camSideOffset; actualCamSideOffset = camSideOffset;
         initialCamDistance = camDistance; actualCamDistance = camDistance;
@@ -93,21 +105,21 @@ public class playerMovement : MonoBehaviour
     {
         checkIsGrounded();
 
-        // Turning // 
-        /*
-        horizontalTurns();
-        verticalTurns();
-        */
-        Turning();
-
         // Moving //
         move();
+
+        // Turning // 
+        horizontalTurns();
+        verticalTurns();
+        Turning();
+
 
         // Camera //
         handleCamera();
 
         // Audio //
         handleAudio();
+
     }
 
 
@@ -155,11 +167,12 @@ public class playerMovement : MonoBehaviour
     void checkIsGrounded()
     {
         bool prev = isGrounded;
+        
         isGrounded = controller.isGrounded || Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
         Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
+
         if (!prev && isGrounded && playerVelocity.y < -6f)
-        {
-            // We just landed
+        {   // We just landed
             landingOnGrass.PlayOneShot(landingOnGrassSound);
         }
 
@@ -172,112 +185,80 @@ public class playerMovement : MonoBehaviour
     /// Hey evan if youre looking at this, this is to rotate the player not via the camera
     /// The issue as it is now is that the player doesnt move in terms of the camera position via the front left back and forth
     /// </summary>
-    void Turning()
+    
+
+    //////// Turning ///////////
+    void OnControllerTurn(InputValue value)
     {
-        Vector3 View = player.transform.position - new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        orientation.forward = View.normalized;
+        Vector2 turnInput = value.Get<Vector2>();
 
-        float horInp = Input.GetAxis("Horizontal");
-        float verInp = Input.GetAxis("Vertical");
-        Vector3 inputDir = orientation.forward * verInp + orientation.right * horInp;
-
-        if (inputDir != Vector3.zero)
+        if (isPlayerOne && gameScript.playerOneControls == "Controller" || (!isPlayerOne && gameScript.playerTwoControls == "Controller"))
         {
-            playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * 10);
+            horizontalTurnAmount = turnInput[0];
+            verticalTurnAmount = turnInput[1];
         }
+
     }
 
-        //////// Turning ///////////
-        /*
-        void OnControllerTurn(InputValue value)
+    void OnKeyboardTurn(InputValue value)
+    {
+        Vector2 turnInput = value.Get<Vector2>();
+
+        if (isPlayerOne && gameScript.playerOneControls == "Keyboard" || (!isPlayerOne && gameScript.playerTwoControls == "Keyboard"))
         {
-            Vector2 turnInput = value.Get<Vector2>();
+            horizontalTurnAmount = turnInput[0];
+            verticalTurnAmount = turnInput[1];
+        }
+    }
+    void Turning()
+    {
+        orientation.forward = Vector3.Normalize(player.transform.position - transform.position);
 
-            float turnX = turnInput[0];
-            float turnY = turnInput[1];
+        Vector3 inputDir = orientation.forward * verticalTurnAmount + orientation.right * horizontalTurnAmount;
 
-            if (isPlayerOne && gameScript.playerOneControls == "Controller") // This is player 1 and player 1 uses controller
-            {
-                horizontalTurnAmount = turnX;
-                verticalTurnAmount = turnY;
-            }
+        playerObj.forward = inputDir;
 
-            if (!isPlayerOne && gameScript.playerTwoControls == "Controller") // This is player 2 and player 2 uses controller
-            {
-                horizontalTurnAmount = turnX;
-                verticalTurnAmount = turnY;
-            }
 
+
+    }
+
+    void horizontalTurns()
+    {
+        cameraAngle += horizontalTurnAmount;
+        if (cameraAngle > 360f)
+            cameraAngle -= 360f;
+    }
+
+    void verticalTurns()
+    {
+        /*if (isPlayerOne)
+        {
+            float turnStrength = gameScript.playerOneControls == "Keyboard" ? ySensKeyboard : ySensController;
+            xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
+        }
+        else
+        {
+            float turnStrength = gameScript.playerTwoControls == "Keyboard" ? ySensKeyboard : ySensController;
+            xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
         }
 
-        void OnKeyboardTurn(InputValue value)
-        {
-            Vector2 turnInput = value.Get<Vector2>();
+        xRotation = Mathf.Clamp(xRotation, -50f, 55f);
+        forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);*/
 
-            float turnX = turnInput[0];
-            float turnY = turnInput[1];
+    }
 
-            if (isPlayerOne && gameScript.playerOneControls == "Keyboard")
-            {
-                horizontalTurnAmount = turnX;
-                verticalTurnAmount = turnY;
-            }
 
-            if (!isPlayerOne && gameScript.playerTwoControls == "Keyboard")
-            {
-                horizontalTurnAmount = turnX;
-                verticalTurnAmount = turnY;
-            }
 
-        }
-
-        void horizontalTurns()
-        {
-            if (isPlayerOne)
-            {
-                float turnStrength = gameScript.playerOneControls == "Keyboard" ? xSensKeyboard : xSensController;
-                transform.Rotate(Vector3.up * horizontalTurnAmount * turnStrength * Time.deltaTime);
-            }
-            else
-            {
-                float turnStrength = gameScript.playerTwoControls == "Keyboard" ? xSensKeyboard : xSensController;
-                transform.Rotate(Vector3.up * horizontalTurnAmount * turnStrength * Time.deltaTime);
-            }
-        }
-
-        void verticalTurns()
-        {
-            if (isPlayerOne)
-            {
-                float turnStrength = gameScript.playerOneControls == "Keyboard" ? ySensKeyboard : ySensController;
-                xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
-            }
-            else
-            {
-                float turnStrength = gameScript.playerTwoControls == "Keyboard" ? ySensKeyboard : ySensController;
-                xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
-            }
-
-            xRotation = Mathf.Clamp(xRotation, -50f, 55f);
-            forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-
-        }
-
-        */
-
-        //// Moving ////
+    //// Moving ////
 
     void OnControllerMove(InputValue value)
     {
         Vector2 turnInput = value.Get<Vector2>();
 
-        float moveX = turnInput[0];
-        float moveY = turnInput[1];
-
-        if ((isPlayerOne && gameScript.playerOneControls == "Controller") || (!isPlayerOne && gameScript.playerTwoControls == "Controller")) // This is player 1 and player 1 uses controller
+        if ((isPlayerOne && gameScript.playerOneControls == "Controller") || (!isPlayerOne && gameScript.playerTwoControls == "Controller"))
         {
-            sideMoveAm = moveX;
-            forwardMoveAm = moveY;
+            sideMoveAm = turnInput[0];
+            forwardMoveAm = turnInput[1];
         }
 
     }
@@ -286,13 +267,10 @@ public class playerMovement : MonoBehaviour
     {
         Vector2 turnInput = value.Get<Vector2>();
 
-        float moveX = turnInput[0];
-        float moveY = turnInput[1];
-
-        if ((isPlayerOne && gameScript.playerOneControls == "Keyboard") || (!isPlayerOne && gameScript.playerTwoControls == "Keyboard")) // This is player 1 and player 1 uses controller
+        if ((isPlayerOne && gameScript.playerOneControls == "Keyboard") || (!isPlayerOne && gameScript.playerTwoControls == "Keyboard"))
         {
-            sideMoveAm = moveX;
-            forwardMoveAm = moveY;
+            sideMoveAm = turnInput[0];
+            forwardMoveAm = turnInput[1];
         }
 
     }
@@ -349,16 +327,7 @@ public class playerMovement : MonoBehaviour
     {
         setSpeed();
 
-        Animator anim = player.GetComponent<Animator>();
-
-        if (isMoving)
-        {
-            anim.SetTrigger("Go");
-        }
-        if (!isMoving)
-        {
-            anim.SetTrigger("Stop");
-        }
+        playerAnimator.SetTrigger(isMoving ? "Go" : "Stop");
 
 
         if (!airDashing && !isDodging)
@@ -384,8 +353,8 @@ public class playerMovement : MonoBehaviour
         float magOfMovement = (Mathf.Sqrt(sideMoveAm * sideMoveAm + forwardMoveAm * forwardMoveAm));
         float playerVelocityMagnitude = new Vector2(playerVelocity.x, playerVelocity.z).magnitude;
 
-        currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;
-        isMoving = currentVelocity > 2f;
+        currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;   isMoving = currentVelocity > 2f;
+
 
         float speedHeight = currentVelocity / 6f;
         float speedDepth = Mathf.Clamp(currentVelocity, 5f, airDashSpeed) / 2f;
@@ -396,7 +365,6 @@ public class playerMovement : MonoBehaviour
         
         // Position the camera behind the player
         cameraTransform.localPosition = new Vector3(actualCamSideOffset, actualCamHeight, -actualCamDistance);
-
 
 
         float distToCam = Vector3.Distance(transform.position, cameraTransform.position);

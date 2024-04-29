@@ -1130,12 +1130,15 @@ MonoBehaviour:
   player: {fileID: 1880216615993404427}
   forwardTransform: {fileID: 8704237950312879899}
   cameraTransform: {fileID: 5830161805637306124}
+  orientation: {fileID: 8704237950312879899}
+  playerObj: {fileID: 3271851552077515576}
   xSensController: 250
   ySensController: 150
   xSensKeyboard: 80
   ySensKeyboard: 50
   currentVelocity: 0
   isMoving: 0
+  isDodging: 0
   walkSpeed: 6
   sprintSpeed: 10
   sprinting: 0
