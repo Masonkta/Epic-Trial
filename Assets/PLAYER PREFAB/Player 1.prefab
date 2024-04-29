@@ -32,6 +32,7 @@ Transform:
   - {fileID: 3377601435812825608}
   - {fileID: 5671637566463537847}
   - {fileID: 6960150367078375043}
+  - {fileID: 6787047328970651743}
   m_Father: {fileID: 4266038115752009494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &217837633142264644
@@ -288,7 +289,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7117679948139959117}
-  - {fileID: 3285375620785188920}
   m_Father: {fileID: 5056211295302403805}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &516889141856253295
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 4674792917793152334}
   - component: {fileID: 1670200088467848764}
   - component: {fileID: 7010409628326061024}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 8122371701934893985}
   - component: {fileID: 2336551445598887570}
   - component: {fileID: 6605278634033012249}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Gladius
   m_TagString: Gladius
   m_Icon: {fileID: 0}
@@ -591,9 +591,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179372989798569142}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.33302417, y: -0.23457669, z: 0.7089616, w: 0.5757102}
-  m_LocalPosition: {x: -0.0017316582, y: 0.005827058, z: 0.009521764}
-  m_LocalScale: {x: 0.0023000005, y: 0.0023000012, z: 0.0023000003}
+  m_LocalRotation: {x: -0.36978608, y: -0.009056002, z: -0.5377334, w: 0.7576404}
+  m_LocalPosition: {x: 0.7307749, y: 0.08267848, z: 1.3280611}
+  m_LocalScale: {x: 0.23000005, y: 0.23000006, z: 0.23000003}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4582157781045341463}
@@ -601,7 +601,7 @@ Transform:
   - {fileID: 7203335226446797252}
   - {fileID: 3565895040220341506}
   - {fileID: 902969267709485050}
-  m_Father: {fileID: 5386893236658394864}
+  m_Father: {fileID: 4266038115752009494}
   m_LocalEulerAnglesHint: {x: -34.755, y: 27.862, z: -79.608}
 --- !u!95 &1281470398982996962
 Animator:
@@ -921,7 +921,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: c30b6bf3e125cf9439bfbc025b9df7c4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1032,6 +1032,7 @@ Transform:
   - {fileID: 8704237950312879899}
   - {fileID: 4634978264341770016}
   - {fileID: 3271851552077515576}
+  - {fileID: 3285375620785188920}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &6723137043002135332
@@ -1130,12 +1131,7 @@ MonoBehaviour:
   player: {fileID: 1880216615993404427}
   forwardTransform: {fileID: 8704237950312879899}
   cameraTransform: {fileID: 5830161805637306124}
-  orientation: {fileID: 8704237950312879899}
   playerObj: {fileID: 3271851552077515576}
-  xSensController: 250
-  ySensController: 150
-  xSensKeyboard: 80
-  ySensKeyboard: 50
   currentVelocity: 0
   isMoving: 0
   isDodging: 0
@@ -1148,10 +1144,14 @@ MonoBehaviour:
   ableToAirDash: 1
   airDashing: 0
   airDashSpeed: 15
-  camSideOffset: 0
+  xSensController: 250
+  ySensController: 150
+  xSensKeyboard: 80
+  ySensKeyboard: 50
   camHeight: 2.5
   camDistance: 6
   minHeightOverGround: 2.5
+  cameraAngle: 0
   footstepsSound: {fileID: 8851325053157420782}
   jumpSound: {fileID: 6387557546107498825}
   jumpSoundEffect: {fileID: 8300000, guid: 8c7ed4a1145727e47b1d87078a365f77, type: 3}
@@ -1170,12 +1170,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sword: {fileID: 1179372989798569142}
-  timer: 1
+  attackCoolDown: 0.5
   canAtt: 1
   Wep: {fileID: 4861367878293705970}
-  swingSounds: {fileID: 0}
-  swing1: {fileID: 0}
-  swing2: {fileID: 0}
+  rightHandTransform: {fileID: 8418394107022140697}
+  swingSounds: {fileID: 7327647035174716625}
+  swing1: {fileID: 8300000, guid: 21b853f88c4d6d944bffd96d8bb5b04a, type: 3}
+  swing2: {fileID: 8300000, guid: 7d6d4b6001995564ebcdc979f0e494d7, type: 3}
 --- !u!1 &2310127924236173054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,7 +1565,7 @@ GameObject:
   - component: {fileID: 6229988880456327811}
   - component: {fileID: 8748870842441131714}
   - component: {fileID: 80834791923231690}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1924,7 +1925,7 @@ GameObject:
   - component: {fileID: 902969267709485050}
   - component: {fileID: 3324705860227287920}
   - component: {fileID: 6222650762478717464}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Sphere.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2091,6 +2092,37 @@ Transform:
   m_Children:
   - {fileID: 414404443723873758}
   m_Father: {fileID: 8466912067105247341}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4336192857376314090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8418394107022140697}
+  m_Layer: 7
+  m_Name: WEAPON HOLDER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8418394107022140697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336192857376314090}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.00065, y: 0.00265, z: 0.00075}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5056211295302403805}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4562561333418674715
 GameObject:
@@ -2693,6 +2725,7 @@ Transform:
   m_Children:
   - {fileID: 5386893236658394864}
   - {fileID: 1594488243497537802}
+  - {fileID: 8418394107022140697}
   m_Father: {fileID: 6600543099644621320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6284855354050302954
@@ -2728,6 +2761,134 @@ Transform:
   - {fileID: 3538343130389136268}
   m_Father: {fileID: 6223267626483834922}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6459189554110449294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6787047328970651743}
+  - component: {fileID: 7327647035174716625}
+  m_Layer: 7
+  m_Name: Gladius Swing Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6787047328970651743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6459189554110449294}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4634978264341770016}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7327647035174716625
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6459189554110449294}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7d6d4b6001995564ebcdc979f0e494d7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6549453090351863998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,7 +2932,7 @@ GameObject:
   - component: {fileID: 3565895040220341506}
   - component: {fileID: 4345912308506680057}
   - component: {fileID: 6410241163103006582}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3076,7 +3237,7 @@ GameObject:
   - component: {fileID: 7203335226446797252}
   - component: {fileID: 3046275433763986822}
   - component: {fileID: 2681339032422830015}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}

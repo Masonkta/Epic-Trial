@@ -18,7 +18,6 @@ public class playerMovement : MonoBehaviour
     public GameObject player;
     public Transform forwardTransform;
     public Transform cameraTransform;
-    public Transform orientation;
     public Transform playerObj;
 
 
@@ -62,9 +61,6 @@ public class playerMovement : MonoBehaviour
 
 
     [Header("Camera")]
-    public float camSideOffset;
-    float initialCamSideOffset;
-    float actualCamSideOffset;
     public float camHeight;
     float initialCamHeight;
     float actualCamHeight;
@@ -95,8 +91,6 @@ public class playerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerAnimator = player.GetComponent<Animator>();
 
-
-        initialCamSideOffset = camSideOffset; actualCamSideOffset = camSideOffset;
         initialCamDistance = camDistance; actualCamDistance = camDistance;
         initialCamHeight = camHeight; actualCamHeight = camHeight;
     }
@@ -134,8 +128,8 @@ public class playerMovement : MonoBehaviour
     void airDash()
     {
         Vector3 moveDirection = new Vector3(sideMoveAm, 0.5f, forwardMoveAm) * airDashSpeed + Vector3.up;
-        playerVelocity += (transform.TransformDirection(moveDirection));
-        ableToAirDash = false; airDashing = true;
+        playerVelocity += (cameraTransform.TransformDirection(moveDirection));
+        airDashing = true;
 
         jumpSound.PlayOneShot(jumpSoundEffect);
     }
@@ -146,7 +140,7 @@ public class playerMovement : MonoBehaviour
         {
             if (isGrounded)
                 Jump();
-            else if (playerVelocity.y > -1f && ableToAirDash) // Dash if Player is not on ground and has not started falling down
+            else if (ableToAirDash)
                 airDash();
         }
     }
@@ -157,7 +151,7 @@ public class playerMovement : MonoBehaviour
         {
             if (isGrounded)
                 Jump();
-            else if (playerVelocity.y > -1f && ableToAirDash) // Dash if Player is not on ground and has not started falling down
+            else if (ableToAirDash) // Dash if Player is not on ground and has not started falling down
                 airDash();
         }
 
@@ -176,15 +170,8 @@ public class playerMovement : MonoBehaviour
             landingOnGrass.PlayOneShot(landingOnGrassSound);
         }
 
-
-        if (isGrounded) ableToAirDash = true;
         if (isGrounded) airDashing = false;
     }
-
-    /// rOTATE playerening /// <summary>
-    /// Hey evan if youre looking at this, this is to rotate the player not via the camera
-    /// The issue as it is now is that the player doesnt move in terms of the camera position via the front left back and forth
-    /// </summary>
     
 
     //////// Turning ///////////
@@ -210,23 +197,20 @@ public class playerMovement : MonoBehaviour
             verticalTurnAmount = turnInput[1];
         }
     }
+
     void Turning()
     {
-        orientation.forward = Vector3.Normalize(player.transform.position - transform.position);
 
-        Vector3 inputDir = orientation.forward * verticalTurnAmount + orientation.right * horizontalTurnAmount;
-
-        playerObj.forward = inputDir;
-
-
-
+        
+        
     }
 
     void horizontalTurns()
     {
-        cameraAngle += horizontalTurnAmount;
-        if (cameraAngle > 360f)
-            cameraAngle -= 360f;
+        float turnStrength = gameScript.playerOneControls == "Keyboard" ? xSensKeyboard : xSensController;
+        cameraAngle += horizontalTurnAmount * turnStrength * Time.deltaTime;
+        if (cameraAngle > 360f)  cameraAngle -= 360f;
+        if (cameraAngle <   0f)  cameraAngle += 360f;
     }
 
     void verticalTurns()
@@ -246,8 +230,6 @@ public class playerMovement : MonoBehaviour
         forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);*/
 
     }
-
-
 
     //// Moving ////
 
@@ -297,10 +279,16 @@ public class playerMovement : MonoBehaviour
 
     void setSpeed()
     {
-        if (sprinting)
-            speed = sprintSpeed;
-        else
-            speed = walkSpeed;
+        speed = sprinting ? sprintSpeed : walkSpeed;
+
+        // Calculate current Velocity
+        float magOfMovement = (Mathf.Sqrt(sideMoveAm * sideMoveAm + forwardMoveAm * forwardMoveAm));
+        float playerVelocityMagnitude = new Vector2(playerVelocity.x, playerVelocity.z).magnitude;
+
+        currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;
+        isMoving = currentVelocity > 0.75f;
+
+        ableToAirDash = !isGrounded && playerVelocity.y > -1f && !airDashing;
     }
 
     IEnumerator Dodging()
@@ -314,7 +302,7 @@ public class playerMovement : MonoBehaviour
                 
                 speed = sprintSpeed;
                 Vector3 dod = (new Vector3(sideMoveAm, 0f, forwardMoveAm) * (speed * 2)) + (Vector3.up * (Time.deltaTime * gravity));
-                controller.Move(dod * Time.deltaTime);
+                controller.Move(cameraTransform.TransformDirection(dod) * Time.deltaTime);
                 timer += Time.deltaTime;
                 yield return null;
             }
@@ -332,8 +320,17 @@ public class playerMovement : MonoBehaviour
 
         if (!airDashing && !isDodging)
         {
+            //////////////////    WE MOVIN HERE     ///////////////////////////////////////
             Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm);
-            controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+            controller.Move(cameraTransform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+
+
+            if (moveDirection != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(new Vector3(cameraTransform.TransformDirection(moveDirection).x, 0f, cameraTransform.TransformDirection(moveDirection).z));
+                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.15f);
+            }
+
         }
 
         if (isGrounded && playerVelocity.y < 0)
@@ -350,12 +347,54 @@ public class playerMovement : MonoBehaviour
     
     void handleCamera()
     {
-        float magOfMovement = (Mathf.Sqrt(sideMoveAm * sideMoveAm + forwardMoveAm * forwardMoveAm));
-        float playerVelocityMagnitude = new Vector2(playerVelocity.x, playerVelocity.z).magnitude;
+        float speedHeight = currentVelocity / 6f;
+        float speedDepth = currentVelocity / 2f;
 
-        currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;   isMoving = currentVelocity > 2f;
+        camHeight = initialCamHeight + speedHeight;
+        camDistance = initialCamDistance + speedDepth;
+
+        
+        cameraTransform.localPosition = new Vector3(Mathf.Sin(cameraAngle * Mathf.PI / 180f) * actualCamDistance, actualCamHeight, Mathf.Cos(cameraAngle * Mathf.PI / 180f) * actualCamDistance);
 
 
+        float distToCam = Vector3.Distance(transform.position, cameraTransform.position);
+        Vector3 toCamera = Vector3.Normalize(cameraTransform.position - transform.position); RaycastHit hit;
+        if (Physics.Raycast(transform.position, toCamera, out hit, distToCam * 1.15f))
+        {
+            if (hit.transform.gameObject.layer != 6 || true) // Does not hit ground < ALWAYS WILL PASS RIGHT NOW
+            {
+                float DistToObject = Vector3.Distance(hit.point, transform.position);
+                actualCamDistance += (DistToObject - actualCamDistance) / 30f;
+            }
+        }
+
+
+        actualCamHeight += (camHeight - actualCamHeight) / 150f;
+        actualCamDistance += (camDistance - actualCamDistance) / 75f;
+
+        // Finally Look at the player
+        cameraTransform.LookAt(transform.position);
+    }
+
+
+
+
+    //// AUDIO ////
+    
+    void handleAudio()
+    {
+        footstepsSound.enabled = (isMoving && isGrounded);
+        
+        // Set Pitch of Footsteps Audio based on the player speed
+        footstepsSound.pitch = (1.35f - 0.8f) / 10f * Mathf.Clamp(currentVelocity, 0f, sprintSpeed) + 0.8f;
+
+
+    }
+}
+
+
+/*void handleCamera()
+    {
         float speedHeight = currentVelocity / 6f;
         float speedDepth = Mathf.Clamp(currentVelocity, 5f, airDashSpeed) / 2f;
 
@@ -369,13 +408,13 @@ public class playerMovement : MonoBehaviour
 
         float distToCam = Vector3.Distance(transform.position, cameraTransform.position);
         Vector3 toCamera = Vector3.Normalize(cameraTransform.position - transform.position); RaycastHit hit;
-        if (Physics.Raycast(transform.position, toCamera, out hit, distToCam * 1.25f))
+        if (Physics.Raycast(transform.position, toCamera, out hit, distToCam * 1.15f))
         {
             if (hit.transform.gameObject.layer != 6) // Does not hit ground
             {
                 float DistToObject = Vector3.Distance(hit.point, transform.position);
-                if (actualCamDistance < camDistance * 2f && DistToObject < actualCamDistance)
-                    actualCamDistance += (DistToObject - actualCamDistance) / 30f; // Smaller number is faster
+                if (actualCamDistance < camDistance && DistToObject < actualCamDistance)
+                    actualCamDistance += (DistToObject - actualCamDistance) / 30f;
             }
         }
 
@@ -388,22 +427,8 @@ public class playerMovement : MonoBehaviour
 
         actualCamSideOffset += (camSideOffset - actualCamSideOffset) / 30f;
         actualCamHeight += (camHeight - actualCamHeight) / 150f;
-        actualCamDistance += (camDistance - actualCamDistance) / 75f; // Bigger number is slower
+        actualCamDistance += (camDistance - actualCamDistance) / 75f;
 
         // Finally Look at the player
         cameraTransform.LookAt(transform.position);
-    }
-
-
-
-    //// AUDIO ////
-    
-    void handleAudio()
-    {
-        footstepsSound.enabled = (isMoving && isGrounded);
-        // Set Pitch of Footsteps Audio based on the player speed
-        footstepsSound.pitch = (1.35f - 0.8f) / 10f * Mathf.Clamp(currentVelocity, 0f, sprintSpeed) + 0.8f;
-
-
-    }
-}
+    }*/
