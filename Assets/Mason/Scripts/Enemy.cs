@@ -18,7 +18,12 @@ public class Enemy : MonoBehaviour
     public int EnemyDefence;
     HighScoreTest hs;
     public EnemyType Etype;
- 
+
+    public static int enemiesKilled = 0;
+    public static int scoreMultiplier = 1;
+    public int DoubleScore = 2; 
+    public int TripleScore = 5;
+    public float timeFrame = 30f;
 
     // Start is called before the first frame update
     void Start()
@@ -52,26 +57,53 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string tag = gameObject.tag;
-        if (EnemyHealth <= 0) {
-            if (EnemyType.Weak == Etype)
+        if (EnemyHealth <= 0)
+        {
+
+            enemiesKilled++;
+
+
+            if (enemiesKilled >= TripleScore)
             {
-                hs.score += 10;
+                scoreMultiplier = 3;
+                Debug.Log("Mulitplier 3x");
             }
-            if (EnemyType.Medium == Etype)
+            else if (enemiesKilled >= DoubleScore)
             {
-                hs.score += 100;
+                scoreMultiplier = 2;
+                Debug.Log("Mulitplier 2x");
             }
-            if (EnemyType.Heavy == Etype)
+            else
             {
-                hs.score += 1000;
+                scoreMultiplier = 1;
+                Debug.Log("Mulitplier 1x");
+
             }
-            if (EnemyType.Boss == Etype)
-            {
-                hs.score += 10000;
-            }
+
+            int scoreToAdd = GetScore(Etype) * scoreMultiplier;
+            Debug.Log("Gained " + scoreToAdd + " points");
+            hs.score += scoreToAdd;
+
             Debug.Log("Current Score is " + hs.score);
             Destroy(gameObject);
+        }
+    }
+
+    // Method to get score based on enemy type
+    int GetScore(EnemyType type)
+    {
+        switch (type)
+        {
+            case EnemyType.Weak:
+                return 10;
+            case EnemyType.Medium:
+                return 100;
+            case EnemyType.Heavy:
+                return 1000;
+            case EnemyType.Boss:
+                return 10000;
+            default:
+                return 10;
         }
     }
 }
