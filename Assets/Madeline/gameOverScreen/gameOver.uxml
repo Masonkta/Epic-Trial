@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgb(149, 55, 55); align-items: center; justify-content: center; flex-direction: column; -unity-font: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;);">
+        <ui:Label tabindex="-1" text="GAME OVER" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-text-align: upper-center; font-size: 52px; -unity-font-style: bold; height: 67px; translate: 0 -50px;" />
+        <ui:Button text="Replay" parse-escape-sequences="true" display-tooltip-when-elided="true" name="restartButton" style="height: 62px; width: 114px; font-size: 24px; translate: -100px 45px;" />
+        <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="quitButton" style="translate: 100px -20px; height: 65px; width: 111px; font-size: 24px;" />
+    </ui:VisualElement>
+</ui:UXML>

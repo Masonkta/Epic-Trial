@@ -13,7 +13,7 @@ public class MenuActions : MonoBehaviour {
 
         Application.Quit();
 
-        // uncomment this to also make it quit in editor - testing
+        // uncomment this to make it quit in editor - testing
         // UnityEditor.EditorApplication.isPlaying = false;
     }
 }
