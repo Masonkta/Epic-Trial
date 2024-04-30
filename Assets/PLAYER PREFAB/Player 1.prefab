@@ -1134,16 +1134,17 @@ MonoBehaviour:
   playerObj: {fileID: 3271851552077515576}
   currentVelocity: 0
   isMoving: 0
-  isDodging: 0
   walkSpeed: 6
   sprintSpeed: 10
   sprinting: 0
   isGrounded: 0
   groundCheckDistance: 2.2
-  jumpHeight: 3
+  jumpHeight: 3.3
+  dodgeSpeed: 14
+  isDodging: 0
   ableToAirDash: 1
   airDashing: 0
-  airDashSpeed: 15
+  airDashSpeed: 20
   xSensController: 250
   ySensController: 150
   xSensKeyboard: 80

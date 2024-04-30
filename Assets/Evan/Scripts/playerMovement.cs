@@ -27,7 +27,6 @@ public class playerMovement : MonoBehaviour
     [Header("Moving")]
     public float currentVelocity;
     public bool isMoving;
-    public bool isDodging;
     public float walkSpeed;
     public float sprintSpeed;
     public bool sprinting;
@@ -44,6 +43,10 @@ public class playerMovement : MonoBehaviour
     private float speed;
     private float dodgeTime; //Will use with dodge animation
     private float gravity = Physics.gravity.y;
+
+    [Header("Dodging")]
+    public float dodgeSpeed;
+    public bool isDodging;
 
     [Header("Air Dashing")]
     public bool ableToAirDash;
@@ -127,8 +130,9 @@ public class playerMovement : MonoBehaviour
 
     void airDash()
     {
-        Vector3 moveDirection = new Vector3(sideMoveAm, 0.5f, forwardMoveAm) * airDashSpeed + Vector3.up;
-        playerVelocity += (cameraTransform.TransformDirection(moveDirection));
+        Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed;
+        var moveDir = cameraTransform.TransformDirection(moveDirection); moveDir.y = 1f; // This is our new up force
+        playerVelocity += (moveDir);
         airDashing = true;
 
         jumpSound.PlayOneShot(jumpSoundEffect);
@@ -295,18 +299,17 @@ public class playerMovement : MonoBehaviour
     {
         if (isGrounded && !isDodging)
         {
-            isDodging = true;
-            float timer = 0;
+            Vector3 dod = new Vector3(sideMoveAm, 0f, forwardMoveAm) * dodgeSpeed;
+            var moveDir = (cameraTransform.TransformDirection(dod)); moveDir.y = 0f;
+
+            isDodging = true; float timer = 0;
+
             while (timer < .5f)
             {
-                
-                speed = sprintSpeed;
-                Vector3 dod = (new Vector3(sideMoveAm, 0f, forwardMoveAm) * (speed * 2)) + (Vector3.up * (Time.deltaTime * gravity));
-                controller.Move(cameraTransform.TransformDirection(dod) * Time.deltaTime);
+                controller.Move(moveDir * 2f * Time.deltaTime);
                 timer += Time.deltaTime;
                 yield return null;
             }
-            speed = walkSpeed;
             isDodging = false;
         }
     }
@@ -317,27 +320,28 @@ public class playerMovement : MonoBehaviour
 
         playerAnimator.SetTrigger(isMoving ? "Go" : "Stop");
 
-
         if (!airDashing && !isDodging)
         {
             //////////////////    WE MOVIN HERE     ///////////////////////////////////////
-            Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm);
-            controller.Move(cameraTransform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+            Vector3 moveInput = new Vector3(sideMoveAm, 0f, forwardMoveAm);
+            var moveDir = (cameraTransform.TransformDirection(moveInput)); moveDir.y = 0f;
+            controller.Move(moveDir * speed * Time.deltaTime);
 
-
-            if (moveDirection != Vector3.zero)
+            if (moveInput != Vector3.zero)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(new Vector3(cameraTransform.TransformDirection(moveDirection).x, 0f, cameraTransform.TransformDirection(moveDirection).z));
+                Quaternion targetRotation = Quaternion.LookRotation(moveDir);
                 player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.15f);
             }
-
         }
 
         if (isGrounded && playerVelocity.y < 0)
-            playerVelocity = Vector3.down * 3.5f;
+            playerVelocity = Vector3.down * 3.5f; // Reset player velocity to (0, -3.5, 0)
 
-        playerVelocity.y += gravity * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+
+
+        playerVelocity.y += gravity * Time.deltaTime * (isDodging ? 3f : 1f); 
+
+        controller.Move(playerVelocity * Time.deltaTime); // This only affects the player falling and air dashing
 
     }
 

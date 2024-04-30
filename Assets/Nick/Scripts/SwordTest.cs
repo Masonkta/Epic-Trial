@@ -72,7 +72,6 @@ public class SwordTest : MonoBehaviour
 
     void placeSwordInPlayersHand()
     {
-        print(rightHandTransform.position);
         Sword.transform.position = new Vector3(rightHandTransform.position.x, transform.position.y, rightHandTransform.position.z);
     }
 }
