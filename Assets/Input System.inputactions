@@ -60,24 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Keyboard Turn",
-                    "type": "Value",
-                    "id": "03dc6cc4-1f0b-49d5-b7f6-f801c1551b2d",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Controller Turn",
-                    "type": "Value",
-                    "id": "d7d798b1-a862-4e98-8555-3234f6b2f9fc",
-                    "expectedControlType": "Stick",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Controller Move",
                     "type": "Value",
                     "id": "3cf229d9-41b8-4be7-8827-08bb5115e4c2",
@@ -267,28 +249,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Controller Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b475e783-0dd2-4b72-8095-dac0cc58c810",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Controller Turn",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cbad3b91-0a1b-498e-848c-6116d510d6d0",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Keyboard Turn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

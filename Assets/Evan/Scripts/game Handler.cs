@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class gameHandler : MonoBehaviour
 {
+    public GameObject playerOne;
+    public GameObject playerTwo;
     public string playerOneControls = "---";
     public string playerTwoControls = "---";
 
