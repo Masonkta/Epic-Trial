@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &553720811254187583
+--- !u!1 &6905950716219839746
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5117046545922653815}
-  - component: {fileID: 1890362710382979672}
-  - component: {fileID: 5039292028244742122}
-  - component: {fileID: 4275103454771748265}
-  - component: {fileID: 482367648421167747}
+  - component: {fileID: 1940849000465276536}
+  - component: {fileID: 7652963696157231854}
+  - component: {fileID: 6654361842480241531}
+  - component: {fileID: 3406143379263442087}
+  - component: {fileID: 5408948678231347504}
   m_Layer: 0
   m_Name: Game Handler
   m_TagString: GameHandler
@@ -20,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5117046545922653815
+--- !u!4 &1940849000465276536
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 553720811254187583}
+  m_GameObject: {fileID: 6905950716219839746}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -54.77}
@@ -35,13 +35,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1890362710382979672
+--- !u!114 &7652963696157231854
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 553720811254187583}
+  m_GameObject: {fileID: 6905950716219839746}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
@@ -63,45 +63,47 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Game
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &5039292028244742122
+--- !u!114 &6654361842480241531
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 553720811254187583}
+  m_GameObject: {fileID: 6905950716219839746}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fae39005adcf1b4291daaf00746b387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerOne: {fileID: 0}
+  playerTwo: {fileID: 0}
   playerOneControls: --
   playerTwoControls: --
   mouseLocked: 0
---- !u!114 &4275103454771748265
+--- !u!114 &3406143379263442087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 553720811254187583}
+  m_GameObject: {fileID: 6905950716219839746}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7676c2a8738d87e4ea8ce2bbfe84ab32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScript: {fileID: 5039292028244742122}
+  gameScript: {fileID: 6654361842480241531}
   playerOneControls: None
---- !u!114 &482367648421167747
+--- !u!114 &5408948678231347504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 553720811254187583}
+  m_GameObject: {fileID: 6905950716219839746}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f06d0d081221fe408a9d071721b28ee, type: 3}
