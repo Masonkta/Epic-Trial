@@ -11,50 +11,41 @@ public class gameHandler : MonoBehaviour
 
     [Header("Resources")]
     public int clothPieces;
+    public int woodPieces;
+    public int metalScraps;
 
 
 
     ////////////////////////////////////////////////////////
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
-    
-   
+
     public void setPlayerOneAsKeyboard()
     {
         playerOneControls = "Keyboard";
         playerTwoControls = "Controller";
-
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void setPlayerOneAsController()
     {
         playerOneControls = "Controller";
         playerTwoControls = "Keyboard";
-
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void OnToggleCursor()
     {
         if (Cursor.lockState == CursorLockMode.Locked)
-        {
             Cursor.lockState = CursorLockMode.None;
-        }
         else if (Cursor.lockState == CursorLockMode.None)
-        {
             Cursor.lockState = CursorLockMode.Locked;
-        }
     }
 
     void OnQuitGame()
@@ -63,8 +54,11 @@ public class gameHandler : MonoBehaviour
         //Application.Quit();
     }
 
-    public void getCloth()
+
+    public void collectResource(string name)
     {
-        clothPieces++;
+        if (name == "Cloth") clothPieces++;
+        if (name == "Wood") woodPieces++;
+        if (name == "Metal Scrap") metalScraps++;
     }
 }

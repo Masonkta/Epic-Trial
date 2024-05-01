@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
+public class GladiusPickup : MonoBehaviour
 {
     public GameObject p1;
     public GameObject p1Sword;
@@ -26,9 +26,9 @@ public class Pickup : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, p1.transform.position) < 4f)
         {
-            print("PICKUP PLAYER 1");
-            p2Sword.SetActive(true);
-            Destroy(gameObject);
+            print("Player 1 picked up Gladius.");
+            p1Sword.SetActive(true);
+            Destroy(gameObject); // Destroy Gladius object on the ground
         }
     }
 
@@ -36,9 +36,9 @@ public class Pickup : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, p2.transform.position) < 4f)
         {
-            print("PICKUP PLAYER 2");
+            print("Player 2 picked up Gladius.");
             p2Sword.SetActive(true);
-            Destroy(gameObject);
+            Destroy(gameObject); // Destroy Gladius object on the ground
         }
     }
 }

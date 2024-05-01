@@ -25,7 +25,7 @@
                 },
                 {
                     "name": "Sprint",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "96c73967-2f2e-4839-9557-b9185b681efb",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ShiftLock",
+                    "type": "Button",
+                    "id": "e79631ee-4174-4e59-934d-b5f795197a0a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -124,6 +133,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f64f3ea-38d5-4466-b21a-82933352a51a",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShiftLock",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

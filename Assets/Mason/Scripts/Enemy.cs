@@ -4,6 +4,7 @@ using System.Data.Common;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.Rendering.DebugUI;
 
 public enum EnemyType
 {
@@ -18,9 +19,12 @@ public class Enemy : MonoBehaviour
     public int EnemyHealth;
     public int EnemyDefence;
     public int EnemyDamage;
-    HighScoreTest hs;
     public EnemyType Etype;
-    public GameObject coin;
+    public GameObject clothPiece;
+    public GameObject woodPiece;
+    public GameObject metalScrap;
+
+    HighScoreTest hs;
 
     public static int enemiesKilled = 0;
     public static int scoreMultiplier = 1;
@@ -144,9 +148,7 @@ public class Enemy : MonoBehaviour
 
                 Debug.Log("Current Score is " + hs.score);
 
-                // Spawn in Cloth Pieces
-                Instantiate(coin, transform.position + Vector3.up * 4 + Vector3.forward * 2, Quaternion.identity);
-                Destroy(gameObject);
+                die();
             }
         }
         // Check if time frame has elapsed and reset counters
@@ -182,4 +184,77 @@ public class Enemy : MonoBehaviour
                 return 10;
         }
     }
+
+    void die()
+    {
+        dropItems();
+
+        Destroy(gameObject);
+    }
+
+
+    void dropItems()
+    {
+        // Decide how many and what items to drop
+
+        float threshToDetermine = Random.value;
+        
+        if (threshToDetermine <= 0.45f) // Start with cloth ( 45% )
+        {
+            float clothCountThresh = Random.value;
+            int numberOfCloth = clothCountThresh <= 0.1f ? 3 : (clothCountThresh <= 0.60f ? 2 : 1); // 10% for 3, 50% for 2, 40% for 1
+            dropCloth(numberOfCloth);
+        }
+
+        else if (threshToDetermine <= 0.80f) // Start with wood ( 35% )
+        {
+            int numberOfWood = Random.value < 0.4f ? 2 : 1; // 40% for duplicate
+            dropWood(numberOfWood);
+        }
+        
+        else // Start with wood ( 20% )
+        {
+            int numberOfMetalScraps = Random.value < 0.2f ? 2 : 1; // 20% for duplicate
+            dropMetalScrap(numberOfMetalScraps);
+        }
+        
+    }
+
+
+
+    void dropCloth(int num)
+    {
+        // Spawn in Cloth Pieces
+        for (int i = 0; i < num; i++)
+        {
+            GameObject currentCloth = Instantiate(clothPiece, transform.position + Vector3.up, Quaternion.identity);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentCloth.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentCloth.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+        }
+    }
+
+    void dropWood(int num)
+    {
+        // Spawn in Wood Pieces
+        for (int i = 0; i < num; i++)
+        {
+            GameObject currentWood = Instantiate(woodPiece, transform.position + Vector3.up, Quaternion.identity);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentWood.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentWood.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+        }
+    }
+    void dropMetalScrap(int num)
+    {
+        // Spawn in Wood Pieces
+        for (int i = 0; i < num; i++)
+        {
+            GameObject currentMetalScrap = Instantiate(metalScrap, transform.position + Vector3.up, Quaternion.identity);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentMetalScrap.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentMetalScrap.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+        }
+    }
+
 }

@@ -14,6 +14,8 @@ using static UnityEngine.Tilemaps.Tilemap;
 public class playerMovement : MonoBehaviour
 {
     gameHandler gameScript;
+    CharacterController controller;
+    
     public bool isPlayerOne;
     public GameObject player;
     public Transform forwardTransform;
@@ -23,36 +25,37 @@ public class playerMovement : MonoBehaviour
 
     [Header("Moving")]
     public float currentVelocity;
-    public bool isMoving;
     public float walkSpeed;
     public float sprintSpeed;
-    public bool sprinting;
 
-    public bool shiftLock;
-
-    [Header("Jumping")]
-    public bool isGrounded;
-    public float groundCheckDistance;
-    public float jumpHeight;
-
-    private CharacterController controller;
-    private Vector3 playerVelocity;
+    private float speed;
+    private bool isMoving;
+    private bool sprinting;
     private float forwardMoveAm;
     private float sideMoveAm;
-    private float speed;
-    private float dodgeTime; //Will use with dodge animation
-    private float gravity = Physics.gravity.y;
+    private Vector3 playerVelocity;
 
-    [Header("Dodging")]
-    public float dodgeSpeed;
-    public bool isDodging;
 
-    [Header("Air Dashing")]
-    public bool ableToAirDash;
-    public bool airDashing;
+    [Header("Jumping")]
+    public float groundCheckDistance;
+    public float jumpHeight;
     public float airDashSpeed;
 
+    private bool isGrounded;
+    private float gravity = Physics.gravity.y;
+    private bool airDashing;
+    private bool ableToAirDash;
+
+
+    [Header("Dodging")]
+    public float dodgeSpeed = 20f;
+    public float dodgeTime = 0.4f;
+    
+    private bool isDodging;
+
+
     [Header("Turning")]
+    public bool shiftLock = false;
     public float xSensController;
     public float ySensController;
     public float xSensKeyboard;
@@ -72,8 +75,10 @@ public class playerMovement : MonoBehaviour
     public float minHeightOverGround;
     float xRotation;
 
+
     [Header("Camera Follow")]
     public float cameraAngle;
+
 
     [Header("Audio")]
     public AudioSource footstepsSound;
@@ -81,6 +86,7 @@ public class playerMovement : MonoBehaviour
     public AudioClip jumpSoundEffect;
     public AudioSource landingOnGrass;
     public AudioClip landingOnGrassSound;
+
 
     [Header("Animation")]
     Animator playerAnimator;
@@ -107,8 +113,6 @@ public class playerMovement : MonoBehaviour
         // Turning // 
         horizontalTurns();
         verticalTurns();
-        Turning();
-
 
         // Camera //
         handleCamera();
@@ -131,11 +135,27 @@ public class playerMovement : MonoBehaviour
     {
         Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed;
         var moveDir = cameraTransform.TransformDirection(moveDirection); moveDir.y = 1f; // This is our new up force
-        playerVelocity += (moveDir);
+        playerVelocity += moveDir;
         airDashing = true;
 
         jumpSound.PlayOneShot(jumpSoundEffect);
     }
+
+    void checkIsGrounded()
+    {
+        bool prev = isGrounded;
+
+        isGrounded = controller.isGrounded || Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
+        //Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
+
+        if (!prev && isGrounded && playerVelocity.y < -6f)
+        {   // We just landed and were falling a decent bit
+            landingOnGrass.PlayOneShot(landingOnGrassSound);
+        }
+
+        if (isGrounded) airDashing = false;
+    }
+
 
     void OnJump()
     {
@@ -145,21 +165,11 @@ public class playerMovement : MonoBehaviour
             airDash();
     }
 
-    void checkIsGrounded()
+    void OnShiftLock()
     {
-        bool prev = isGrounded;
-        
-        isGrounded = controller.isGrounded || Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
-        Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
-
-        if (!prev && isGrounded && playerVelocity.y < -6f)
-        {   // We just landed
-            landingOnGrass.PlayOneShot(landingOnGrassSound);
-        }
-
-        if (isGrounded) airDashing = false;
+        shiftLock = !shiftLock;
     }
-    
+
 
     //////// Turning ///////////
     void OnTurn(InputValue value)
@@ -168,15 +178,6 @@ public class playerMovement : MonoBehaviour
 
         horizontalTurnAmount = turnInput[0];
         verticalTurnAmount = turnInput[1];
-
-    }
-
-
-    void Turning()
-    {
-
-        
-        
     }
 
     void horizontalTurns()
@@ -241,15 +242,18 @@ public class playerMovement : MonoBehaviour
         {
             Vector3 dod = new Vector3(sideMoveAm, 0f, forwardMoveAm) * dodgeSpeed;
             var moveDir = (cameraTransform.TransformDirection(dod)); moveDir.y = 0f;
+            Quaternion targetRotation = Quaternion.LookRotation(moveDir);
 
             isDodging = true; float timer = 0;
 
-            while (timer < .5f)
+            while (timer < dodgeTime)
             {
-                controller.Move(moveDir * 2f * Time.deltaTime);
+                controller.Move(moveDir * Time.deltaTime);
+                if (!shiftLock) player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.25f); // Only turn to face dash direction if player is not in shift lock, otherwise we want to face forward
                 timer += Time.deltaTime;
                 yield return null;
             }
+
             isDodging = false;
         }
     }
@@ -270,9 +274,21 @@ public class playerMovement : MonoBehaviour
             if (moveInput != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(moveDir);
-                if (shiftLock) targetRotation = Quaternion.LookRotation(cameraTransform.TransformDirection(Vector3.forward));
-                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.15f);
+                
+                if (shiftLock) {
+                    Vector3 playerForward = cameraTransform.TransformDirection(Vector3.forward); playerForward.y = 0f;
+                    targetRotation = Quaternion.LookRotation(playerForward); }
+                
+                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.05f);
             }
+
+            if (shiftLock)
+            {
+                Vector3 playerForward = cameraTransform.TransformDirection(Vector3.forward); playerForward.y = 0f;
+                Quaternion targetRotation = Quaternion.LookRotation(playerForward);
+                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.05f);
+            }
+
         }
 
         if (isGrounded && playerVelocity.y < 0)
@@ -297,14 +313,13 @@ public class playerMovement : MonoBehaviour
 
         camHeight = initialCamHeight + speedHeight;
         camDistance = initialCamDistance + speedDepth;
-
         
-        cameraTransform.localPosition = new Vector3(Mathf.Sin(cameraAngle * Mathf.PI / 180f) * actualCamDistance, actualCamHeight, Mathf.Cos(cameraAngle * Mathf.PI / 180f) * actualCamDistance);
-
+        // Position the camera around the player
+        cameraTransform.localPosition = new Vector3(Mathf.Sin(cameraAngle * Mathf.PI / 180f) * actualCamDistance,   actualCamHeight,   Mathf.Cos(cameraAngle * Mathf.PI / 180f) * actualCamDistance);
 
         float distToCam = Vector3.Distance(transform.position, cameraTransform.position);
         Vector3 toCamera = Vector3.Normalize(cameraTransform.position - transform.position); RaycastHit hit;
-        if (Physics.Raycast(transform.position, toCamera, out hit, distToCam * 1.15f))
+        if (Physics.Raycast(transform.position, toCamera, out hit, distToCam * 1.1f))
         {
             if (hit.transform.gameObject.layer != 6 || true) // Does not hit ground < ALWAYS WILL PASS RIGHT NOW
             {
@@ -312,7 +327,6 @@ public class playerMovement : MonoBehaviour
                 actualCamDistance += (DistToObject - actualCamDistance) / 30f;
             }
         }
-
 
         actualCamHeight += (camHeight - actualCamHeight) / 150f;
         actualCamDistance += (camDistance - actualCamDistance) / 75f;
@@ -336,44 +350,3 @@ public class playerMovement : MonoBehaviour
 
     }
 }
-
-
-/*void handleCamera()
-    {
-        float speedHeight = currentVelocity / 6f;
-        float speedDepth = Mathf.Clamp(currentVelocity, 5f, airDashSpeed) / 2f;
-
-        camSideOffset = Mathf.Max(0f, initialCamSideOffset - currentVelocity / walkSpeed * initialCamSideOffset);
-        camHeight = initialCamHeight + speedHeight;
-        camDistance = initialCamDistance + speedDepth;
-        
-        // Position the camera behind the player
-        cameraTransform.localPosition = new Vector3(actualCamSideOffset, actualCamHeight, -actualCamDistance);
-
-
-        float distToCam = Vector3.Distance(transform.position, cameraTransform.position);
-        Vector3 toCamera = Vector3.Normalize(cameraTransform.position - transform.position); RaycastHit hit;
-        if (Physics.Raycast(transform.position, toCamera, out hit, distToCam * 1.15f))
-        {
-            if (hit.transform.gameObject.layer != 6) // Does not hit ground
-            {
-                float DistToObject = Vector3.Distance(hit.point, transform.position);
-                if (actualCamDistance < camDistance && DistToObject < actualCamDistance)
-                    actualCamDistance += (DistToObject - actualCamDistance) / 30f;
-            }
-        }
-
-        RaycastHit hit2;
-        if (Physics.Raycast(cameraTransform.position + Vector3.up * 10f, Vector3.down, out hit2, 10f + minHeightOverGround))
-            if (hit2.transform.gameObject.layer == 6)
-                actualCamHeight += 0.05f;
-
-
-
-        actualCamSideOffset += (camSideOffset - actualCamSideOffset) / 30f;
-        actualCamHeight += (camHeight - actualCamHeight) / 150f;
-        actualCamDistance += (camDistance - actualCamDistance) / 75f;
-
-        // Finally Look at the player
-        cameraTransform.LookAt(transform.position);
-    }*/
