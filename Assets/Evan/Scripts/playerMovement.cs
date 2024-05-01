@@ -28,6 +28,8 @@ public class playerMovement : MonoBehaviour
     public float sprintSpeed;
     public bool sprinting;
 
+    public bool shiftLock;
+
     [Header("Jumping")]
     public bool isGrounded;
     public float groundCheckDistance;
@@ -167,7 +169,6 @@ public class playerMovement : MonoBehaviour
         horizontalTurnAmount = turnInput[0];
         verticalTurnAmount = turnInput[1];
 
-        print(turnInput);
     }
 
 
@@ -184,6 +185,8 @@ public class playerMovement : MonoBehaviour
         cameraAngle += horizontalTurnAmount * turnStrength * Time.deltaTime;
         if (cameraAngle > 360f)  cameraAngle -= 360f;
         if (cameraAngle <   0f)  cameraAngle += 360f;
+
+        //if (shiftLock) cameraAngle = 180f;
     }
 
     void verticalTurns()
@@ -267,6 +270,7 @@ public class playerMovement : MonoBehaviour
             if (moveInput != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+                if (shiftLock) targetRotation = Quaternion.LookRotation(cameraTransform.TransformDirection(Vector3.forward));
                 player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.15f);
             }
         }

@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public int EnemyDamage;
     HighScoreTest hs;
     public EnemyType Etype;
+    public GameObject coin;
 
     public static int enemiesKilled = 0;
     public static int scoreMultiplier = 1;
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
     bool timerStarted = false;
     float timeFrame = 10f;
     float timeElapsed = 0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -141,6 +143,9 @@ public class Enemy : MonoBehaviour
                 hs.score += scoreToAdd;
 
                 Debug.Log("Current Score is " + hs.score);
+
+                // Spawn in Cloth Pieces
+                Instantiate(coin, transform.position + Vector3.up * 4 + Vector3.forward * 2, Quaternion.identity);
                 Destroy(gameObject);
             }
         }

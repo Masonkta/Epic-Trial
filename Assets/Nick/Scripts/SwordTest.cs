@@ -11,7 +11,7 @@ public class SwordTest : MonoBehaviour
     public Weapon Wep;
     public Transform rightHandTransform;
 
-    Animator anim;
+    public Animator anim;
 
     [Header("Audio")]
     public AudioSource swingSounds;
@@ -23,7 +23,6 @@ public class SwordTest : MonoBehaviour
     void Start()
     {
         Wep.enabled = false;
-        anim = Sword.GetComponent<Animator>();
     }
 
     void Update()
@@ -31,13 +30,7 @@ public class SwordTest : MonoBehaviour
         placeSwordInPlayersHand();    
     }
 
-    void OnKeyboardAttack()
-    {
-        if (canAtt)
-            Attacking();
-    }
-    
-    void OnControllerAttack()
+    void OnAttack()
     {
         if (canAtt)
             Attacking();
