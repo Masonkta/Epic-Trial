@@ -11,6 +11,8 @@ TagManager:
   - HeavyEnemy
   - Boss
   - Spear
+  - PlayerKeyboard
+  - PlayerController
   layers:
   - Default
   - TransparentFX
