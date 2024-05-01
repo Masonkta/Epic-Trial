@@ -21,9 +21,6 @@ public class playerMovement : MonoBehaviour
     public Transform playerObj;
 
 
-    
-
-
     [Header("Moving")]
     public float currentVelocity;
     public bool isMoving;
@@ -112,7 +109,7 @@ public class playerMovement : MonoBehaviour
 
 
         // Camera //
-        //handleCamera();
+        handleCamera();
 
         // Audio //
         handleAudio();
@@ -138,28 +135,12 @@ public class playerMovement : MonoBehaviour
         jumpSound.PlayOneShot(jumpSoundEffect);
     }
 
-    void OnControllerJump()
+    void OnJump()
     {
-        if ((isPlayerOne && gameScript.playerOneControls == "Controller") || (!isPlayerOne && gameScript.playerTwoControls == "Controller"))
-        {
-            if (isGrounded)
-                Jump();
-            else if (ableToAirDash)
-                airDash();
-        }
-    }
-
-    void OnKeyboardJump()
-    {
-        if ((isPlayerOne && gameScript.playerOneControls == "Keyboard") || (!isPlayerOne && gameScript.playerTwoControls == "Keyboard"))
-        {
-            if (isGrounded)
-                Jump();
-            else if (ableToAirDash) // Dash if Player is not on ground and has not started falling down
-                airDash();
-        }
-
-        
+        if (isGrounded)
+            Jump();
+        else if (ableToAirDash) // Dash if Player is not on ground and has not started falling down
+            airDash();
     }
 
     void checkIsGrounded()
@@ -179,28 +160,16 @@ public class playerMovement : MonoBehaviour
     
 
     //////// Turning ///////////
-    void OnControllerTurn(InputValue value)
+    void OnTurn(InputValue value)
     {
         Vector2 turnInput = value.Get<Vector2>();
 
-        if (isPlayerOne && gameScript.playerOneControls == "Controller" || (!isPlayerOne && gameScript.playerTwoControls == "Controller"))
-        {
-            horizontalTurnAmount = turnInput[0];
-            verticalTurnAmount = turnInput[1];
-        }
+        horizontalTurnAmount = turnInput[0];
+        verticalTurnAmount = turnInput[1];
 
+        print(turnInput);
     }
 
-    void OnKeyboardTurn(InputValue value)
-    {
-        Vector2 turnInput = value.Get<Vector2>();
-
-        if (isPlayerOne && gameScript.playerOneControls == "Keyboard" || (!isPlayerOne && gameScript.playerTwoControls == "Keyboard"))
-        {
-            horizontalTurnAmount = turnInput[0];
-            verticalTurnAmount = turnInput[1];
-        }
-    }
 
     void Turning()
     {
@@ -211,7 +180,7 @@ public class playerMovement : MonoBehaviour
 
     void horizontalTurns()
     {
-        float turnStrength = gameScript.playerOneControls == "Keyboard" ? xSensKeyboard : xSensController;
+        float turnStrength = isPlayerOne ? xSensKeyboard : xSensController;
         cameraAngle += horizontalTurnAmount * turnStrength * Time.deltaTime;
         if (cameraAngle > 360f)  cameraAngle -= 360f;
         if (cameraAngle <   0f)  cameraAngle += 360f;
@@ -219,67 +188,35 @@ public class playerMovement : MonoBehaviour
 
     void verticalTurns()
     {
-        /*if (isPlayerOne)
-        {
-            float turnStrength = gameScript.playerOneControls == "Keyboard" ? ySensKeyboard : ySensController;
-            xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
-        }
-        else
-        {
-            float turnStrength = gameScript.playerTwoControls == "Keyboard" ? ySensKeyboard : ySensController;
-            xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
-        }
+        float turnStrength = isPlayerOne ? ySensKeyboard : ySensController;
+        xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
 
         xRotation = Mathf.Clamp(xRotation, -50f, 55f);
-        forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);*/
+        forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
     }
 
     //// Moving ////
 
-    void OnControllerMove(InputValue value)
+    void OnMove(InputValue value)
     {
         Vector2 turnInput = value.Get<Vector2>();
 
-        if ((isPlayerOne && gameScript.playerOneControls == "Controller") || (!isPlayerOne && gameScript.playerTwoControls == "Controller"))
-        {
-            sideMoveAm = turnInput[0];
-            forwardMoveAm = turnInput[1];
-        }
+        sideMoveAm = turnInput[0];
+        forwardMoveAm = turnInput[1];
 
     }
 
-    void OnKeyboardMove(InputValue value)
-    {
-        Vector2 turnInput = value.Get<Vector2>();
-
-        if ((isPlayerOne && gameScript.playerOneControls == "Keyboard") || (!isPlayerOne && gameScript.playerTwoControls == "Keyboard"))
-        {
-            sideMoveAm = turnInput[0];
-            forwardMoveAm = turnInput[1];
-        }
-
-    }
-
-    void OnControllerSprint()
+    void OnSprint()
     {
         sprinting = !sprinting;
     }
 
-    void OnKeyboardSprint()
-    {
-        sprinting = !sprinting;
-    }
-
-    void OnControllerDodge()
+    void OnDodge()
     {
         StartCoroutine(Dodging());
     }
 
-    void OnKeyboardDodge()
-    {
-        StartCoroutine(Dodging());
-    }
 
     void setSpeed()
     {
