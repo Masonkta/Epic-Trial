@@ -27,6 +27,7 @@ public class SwordTest : MonoBehaviour
 
     void Update()
     {
+        Debug.DrawRay(rightHandTransform.position, rightHandTransform.forward * 2f, Color.blue);
         placeSwordInPlayersHand();    
     }
 
@@ -65,6 +66,6 @@ public class SwordTest : MonoBehaviour
 
     void placeSwordInPlayersHand()
     {
-        Sword.transform.position = new Vector3(rightHandTransform.position.x, transform.position.y, rightHandTransform.position.z);
+        Sword.transform.localPosition = rightHandTransform.localPosition;
     }
 }

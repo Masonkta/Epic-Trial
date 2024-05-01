@@ -38,13 +38,18 @@ public class BasicEnemy : MonoBehaviour
         if (walkPointSet)
         {
             agent.SetDestination(walkPoint);
-        }
 
+            //  this is a line in the SCENE view that shows its patrol spot
+            Debug.DrawLine(transform.position, walkPoint, Color.yellow);
+        }
+        
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
         if (distanceToWalkPoint.magnitude < 1f)
         {
             walkPointSet = false;
         }
+
+
     }
 
     private void SearchWalkPoint()
@@ -87,6 +92,7 @@ public class BasicEnemy : MonoBehaviour
         if (playerInSightRange)
         {
             Chase();
+            Debug.DrawLine(transform.position, agent.destination, Color.red);
         }
     }
 }
