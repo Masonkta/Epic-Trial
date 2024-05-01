@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3079009549321828846}
   - component: {fileID: 265738094054796020}
   - component: {fileID: 3773792736352665836}
-  - component: {fileID: -7723162762660619064}
+  - component: {fileID: -7086571004451177977}
   m_Layer: 10
   m_Name: Wood
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &-7723162762660619064
+--- !u!114 &-7086571004451177977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,9 +143,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6624423524895108242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4627d65261ed3047a853ffabfebc8cf, type: 3}
+  m_Script: {fileID: 11500000, guid: ce2056fdba64ad641911a98e41267c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameScript: {fileID: 0}
-  pickupDist: 2.5
-  pickupTimer: 1
+  resourceType: Wood

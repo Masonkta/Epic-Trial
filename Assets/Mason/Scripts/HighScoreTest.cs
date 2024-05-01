@@ -22,7 +22,7 @@ public class HighScoreTest : MonoBehaviour
             delay -= Time.deltaTime;
             if (delay < 0)
             {
-                HS.SubmitHighScore(this, "Mason", score);
+                //HS.SubmitHighScore(this, "Mason", score);
             }
         }
     }

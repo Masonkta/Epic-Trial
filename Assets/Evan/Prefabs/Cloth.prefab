@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7906241589635092587}
   - component: {fileID: 5660419533631133656}
   - component: {fileID: 7290050904488366259}
-  - component: {fileID: 5264928221803079685}
+  - component: {fileID: -5888391708053399913}
   m_Layer: 10
   m_Name: Cloth
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5837075631215664301}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.775509, y: 1.058, z: 2.2479873}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.1, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -134,7 +134,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5264928221803079685
+--- !u!114 &-5888391708053399913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,9 +143,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5837075631215664301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b79f9d3498a5c449202f99646899cc, type: 3}
+  m_Script: {fileID: 11500000, guid: ce2056fdba64ad641911a98e41267c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameScript: {fileID: 0}
-  pickupDist: 2.5
-  pickupTimer: 1
+  resourceType: Cloth

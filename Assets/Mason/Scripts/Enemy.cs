@@ -167,7 +167,7 @@ public class Enemy : MonoBehaviour
         if (timerStarted)
         {
             Debug.Log("started");
-            Debug.Log(timeElapsed);
+            //Debug.Log(timeElapsed);
             if (timeElapsed > timeFrame)
                 {
                     // Reset counters
@@ -207,26 +207,27 @@ public class Enemy : MonoBehaviour
 
     void dropItems()
     {
-        // Decide how many and what items to drop
+        bool dropItem = Random.value < 0.75f;
 
+        // Decide how many and what items to drop
         float threshToDetermine = Random.value;
         
-        if (threshToDetermine <= 0.45f) // Start with cloth ( 45% )
+        if (threshToDetermine <= 0.6f) // Start with cloth ( 45% )
         {
             float clothCountThresh = Random.value;
-            int numberOfCloth = clothCountThresh <= 0.1f ? 3 : (clothCountThresh <= 0.60f ? 2 : 1); // 10% for 3, 50% for 2, 40% for 1
+            int numberOfCloth = clothCountThresh <= 0.1f ? 3 : (clothCountThresh <= 0.4f ? 2 : 1); // 10% for 3, 30% for 2, 60% for 1
             dropCloth(numberOfCloth);
         }
 
-        else if (threshToDetermine <= 0.80f) // Start with wood ( 35% )
+        else if (threshToDetermine <= 0.9f) // Start with wood ( 35% )
         {
-            int numberOfWood = Random.value < 0.4f ? 2 : 1; // 40% for duplicate
+            int numberOfWood = Random.value < 0.3f ? 2 : 1; // 40% for duplicate
             dropWood(numberOfWood);
         }
         
         else // Start with wood ( 20% )
         {
-            int numberOfMetalScraps = Random.value < 0.2f ? 2 : 1; // 20% for duplicate
+            int numberOfMetalScraps = Random.value < 0.1f ? 2 : 1; // 20% for duplicate
             dropMetalScrap(numberOfMetalScraps);
         }
         
