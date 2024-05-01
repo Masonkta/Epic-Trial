@@ -1,5 +1,5 @@
 {
-    "name": "Game Handler",
+    "name": "_Game Handler",
     "maps": [
         {
             "name": "Game",
@@ -27,6 +27,15 @@
                     "name": "Join",
                     "type": "Button",
                     "id": "41cb4ed6-6f0d-445b-834a-e518da610c31",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CheckRecipes",
+                    "type": "Button",
+                    "id": "d89ed09a-10b1-45b2-beef-1e94a4fb1574",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -75,6 +84,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "16b16f34-463a-4061-b36f-2f219031725b",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckRecipes",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "82acc2ac-875e-47d8-b4ae-fd3820cb4bdf",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckRecipes",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

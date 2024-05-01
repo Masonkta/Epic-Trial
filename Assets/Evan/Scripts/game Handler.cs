@@ -14,6 +14,11 @@ public class gameHandler : MonoBehaviour
     public int woodPieces;
     public int metalScraps;
 
+    [Header("Recipes")]
+    public Vector3 bandagesRecipe = new Vector3(5, 0, 0);
+    public Vector3 armorRecipe = new Vector3(30, 0, 10);
+    public Vector3 spearRecipe = new Vector3(0, 10, 5);
+    public Vector3 woodClubRecipe = new Vector3(0, 25, 5);
 
 
     ////////////////////////////////////////////////////////
@@ -40,6 +45,9 @@ public class gameHandler : MonoBehaviour
         playerTwoControls = "Keyboard";
     }
 
+
+    //////////////////////////////////////////// INPUT /////////////////////////////////////////////////
+
     void OnToggleCursor()
     {
         if (Cursor.lockState == CursorLockMode.Locked)
@@ -54,11 +62,46 @@ public class gameHandler : MonoBehaviour
         //Application.Quit();
     }
 
+    void OnCheckRecipes()
+    {
+        possibleRecipes();
+    }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    
     public void collectResource(string name)
     {
         if (name == "Cloth") clothPieces++;
         if (name == "Wood") woodPieces++;
         if (name == "Metal Scrap") metalScraps++;
     }
+
+    public void possibleRecipes()
+    {
+        // Check Bandages
+        if (checkIndividualRecipe(bandagesRecipe))
+            print("CAN make Bandages");
+
+        // Check Armor
+        else if (checkIndividualRecipe(armorRecipe))
+            print("CAN make Armor");
+
+        // Check Spear
+        else if (checkIndividualRecipe(spearRecipe))
+            print("CAN make Spear");
+
+        // Check Wooden Club
+        else if (checkIndividualRecipe(woodClubRecipe))
+            print("CAN make Wooden Club");
+
+        else
+            print("Cannot make anything");
+    }
+
+    bool checkIndividualRecipe(Vector3 recipe)
+    {
+        return (clothPieces > recipe[0] && woodPieces > recipe[1] && metalScraps > recipe[2]);
+    }
+
+
 }

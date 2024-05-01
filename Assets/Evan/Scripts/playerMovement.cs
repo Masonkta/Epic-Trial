@@ -213,6 +213,7 @@ public class playerMovement : MonoBehaviour
 
     void OnSprint()
     {
+        print("SPRINT");
         sprinting = !sprinting;
     }
 
