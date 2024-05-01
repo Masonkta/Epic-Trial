@@ -188,11 +188,11 @@ public class playerMovement : MonoBehaviour
 
     void verticalTurns()
     {
-        float turnStrength = isPlayerOne ? ySensKeyboard : ySensController;
+        /*float turnStrength = isPlayerOne ? ySensKeyboard : ySensController;
         xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
 
         xRotation = Mathf.Clamp(xRotation, -50f, 55f);
-        forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);*/
 
     }
 
