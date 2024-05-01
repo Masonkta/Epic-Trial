@@ -860,10 +860,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHealth: 10
   EnemyDefence: 0
+  EnemyDamage: 0
   Etype: 0
-  DoubleScore: 2
-  TripleScore: 5
-  timeFrame: 30
+  Double: 2
+  Triple: 5
 --- !u!65 &1721378393
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1239,27 +1239,27 @@ PrefabInstance:
     - target: {fileID: 5599746836767628245, guid: d47567f2b1a8a2c41816007e16cdfe8a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11528839
+      value: 0.11528842
       objectReference: {fileID: 0}
     - target: {fileID: 5599746836767628245, guid: d47567f2b1a8a2c41816007e16cdfe8a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000026361013
+      value: -0.000000004480931
       objectReference: {fileID: 0}
     - target: {fileID: 5599746836767628245, guid: d47567f2b1a8a2c41816007e16cdfe8a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000030595195
+      value: 5.200672e-10
       objectReference: {fileID: 0}
     - target: {fileID: 6585266435727609557, guid: d47567f2b1a8a2c41816007e16cdfe8a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017165378
+      value: 0.000000017165378
       objectReference: {fileID: 0}
     - target: {fileID: 6585266435727609557, guid: d47567f2b1a8a2c41816007e16cdfe8a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000011871404
+      value: -0.0000000011871404
       objectReference: {fileID: 0}
     - target: {fileID: 7130887066946054129, guid: d47567f2b1a8a2c41816007e16cdfe8a,
         type: 3}
@@ -1313,10 +1313,65 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
         type: 3}
+      propertyPath: m_JoinBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
+        type: 3}
       propertyPath: m_PlayerPrefab
       value: 
       objectReference: {fileID: 4724493374769486613, guid: d47567f2b1a8a2c41816007e16cdfe8a,
         type: 3}
+    - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
+        type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
+        type: 3}
+      propertyPath: m_JoinAction.m_UseReference
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Name
+      value: Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 0bd14afa-21de-41de-880a-140030cdb7da
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Id
+      value: cb9e37aa-de47-4881-b28f-f7d293889cd0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/start
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/p
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358092956630622308, guid: d47567f2b1a8a2c41816007e16cdfe8a,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Join
+      objectReference: {fileID: 0}
     - target: {fileID: 8963004942479727633, guid: d47567f2b1a8a2c41816007e16cdfe8a,
         type: 3}
       propertyPath: m_LocalRotation.y
