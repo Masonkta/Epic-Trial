@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class gameHandler : MonoBehaviour
 {
-    public GameObject playerOne;
-    public GameObject playerTwo;
-    public string playerOneControls = "---";
-    public string playerTwoControls = "---";
+    //public GameObject playerOne;
+    //public GameObject playerTwo;
+    //public string playerOneControls = "---";
+    //public string playerTwoControls = "---";
+    [Header("Needed Prefabs")]
+    public GameObject clothPiece;
+    public GameObject woodPiece;
+    public GameObject metalScrap;
 
     [Header("Resources")]
+    public int resourceDropRate = 1;
     public int clothPieces;
     public int woodPieces;
     public int metalScraps;
+
+    
 
     [Header("Recipes")]
     public Vector3 bandagesRecipe = new Vector3(5, 0, 0);
@@ -33,7 +40,7 @@ public class gameHandler : MonoBehaviour
         
     }
 
-    public void setPlayerOneAsKeyboard()
+    /*public void setPlayerOneAsKeyboard()
     {
         playerOneControls = "Keyboard";
         playerTwoControls = "Controller";
@@ -43,13 +50,14 @@ public class gameHandler : MonoBehaviour
     {
         playerOneControls = "Controller";
         playerTwoControls = "Keyboard";
-    }
+    }*/
 
 
     //////////////////////////////////////////// INPUT /////////////////////////////////////////////////
 
     void OnToggleCursor()
     {
+        print("TAB");
         if (Cursor.lockState == CursorLockMode.Locked)
             Cursor.lockState = CursorLockMode.None;
         else if (Cursor.lockState == CursorLockMode.None)
@@ -60,11 +68,6 @@ public class gameHandler : MonoBehaviour
     {
         UnityEditor.EditorApplication.isPlaying = false;
         //Application.Quit();
-    }
-
-    void OnCheckRecipes()
-    {
-        possibleRecipes();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -83,19 +86,17 @@ public class gameHandler : MonoBehaviour
             print("CAN make Bandages");
 
         // Check Armor
-        else if (checkIndividualRecipe(armorRecipe))
+        if (checkIndividualRecipe(armorRecipe))
             print("CAN make Armor");
 
         // Check Spear
-        else if (checkIndividualRecipe(spearRecipe))
+        if (checkIndividualRecipe(spearRecipe))
             print("CAN make Spear");
 
         // Check Wooden Club
-        else if (checkIndividualRecipe(woodClubRecipe))
+        if (checkIndividualRecipe(woodClubRecipe))
             print("CAN make Wooden Club");
 
-        else
-            print("Cannot make anything");
     }
 
     bool checkIndividualRecipe(Vector3 recipe)

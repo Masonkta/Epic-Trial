@@ -20,10 +20,11 @@ public class Enemy : MonoBehaviour
     public int EnemyDefence;
     public int EnemyDamage;
     public EnemyType Etype;
-    public GameObject clothPiece;
-    public GameObject woodPiece;
-    public GameObject metalScrap;
+    GameObject clothPiece;
+    GameObject woodPiece;
+    GameObject metalScrap;
 
+    gameHandler gameScript;
     HighScoreTest hs;
 
     public static int enemiesKilled = 0;
@@ -41,7 +42,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hs = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<HighScoreTest>();
+        gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
+        hs = gameScript.GetComponent<HighScoreTest>();
 
         if (EnemyType.Weak == Etype)
         {
@@ -63,6 +65,10 @@ public class Enemy : MonoBehaviour
             EnemyHealth = 100;
             EnemyDefence = 20;
         }
+
+        clothPiece = gameScript.clothPiece;
+        woodPiece = gameScript.woodPiece;
+        metalScrap = gameScript.metalScrap;
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -212,23 +218,23 @@ public class Enemy : MonoBehaviour
         // Decide how many and what items to drop
         float threshToDetermine = Random.value;
         
-        if (threshToDetermine <= 0.6f) // Start with cloth ( 45% )
+        if (threshToDetermine <= 0.45f) // Start with cloth ( 45% )
         {
             float clothCountThresh = Random.value;
             int numberOfCloth = clothCountThresh <= 0.1f ? 3 : (clothCountThresh <= 0.4f ? 2 : 1); // 10% for 3, 30% for 2, 60% for 1
-            dropCloth(numberOfCloth);
+            dropCloth(numberOfCloth * gameScript.resourceDropRate);
         }
 
-        else if (threshToDetermine <= 0.9f) // Start with wood ( 35% )
+        else if (threshToDetermine <= 0.8f) // Start with wood ( 35% )
         {
             int numberOfWood = Random.value < 0.3f ? 2 : 1; // 40% for duplicate
-            dropWood(numberOfWood);
+            dropWood(numberOfWood * gameScript.resourceDropRate);
         }
         
         else // Start with wood ( 20% )
         {
             int numberOfMetalScraps = Random.value < 0.1f ? 2 : 1; // 20% for duplicate
-            dropMetalScrap(numberOfMetalScraps);
+            dropMetalScrap(numberOfMetalScraps * gameScript.resourceDropRate);
         }
         
     }

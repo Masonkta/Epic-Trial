@@ -1,5 +1,5 @@
 {
-    "name": "Controller",
+    "name": "_Controller",
     "maps": [
         {
             "name": "Controller",
@@ -63,6 +63,15 @@
                     "name": "ShiftLock",
                     "type": "Button",
                     "id": "e79631ee-4174-4e59-934d-b5f795197a0a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CheckRecipes",
+                    "type": "Button",
+                    "id": "c3f95a68-9577-46d9-ac0a-6f6bd848a09e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -144,6 +153,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShiftLock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b8d63d9-a535-464f-b658-974ce25ae13b",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckRecipes",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

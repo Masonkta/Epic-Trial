@@ -26,7 +26,7 @@ public class determinePlayerInput : MonoBehaviour
         if (playerOneControls == "None")
         {
             playerOneControls = "Controller";
-            gameScript.setPlayerOneAsController();
+            //gameScript.setPlayerOneAsController();
         }
     }
 
@@ -35,7 +35,7 @@ public class determinePlayerInput : MonoBehaviour
         if (playerOneControls == "None")
         {
             playerOneControls = "Keyboard";
-            gameScript.setPlayerOneAsKeyboard();
+            //gameScript.setPlayerOneAsKeyboard();
         }
     }
 

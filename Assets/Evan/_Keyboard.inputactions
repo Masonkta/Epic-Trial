@@ -1,5 +1,5 @@
 {
-    "name": "Keyboard",
+    "name": "_Keyboard",
     "maps": [
         {
             "name": "Keyboard",
@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CheckRecipes",
+                    "type": "Button",
+                    "id": "72780cf6-4d3b-413e-b9de-a22c4e1e3dde",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -84,7 +93,7 @@
                 {
                     "name": "",
                     "id": "7232367f-63bf-4a69-bf1c-501b7326ed06",
-                    "path": "<Keyboard>/capsLock",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -188,6 +197,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShiftLock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "603f0117-cf0e-4e7c-9a9f-9da6212543db",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckRecipes",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

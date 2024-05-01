@@ -8,8 +8,8 @@ public class resourcePickup : MonoBehaviour
     public string resourceType;
 
     float timeOfSpawn;
-    float pickupDist = 2.5f;
-    float pickupTimer = 1.2f;
+    float pickupDist = 3.2f;
+    float pickupTimer = 1f;
 
     // Start is called before the first frame update
     void Start()

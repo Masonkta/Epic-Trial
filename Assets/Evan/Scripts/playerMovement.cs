@@ -170,6 +170,11 @@ public class playerMovement : MonoBehaviour
         shiftLock = !shiftLock;
     }
 
+    void OnCheckRecipes()
+    {
+        gameScript.possibleRecipes();
+    }
+
 
     //////// Turning ///////////
     void OnTurn(InputValue value)
