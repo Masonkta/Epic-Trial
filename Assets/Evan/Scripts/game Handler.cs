@@ -9,9 +9,10 @@ public class gameHandler : MonoBehaviour
     public string playerOneControls = "---";
     public string playerTwoControls = "---";
 
-    public bool mouseLocked = false;
+    [Header("Resources")]
+    public int clothPieces;
 
-    
+
 
     ////////////////////////////////////////////////////////
 
@@ -34,8 +35,6 @@ public class gameHandler : MonoBehaviour
         playerTwoControls = "Controller";
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        print("Player One will now use keyboard.");
     }
 
     public void setPlayerOneAsController()
@@ -44,8 +43,6 @@ public class gameHandler : MonoBehaviour
         playerTwoControls = "Keyboard";
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        print("Player One will now use controller.");
     }
 
     void OnToggleCursor()
@@ -64,5 +61,10 @@ public class gameHandler : MonoBehaviour
     {
         UnityEditor.EditorApplication.isPlaying = false;
         //Application.Quit();
+    }
+
+    public void getCloth()
+    {
+        clothPieces++;
     }
 }

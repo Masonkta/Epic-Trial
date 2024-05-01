@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class MenuActions : MonoBehaviour {
     public void PlayGame()
     {
-        SceneManager.LoadScene("GameScene"); //idk what the main game scene is called, need to replace with that
+        SceneManager.LoadScene("Evan Scene"); //idk what the main game scene is called, need to replace with that
     }
 
     public void QuitGame()
