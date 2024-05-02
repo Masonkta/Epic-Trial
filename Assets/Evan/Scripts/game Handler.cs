@@ -10,7 +10,9 @@ public class gameHandler : MonoBehaviour
     //public string playerTwoControls = "---";
 
     public GameObject keyboardPlayer;
+    public float keyboardPlayerHealth;
     public GameObject controllerPlayer;
+    public float controllerPlayerHealth;
 
     [Header("Needed Prefabs")]
     public GameObject goldPrefab;

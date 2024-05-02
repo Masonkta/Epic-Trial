@@ -61,8 +61,8 @@ public class resourcePickup : MonoBehaviour
                 // Pull To Player Within Range (Can Stack with both players)
                 Vector3 pullDir = Vector3.Normalize(currPlayer.transform.position - transform.position);
                 
-                float mag = 1 - Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f); // Stronger closer to player
-                //float mag = Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f);   // Stronger father from player
+                //float mag = 1 - Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f); // Stronger closer to player
+                float mag = Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f);   // Stronger father from player
 
                 float pullForce = mag * 1200f;
 

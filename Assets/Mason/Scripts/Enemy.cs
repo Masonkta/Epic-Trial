@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (gameScript.keyboardPlayer)
+            if (collision.gameObject == gameScript.keyboardPlayer)
             {
                 if (!alreadyAttacked)
                 {
@@ -92,11 +92,10 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 2;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 10f;
-                        Debug.Log("Player1 took " + EnemyDamage + " damage and only have " +  player.Player1Health + " left.");
+                        gameScript.keyboardPlayerHealth -= Time.deltaTime * 10f;
                     }
 
-                    if (EnemyType.Medium == Etype)
+                    /*if (EnemyType.Medium == Etype)
                     {
                         EnemyDamage = 10;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
@@ -118,23 +117,23 @@ public class Enemy : MonoBehaviour
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
                         player.Player1Health -= Time.deltaTime * 40f;
                         Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
-                    }
+                    }*/
+
                     alreadyAttacked = true;
                     Invoke(nameof(ResetAttack), timeBetweenAttacks);
                 }
             }
-            if (gameScript.controllerPlayer)
+            if (collision.gameObject == gameScript.controllerPlayer)
             {
                 if (!alreadyAttacked)
                 {
                     if (EnemyType.Weak == Etype)
                     {
                         EnemyDamage = 2;
-                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player2Health -= Time.deltaTime * 2f;
-                        Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
+                        gameScript.controllerPlayerHealth -= Time.deltaTime * 10f;
                     }
 
+                    /*
                     if (EnemyType.Medium == Etype)
                     {
                         EnemyDamage = 10;
@@ -157,7 +156,7 @@ public class Enemy : MonoBehaviour
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
                         player.Player2Health -= Time.deltaTime * 20f;
                         Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
-                    }
+                    }*/
                     alreadyAttacked = true;
                     Invoke(nameof(ResetAttack), timeBetweenAttacks);
                 }
@@ -224,6 +223,7 @@ public class Enemy : MonoBehaviour
                     scoreMultiplier = 1;
                 }
             }
+
     }
 
     // Method to get score based on enemy type
