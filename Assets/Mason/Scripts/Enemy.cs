@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     GameObject clothPrefab;
     GameObject woodPrefab;
     GameObject ironPrefab;
+    playerMovement playermovement;
 
 
     public int EnemyHealth;
@@ -43,6 +44,7 @@ public class Enemy : MonoBehaviour
     float timeElapsed = 0f;
     float timeBetweenAttacks;
     bool alreadyAttacked = false;
+
 
 
     // Start is called before the first frame update
@@ -78,41 +80,89 @@ public class Enemy : MonoBehaviour
         ironPrefab = gameScript.ironPrefab;
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Hi");
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (!alreadyAttacked)
+            Debug.Log("We got this far");
+            if (playermovement.isPlayerOne)
             {
-                if (EnemyType.Weak == Etype)
+                if (!alreadyAttacked)
                 {
-                    EnemyDamage = 2;
-                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                    player.PlayerHealth -= EnemyDamage;
-                }
+                    if (EnemyType.Weak == Etype)
+                    {
+                        EnemyDamage = 2;
+                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                        player.Player1Health -= EnemyDamage;
+                        Debug.Log("Player1 took " + EnemyDamage + " damage and only have " +  player.Player1Health + " left.");
+                    }
 
-                if (EnemyType.Medium == Etype)
-                {
-                    EnemyDamage = 10;
-                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                    player.PlayerHealth -= EnemyDamage;
-                }
+                    if (EnemyType.Medium == Etype)
+                    {
+                        EnemyDamage = 10;
+                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                        player.Player1Health -= EnemyDamage;
+                        Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
+                    }
 
-                if (EnemyType.Heavy == Etype)
-                {
-                    EnemyDamage = 20;
-                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                    player.PlayerHealth -= EnemyDamage;
-                }
+                    if (EnemyType.Heavy == Etype)
+                    {
+                        EnemyDamage = 20;
+                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                        player.Player1Health -= EnemyDamage;
+                        Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
+                    }
 
-                if (EnemyType.Boss == Etype)
-                {
-                    EnemyDamage = 30;
-                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                    player.PlayerHealth -= EnemyDamage;
+                    if (EnemyType.Boss == Etype)
+                    {
+                        EnemyDamage = 30;
+                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                        player.Player1Health -= EnemyDamage;
+                        Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
+                    }
+                    alreadyAttacked = true;
+                    Invoke(nameof(ResetAttack), timeBetweenAttacks);
                 }
-                alreadyAttacked = true;
-                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            }
+            if (!playermovement.isPlayerOne)
+            {
+                if (!alreadyAttacked)
+                {
+                    if (EnemyType.Weak == Etype)
+                    {
+                        EnemyDamage = 2;
+                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                        player.Player1Health -= EnemyDamage;
+                        Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
+                    }
+
+                    if (EnemyType.Medium == Etype)
+                    {
+                        EnemyDamage = 10;
+                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                        player.Player1Health -= EnemyDamage;
+                        Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
+                    }
+
+                    if (EnemyType.Heavy == Etype)
+                    {
+                        EnemyDamage = 20;
+                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                        player.Player1Health -= EnemyDamage;
+                        Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
+                    }
+
+                    if (EnemyType.Boss == Etype)
+                    {
+                        EnemyDamage = 30;
+                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                        player.Player1Health -= EnemyDamage;
+                        Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
+                    }
+                    alreadyAttacked = true;
+                    Invoke(nameof(ResetAttack), timeBetweenAttacks);
+                }
             }
         }
     }
