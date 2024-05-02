@@ -74,6 +74,7 @@ public class playerMovement : MonoBehaviour
     float actualCamDistance;
     public float minHeightOverGround;
     float xRotation;
+    float yRotation;
 
 
     [Header("Camera Follow")]
@@ -187,6 +188,7 @@ public class playerMovement : MonoBehaviour
 
     void horizontalTurns()
     {
+
         float turnStrength = isPlayerOne ? xSensKeyboard : xSensController;
         cameraAngle += horizontalTurnAmount * turnStrength * Time.deltaTime;
         if (cameraAngle > 360f)  cameraAngle -= 360f;
@@ -197,11 +199,34 @@ public class playerMovement : MonoBehaviour
 
     void verticalTurns()
     {
-        /*float turnStrength = isPlayerOne ? ySensKeyboard : ySensController;
+
+        /*
+         * This was the origonal stuff
+        float turnStrength = isPlayerOne ? ySensKeyboard : ySensController;
         xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
+        forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        */
+
+        /*
+         * Tried a few things, nothin workin
+        float xmouse = Input.GetAxis("Mouse X");
+        float turnStrength = isPlayerOne ? ySensKeyboard : ySensController;
+        xRotation += xmouse * turnStrength * Time.deltaTime;
 
         xRotation = Mathf.Clamp(xRotation, -50f, 55f);
-        forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);*/
+        Vector3 LOOK = new Vector3(1f, 0f, -10f);
+        Quaternion look2 = Quaternion.Euler(xRotation, 0f, 0f);
+        cameraTransform.position = forwardTransform.position + look2 * LOOK;
+        cameraTransform.LookAt(forwardTransform);
+        */
+
+        /*
+         * This was a last ditch effort
+        float xmouse = Input.GetAxis("Mouse X");
+        float turnStrength = isPlayerOne ? ySensKeyboard : ySensController;
+        forwardTransform.eulerAngles += new Vector3(xmouse * turnStrength, 0, 0);
+        */
+
 
     }
 
