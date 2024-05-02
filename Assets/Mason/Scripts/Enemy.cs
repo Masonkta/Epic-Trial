@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     GameObject clothPrefab;
     GameObject woodPrefab;
     GameObject ironPrefab;
-    public playerMovement playermovement;
+    playerMovement playermovement;
 
 
     public int EnemyHealth;
@@ -82,17 +82,19 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Hi");
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("We got this far");
-            if (playermovement.isPlayerOne) {
+            if (playermovement.isPlayerOne)
+            {
                 if (!alreadyAttacked)
                 {
                     if (EnemyType.Weak == Etype)
                     {
                         EnemyDamage = 2;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 2f;
+                        player.Player1Health -= EnemyDamage;
                         Debug.Log("Player1 took " + EnemyDamage + " damage and only have " +  player.Player1Health + " left.");
                     }
 
@@ -100,7 +102,7 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 10;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 5f;
+                        player.Player1Health -= EnemyDamage;
                         Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
                     }
 
@@ -108,7 +110,7 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 20;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 10f;
+                        player.Player1Health -= EnemyDamage;
                         Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
                     }
 
@@ -116,7 +118,7 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 30;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 20f;
+                        player.Player1Health -= EnemyDamage;
                         Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
                     }
                     alreadyAttacked = true;
@@ -131,7 +133,7 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 2;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player2Health -= Time.deltaTime * 2f;
+                        player.Player1Health -= EnemyDamage;
                         Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
                     }
 
@@ -139,7 +141,7 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 10;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player2Health -= Time.deltaTime * 5f;
+                        player.Player1Health -= EnemyDamage;
                         Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
                     }
 
@@ -147,7 +149,7 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 20;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player2Health -= Time.deltaTime * 10f;
+                        player.Player1Health -= EnemyDamage;
                         Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
                     }
 
@@ -155,7 +157,7 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 30;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player2Health -= Time.deltaTime * 20f;
+                        player.Player1Health -= EnemyDamage;
                         Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
                     }
                     alreadyAttacked = true;
