@@ -58,10 +58,16 @@ public class resourcePickup : MonoBehaviour
         {
             if (Vector3.Distance(transform.position + Vector3.up, currPlayer.transform.position) < 20f)
             {
-                Vector3 pull = Vector3.Normalize(currPlayer.transform.position - transform.position);
-                float mag = Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f);
+                // Pull To Player Within Range (Can Stack with both players)
+                Vector3 pullDir = Vector3.Normalize(currPlayer.transform.position - transform.position);
+                
+                float mag = 1 - Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f); // Stronger closer to player
+                //float mag = Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f);   // Stronger father from player
+
+                float pullForce = mag * 100f;
+
                 //Debug.DrawRay(transform.position, pull * mag );
-                rb.AddForce(pull * mag * 10f, ForceMode.Force);
+                rb.AddForce(pullDir * pullForce * Time.deltaTime, ForceMode.Force);
             }
         }
     }
