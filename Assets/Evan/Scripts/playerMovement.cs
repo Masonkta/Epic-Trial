@@ -294,7 +294,15 @@ public class playerMovement : MonoBehaviour
     {
         setSpeed();
 
-        playerAnimator.SetTrigger(isMoving ? "Go" : "Stop");
+        //playerAnimator.SetTrigger(isMoving ? "Go" : "Stop");
+        if (isMoving)
+        {
+            playerAnimator.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
+        }
+        else
+        {
+            playerAnimator.SetFloat("Speed", 0.0f, 0.1f, Time.deltaTime);
+        }
 
         if (!airDashing && !isDodging)
         {

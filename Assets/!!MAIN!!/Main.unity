@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -558,6 +558,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sbenemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4858256631277860078, guid: 3e9cbf45dd8dfb0489beecb49a4bf177,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -831,10 +836,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797afc52a5c935541aa60d60269dc7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1: {fileID: 1742029901}
-  p1Sword: {fileID: 1742029902}
-  p2: {fileID: 1107685326}
-  p2Sword: {fileID: 1107685327}
+  gameScript: {fileID: 0}
+  keyboardPlayer: {fileID: 0}
+  keyboardGladius: {fileID: 0}
+  controllerPlayer: {fileID: 0}
+  controllerGladius: {fileID: 0}
 --- !u!54 &596548036
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1319,6 +1325,7 @@ Transform:
   - {fileID: 1550496429}
   - {fileID: 345261666}
   - {fileID: 1125695088}
+  - {fileID: 1475183252}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &875918882
@@ -1597,10 +1604,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797afc52a5c935541aa60d60269dc7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1: {fileID: 1742029901}
-  p1Sword: {fileID: 1742029902}
-  p2: {fileID: 1107685326}
-  p2Sword: {fileID: 1107685327}
+  gameScript: {fileID: 0}
+  keyboardPlayer: {fileID: 0}
+  keyboardGladius: {fileID: 0}
+  controllerPlayer: {fileID: 0}
+  controllerGladius: {fileID: 0}
 --- !u!54 &1039200664
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1736,12 +1744,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1107685325}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1107685327 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8926807637777624813, guid: 99267dadcb6b0c646ad45978168d4dc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1107685325}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1125695087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1804,6 +1806,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sbenemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858256631277860078, guid: 3e9cbf45dd8dfb0489beecb49a4bf177,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2701,6 +2708,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424630030}
   m_Mesh: {fileID: -5495902117074765545, guid: ea8eeb86c240bf8428ad5ecdccca1664, type: 3}
+--- !u!1001 &1475183251
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -60.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 46.447975
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1475183252 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1475183251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1550496428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2763,6 +2844,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sbenemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858256631277860078, guid: 3e9cbf45dd8dfb0489beecb49a4bf177,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3176,16 +3262,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fae39005adcf1b4291daaf00746b387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clothPiece: {fileID: 5837075631215664301, guid: f241cbeb533fe5e458b31efefb1bf5c5,
+  keyboardPlayer: {fileID: 1742029901}
+  controllerPlayer: {fileID: 1107685326}
+  goldPrefab: {fileID: 5030683173159076453, guid: d30b9886f7abab74383719bd01beeb46,
     type: 3}
-  woodPiece: {fileID: 6624423524895108242, guid: 8cae9e51526766a41afe28441e1bf139,
+  clothPrefab: {fileID: 2179774296783346453, guid: 93bf68cc3ccc6174c84d0a4f84c70d41,
     type: 3}
-  metalScrap: {fileID: 3543790560826823113, guid: e5672a9f49d885b4598ea24c05c78c2f,
+  woodPrefab: {fileID: 6624423524895108242, guid: 8cae9e51526766a41afe28441e1bf139,
+    type: 3}
+  ironPrefab: {fileID: 1668296904263713549, guid: 49d4e05d95c851745a5b37647af8ea3b,
     type: 3}
   resourceDropRate: 100
+  gold: 0
   clothPieces: 0
   woodPieces: 0
-  metalScraps: 0
+  ironPieces: 0
   bandagesRecipe: {x: 5, y: 0, z: 0}
   armorRecipe: {x: 30, y: 0, z: 10}
   spearRecipe: {x: 0, y: 10, z: 5}
@@ -3759,12 +3850,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1742029900}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1742029902 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6745610127966381481, guid: 6569c13a59f3b06478107207e0615db3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1742029900}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1806894717
 GameObject:
   m_ObjectHideFlags: 0
@@ -4317,6 +4402,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sbenemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858256631277860078, guid: 3e9cbf45dd8dfb0489beecb49a4bf177,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
