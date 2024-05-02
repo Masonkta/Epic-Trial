@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 2;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 2f;
+                        player.Player1Health -= Time.deltaTime * 10f;
                         Debug.Log("Player1 took " + EnemyDamage + " damage and only have " +  player.Player1Health + " left.");
                     }
 
@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 10;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 5f;
+                        player.Player1Health -= Time.deltaTime * 15f;
                         Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
                     }
 
@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 20;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 10f;
+                        player.Player1Health -= Time.deltaTime * 20f;
                         Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
                     }
 
@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour
                     {
                         EnemyDamage = 30;
                         PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 20f;
+                        player.Player1Health -= Time.deltaTime * 40f;
                         Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
                     }
                     alreadyAttacked = true;
