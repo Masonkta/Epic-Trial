@@ -1,28 +1,41 @@
+using HighScore;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour
 {
-    public Button quitButton;
-    public Button restartButton;
+    HighScoreTest hs;
+    public TextMeshProUGUI highScoreText;
+
+    /*public Button quitButton;
+    public Button restartButton;*/
 
     private void Start()
     {
-        quitButton = GameObject.Find("#quitButton").GetComponent<Button>();
+        /*quitButton = GameObject.Find("#quitButton").GetComponent<Button>();
         restartButton = GameObject.Find("#restartButton").GetComponent<Button>();
 
         quitButton.onClick.AddListener(QuitGame);
-        restartButton.onClick.AddListener(RestartGame);
-    }
-    private void QuitGame()
-    {
-        Application.Quit();
-        Debug.Log("Game is exiting");
+        restartButton.onClick.AddListener(RestartGame);*/
+
+        hs = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<HighScoreTest>();
+
     }
 
-    private void RestartGame()
+    private void Update()
     {
-        SceneManager.LoadScene("startScene");
+        highScoreText.text = "High Score: " + hs.score;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("startScreen");
     }
 }

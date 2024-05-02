@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gameHandler : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class gameHandler : MonoBehaviour
 
     
 
-    [Header("Recipes")]
+    [Header("Recipes")] // Cloth,  Wood,  Iron
     public Vector3 bandagesRecipe = new Vector3(5, 0, 0);
     public Vector3 armorRecipe = new Vector3(30, 0, 10);
     public Vector3 spearRecipe = new Vector3(0, 10, 5);
@@ -40,26 +41,20 @@ public class gameHandler : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        
+        keyboardPlayer.SetActive(keyboardPlayerHealth >= 0);
+        controllerPlayer.SetActive(controllerPlayerHealth >= 0);
+
+        if (keyboardPlayerHealth <= 0f && controllerPlayerHealth <= 0f)
+        {
+            SceneManager.LoadScene("gameOver");
+        }
     }
-
-    /*public void setPlayerOneAsKeyboard()
-    {
-        playerOneControls = "Keyboard";
-        playerTwoControls = "Controller";
-    }
-
-    public void setPlayerOneAsController()
-    {
-        playerOneControls = "Controller";
-        playerTwoControls = "Keyboard";
-    }*/
-
 
     //////////////////////////////////////////// INPUT /////////////////////////////////////////////////
 
