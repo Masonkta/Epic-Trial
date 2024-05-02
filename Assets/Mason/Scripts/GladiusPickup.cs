@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GladiusPickup : MonoBehaviour
 {
-    public GameObject p1;
-    public GameObject p1Sword;
-    public GameObject p2;
-    public GameObject p2Sword;
+    public GameObject keyboardPlayer;
+    public GameObject keyboardGladius;
+    public GameObject controllerPlayer;
+    public GameObject controllerGladius;
 
     // Start is called before the first frame update
     void Start()
@@ -18,26 +18,26 @@ public class GladiusPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkP1();
-        checkP2();
+        checkPK();
+        checkPC();
     }
 
-    void checkP1()
+    void checkPK()
     {
-        if (Vector3.Distance(transform.position, p1.transform.position) < 4f)
+        if (Vector3.Distance(transform.position, keyboardPlayer.transform.position) < 4f)
         {
             print("Player 1 picked up Gladius.");
-            p1Sword.SetActive(true);
+            keyboardGladius.SetActive(true);
             Destroy(gameObject); // Destroy Gladius object on the ground
         }
     }
 
-    void checkP2()
+    void checkPC()
     {
-        if (Vector3.Distance(transform.position, p2.transform.position) < 4f)
+        if (Vector3.Distance(transform.position, controllerPlayer.transform.position) < 4f)
         {
             print("Player 2 picked up Gladius.");
-            p2Sword.SetActive(true);
+            controllerGladius.SetActive(true);
             Destroy(gameObject); // Destroy Gladius object on the ground
         }
     }

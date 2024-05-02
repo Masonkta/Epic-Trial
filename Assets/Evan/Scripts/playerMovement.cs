@@ -243,7 +243,6 @@ public class playerMovement : MonoBehaviour
 
     void OnSprint()
     {
-        print("SPRINT");
         sprinting = !sprinting;
     }
 
@@ -273,6 +272,7 @@ public class playerMovement : MonoBehaviour
         {
             Vector3 dod = new Vector3(sideMoveAm, 0f, forwardMoveAm) * dodgeSpeed;
             var moveDir = (cameraTransform.TransformDirection(dod)); moveDir.y = 0f;
+            if (moveDir.magnitude != 0){
             Quaternion targetRotation = Quaternion.LookRotation(moveDir);
 
             isDodging = true; float timer = 0;
@@ -285,7 +285,8 @@ public class playerMovement : MonoBehaviour
                 yield return null;
             }
 
-            isDodging = false;
+                isDodging = false;
+            }
         }
     }
 

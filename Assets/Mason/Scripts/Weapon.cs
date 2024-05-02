@@ -52,13 +52,13 @@ public class Weapon : MonoBehaviour
                 if (piercing == true)
                 {
                     enemy.EnemyHealth -= Damage;
-                    Debug.Log("Dealt " + Damage + " damage to the " + enemy.Etype.ToString() + " enemy.");
+                    //Debug.Log("Dealt " + Damage + " damage to the " + enemy.Etype.ToString() + " enemy.");
                 }
                 else
                 {
                     int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
                     enemy.EnemyHealth -= damageDealt;
-                    Debug.Log("Dealt " + damageDealt + " damage to the " + enemy.Etype.ToString() + " enemy.");
+                    //Debug.Log("Dealt " + damageDealt + " damage to the " + enemy.Etype.ToString() + " enemy.");
                 }
 
             }
@@ -72,13 +72,13 @@ public class Weapon : MonoBehaviour
                 if (piercing == true)
                 {
                     enemy.EnemyHealth -= Damage;
-                    Debug.Log("Dealt " + Damage + " damage to the " + enemy.Etype.ToString() + " enemy.");
+                    //Debug.Log("Dealt " + Damage + " damage to the " + enemy.Etype.ToString() + " enemy.");
                 }
                 else
                 {
                     int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
                     enemy.EnemyHealth -= damageDealt;
-                    Debug.Log("Dealt " + damageDealt + " damage to the " + enemy.Etype.ToString() +  " enemy.");
+                    //Debug.Log("Dealt " + damageDealt + " damage to the " + enemy.Etype.ToString() +  " enemy.");
 
                 }
             }
@@ -93,7 +93,7 @@ public class Weapon : MonoBehaviour
 
     void OnKeyboardBuff()
     {
-        print("BUFF");
+        //print("BUFF");
         buffed();
     }
 }
