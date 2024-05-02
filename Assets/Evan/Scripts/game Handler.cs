@@ -8,6 +8,10 @@ public class gameHandler : MonoBehaviour
     //public GameObject playerTwo;
     //public string playerOneControls = "---";
     //public string playerTwoControls = "---";
+
+    public GameObject keyboardPlayer;
+    public GameObject controllerPlayer;
+
     [Header("Needed Prefabs")]
     public GameObject goldPrefab;
     public GameObject clothPrefab;
