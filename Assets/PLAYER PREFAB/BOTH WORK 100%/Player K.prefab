@@ -2717,6 +2717,7 @@ GameObject:
   - component: {fileID: 4595694116209756892}
   - component: {fileID: 4881251460024484382}
   - component: {fileID: 4622875858140228651}
+  - component: {fileID: 6422631160386219609}
   m_Layer: 7
   m_Name: Player K
   m_TagString: Player
@@ -2861,6 +2862,19 @@ MonoBehaviour:
   jumpSoundEffect: {fileID: 8300000, guid: 8c7ed4a1145727e47b1d87078a365f77, type: 3}
   landingOnGrass: {fileID: 641713811378559954}
   landingOnGrassSound: {fileID: 8300000, guid: fdcaecf97c532254b8ad9a600b5245ca, type: 3}
+--- !u!114 &6422631160386219609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7087189115658005538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0e3c3f34b5739428174d2d20b252c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gladius: {fileID: 6745610127966381481}
 --- !u!1 &7351025899770125122
 GameObject:
   m_ObjectHideFlags: 0
