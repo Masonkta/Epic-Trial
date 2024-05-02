@@ -64,7 +64,7 @@ public class resourcePickup : MonoBehaviour
                 float mag = 1 - Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f); // Stronger closer to player
                 //float mag = Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f);   // Stronger father from player
 
-                float pullForce = mag * 100f;
+                float pullForce = mag * 1200f;
 
                 //Debug.DrawRay(transform.position, pull * mag );
                 rb.AddForce(pullDir * pullForce * Time.deltaTime, ForceMode.Force);
