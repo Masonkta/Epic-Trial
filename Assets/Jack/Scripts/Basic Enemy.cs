@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class BasicEnemy : MonoBehaviour
 {
     public NavMeshAgent agent;
+    public GameObject enemyEyes;
 
     GameObject[] player;
     public GameObject Enemy;
@@ -74,11 +75,11 @@ public class BasicEnemy : MonoBehaviour
 
     private void Chase()
     {
-     if (Vector3.Distance(transform.position + Vector3.up, player[0].transform.position) < Vector3.Distance(transform.position + Vector3.up, player[1].transform.position))
-            {
+        if (Vector3.Distance(transform.position + Vector3.up, player[0].transform.position) < Vector3.Distance(transform.position + Vector3.up, player[1].transform.position))
+        {
             agent.SetDestination(player[0].transform.position);
-            }
-     else
+        }
+        else
         {
             agent.SetDestination(player[1].transform.position);
         }
@@ -118,11 +119,13 @@ public class BasicEnemy : MonoBehaviour
 
         if (!playerInSightRange)
         {
+            enemyEyes.SetActive(false);
             EnemyAnimator.SetTrigger("RUUUN");
             Patroling();
         }
         if (playerInSightRange)
         {
+            enemyEyes.SetActive(true);
             EnemyAnimator.SetTrigger("RUUUN");
             Chase();
             Debug.DrawLine(transform.position, agent.destination, Color.red);

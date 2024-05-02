@@ -21,7 +21,7 @@ public class resourcePickup : MonoBehaviour
 
         if (resourceType == "Gold")
         {
-            pickupDist = 1.7f;
+            pickupDist = 2f;
             pickupTimer = 0.08f;
         }
     }
@@ -58,10 +58,10 @@ public class resourcePickup : MonoBehaviour
         {
             if (Vector3.Distance(transform.position + Vector3.up, currPlayer.transform.position) < 20f)
             {
-                Vector3 pull = Vector3.Normalize(currPlayer.transform.position + Vector3.up - transform.position);
-                float mag = Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.25f);
+                Vector3 pull = Vector3.Normalize(currPlayer.transform.position - transform.position);
+                float mag = Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f);
                 //Debug.DrawRay(transform.position, pull * mag );
-                rb.AddForce(pull * mag * 3f, ForceMode.Force);
+                rb.AddForce(pull * mag * 10f, ForceMode.Force);
             }
         }
     }
