@@ -82,7 +82,6 @@ public class Enemy : MonoBehaviour
                     EnemyDamage = 2;
                     PlayerB player = collision.gameObject.GetComponent<PlayerB>();
                     player.PlayerHealth -= EnemyDamage;
-                    Debug.Log(Etype.ToString() + " Dealt " + EnemyDamage + " damage to the Player");
                 }
 
                 if (EnemyType.Medium == Etype)
@@ -90,7 +89,6 @@ public class Enemy : MonoBehaviour
                     EnemyDamage = 10;
                     PlayerB player = collision.gameObject.GetComponent<PlayerB>();
                     player.PlayerHealth -= EnemyDamage;
-                    Debug.Log(Etype.ToString() + " Dealt " + EnemyDamage + " damage to the Player");
                 }
 
                 if (EnemyType.Heavy == Etype)
@@ -98,7 +96,6 @@ public class Enemy : MonoBehaviour
                     EnemyDamage = 20;
                     PlayerB player = collision.gameObject.GetComponent<PlayerB>();
                     player.PlayerHealth -= EnemyDamage;
-                    Debug.Log(Etype.ToString() + " Dealt " + EnemyDamage + " damage to the Player");
                 }
 
                 if (EnemyType.Boss == Etype)
@@ -106,7 +103,6 @@ public class Enemy : MonoBehaviour
                     EnemyDamage = 30;
                     PlayerB player = collision.gameObject.GetComponent<PlayerB>();
                     player.PlayerHealth -= EnemyDamage;
-                    Debug.Log(Etype.ToString() + " Dealt " + EnemyDamage + " damage to the Player");
                 }
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -135,36 +131,29 @@ public class Enemy : MonoBehaviour
                 timer();
             }
             timeElapsed = Time.time - startTime;
-            Debug.Log(timeElapsed);
 
             if (timeElapsed <= timeFrame)
             {
                 enemiesKilled++;
-                Debug.Log(enemiesKilled);
 
 
                 if (enemiesKilled >= Triple)
                 {
                     scoreMultiplier = 3;
-                    Debug.Log("Mulitplier 3x");
                 }
                 else if (enemiesKilled >= Double)
                 {
                     scoreMultiplier = 2;
-                    Debug.Log("Mulitplier 2x");
                 }
                 else
                 {
                     scoreMultiplier = 1;
-                    Debug.Log("Mulitplier 1x");
 
                 }
 
                 int scoreToAdd = GetScore(Etype) * scoreMultiplier;
-                Debug.Log("Gained " + scoreToAdd + " points");
                 hs.score += scoreToAdd;
 
-                Debug.Log("Current Score is " + hs.score);
 
                 die();
             }
@@ -172,15 +161,12 @@ public class Enemy : MonoBehaviour
         // Check if time frame has elapsed and reset counters
         if (timerStarted)
         {
-            Debug.Log("started");
-            //Debug.Log(timeElapsed);
             if (timeElapsed > timeFrame)
                 {
                     // Reset counters
                     enemiesKilled = 0;
                     timerStarted = false;
                     scoreMultiplier = 1;
-                    Debug.Log("Mulitplier 1x");
                 }
             }
     }
@@ -231,7 +217,7 @@ public class Enemy : MonoBehaviour
             dropWood(numberOfWood * gameScript.resourceDropRate);
         }
         
-        else // Start with wood ( 20% )
+        else // Start with metal ( 20% )
         {
             int numberOfMetalScraps = Random.value < 0.1f ? 2 : 1; // 20% for duplicate
             dropMetalScrap(numberOfMetalScraps * gameScript.resourceDropRate);
