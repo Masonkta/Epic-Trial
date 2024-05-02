@@ -75,15 +75,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6119954944751748565, guid: b5469ac6d595ea74683a1bb6ac1a827c,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5835057897236844034}
-    - targetCorrespondingSourceObject: {fileID: 6119954944751748565, guid: b5469ac6d595ea74683a1bb6ac1a827c,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7866857573989120160}
     - targetCorrespondingSourceObject: {fileID: 6119954944751748565, guid: b5469ac6d595ea74683a1bb6ac1a827c,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2986286778802299700}
+    - targetCorrespondingSourceObject: {fileID: 6119954944751748565, guid: b5469ac6d595ea74683a1bb6ac1a827c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5835057897236844034}
   m_SourcePrefab: {fileID: 100100000, guid: b5469ac6d595ea74683a1bb6ac1a827c, type: 3}
 --- !u!1 &1668296904263713549 stripped
 GameObject:
@@ -91,20 +91,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4884305163111040728}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5835057897236844034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668296904263713549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2056fdba64ad641911a98e41267c91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameScript: {fileID: 0}
-  resourceType: Metal Scrap
 --- !u!54 &7866857573989120160
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -154,3 +140,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 68e0257b3615ce54daf7d91c8bcc69bb, type: 3}
+--- !u!114 &5835057897236844034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668296904263713549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2056fdba64ad641911a98e41267c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameScript: {fileID: 0}
+  resourceType: Metal Scrap
+  pickupDist: 3.2
+  pickupTimer: 1

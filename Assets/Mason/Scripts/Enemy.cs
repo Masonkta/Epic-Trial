@@ -16,16 +16,22 @@ public enum EnemyType
 
 public class Enemy : MonoBehaviour
 {
+    gameHandler gameScript;
+    HighScoreTest hs;
+
+    // Resources To Drop
+    GameObject goldPrefab;
+    GameObject clothPrefab;
+    GameObject woodPrefab;
+    GameObject ironPrefab;
+
+
     public int EnemyHealth;
     public int EnemyDefence;
     public int EnemyDamage;
     public EnemyType Etype;
-    GameObject clothPiece;
-    GameObject woodPiece;
-    GameObject metalScrap;
 
-    gameHandler gameScript;
-    HighScoreTest hs;
+
 
     public static int enemiesKilled = 0;
     public static int scoreMultiplier = 1;
@@ -66,9 +72,10 @@ public class Enemy : MonoBehaviour
             EnemyDefence = 20;
         }
 
-        clothPiece = gameScript.clothPiece;
-        woodPiece = gameScript.woodPiece;
-        metalScrap = gameScript.metalScrap;
+        goldPrefab = gameScript.goldPrefab;
+        clothPrefab = gameScript.clothPrefab;
+        woodPrefab = gameScript.woodPrefab;
+        ironPrefab = gameScript.ironPrefab;
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -199,7 +206,8 @@ public class Enemy : MonoBehaviour
 
     void dropItems()
     {
-        bool dropItem = Random.value < 0.75f;
+        int numOfGold = Random.Range(3, 10);
+        dropGold(numOfGold * gameScript.resourceDropRate);
 
         // Decide how many and what items to drop
         float threshToDetermine = Random.value;
@@ -219,20 +227,32 @@ public class Enemy : MonoBehaviour
         
         else // Start with metal ( 20% )
         {
-            int numberOfMetalScraps = Random.value < 0.1f ? 2 : 1; // 20% for duplicate
-            dropMetalScrap(numberOfMetalScraps * gameScript.resourceDropRate);
+            int numberOfIron = Random.value < 0.1f ? 2 : 1; // 20% for duplicate
+            dropIron(numberOfIron * gameScript.resourceDropRate);
         }
+
+
         
     }
 
 
 
+    void dropGold(int num)
+    {
+        for (int i = 0; i < num; i++)
+        {                                  //       VVV   Change this
+            GameObject currentCloth = Instantiate(goldPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentCloth.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentCloth.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+        }
+    }
+
     void dropCloth(int num)
     {
-        // Spawn in Cloth Pieces
         for (int i = 0; i < num; i++)
-        {
-            GameObject currentCloth = Instantiate(clothPiece, transform.position + Vector3.up, Quaternion.identity);
+        {                                  //       VVV   Change this
+            GameObject currentCloth = Instantiate(clothPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentCloth.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentCloth.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
@@ -241,21 +261,19 @@ public class Enemy : MonoBehaviour
 
     void dropWood(int num)
     {
-        // Spawn in Wood Pieces
         for (int i = 0; i < num; i++)
-        {
-            GameObject currentWood = Instantiate(woodPiece, transform.position + Vector3.up, Quaternion.identity);
+        {                                 //       VVV   Change this
+            GameObject currentWood = Instantiate(woodPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentWood.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentWood.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
         }
     }
-    void dropMetalScrap(int num)
+    void dropIron(int num)
     {
-        // Spawn in Wood Pieces
         for (int i = 0; i < num; i++)
-        {
-            GameObject currentMetalScrap = Instantiate(metalScrap, transform.position + Vector3.up, Quaternion.identity);
+        {                                       //       VVV   Change this
+            GameObject currentMetalScrap = Instantiate(ironPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentMetalScrap.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentMetalScrap.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;

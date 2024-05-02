@@ -9,15 +9,17 @@ public class gameHandler : MonoBehaviour
     //public string playerOneControls = "---";
     //public string playerTwoControls = "---";
     [Header("Needed Prefabs")]
-    public GameObject clothPiece;
-    public GameObject woodPiece;
-    public GameObject metalScrap;
+    public GameObject goldPrefab;
+    public GameObject clothPrefab;
+    public GameObject woodPrefab;
+    public GameObject ironPrefab;
 
     [Header("Resources")]
     public int resourceDropRate = 1;
+    public int gold;
     public int clothPieces;
     public int woodPieces;
-    public int metalScraps;
+    public int ironPieces;
 
     
 
@@ -74,9 +76,10 @@ public class gameHandler : MonoBehaviour
     
     public void collectResource(string name)
     {
+        if (name == "Gold") gold++;
         if (name == "Cloth") clothPieces++;
         if (name == "Wood") woodPieces++;
-        if (name == "Metal Scrap") metalScraps++;
+        if (name == "Metal Scrap") ironPieces++;
     }
 
     public void possibleRecipes()
@@ -101,7 +104,7 @@ public class gameHandler : MonoBehaviour
 
     bool checkIndividualRecipe(Vector3 recipe)
     {
-        return (clothPieces > recipe[0] && woodPieces > recipe[1] && metalScraps > recipe[2]);
+        return (clothPieces > recipe[0] && woodPieces > recipe[1] && ironPieces > recipe[2]);
     }
 
 
