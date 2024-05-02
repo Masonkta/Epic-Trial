@@ -58,6 +58,7 @@ public class SwordTest : MonoBehaviour
     IEnumerator ResetAtt()
     {
         yield return new WaitForSeconds(attackCoolDown);
+        anim.SetTrigger("StopAttack");
         Wep.enabled = false;
         canAtt = true;
     }

@@ -8,6 +8,7 @@ public class BasicEnemy : MonoBehaviour
     public NavMeshAgent agent;
 
     GameObject[] player;
+    public GameObject Enemy;
 
     public LayerMask ground, playerArea;
 
@@ -16,8 +17,13 @@ public class BasicEnemy : MonoBehaviour
     bool walkPointSet;
     public float walkPointRange;
 
+    [Header("Animation")]
+    public Animator EnemyAnimator;
+
 
     // Attack placeholder
+    private bool PlayerInRange = false;
+    private bool CanAtt = true;
 
 
     // Enemy States
@@ -78,19 +84,46 @@ public class BasicEnemy : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            PlayerInRange = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player")) 
+        {
+            PlayerInRange = false;
+        }
+    }
+
     private void EngagingPlayer()
     {
+        if (PlayerInRange == true)
+        {
+            EnemyAnimator.SetTrigger("ATTAAACK");
+        }
+        else
+        {
+            EnemyAnimator.SetTrigger("STOOOP");
+        }
     }
     void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerArea);
+        EngagingPlayer();
 
         if (!playerInSightRange)
         {
+            EnemyAnimator.SetTrigger("RUUUN");
             Patroling();
         }
         if (playerInSightRange)
         {
+            EnemyAnimator.SetTrigger("RUUUN");
             Chase();
             Debug.DrawLine(transform.position, agent.destination, Color.red);
         }
