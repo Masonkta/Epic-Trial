@@ -8,13 +8,15 @@ public class RandomTileGen : MonoBehaviour
     public List<GameObject> prefabsList = new List<GameObject>();
 
     // Number of prefabs to instantiate
-    public int numberOfPrefabsToInstantiate = 5;
+    public int numberOfPrefabsToInstantiate = 1;
 
     // Initial position to start spawning prefabs
     public Vector3 initialSpawnPosition = Vector3.zero;
 
-    // Distance between each prefab in the X direction
-    public float distanceBetweenPrefabs = 5f;
+    // Distance between each prefab in the X and Z direction
+    public float xDistanceBetweenPrefabs = 10f;
+    public float zDistanceBetweenPrefabs = 10f;
+
 
     void Start()
     {
@@ -29,7 +31,8 @@ public class RandomTileGen : MonoBehaviour
             GameObject newObject = Instantiate(prefab, spawnPosition, Quaternion.identity, transform);
 
             // Update the spawn position for the next prefab
-            spawnPosition.x += distanceBetweenPrefabs;
+            spawnPosition.x += xDistanceBetweenPrefabs;
+            spawnPosition.z += zDistanceBetweenPrefabs;
         }
     }
 }
