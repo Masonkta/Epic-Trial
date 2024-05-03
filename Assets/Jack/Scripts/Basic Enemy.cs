@@ -107,7 +107,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void EngagingPlayer()
     {
-        if (PlayerInRange == true)
+        if (playerInAttackRange)
         {
             EnemyAnimator.SetTrigger("ATTAAACK");
         }
@@ -119,6 +119,7 @@ public class BasicEnemy : MonoBehaviour
     void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerArea);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerArea);
         EngagingPlayer();
 
         if (!playerInSightRange)

@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
     bool timerStarted = false;
     float timeFrame = 10f;
     float timeElapsed = 0f;
-    float timeBetweenAttacks;
+    float timeBetweenAttacks = 1f;
     bool alreadyAttacked = false;
 
 
@@ -82,10 +82,10 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("PlayerKeyboard"))
         {
-            if (collision.gameObject == gameScript.keyboardPlayer)
-            {
+            //if (collision.gameObject == gameScript.keyboardPlayer)
+            //{
                 if (!alreadyAttacked)
                 {
                     if (EnemyType.Weak == Etype)
@@ -122,8 +122,8 @@ public class Enemy : MonoBehaviour
                     alreadyAttacked = true;
                     Invoke(nameof(ResetAttack), timeBetweenAttacks);
                 }
-            }
-            if (collision.gameObject == gameScript.controllerPlayer)
+            //}
+            if (collision.gameObject.CompareTag("PlayerController"))
             {
                 if (!alreadyAttacked)
                 {
@@ -159,7 +159,7 @@ public class Enemy : MonoBehaviour
                     }*/
                     alreadyAttacked = true;
                     Invoke(nameof(ResetAttack), timeBetweenAttacks);
-                }
+               }
             }
         }
     }
