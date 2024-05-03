@@ -8,7 +8,10 @@ public class BasicEnemy : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject enemyEyes;
 
-    GameObject[] player;
+    GameObject playerKeyboard;
+
+    GameObject playerController;
+
     public GameObject Enemy;
 
     public LayerMask ground, playerArea;
@@ -29,11 +32,12 @@ public class BasicEnemy : MonoBehaviour
 
     // Enemy States
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange, player2inSightRange;
+    public bool playerInSightRange, playerInAttackRange;
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectsWithTag("Player");
+        playerKeyboard = GameObject.FindGameObjectsWithTag("PlayerKeyboard")[0];
+        playerController = GameObject.FindGameObjectsWithTag("PlayerController")[0];
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -75,13 +79,13 @@ public class BasicEnemy : MonoBehaviour
 
     private void Chase()
     {
-        if (Vector3.Distance(transform.position + Vector3.up, player[0].transform.position) < Vector3.Distance(transform.position + Vector3.up, player[1].transform.position))
+        if (Vector3.Distance(transform.position + Vector3.up, playerKeyboard.transform.position) < Vector3.Distance(transform.position + Vector3.up, playerController.transform.position))
         {
-            agent.SetDestination(player[0].transform.position);
+            agent.SetDestination(playerKeyboard.transform.position);
         }
         else
         {
-            agent.SetDestination(player[1].transform.position);
+            agent.SetDestination(playerController.transform.position);
         }
     }
 
