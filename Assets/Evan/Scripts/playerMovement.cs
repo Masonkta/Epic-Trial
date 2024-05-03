@@ -15,7 +15,7 @@ public class playerMovement : MonoBehaviour
 {
     gameHandler gameScript;
     CharacterController controller;
-    
+
     public bool isPlayerOne;
     public GameObject player;
     public Transform forwardTransform;
@@ -50,7 +50,7 @@ public class playerMovement : MonoBehaviour
     [Header("Dodging")]
     public float dodgeSpeed = 20f;
     public float dodgeTime = 0.4f;
-    
+
     private bool isDodging;
 
 
@@ -191,8 +191,8 @@ public class playerMovement : MonoBehaviour
 
         float turnStrength = isPlayerOne ? xSensKeyboard : xSensController;
         cameraAngle += horizontalTurnAmount * turnStrength * Time.deltaTime;
-        if (cameraAngle > 360f)  cameraAngle -= 360f;
-        if (cameraAngle <   0f)  cameraAngle += 360f;
+        if (cameraAngle > 360f) cameraAngle -= 360f;
+        if (cameraAngle < 0f) cameraAngle += 360f;
 
         //if (shiftLock) cameraAngle = 180f;
     }
@@ -250,7 +250,6 @@ public class playerMovement : MonoBehaviour
     {
         StartCoroutine(Dodging());
     }
-
 
     void setSpeed()
     {

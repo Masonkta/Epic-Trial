@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class playerAccessWeapons : MonoBehaviour
 {
+    public bool handIsOpen;
+
     public GameObject gladius;
     public GameObject club;
 
@@ -16,7 +18,7 @@ public class playerAccessWeapons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        handIsOpen = handOpen();
     }
 
     public GameObject getGladius()
@@ -27,5 +29,27 @@ public class playerAccessWeapons : MonoBehaviour
     public GameObject getClub()
     {
         return club;
+    }
+
+    void OnDropItem()
+    {
+        if (gladius.activeInHierarchy){
+            print("DROP Gladius");
+            gladius.SetActive(false);
+        }
+
+        if (club.activeInHierarchy)
+        {
+            print("DROP Club");
+            club.SetActive(false);
+        }
+        
+        else
+            print("Holding Nothing");
+    }
+
+    public bool handOpen()
+    {
+        return !(gladius.activeInHierarchy || club.activeInHierarchy);
     }
 }
