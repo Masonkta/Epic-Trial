@@ -605,8 +605,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 27.619999, y: 4.8053417, z: 6.1723495}
-  m_Center: {x: -4.5599117, y: 3.1447372, z: -0.6506338}
+  m_Size: {x: 35.809696, y: 8.27531, z: 7.3131194}
+  m_Center: {x: -1.3363242, y: 2.7289295, z: -0.5037074}
 --- !u!114 &3196578119353891881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2680,6 +2680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0e3c3f34b5739428174d2d20b252c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handIsOpen: 0
   gladius: {fileID: 2278122393407324854}
   club: {fileID: 2081951952699736847}
 --- !u!1 &6118112404806550536
