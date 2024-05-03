@@ -41,35 +41,55 @@ public class resourcePickup : MonoBehaviour
 
     void checkWithinRangeOfBothPlayers()
     {
-        foreach (GameObject currPlayer in GameObject.FindGameObjectsWithTag("Player"))
+        // Keyboard
+        if (Vector3.Distance(transform.position + Vector3.up, gameScript.keyboardPlayer.transform.position) < pickupDist)
         {
-            if (Vector3.Distance(transform.position + Vector3.up, currPlayer.transform.position) < pickupDist)
-            {
-                gameScript.collectResource(resourceType);
-                Destroy(gameObject);
-                break;
-            }
+            gameScript.collectResource(resourceType);
+            Destroy(gameObject);
+        }
+
+        // Controller
+        if (Vector3.Distance(transform.position + Vector3.up, gameScript.controllerPlayer.transform.position) < pickupDist)
+        {
+            gameScript.collectResource(resourceType);
+            Destroy(gameObject);
         }
     }
 
     void checkPullToPlayers()
     {
-        foreach (GameObject currPlayer in GameObject.FindGameObjectsWithTag("Player"))
+        float PullRange = 40f;
+
+        // Keyboard
+        if (Vector3.Distance(transform.position + Vector3.up, gameScript.keyboardPlayer.transform.position) < PullRange)
         {
-            if (Vector3.Distance(transform.position + Vector3.up, currPlayer.transform.position) < 20f)
-            {
-                // Pull To Player Within Range (Can Stack with both players)
-                Vector3 pullDir = Vector3.Normalize(currPlayer.transform.position - transform.position);
-                
-                //float mag = 1 - Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f); // Stronger closer to player
-                float mag = Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / 20f, 0.4f);   // Stronger father from player
+            Vector3 pullDir = Vector3.Normalize(gameScript.keyboardPlayer.transform.position - transform.position);
 
-                float pullForce = mag * 1200f;
+            //float mag = 1 - Mathf.Max(Vector3.Distance(gameScript.keyboardPlayer.transform.position, transform.position) / PullRange, 0.4f); // Stronger closer to player
+            float mag = Mathf.Max(Vector3.Distance(gameScript.keyboardPlayer.transform.position, transform.position) / PullRange, 0.4f);   // Stronger father from player
 
-                //Debug.DrawRay(transform.position, pull * mag );
-                rb.AddForce(pullDir * pullForce * Time.deltaTime, ForceMode.Force);
-            }
+            float pullForce = mag * 1200f;
+
+            //Debug.DrawRay(transform.position, pull * mag );
+            rb.AddForce(pullDir * pullForce * Time.deltaTime, ForceMode.Force);
         }
+
+
+        // Controller
+        if (Vector3.Distance(transform.position + Vector3.up, gameScript.controllerPlayer.transform.position) < PullRange)
+        {
+            Vector3 pullDir = Vector3.Normalize(gameScript.controllerPlayer.transform.position - transform.position);
+
+            //float mag = 1 - Mathf.Max(Vector3.Distance(gameScript.controllerPlayer.transform.position, transform.position) / PullRange, 0.4f); // Stronger closer to player
+            float mag = Mathf.Max(Vector3.Distance(gameScript.controllerPlayer.transform.position, transform.position) / PullRange, 0.4f);   // Stronger father from player
+
+            float pullForce = mag * 1200f;
+
+            //Debug.DrawRay(transform.position, pull * mag );
+            rb.AddForce(pullDir * pullForce * Time.deltaTime, ForceMode.Force);
+        }
+
+
     }
 
 }

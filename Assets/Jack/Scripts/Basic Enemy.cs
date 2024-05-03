@@ -36,8 +36,8 @@ public class BasicEnemy : MonoBehaviour
 
     private void Awake()
     {
-        playerKeyboard = GameObject.FindGameObjectsWithTag("PlayerKeyboard")[0];
-        playerController = GameObject.FindGameObjectsWithTag("PlayerController")[0];
+        playerKeyboard = GameObject.FindGameObjectWithTag("PlayerKeyboard");
+        playerController = GameObject.FindGameObjectWithTag("PlayerController");
         agent = GetComponent<NavMeshAgent>();
     }
 

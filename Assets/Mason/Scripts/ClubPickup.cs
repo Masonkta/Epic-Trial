@@ -17,10 +17,10 @@ public class ClubPickup : MonoBehaviour
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
 
         keyboardPlayer = gameScript.keyboardPlayer;
-        keyboardClub = keyboardPlayer.GetComponent<playerAccessWeapons>().getGladius();
+        keyboardClub = keyboardPlayer.GetComponent<playerAccessWeapons>().getClub();
 
         controllerPlayer = gameScript.controllerPlayer;
-        controllerClub = controllerPlayer.GetComponent<playerAccessWeapons>().getGladius();
+        controllerClub = controllerPlayer.GetComponent<playerAccessWeapons>().getClub();
 
 
     }

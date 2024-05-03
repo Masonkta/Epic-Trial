@@ -27,8 +27,7 @@ public class SwordTest : MonoBehaviour
 
     void Update()
     {
-        //Debug.DrawRay(rightHandTransform.position, rightHandTransform.forward * 2f, Color.blue);
-        //placeSwordInPlayersHand();    
+
     }
 
     void OnAttack()
@@ -44,7 +43,7 @@ public class SwordTest : MonoBehaviour
         anim.SetTrigger("Attack");
         StartCoroutine(ResetAtt());
 
-        //playSwordSwingSound();
+        playSwordSwingSound();
     }
 
     void playSwordSwingSound()
@@ -61,12 +60,5 @@ public class SwordTest : MonoBehaviour
         anim.SetTrigger("StopAttack");
         Wep.enabled = false;
         canAtt = true;
-    }
-
-
-
-    void placeSwordInPlayersHand()
-    {
-        Sword.transform.localPosition = rightHandTransform.localPosition;
     }
 }

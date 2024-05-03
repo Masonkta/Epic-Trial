@@ -526,17 +526,18 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6492545542551119337}
+  - component: {fileID: 5375313301098939392}
+  - component: {fileID: 8951604161850609422}
   - component: {fileID: 3196578119353891881}
   - component: {fileID: 1772958316467444278}
-  - component: {fileID: 5375313301098939392}
   - component: {fileID: 5552951793554821346}
   m_Layer: 0
-  m_Name: Club
+  m_Name: Club C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6492545542551119337
 Transform:
   m_ObjectHideFlags: 0
@@ -558,6 +559,54 @@ Transform:
   - {fileID: 1442023456698442882}
   m_Father: {fileID: 4376930641321432723}
   m_LocalEulerAnglesHint: {x: 20.357, y: 22.341, z: -27.252}
+--- !u!54 &5375313301098939392
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081951952699736847}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 1012
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8951604161850609422
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081951952699736847}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 27.619999, y: 4.8053417, z: 6.1723495}
+  m_Center: {x: -4.5599117, y: 3.1447372, z: -0.6506338}
 --- !u!114 &3196578119353891881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,34 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 5
-  type: 0
---- !u!54 &5375313301098939392
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081951952699736847}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 1012
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  type: 2
 --- !u!114 &5552951793554821346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,14 +665,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sword: {fileID: 2081951952699736847}
-  attackCoolDown: 0.5
+  attackCoolDown: 0.2
   canAtt: 1
   Wep: {fileID: 1772958316467444278}
   rightHandTransform: {fileID: 4376930641321432723}
   anim: {fileID: 972269539184399778}
-  swingSounds: {fileID: 0}
-  swing1: {fileID: 0}
-  swing2: {fileID: 0}
+  swingSounds: {fileID: 4533780013794955985}
+  swing1: {fileID: 8300000, guid: 21b853f88c4d6d944bffd96d8bb5b04a, type: 3}
+  swing2: {fileID: 8300000, guid: 7d6d4b6001995564ebcdc979f0e494d7, type: 3}
 --- !u!1 &2278122393407324854
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,10 +2524,9 @@ GameObject:
   - component: {fileID: 4515117071645630215}
   - component: {fileID: 99148252095820067}
   - component: {fileID: 2269344597279033023}
-  - component: {fileID: 7062945582224254766}
   m_Layer: 7
   m_Name: Player C
-  m_TagString: Player
+  m_TagString: PlayerController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2631,8 +2652,8 @@ MonoBehaviour:
   groundCheckDistance: 2.2
   jumpHeight: 3.3
   airDashSpeed: 18
-  dodgeSpeed: 24
-  dodgeTime: 0.3
+  dodgeSpeed: 45
+  dodgeTime: 0.33
   shiftLock: 0
   xSensController: 250
   ySensController: 150
@@ -2660,20 +2681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gladius: {fileID: 2278122393407324854}
---- !u!114 &7062945582224254766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5925355285980104827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5f2c7f5f546c3e44b625b56e3521859, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerHealth: 0
-  PlayerDefence: 0
+  club: {fileID: 2081951952699736847}
 --- !u!1 &6118112404806550536
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerAccessWeapons : MonoBehaviour
 {
     public GameObject gladius;
+    public GameObject club;
 
     // Start is called before the first frame update
     void Start()
@@ -21,5 +22,10 @@ public class playerAccessWeapons : MonoBehaviour
     public GameObject getGladius()
     {
         return gladius;
+    }
+
+    public GameObject getClub()
+    {
+        return club;
     }
 }

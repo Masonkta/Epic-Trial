@@ -8,6 +8,7 @@ public enum WeaponType
 {
     Gladius,
     Spear,
+    Club,
 }
 
 public class Weapon : MonoBehaviour
@@ -81,6 +82,24 @@ public class Weapon : MonoBehaviour
                     //Debug.Log("Dealt " + damageDealt + " damage to the " + enemy.Etype.ToString() +  " enemy.");
 
                 }
+            }
+
+            if (WeaponType.Club == type)
+            {
+                Damage = 5;
+                piercing = false;
+                if (buff == true) Damage *= 2;
+                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+                if (piercing == true)
+                {
+                    enemy.EnemyHealth -= Damage;
+                }
+                else
+                {
+                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
+                    enemy.EnemyHealth -= damageDealt;
+                }
+
             }
         }
     }
