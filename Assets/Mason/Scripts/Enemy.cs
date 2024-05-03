@@ -86,80 +86,80 @@ public class Enemy : MonoBehaviour
         {
             //if (collision.gameObject == gameScript.keyboardPlayer)
             //{
-                if (!alreadyAttacked)
-                {
-                    if (EnemyType.Weak == Etype)
-                    {
-                        EnemyDamage = 2;
-                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        gameScript.keyboardPlayerHealth -= Time.deltaTime * 10f;
-                    }
-
-                    /*if (EnemyType.Medium == Etype)
-                    {
-                        EnemyDamage = 10;
-                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 15f;
-                        Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
-                    }
-
-                    if (EnemyType.Heavy == Etype)
-                    {
-                        EnemyDamage = 20;
-                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 20f;
-                        Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
-                    }
-
-                    if (EnemyType.Boss == Etype)
-                    {
-                        EnemyDamage = 30;
-                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 40f;
-                        Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
-                    }*/
-
-                    alreadyAttacked = true;
-                    Invoke(nameof(ResetAttack), timeBetweenAttacks);
-                }
-            //}
-            if (collision.gameObject.CompareTag("PlayerController"))
+            if (!alreadyAttacked)
             {
-                if (!alreadyAttacked)
+                if (EnemyType.Weak == Etype)
                 {
-                    if (EnemyType.Weak == Etype)
-                    {
-                        EnemyDamage = 2;
-                        gameScript.controllerPlayerHealth -= Time.deltaTime * 10f;
-                    }
+                    EnemyDamage = 2;
+                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                    gameScript.keyboardPlayerHealth -= EnemyDamage;
+                }
 
-                    /*
-                    if (EnemyType.Medium == Etype)
-                    {
-                        EnemyDamage = 10;
-                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player2Health -= Time.deltaTime * 5f;
-                        Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
-                    }
+                /*if (EnemyType.Medium == Etype)
+                {
+                    EnemyDamage = 10;
+                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                    player.Player1Health -= Time.deltaTime * 15f;
+                    Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
+                }
 
-                    if (EnemyType.Heavy == Etype)
-                    {
-                        EnemyDamage = 20;
-                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player1Health -= Time.deltaTime * 10f;
-                        Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
-                    }
+                if (EnemyType.Heavy == Etype)
+                {
+                    EnemyDamage = 20;
+                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                    player.Player1Health -= Time.deltaTime * 20f;
+                    Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
+                }
 
-                    if (EnemyType.Boss == Etype)
-                    {
-                        EnemyDamage = 30;
-                        PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                        player.Player2Health -= Time.deltaTime * 20f;
-                        Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
-                    }*/
-                    alreadyAttacked = true;
-                    Invoke(nameof(ResetAttack), timeBetweenAttacks);
-               }
+                if (EnemyType.Boss == Etype)
+                {
+                    EnemyDamage = 30;
+                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                    player.Player1Health -= Time.deltaTime * 40f;
+                    Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
+                }*/
+
+                alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            }
+        }
+            //}
+        if (collision.gameObject.CompareTag("PlayerController"))
+        {
+            if (!alreadyAttacked)
+            {
+                if (EnemyType.Weak == Etype)
+                {
+                    EnemyDamage = 2;
+                    gameScript.controllerPlayerHealth -= EnemyDamage;
+                }
+
+                /*
+                if (EnemyType.Medium == Etype)
+                {
+                    EnemyDamage = 10;
+                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                    player.Player2Health -= Time.deltaTime * 5f;
+                    Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
+                }
+
+                if (EnemyType.Heavy == Etype)
+                {
+                    EnemyDamage = 20;
+                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                    player.Player1Health -= Time.deltaTime * 10f;
+                    Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
+                }
+
+                if (EnemyType.Boss == Etype)
+                {
+                    EnemyDamage = 30;
+                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
+                    player.Player2Health -= Time.deltaTime * 20f;
+                    Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
+                }*/
+                alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), timeBetweenAttacks);
             }
         }
     }
@@ -255,7 +255,7 @@ public class Enemy : MonoBehaviour
     void dropItems()
     {
         int numOfGold = Random.Range(3, 10);
-        dropGold(numOfGold * gameScript.resourceDropRate);
+        dropGold(numOfGold * gameScript.ResourceDropRate);
 
         // Decide how many and what items to drop
         float threshToDetermine = Random.value;
@@ -264,19 +264,19 @@ public class Enemy : MonoBehaviour
         {
             float clothCountThresh = Random.value;
             int numberOfCloth = clothCountThresh <= 0.1f ? 3 : (clothCountThresh <= 0.4f ? 2 : 1); // 10% for 3, 30% for 2, 60% for 1
-            dropCloth(numberOfCloth * gameScript.resourceDropRate);
+            dropCloth(numberOfCloth * gameScript.ResourceDropRate);
         }
 
         else if (threshToDetermine <= 0.8f) // Start with wood ( 35% )
         {
             int numberOfWood = Random.value < 0.3f ? 2 : 1; // 40% for duplicate
-            dropWood(numberOfWood * gameScript.resourceDropRate);
+            dropWood(numberOfWood * gameScript.ResourceDropRate);
         }
         
         else // Start with metal ( 20% )
         {
             int numberOfIron = Random.value < 0.1f ? 2 : 1; // 20% for duplicate
-            dropIron(numberOfIron * gameScript.resourceDropRate);
+            dropIron(numberOfIron * gameScript.ResourceDropRate);
         }
 
 
@@ -289,7 +289,7 @@ public class Enemy : MonoBehaviour
     {
         for (int i = 0; i < num; i++)
         {                                  //       VVV   Change this
-            GameObject currentCloth = Instantiate(goldPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
+            GameObject currentCloth = Instantiate(goldPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentCloth.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentCloth.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
@@ -300,7 +300,7 @@ public class Enemy : MonoBehaviour
     {
         for (int i = 0; i < num; i++)
         {                                  //       VVV   Change this
-            GameObject currentCloth = Instantiate(clothPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
+            GameObject currentCloth = Instantiate(clothPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentCloth.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentCloth.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
@@ -311,7 +311,7 @@ public class Enemy : MonoBehaviour
     {
         for (int i = 0; i < num; i++)
         {                                 //       VVV   Change this
-            GameObject currentWood = Instantiate(woodPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
+            GameObject currentWood = Instantiate(woodPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentWood.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentWood.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
@@ -321,7 +321,7 @@ public class Enemy : MonoBehaviour
     {
         for (int i = 0; i < num; i++)
         {                                       //       VVV   Change this
-            GameObject currentMetalScrap = Instantiate(ironPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
+            GameObject currentMetalScrap = Instantiate(ironPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentMetalScrap.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentMetalScrap.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;

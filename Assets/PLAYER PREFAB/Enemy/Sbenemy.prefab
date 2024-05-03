@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 2141477199034026785, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}
       propertyPath: m_Speed
-      value: 9
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 2141477199034026785, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}
@@ -116,7 +116,7 @@ PrefabInstance:
     - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}
       propertyPath: m_Name
-      value: Sbenemy Working Variant
+      value: Sbenemy
       objectReference: {fileID: 0}
     - target: {fileID: 6129784599661495701, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}

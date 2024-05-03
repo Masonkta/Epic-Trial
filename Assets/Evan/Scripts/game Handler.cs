@@ -22,7 +22,8 @@ public class gameHandler : MonoBehaviour
     public GameObject ironPrefab;
 
     [Header("Resources")]
-    public int resourceDropRate = 1;
+    public Transform ResourceTransform;
+    public int ResourceDropRate = 1;
     public int gold;
     public int clothPieces;
     public int woodPieces;
@@ -43,6 +44,7 @@ public class gameHandler : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         Cursor.lockState = CursorLockMode.Locked;
+        ResourceTransform = GameObject.FindGameObjectWithTag("ResourceTransform").transform;
     }
 
     void Update()
