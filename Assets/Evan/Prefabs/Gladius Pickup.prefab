@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8687816219004886434}
   - component: {fileID: 2207114261895461893}
   - component: {fileID: 4904419765452434980}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 8522656975919222015}
   - component: {fileID: 8962193354771352650}
   - component: {fileID: 1584455079794386868}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 2090926610789613691}
   - component: {fileID: 6956796925135937638}
   - component: {fileID: 7480018235474238830}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 6687600021585377377}
   - component: {fileID: 8680775729295940978}
   - component: {fileID: 5974291140952581807}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gladius Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,9 +383,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameScript: {fileID: 0}
   keyboardPlayer: {fileID: 0}
-  keyboardGladius: {fileID: 0}
+  keyboardWeapons: {fileID: 0}
   controllerPlayer: {fileID: 0}
-  controllerGladius: {fileID: 0}
+  controllerWeapons: {fileID: 0}
 --- !u!1 &7922812777895271638
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 6751885680621879493}
   - component: {fileID: 1434118063535588673}
   - component: {fileID: 1032038335652996546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 3562914818222696139}
   - component: {fileID: 5265608104097264964}
   - component: {fileID: 4238117265501924701}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

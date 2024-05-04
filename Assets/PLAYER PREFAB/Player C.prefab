@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 5
-  type: 2
+  type: 0
 --- !u!114 &5552951793554821346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sword: {fileID: 2081951952699736847}
-  attackCoolDown: 0.2
+  attackCoolDown: 0.5
   canAtt: 1
   Wep: {fileID: 1772958316467444278}
   rightHandTransform: {fileID: 4376930641321432723}

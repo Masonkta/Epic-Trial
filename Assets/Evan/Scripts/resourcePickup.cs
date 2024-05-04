@@ -70,8 +70,8 @@ public class resourcePickup : MonoBehaviour
             target = 1;
             Vector3 pullDir = Vector3.Normalize(gameScript.controllerPlayer.transform.position - transform.position);
 
-            //float mag = 1 - Mathf.Max(Vector3.Distance(gameScript.controllerPlayer.transform.position, transform.position) / PullRange, 0.4f); // Stronger closer to player
-            float mag = Mathf.Max(Vector3.Distance(gameScript.controllerPlayer.transform.position, transform.position) / PullRange, 0.4f);   // Stronger father from player
+            //float mag = 1 - Mathf.Max(Vector3.Distance(gameScript.controllerPlayer.transform.position, transform.position) / PullRange, 0.2f); // Stronger closer to player
+            float mag = Mathf.Max(Vector3.Distance(gameScript.controllerPlayer.transform.position, transform.position) / PullRange, 0.2f);   // Stronger father from player
 
             float pullForce = mag * 1200f;
 
@@ -86,8 +86,8 @@ public class resourcePickup : MonoBehaviour
             target = 2;
             Vector3 pullDir = Vector3.Normalize(gameScript.keyboardPlayer.transform.position - transform.position);
 
-            //float mag = 1 - Mathf.Max(Vector3.Distance(gameScript.keyboardPlayer.transform.position, transform.position) / PullRange, 0.4f); // Stronger closer to player
-            float mag = Mathf.Max(Vector3.Distance(gameScript.keyboardPlayer.transform.position, transform.position) / PullRange, 0.4f);   // Stronger father from player
+            //float mag = 1 - Mathf.Max(Vector3.Distance(gameScript.keyboardPlayer.transform.position, transform.position) / PullRange, 0.2f); // Stronger closer to player
+            float mag = Mathf.Max(Vector3.Distance(gameScript.keyboardPlayer.transform.position, transform.position) / PullRange, 0.2f);   // Stronger father from player
 
             float pullForce = mag * 1200f;
 
