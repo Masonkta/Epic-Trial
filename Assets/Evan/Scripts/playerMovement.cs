@@ -17,6 +17,7 @@ public class playerMovement : MonoBehaviour
     CharacterController controller;
 
     public bool isPlayerOne;
+    public bool hardCodeKeyboard;
     public GameObject player;
     public Transform forwardTransform;
     public Transform cameraTransform;
@@ -107,15 +108,14 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
         checkIsGrounded();
-
-        hardCodedKeyboardPlayerInput();        
-
-        // Moving //
-        move();
+        if (hardCodeKeyboard) hardCodedKeyboardPlayerInput();
 
         // Turning // 
         horizontalTurns();
         verticalTurns();
+
+        // Moving //
+        move();
 
         // Camera //
         handleCamera();
@@ -123,6 +123,7 @@ public class playerMovement : MonoBehaviour
         // Audio //
         handleAudio();
 
+        getLookDirection();
     }
 
 
@@ -391,6 +392,12 @@ public class playerMovement : MonoBehaviour
 
     }
 
+    ///
+    /// 
+    /// 
+    /// 
+    ///// RANDOM NEEDS TO BE MOVED //////
+
     void hardCodedKeyboardPlayerInput()
     {
         if (isPlayerOne)
@@ -412,9 +419,8 @@ public class playerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
                 OnJump();
 
-            if (Input.GetKeyDown(KeyCode.E))
-                OnShiftLock();
-
+            //if (Input.GetKeyDown(KeyCode.E))
+                //shiftLock = !shiftLock;
 
             if (Input.GetKeyDown(KeyCode.Q))
                 GetComponent<playerAccessWeapons>().OnDropItem();
@@ -424,4 +430,11 @@ public class playerMovement : MonoBehaviour
 
         }
     }
+
+
+    public Vector3 getLookDirection()
+    {
+        return cameraTransform.forward * 4f + Vector3.up * 2;
+    }
+
 }

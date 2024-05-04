@@ -9,6 +9,11 @@ public class playerAccessWeapons : MonoBehaviour
     public GameObject gladius;
     public GameObject club;
 
+    [Header("Pickups")]
+    public GameObject gladiusPickup;
+    public GameObject clubPickup;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +24,8 @@ public class playerAccessWeapons : MonoBehaviour
     void Update()
     {
         handIsOpen = handOpen();
+
+        
     }
 
     public GameObject getGladius()
@@ -33,19 +40,31 @@ public class playerAccessWeapons : MonoBehaviour
 
     public void OnDropItem()
     {
-        if (gladius.activeInHierarchy){
+        if (gladius.activeInHierarchy)
+        {
             print("DROP Gladius");
+
+            GameObject gladiusPickupComingFromDrop = Instantiate(gladiusPickup, gladius.transform.position, GetComponent<playerMovement>().cameraTransform.rotation);
+            gladiusPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMovement>().getLookDirection() * 8f;
+            gladiusPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
+
+
             gladius.SetActive(false);
         }
+
 
         if (club.activeInHierarchy)
         {
             print("DROP Club");
+
+            GameObject clubPickupComingFromDrop = Instantiate(clubPickup, gladius.transform.position, GetComponent<playerMovement>().cameraTransform.rotation);
+            clubPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMovement>().getLookDirection() * 8f;
+            clubPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
+
             club.SetActive(false);
-        }
-        
-        else
-            print("Holding Nothing");
+        }    
+    
+    
     }
 
     public bool handOpen()

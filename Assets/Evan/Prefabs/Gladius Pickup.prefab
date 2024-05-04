@@ -386,6 +386,7 @@ MonoBehaviour:
   keyboardWeapons: {fileID: 0}
   controllerPlayer: {fileID: 0}
   controllerWeapons: {fileID: 0}
+  pickupTime: 0.8
 --- !u!1 &7922812777895271638
 GameObject:
   m_ObjectHideFlags: 0

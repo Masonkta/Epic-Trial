@@ -40,7 +40,7 @@ public class resourcePickup : MonoBehaviour
             checkWithinRangeOfBothPlayers();
 
 
-        if (resourceType == "Gold" && timeOnMap > pickupTimer)
+        if (resourceType == "Gold" && timeOnMap > pickupTimer * 2f)
             checkPullToPlayers();
     }
 

@@ -1261,6 +1261,18 @@ PrefabInstance:
       propertyPath: m_StepOffset
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6422631160386219609, guid: 6569c13a59f3b06478107207e0615db3,
+        type: 3}
+      propertyPath: clubPickup
+      value: 
+      objectReference: {fileID: 4768297867760235099, guid: ee5e4b24f6537144eae186325669f1f7,
+        type: 3}
+    - target: {fileID: 6422631160386219609, guid: 6569c13a59f3b06478107207e0615db3,
+        type: 3}
+      propertyPath: gladiusPickup
+      value: 
+      objectReference: {fileID: 7165563976576842586, guid: d224b73dfb272e14c85ad598e276b017,
+        type: 3}
     - target: {fileID: 7087189115658005538, guid: 6569c13a59f3b06478107207e0615db3,
         type: 3}
       propertyPath: m_Name
@@ -1647,6 +1659,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2269344597279033023, guid: 60a3205a966dea94ba9ac422a49135de,
+        type: 3}
+      propertyPath: clubPickup
+      value: 
+      objectReference: {fileID: 4768297867760235099, guid: ee5e4b24f6537144eae186325669f1f7,
+        type: 3}
+    - target: {fileID: 2269344597279033023, guid: 60a3205a966dea94ba9ac422a49135de,
+        type: 3}
+      propertyPath: gladiusPickup
+      value: 
+      objectReference: {fileID: 7165563976576842586, guid: d224b73dfb272e14c85ad598e276b017,
+        type: 3}
     - target: {fileID: 4515117071645630215, guid: 60a3205a966dea94ba9ac422a49135de,
         type: 3}
       propertyPath: m_SlopeLimit
