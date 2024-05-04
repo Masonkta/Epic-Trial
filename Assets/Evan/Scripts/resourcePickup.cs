@@ -6,11 +6,10 @@ public class resourcePickup : MonoBehaviour
 {
     public gameHandler gameScript;
     public string resourceType;
-    public int target = 0;
-
+    public List<GameObject> players = new List<GameObject>();
 
     float timeOfSpawn;
-    float pickupDist = 3.2f;
+    float pickupDist = 3.5f;
     float pickupTimer = 1f;
     Rigidbody rb;
 
@@ -23,9 +22,13 @@ public class resourcePickup : MonoBehaviour
 
         if (resourceType == "Gold")
         {
-            pickupDist = 2f;
-            pickupTimer = 0.08f;
+            pickupDist = 2.2f;
+            pickupTimer = 0.1f;
         }
+
+        players.Add(gameScript.keyboardPlayer);
+        players.Add(gameScript.controllerPlayer);
+
     }
 
     // Update is called once per frame
@@ -62,25 +65,34 @@ public class resourcePickup : MonoBehaviour
     {
         float PullRange = 40f;
 
-        target = 0;
+        float distToClosestPlayer = Mathf.Infinity;
+        Vector3 force = Vector3.zero;
+        
 
         // Controller
-        if (Vector3.Distance(transform.position + Vector3.up, gameScript.controllerPlayer.transform.position) < PullRange && target == 0)
+        foreach (GameObject currPlayer in players)
         {
-            target = 1;
-            Vector3 pullDir = Vector3.Normalize(gameScript.controllerPlayer.transform.position - transform.position);
+            float distToCurrentPlayer = Vector3.Distance(transform.position + Vector3.up, currPlayer.transform.position);
 
-            //float mag = 1 - Mathf.Max(Vector3.Distance(gameScript.controllerPlayer.transform.position, transform.position) / PullRange, 0.2f); // Stronger closer to player
-            float mag = Mathf.Max(Vector3.Distance(gameScript.controllerPlayer.transform.position, transform.position) / PullRange, 0.2f);   // Stronger father from player
+            if (distToCurrentPlayer < PullRange && distToCurrentPlayer < distToClosestPlayer)
+            {
+                distToClosestPlayer = distToCurrentPlayer;
 
-            float pullForce = mag * 1200f;
+                Vector3 pullDir = Vector3.Normalize(currPlayer.transform.position - transform.position);
 
-            //Debug.DrawRay(transform.position, pull * mag );
-            rb.AddForce(pullDir * pullForce * Time.deltaTime, ForceMode.Force);
+                //float mag = 1 - Mathf.Max(Vector3.Distance(gameScript.controllerPlayer.transform.position, transform.position) / PullRange, 0.2f); // Stronger closer to player
+                float mag = Mathf.Max(Vector3.Distance(currPlayer.transform.position, transform.position) / PullRange, 0.2f);   // Stronger father from player
+
+                float pullForce = mag * 1200f;
+
+                //Debug.DrawRay(transform.position, pull * mag );
+                rb.AddForce(pullDir * pullForce * Time.deltaTime, ForceMode.Force);
+            }
         }
+        
 
 
-        // Keyboard
+        /*// Keyboard
         if (Vector3.Distance(transform.position + Vector3.up, gameScript.keyboardPlayer.transform.position) < PullRange && target == 0)
         {
             target = 2;
@@ -93,7 +105,7 @@ public class resourcePickup : MonoBehaviour
 
             //Debug.DrawRay(transform.position, pull * mag );
             rb.AddForce(pullDir * pullForce * Time.deltaTime, ForceMode.Force);
-        }
+        }*/
 
 
     }

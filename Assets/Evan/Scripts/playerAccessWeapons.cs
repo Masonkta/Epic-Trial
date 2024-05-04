@@ -31,7 +31,7 @@ public class playerAccessWeapons : MonoBehaviour
         return club;
     }
 
-    void OnDropItem()
+    public void OnDropItem()
     {
         if (gladius.activeInHierarchy){
             print("DROP Gladius");

@@ -108,6 +108,8 @@ public class playerMovement : MonoBehaviour
     {
         checkIsGrounded();
 
+        hardCodedKeyboardPlayerInput();        
+
         // Moving //
         move();
 
@@ -387,5 +389,39 @@ public class playerMovement : MonoBehaviour
         footstepsSound.pitch = (1.35f - 0.8f) / 10f * Mathf.Clamp(currentVelocity, 0f, sprintSpeed) + 0.8f;
 
 
+    }
+
+    void hardCodedKeyboardPlayerInput()
+    {
+        if (isPlayerOne)
+        {
+            forwardMoveAm = 0;
+            if (Input.GetKey(KeyCode.W))
+                forwardMoveAm = 1;
+            if (Input.GetKey(KeyCode.S))
+                forwardMoveAm = -1;
+
+            sideMoveAm = 0;
+            if (Input.GetKey(KeyCode.A))
+                sideMoveAm = -1;
+            if (Input.GetKey(KeyCode.D))
+                sideMoveAm = 1;
+
+            sprinting = Input.GetKey(KeyCode.LeftShift);
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                OnJump();
+
+            if (Input.GetKeyDown(KeyCode.E))
+                OnShiftLock();
+
+
+            if (Input.GetKeyDown(KeyCode.Q))
+                GetComponent<playerAccessWeapons>().OnDropItem();
+
+            if (Input.GetKeyDown(KeyCode.R))
+                gameScript.possibleRecipes();
+
+        }
     }
 }

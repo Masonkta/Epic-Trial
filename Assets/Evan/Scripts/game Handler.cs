@@ -12,6 +12,7 @@ public class gameHandler : MonoBehaviour
 
     public GameObject keyboardPlayer;
     public float keyboardPlayerHealth;
+
     public GameObject controllerPlayer;
     public float controllerPlayerHealth;
 
@@ -53,16 +54,13 @@ public class gameHandler : MonoBehaviour
         controllerPlayer.SetActive(controllerPlayerHealth >= 0);
 
         if (keyboardPlayerHealth <= 0f && controllerPlayerHealth <= 0f)
-        {
             SceneManager.LoadScene("gameOver");
-        }
     }
 
     //////////////////////////////////////////// INPUT /////////////////////////////////////////////////
 
     void OnToggleCursor()
     {
-        print("TAB");
         if (Cursor.lockState == CursorLockMode.Locked)
             Cursor.lockState = CursorLockMode.None;
         else if (Cursor.lockState == CursorLockMode.None)
@@ -102,6 +100,7 @@ public class gameHandler : MonoBehaviour
         // Check Wooden Club
         if (checkIndividualRecipe(woodClubRecipe))
             print("CAN make Wooden Club");
+
 
     }
 
