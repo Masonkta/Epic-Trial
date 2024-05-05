@@ -42,67 +42,43 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        // Check if collided object is an enemy
+        if (!collision.gameObject.CompareTag("Enemy"))
+            return;
+
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (buff)
+            Damage *= 2;
+
+        // Calculate damage based on weapon type
+        switch (type)
         {
-            if (WeaponType.Gladius == type)
-            {
-                Damage = 5;
+            case WeaponType.Gladius:
+                Damage = 100;
                 piercing = false;
-                if (buff == true)  Damage *= 2;
-                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-                if (piercing == true)
-                {
-                    enemy.EnemyHealth -= Damage;
-                    //Debug.Log("Dealt " + Damage + " damage to the " + enemy.Etype.ToString() + " enemy.");
-                }
-                else
-                {
-                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
-                    enemy.EnemyHealth -= damageDealt;
-                    //Debug.Log("Dealt " + damageDealt + " damage to the " + enemy.Etype.ToString() + " enemy.");
-                }
-
-            }
-
-            if (WeaponType.Spear == type)
-            {
-                Damage = 10;
+                break;
+            case WeaponType.Spear:
+                Damage = 100;
                 piercing = true;
-                if (buff == true)  Damage *= 2;
-                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-                if (piercing == true)
-                {
-                    enemy.EnemyHealth -= Damage;
-                    //Debug.Log("Dealt " + Damage + " damage to the " + enemy.Etype.ToString() + " enemy.");
-                }
-                else
-                {
-                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
-                    enemy.EnemyHealth -= damageDealt;
-                    //Debug.Log("Dealt " + damageDealt + " damage to the " + enemy.Etype.ToString() +  " enemy.");
-
-                }
-            }
-
-            if (WeaponType.Club == type)
-            {
-                Damage = 5;
+                break;
+            case WeaponType.Club:
+                Damage = 100;
                 piercing = false;
-                if (buff == true) Damage *= 2;
-                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-                if (piercing == true)
-                {
-                    enemy.EnemyHealth -= Damage;
-                }
-                else
-                {
-                    int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
-                    enemy.EnemyHealth -= damageDealt;
-                }
+                break;
+        }
 
-            }
+        // Apply damage
+        int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
+        if (piercing)
+        {
+            enemy.EnemyHealth -= Damage;
+        }
+        else
+        {
+            enemy.EnemyHealth -= damageDealt;
         }
     }
+
 
     // Update is called once per frame
     void Update()
