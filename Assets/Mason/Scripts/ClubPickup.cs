@@ -12,9 +12,6 @@ public class ClubPickup : MonoBehaviour
     public GameObject controllerPlayer;
     public playerAccessWeapons controllerWeapons;
 
-    public float pickupTime = 3f;
-    float TimeOfSpawn;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +23,6 @@ public class ClubPickup : MonoBehaviour
 
         controllerPlayer = gameScript.controllerPlayer;
         controllerWeapons = controllerPlayer.GetComponent<playerAccessWeapons>();
-
-
-        TimeOfSpawn = Time.time;
     }
 
 
@@ -41,13 +35,13 @@ public class ClubPickup : MonoBehaviour
 
     void checkKeyboard()
     {
-        if (Time.time - TimeOfSpawn > pickupTime)
+        if (keyboardWeapons.readyToGrab)
         {
             if (Vector3.Distance(transform.position, keyboardPlayer.transform.position) < 4f)
             {
                 if (keyboardWeapons.handOpen()) // Keyboard Dude Not Holding Sword Yet
                 {
-                    print("Player 1 picked up Gladius.");
+                    print("Player 1 picked up Club.");
                     keyboardWeapons.getClub().SetActive(true);
                     Destroy(gameObject); // Destroy Club object on the ground
                 }
@@ -58,13 +52,13 @@ public class ClubPickup : MonoBehaviour
 
     void checkController()
     {
-        if (Time.time - TimeOfSpawn > pickupTime)
+        if (controllerWeapons.readyToGrab)
         {
             if (Vector3.Distance(transform.position, controllerPlayer.transform.position) < 4f)
             {
                 if (controllerWeapons.handOpen()) // Controller Dude Not Holding Weapons Yet
                 {
-                    print("Player 2 picked up Gladius.");
+                    print("Player 2 picked up Club.");
                     controllerWeapons.getClub().SetActive(true);
                     Destroy(gameObject); // Destroy Club object on the ground
                 }

@@ -5,6 +5,9 @@ using UnityEngine;
 public class playerAccessWeapons : MonoBehaviour
 {
     public bool handIsOpen;
+    public bool readyToGrab;
+    
+    float timeOfLastDrop;
 
     public GameObject gladius;
     public GameObject club;
@@ -17,7 +20,7 @@ public class playerAccessWeapons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        timeOfLastDrop = Time.time;
     }
 
     // Update is called once per frame
@@ -25,7 +28,7 @@ public class playerAccessWeapons : MonoBehaviour
     {
         handIsOpen = handOpen();
 
-        
+        readyToGrab = Time.time - timeOfLastDrop > 1f;
     }
 
     public GameObject getGladius()
@@ -62,9 +65,10 @@ public class playerAccessWeapons : MonoBehaviour
             clubPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
 
             club.SetActive(false);
-        }    
-    
-    
+        }
+
+
+        timeOfLastDrop = Time.time;
     }
 
     public bool handOpen()

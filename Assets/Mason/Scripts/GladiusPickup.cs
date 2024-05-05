@@ -12,9 +12,6 @@ public class GladiusPickup : MonoBehaviour
     public GameObject controllerPlayer;
     public playerAccessWeapons controllerWeapons;
 
-    public float pickupTime = 3f;
-    float TimeOfSpawn;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +23,6 @@ public class GladiusPickup : MonoBehaviour
 
         controllerPlayer = gameScript.controllerPlayer;
         controllerWeapons = controllerPlayer.GetComponent<playerAccessWeapons>();
-
-
-        TimeOfSpawn = Time.time;
     }
 
 
@@ -41,7 +35,7 @@ public class GladiusPickup : MonoBehaviour
 
     void checkKeyboard()
     {
-        if (Time.time - TimeOfSpawn > pickupTime)
+        if (keyboardWeapons.readyToGrab)
         {
             if (Vector3.Distance(transform.position, keyboardPlayer.transform.position) < 4f)
             {
@@ -58,7 +52,7 @@ public class GladiusPickup : MonoBehaviour
 
     void checkController()
     {
-        if (Time.time - TimeOfSpawn > pickupTime)
+        if (keyboardWeapons.readyToGrab)
         {
             if (Vector3.Distance(transform.position, controllerPlayer.transform.position) < 4f)
             {
