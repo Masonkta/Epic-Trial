@@ -208,11 +208,406 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!1001 &150803632
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -110.090004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 222.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &150803633 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 150803632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &192911283 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7906504378687200930, guid: 220efd29336529645bd0ff4d954a1dd0,
     type: 3}
   m_PrefabInstance: {fileID: 2086253845784829638}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &212751884
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -110.090004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 218.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &212751885 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 212751884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &213193581
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -121.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 213.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &213193582 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 213193581}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &243852951
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -110.090004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 226.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &243852952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 243852951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &286789911
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -121.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 226.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &286789912 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 286789911}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &291606521
 GameObject:
@@ -455,6 +850,85 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!1001 &344052274
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -115.490005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 213.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &344052275 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 344052274}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &488884817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -601,6 +1075,164 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!1001 &528175358
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -118.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 222.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &528175359 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 528175358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &564544575
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -124.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 222.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &564544576 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 564544575}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &734725169 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
@@ -643,6 +1275,30 @@ Transform:
   - {fileID: 1702884177}
   - {fileID: 1066618698}
   - {fileID: 1120112474}
+  - {fileID: 1349864820}
+  - {fileID: 1138851469}
+  - {fileID: 1606801811}
+  - {fileID: 1121480904}
+  - {fileID: 564544576}
+  - {fileID: 1679758563}
+  - {fileID: 1464424752}
+  - {fileID: 1915889122}
+  - {fileID: 528175359}
+  - {fileID: 1005650583}
+  - {fileID: 2042338485}
+  - {fileID: 1672598195}
+  - {fileID: 213193582}
+  - {fileID: 1170270493}
+  - {fileID: 344052275}
+  - {fileID: 1848654691}
+  - {fileID: 243852952}
+  - {fileID: 286789912}
+  - {fileID: 1308026810}
+  - {fileID: 150803633}
+  - {fileID: 1990013530}
+  - {fileID: 966571470}
+  - {fileID: 1051683883}
+  - {fileID: 212751885}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &929186546
@@ -718,6 +1374,85 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!1001 &966571469
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -121.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 218.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &966571470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 966571469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &984010406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -742,6 +1477,11 @@ PrefabInstance:
       propertyPath: controllerPlayer
       value: 
       objectReference: {fileID: 5925355286164797175}
+    - target: {fileID: 2806972834641961978, guid: 1d3cf142f6a79db43a7c94bfd9b140d8,
+        type: 3}
+      propertyPath: ResourceTransform
+      value: 
+      objectReference: {fileID: 1220180589}
     - target: {fileID: 2806972834641961978, guid: 1d3cf142f6a79db43a7c94bfd9b140d8,
         type: 3}
       propertyPath: keyboardPlayerHealth
@@ -812,6 +1552,164 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d3cf142f6a79db43a7c94bfd9b140d8, type: 3}
+--- !u!1001 &1005650582
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -113
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 222.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1005650583 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1005650582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1051683882
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -115.490005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 218.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1051683883 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1051683882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1066618698 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
@@ -823,6 +1721,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
     type: 3}
   m_PrefabInstance: {fileID: 337767527}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1121480903
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -124.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 218.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1121480904 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1121480903}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1130336725
 GameObject:
@@ -942,6 +1919,85 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &1138851468
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -118.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 213.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1138851469 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1138851468}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1166332166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,6 +2103,85 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166332166}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1170270492
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -110.090004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 213.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1170270493 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1170270492}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1220180588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,6 +2223,243 @@ Transform:
   - {fileID: 334180737}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1308026809
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -115.490005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 222.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1308026810 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1308026809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1349864819
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -124.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 213.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1349864820 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1349864819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1464424751
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -118.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 226.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1464424752 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1464424751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1475183251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1458,6 +2830,85 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573540160}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1606801810
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -113
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 213.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1606801811 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1606801810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1624158057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
@@ -1569,6 +3020,164 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670695490}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1672598194
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -118.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 218.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1672598195 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1672598194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1679758562
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -124.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 226.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1679758563 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1679758562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1694239731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,6 +3505,322 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806894717}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1848654690
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -115.490005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 226.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1848654691 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1848654690}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1915889121
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -113
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 226.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1915889122 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1915889121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1990013529
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -121.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 222.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &1990013530 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1990013529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2042338484
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872920607}
+    m_Modifications:
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -113
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 87.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 218.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sbenemy EYES (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1475183255}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
+--- !u!4 &2042338485 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2042338484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2087516771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2364,18 +4289,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 625945855098637197, guid: 220efd29336529645bd0ff4d954a1dd0,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 625945855098637197, guid: 220efd29336529645bd0ff4d954a1dd0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 625945855098637197, guid: 220efd29336529645bd0ff4d954a1dd0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 625945855098637197, guid: 220efd29336529645bd0ff4d954a1dd0,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -0.0000024804
       objectReference: {fileID: 0}
     - target: {fileID: 625945855098637197, guid: 220efd29336529645bd0ff4d954a1dd0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.10165
       objectReference: {fileID: 0}
     - target: {fileID: 625945855098637197, guid: 220efd29336529645bd0ff4d954a1dd0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0000012678
       objectReference: {fileID: 0}
     - target: {fileID: 625945855098637197, guid: 220efd29336529645bd0ff4d954a1dd0,
         type: 3}
@@ -2411,6 +4351,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 625945855098637197, guid: 220efd29336529645bd0ff4d954a1dd0,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5523608877995946808, guid: 220efd29336529645bd0ff4d954a1dd0,
         type: 3}

@@ -357,6 +357,12 @@ public class playerMovement : MonoBehaviour
 
         camHeight = initialCamHeight + speedHeight;
         camDistance = initialCamDistance + speedDepth;
+
+        if (shiftLock)
+        {
+            camHeight = 5f;
+            camDistance = 7f;
+        }
         
         // Position the camera around the player
         cameraTransform.localPosition = new Vector3(Mathf.Sin(cameraAngle * Mathf.PI / 180f) * actualCamDistance,   actualCamHeight,   Mathf.Cos(cameraAngle * Mathf.PI / 180f) * actualCamDistance);
@@ -376,7 +382,7 @@ public class playerMovement : MonoBehaviour
         actualCamDistance += (camDistance - actualCamDistance) / 75f;
 
         // Finally Look at the player
-        cameraTransform.LookAt(transform.position);
+        cameraTransform.LookAt(transform.position + cameraTransform.forward + Vector3.up);
     }
 
 
