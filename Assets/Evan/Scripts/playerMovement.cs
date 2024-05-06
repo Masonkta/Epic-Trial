@@ -171,7 +171,8 @@ public class playerMovement : MonoBehaviour
 
     void OnShiftLock()
     {
-        shiftLock = !shiftLock;
+        if (sprinting == false)
+            shiftLock = !shiftLock;
     }
 
     void OnCheckRecipes()
@@ -246,7 +247,8 @@ public class playerMovement : MonoBehaviour
 
     void OnSprint()
     {
-        sprinting = !sprinting;
+        if (shiftLock == false)
+            sprinting = !sprinting;
     }
 
     void OnDodge()

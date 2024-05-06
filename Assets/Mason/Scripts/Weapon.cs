@@ -50,7 +50,6 @@ public class Weapon : MonoBehaviour
                 return;
 
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            Debug.Log("Its literally a rgbody collider");
             if (buff)
                 Damage *= 2;
 
@@ -58,15 +57,15 @@ public class Weapon : MonoBehaviour
             switch (type)
             {
                 case WeaponType.Gladius:
-                    Damage = 100;
+                    Damage = 5;
                     piercing = false;
                     break;
                 case WeaponType.Spear:
-                    Damage = 100;
+                    Damage = 10;
                     piercing = true;
                     break;
                 case WeaponType.Club:
-                    Damage = 100;
+                    Damage = 3;
                     piercing = false;
                     break;
             }

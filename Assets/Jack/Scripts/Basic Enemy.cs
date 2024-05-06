@@ -20,7 +20,7 @@ public class BasicEnemy : MonoBehaviour
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
-    public float attackCoolDown = 2.0f;
+    public float attackCoolDown = 1.0f;
 
     [Header("Animation")]
     public Animator EnemyAnimator;
@@ -93,7 +93,6 @@ public class BasicEnemy : MonoBehaviour
     {
         if (playerInAttackRange && CanAtt)
         {
-            Debug.Log("We in here");
             Attacking();
         }
     }
