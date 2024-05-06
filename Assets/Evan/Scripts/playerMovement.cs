@@ -421,8 +421,8 @@ public class playerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
                 OnJump();
 
-            if (Input.GetKeyDown(KeyCode.E))
-                shiftLock = !shiftLock;
+            //if (Input.GetKeyDown(KeyCode.E))
+                //shiftLock = !shiftLock;
 
             if (Input.GetKeyDown(KeyCode.Q))
                 GetComponent<playerAccessWeapons>().OnDropItem();

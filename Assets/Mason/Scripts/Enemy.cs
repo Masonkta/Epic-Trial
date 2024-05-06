@@ -94,12 +94,14 @@ public class Enemy : MonoBehaviour
                 if (EnemyType.Weak == Etype)
                 {
                     EnemyDamage = 2;
+                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
                     gameScript.keyboardPlayerHealth -= EnemyDamage;
                 }
 
                 if (EnemyType.Medium == Etype)
                 {
                     EnemyDamage = 5;
+                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
                     gameScript.keyboardPlayerHealth -= EnemyDamage;
                 }
 
