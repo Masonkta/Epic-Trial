@@ -20,13 +20,13 @@ public class BasicEnemy : MonoBehaviour
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
+    public float attackCoolDown = 2.0f;
 
     [Header("Animation")]
     public Animator EnemyAnimator;
 
 
     // Attack placeholder
-    private bool PlayerInRange = false;
     private bool CanAtt = true;
 
 
@@ -89,33 +89,30 @@ public class BasicEnemy : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            PlayerInRange = true;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player")) 
-        {
-            PlayerInRange = false;
-        }
-    }
-
     private void EngagingPlayer()
     {
-        if (playerInAttackRange)
+        if (playerInAttackRange && CanAtt)
         {
-            EnemyAnimator.SetTrigger("ATTAAACK");
-        }
-        else
-        {
-            EnemyAnimator.SetTrigger("STOOOP");
+            Debug.Log("We in here");
+            Attacking();
         }
     }
+
+    public void Attacking()
+    {
+        CanAtt = false;
+        EnemyAnimator.SetTrigger("ATTAAACK");
+        StartCoroutine(ResetAtt());
+    }
+
+    IEnumerator ResetAtt()
+    {
+        yield return new WaitForSeconds(attackCoolDown);
+        Chase();
+        EnemyAnimator.SetTrigger("STOOOP");
+        CanAtt = true;
+    }
+
     void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerArea);
@@ -131,8 +128,11 @@ public class BasicEnemy : MonoBehaviour
         if (playerInSightRange)
         {
             enemyEyes.SetActive(true);
-            EnemyAnimator.SetTrigger("RUUUN");
-            Chase();
+            if (CanAtt)
+            {
+                EnemyAnimator.SetTrigger("RUUUN");
+                Chase();
+            }
             Debug.DrawLine(transform.position, agent.destination, Color.red);
         }
     }
