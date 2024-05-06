@@ -45,6 +45,9 @@ public class Enemy : MonoBehaviour
     float timeBetweenAttacks = 1f;
     bool alreadyAttacked = false;
 
+    public float dashRange = 5f; // The maximum distance at which the enemy will dash towards the player
+    public float dashSpeed = 5f; // The speed at which the enemy dashes towards the player
+
 
 
     // Start is called before the first frame update
@@ -61,7 +64,7 @@ public class Enemy : MonoBehaviour
         if (EnemyType.Medium == Etype)
         {
             EnemyHealth = 20;
-            EnemyDefence = 5;
+            EnemyDefence = 0;
         }
         if (EnemyType.Heavy == Etype)
         {
@@ -95,15 +98,14 @@ public class Enemy : MonoBehaviour
                     gameScript.keyboardPlayerHealth -= EnemyDamage;
                 }
 
-                /*if (EnemyType.Medium == Etype)
+                if (EnemyType.Medium == Etype)
                 {
-                    EnemyDamage = 10;
+                    EnemyDamage = 5;
                     PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                    player.Player1Health -= Time.deltaTime * 15f;
-                    Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
+                    gameScript.keyboardPlayerHealth -= EnemyDamage;
                 }
 
-                if (EnemyType.Heavy == Etype)
+                /*if (EnemyType.Heavy == Etype)
                 {
                     EnemyDamage = 20;
                     PlayerB player = collision.gameObject.GetComponent<PlayerB>();
@@ -134,15 +136,13 @@ public class Enemy : MonoBehaviour
                     gameScript.controllerPlayerHealth -= EnemyDamage;
                 }
 
-                /*
+                
                 if (EnemyType.Medium == Etype)
                 {
-                    EnemyDamage = 10;
-                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                    player.Player2Health -= Time.deltaTime * 5f;
-                    Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
+                    EnemyDamage = 5;
+                    gameScript.controllerPlayerHealth -= EnemyDamage;
                 }
-
+                /*
                 if (EnemyType.Heavy == Etype)
                 {
                     EnemyDamage = 20;
@@ -212,6 +212,20 @@ public class Enemy : MonoBehaviour
                 die();
             }
         }
+        // Calculate the distance between the enemy and the player
+        float distanceToKeyPlayer = Vector3.Distance(transform.position, gameScript.keyboardPlayer.transform.position);
+        float distanceToControllerPlayer = Vector3.Distance(transform.position, gameScript.controllerPlayer.transform.position);
+  
+        if (Etype == EnemyType.Medium && distanceToKeyPlayer <= dashRange)
+        {
+            
+            DashTowardsKeyPlayer();
+        }
+        if (Etype == EnemyType.Medium && distanceToControllerPlayer <= dashRange)
+        {
+            DashTowardsControllerPlayer();
+        }
+
         // Check if time frame has elapsed and reset counters
         if (timerStarted)
         {
@@ -326,6 +340,23 @@ public class Enemy : MonoBehaviour
             currentMetalScrap.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentMetalScrap.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
         }
+    }
+    void DashTowardsKeyPlayer()
+    {
+        // Calculate the direction from the enemy to the keyboard player
+        Vector3 direction = (gameScript.keyboardPlayer.transform.position - transform.position).normalized;
+
+
+        transform.position += direction * dashSpeed;
+    }
+
+    void DashTowardsControllerPlayer()
+    {
+        // Calculate the direction from the enemy to the controller player
+        Vector3 direction = (gameScript.controllerPlayer.transform.position - transform.position).normalized;
+
+        // Move the enemy towards the controller player with increased speed for a short duration
+        transform.position += direction * dashSpeed;
     }
 
 }
