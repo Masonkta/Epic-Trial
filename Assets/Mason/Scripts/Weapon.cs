@@ -18,6 +18,7 @@ public class Weapon : MonoBehaviour
     private bool piercing;
     public int Damage;
     public WeaponType type;
+    public SwordTest Att;
 
 
     // Start is called before the first frame update
@@ -42,40 +43,44 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        // Check if collided object is an enemy
-        if (!collision.gameObject.CompareTag("Enemy"))
-            return;
-
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-        if (buff)
-            Damage *= 2;
-
-        // Calculate damage based on weapon type
-        switch (type)
+        if (Att.canAtt == false)
         {
-            case WeaponType.Gladius:
-                Damage = 100;
-                piercing = false;
-                break;
-            case WeaponType.Spear:
-                Damage = 100;
-                piercing = true;
-                break;
-            case WeaponType.Club:
-                Damage = 100;
-                piercing = false;
-                break;
-        }
+            // Check if collided object is an enemy
+            if (!collision.gameObject.CompareTag("Enemy"))
+                return;
 
-        // Apply damage
-        int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
-        if (piercing)
-        {
-            enemy.EnemyHealth -= Damage;
-        }
-        else
-        {
-            enemy.EnemyHealth -= damageDealt;
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            Debug.Log("Its literally a rgbody collider");
+            if (buff)
+                Damage *= 2;
+
+            // Calculate damage based on weapon type
+            switch (type)
+            {
+                case WeaponType.Gladius:
+                    Damage = 100;
+                    piercing = false;
+                    break;
+                case WeaponType.Spear:
+                    Damage = 100;
+                    piercing = true;
+                    break;
+                case WeaponType.Club:
+                    Damage = 100;
+                    piercing = false;
+                    break;
+            }
+
+            // Apply damage
+            int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
+            if (piercing)
+            {
+                enemy.EnemyHealth -= Damage;
+            }
+            else
+            {
+                enemy.EnemyHealth -= damageDealt;
+            }
         }
     }
 
