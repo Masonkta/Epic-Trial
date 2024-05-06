@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
     private bool buff;
     private bool tired;
     private bool piercing;
+    public bool wasHit = false;
     public int Damage;
     public WeaponType type;
     public SwordTest Att;
@@ -65,7 +66,7 @@ public class Weapon : MonoBehaviour
                     piercing = true;
                     break;
                 case WeaponType.Club:
-                    Damage = 3;
+                    Damage = 7;
                     piercing = false;
                     break;
             }
@@ -74,16 +75,20 @@ public class Weapon : MonoBehaviour
             int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
             if (piercing)
             {
+                wasHit = true;
                 enemy.EnemyHealth -= Damage;
+                wasHit = false;
             }
             else
             {
+                wasHit = true;
                 enemy.EnemyHealth -= damageDealt;
+                wasHit = false;
             }
         }
     }
 
-
+    
     // Update is called once per frame
     void Update()
     {

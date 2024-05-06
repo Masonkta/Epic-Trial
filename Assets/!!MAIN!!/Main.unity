@@ -129,6 +129,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 929186546}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &65885685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7177928499052325451, guid: d423521d4ad22ca4cace8942b800d640,
+    type: 3}
+  m_PrefabInstance: {fileID: 1197716430725749332}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &101160052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2270,6 +2276,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player C
       objectReference: {fileID: 0}
+    - target: {fileID: 4020499147880236646, guid: d423521d4ad22ca4cace8942b800d640,
+        type: 3}
+      propertyPath: gladiusPickup
+      value: 
+      objectReference: {fileID: 65885685}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2513,6 +2524,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player K
       objectReference: {fileID: 0}
+    - target: {fileID: 4099381413978573254, guid: 4a97569553af86c498259385ce102c95,
+        type: 3}
+      propertyPath: gladiusPickup
+      value: 
+      objectReference: {fileID: 6745610128130368910}
     - target: {fileID: 4815964386556770415, guid: 4a97569553af86c498259385ce102c95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2656,6 +2672,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 859bf4d8f6fac5a448dcc5ab8c90fe84, type: 3}
+--- !u!1 &6745610128130368910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6397210515237429279, guid: 4a97569553af86c498259385ce102c95,
+    type: 3}
+  m_PrefabInstance: {fileID: 6110889343096982305}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7087189115275652101 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3195865938118668899, guid: 4a97569553af86c498259385ce102c95,
