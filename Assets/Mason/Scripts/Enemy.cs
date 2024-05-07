@@ -131,7 +131,6 @@ public class Enemy : MonoBehaviour
                     EnemyDamage = 2;
                     gameScript.controllerPlayerHealth -= EnemyDamage;
                 }
-
                 
                 if (EnemyType.Medium == Etype)
                 {
@@ -210,8 +209,7 @@ public class Enemy : MonoBehaviour
         float distanceToControllerPlayer = Vector3.Distance(transform.position, gameScript.controllerPlayer.transform.position);
   
         if (Etype == EnemyType.Fast && distanceToKeyPlayer <= dashRange)
-        {
-            
+        {            
             DashTowardsKeyPlayer();
         }
         if (Etype == EnemyType.Fast && distanceToControllerPlayer <= dashRange)

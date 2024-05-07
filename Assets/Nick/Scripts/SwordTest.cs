@@ -25,11 +25,6 @@ public class SwordTest : MonoBehaviour
         Wep.enabled = false;
     }
 
-    void Update()
-    {
-
-    }
-
     void OnAttack()
     {
         if (canAtt)
