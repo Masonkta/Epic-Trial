@@ -77,12 +77,14 @@ public class Weapon : MonoBehaviour
             {
                 wasHit = true;
                 enemy.EnemyHealth -= Damage;
+                Debug.Log("HIT");
                 wasHit = false;
             }
             else
             {
                 wasHit = true;
                 enemy.EnemyHealth -= damageDealt;
+                Debug.Log("HIT");
                 wasHit = false;
             }
         }

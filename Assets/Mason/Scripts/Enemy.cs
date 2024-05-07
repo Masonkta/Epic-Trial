@@ -10,6 +10,7 @@ public enum EnemyType
 {
     Weak,
     Medium,
+    Fast,
     Heavy,
     Boss,
 }
@@ -69,12 +70,12 @@ public class Enemy : MonoBehaviour
         if (EnemyType.Heavy == Etype)
         {
             EnemyHealth = 30;
-            EnemyDefence = 10;
+            EnemyDefence = 0;
         }
         if (EnemyType.Boss == Etype)
         {
             EnemyHealth = 100;
-            EnemyDefence = 20;
+            EnemyDefence = 0;
         }
 
         goldPrefab = gameScript.goldPrefab;
@@ -103,21 +104,17 @@ public class Enemy : MonoBehaviour
                     gameScript.keyboardPlayerHealth -= EnemyDamage;
                 }
 
-                /*if (EnemyType.Heavy == Etype)
+                if (EnemyType.Heavy == Etype)
                 {
-                    EnemyDamage = 20;
-                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                    player.Player1Health -= Time.deltaTime * 20f;
-                    Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
+                    EnemyDamage = 10;
+                    gameScript.keyboardPlayerHealth -= EnemyDamage;
                 }
 
                 if (EnemyType.Boss == Etype)
                 {
-                    EnemyDamage = 30;
-                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                    player.Player1Health -= Time.deltaTime * 40f;
-                    Debug.Log("Player1 took " + EnemyDamage + " damage and only have " + player.Player1Health + " left.");
-                }*/
+                    EnemyDamage = 20;
+                    gameScript.keyboardPlayerHealth -= EnemyDamage;
+                }
 
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -140,22 +137,18 @@ public class Enemy : MonoBehaviour
                     EnemyDamage = 5;
                     gameScript.controllerPlayerHealth -= EnemyDamage;
                 }
-                /*
+                
                 if (EnemyType.Heavy == Etype)
                 {
-                    EnemyDamage = 20;
-                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                    player.Player1Health -= Time.deltaTime * 10f;
-                    Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
+                    EnemyDamage = 7;
+                    gameScript.controllerPlayerHealth -= EnemyDamage;
                 }
 
                 if (EnemyType.Boss == Etype)
                 {
-                    EnemyDamage = 30;
-                    PlayerB player = collision.gameObject.GetComponent<PlayerB>();
-                    player.Player2Health -= Time.deltaTime * 20f;
-                    Debug.Log("Player2 took " + EnemyDamage + " damage and only have " + player.Player2Health + " left.");
-                }*/
+                    EnemyDamage = 10;
+                    gameScript.controllerPlayerHealth -= EnemyDamage;
+                }
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
             }
@@ -214,12 +207,12 @@ public class Enemy : MonoBehaviour
         float distanceToKeyPlayer = Vector3.Distance(transform.position, gameScript.keyboardPlayer.transform.position);
         float distanceToControllerPlayer = Vector3.Distance(transform.position, gameScript.controllerPlayer.transform.position);
   
-        if (Etype == EnemyType.Medium && distanceToKeyPlayer <= dashRange)
+        if (Etype == EnemyType.Fast && distanceToKeyPlayer <= dashRange)
         {
             
             DashTowardsKeyPlayer();
         }
-        if (Etype == EnemyType.Medium && distanceToControllerPlayer <= dashRange)
+        if (Etype == EnemyType.Fast && distanceToControllerPlayer <= dashRange)
         {
             DashTowardsControllerPlayer();
         }
