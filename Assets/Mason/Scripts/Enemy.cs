@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
     public int EnemyDefence;
     public int EnemyDamage;
     public EnemyType Etype;
+    public ParticleSystem deathEffect;
 
 
 
@@ -200,6 +201,7 @@ public class Enemy : MonoBehaviour
                 hs.score += scoreToAdd;
 
 
+                Instantiate(deathEffect, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
                 die();
             }
         }
@@ -252,7 +254,6 @@ public class Enemy : MonoBehaviour
     void die()
     {
         dropItems();
-
         Destroy(gameObject);
     }
 
