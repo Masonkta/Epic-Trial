@@ -28,7 +28,7 @@ public class playerAccessWeapons : MonoBehaviour
     {
         handIsOpen = handOpen();
 
-        readyToGrab = Time.time - timeOfLastDrop > 1f;
+        readyToGrab = Time.time > timeOfLastDrop + 0.6f;
     }
 
     public GameObject getGladius()
@@ -43,10 +43,11 @@ public class playerAccessWeapons : MonoBehaviour
 
     public void OnDropItem()
     {
+        print("DROP");
+        readyToGrab = false;
+
         if (gladius.activeInHierarchy)
         {
-            print("DROP Gladius");
-
             GameObject gladiusPickupComingFromDrop = Instantiate(gladiusPickup, gladius.transform.position, GetComponent<playerMovement>().cameraTransform.rotation);
             gladiusPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMovement>().getLookDirection() * 8f;
             gladiusPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
@@ -58,8 +59,6 @@ public class playerAccessWeapons : MonoBehaviour
 
         if (club.activeInHierarchy)
         {
-            print("DROP Club");
-
             GameObject clubPickupComingFromDrop = Instantiate(clubPickup, gladius.transform.position, GetComponent<playerMovement>().cameraTransform.rotation);
             clubPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMovement>().getLookDirection() * 8f;
             clubPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;

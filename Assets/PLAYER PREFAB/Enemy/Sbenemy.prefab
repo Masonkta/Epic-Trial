@@ -18,6 +18,16 @@ PrefabInstance:
       propertyPath: m_Acceleration
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2290945992847071514, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 2290945992847071514, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 4159161372592131738, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -168,6 +178,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8007841460586031092, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00017
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007841460586031092, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00409
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007841460586031092, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00702
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5532366489668354178, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
     - {fileID: 7847183712615666677, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
@@ -302,7 +327,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 5
   m_Drag: 3
-  m_AngularDrag: 0.05
+  m_AngularDrag: 8
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

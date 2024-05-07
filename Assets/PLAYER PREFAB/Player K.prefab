@@ -2951,8 +2951,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d9427a33979ad438de0f4578c46936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasHit: 0
   Damage: 5
   type: 0
+  Att: {fileID: 0}
 --- !u!114 &6660429257822246435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3190,7 +3192,7 @@ MonoBehaviour:
   camHeight: 2.5
   camDistance: 6
   minHeightOverGround: 2.5
-  cameraAngle: 0
+  cameraAngle: 180
   footstepsSound: {fileID: 2079760314858436804}
   jumpSound: {fileID: 8732455779580477063}
   jumpSoundEffect: {fileID: 8300000, guid: 8c7ed4a1145727e47b1d87078a365f77, type: 3}
@@ -3624,8 +3626,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d9427a33979ad438de0f4578c46936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasHit: 0
   Damage: 5
   type: 0
+  Att: {fileID: 0}
 --- !u!114 &8531835486098457531
 MonoBehaviour:
   m_ObjectHideFlags: 0

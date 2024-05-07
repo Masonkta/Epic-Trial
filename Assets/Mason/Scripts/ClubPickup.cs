@@ -41,7 +41,6 @@ public class ClubPickup : MonoBehaviour
             {
                 if (keyboardWeapons.handOpen()) // Keyboard Dude Not Holding Sword Yet
                 {
-                    print("Player 1 picked up Club.");
                     keyboardWeapons.getClub().SetActive(true);
                     Destroy(gameObject); // Destroy Club object on the ground
                 }
@@ -58,7 +57,6 @@ public class ClubPickup : MonoBehaviour
             {
                 if (controllerWeapons.handOpen()) // Controller Dude Not Holding Weapons Yet
                 {
-                    print("Player 2 picked up Club.");
                     controllerWeapons.getClub().SetActive(true);
                     Destroy(gameObject); // Destroy Club object on the ground
                 }

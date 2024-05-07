@@ -64,18 +64,18 @@ public class Enemy : MonoBehaviour
         }
         if (EnemyType.Medium == Etype)
         {
-            EnemyHealth = 20;
+            EnemyHealth = 15;
             EnemyDefence = 0;
         }
         if (EnemyType.Heavy == Etype)
         {
-            EnemyHealth = 30;
+            EnemyHealth = 50;
             EnemyDefence = 0;
         }
         if (EnemyType.Boss == Etype)
         {
-            EnemyHealth = 100;
-            EnemyDefence = 0;
+            EnemyHealth = 500;
+            EnemyDefence = 2;
         }
 
         goldPrefab = gameScript.goldPrefab;

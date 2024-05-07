@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1031664723366638136}
   - component: {fileID: 572207103599896896}
   - component: {fileID: 3809499516925410372}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: _Cloth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,5 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameScript: {fileID: 0}
   resourceType: Cloth
-  pickupDist: 3.2
-  pickupTimer: 1
+  players: []

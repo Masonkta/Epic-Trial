@@ -79,12 +79,12 @@
                 },
                 {
                     "name": "DropItem",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "c2d11cde-a5aa-4864-b0ab-ad85d0679a51",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -184,6 +184,54 @@
                     "processors": "",
                     "groups": "",
                     "action": "DropItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Craft",
+            "id": "3fce51a4-b0aa-47b6-897e-ad52a489cc12",
+            "actions": [
+                {
+                    "name": "CraftBandages",
+                    "type": "Button",
+                    "id": "07254118-297e-468d-93ce-f5ea2eead6eb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CraftClub",
+                    "type": "Button",
+                    "id": "678f752a-7443-40c0-bc5d-24b5fa973530",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7bfac60b-426d-4b1c-9415-ecb992077c2e",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CraftBandages",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a037e9dc-de05-497e-878c-2c98ee54492f",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CraftClub",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

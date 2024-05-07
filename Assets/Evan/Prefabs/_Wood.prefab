@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4927192551852129096}
   - component: {fileID: 2380811276825635241}
   - component: {fileID: 4859448795151600435}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: _Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameScript: {fileID: 0}
   resourceType: Wood
+  players: []
 --- !u!54 &2380811276825635241
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -175,11 +175,6 @@ public class playerMovement : MonoBehaviour
             shiftLock = !shiftLock;
     }
 
-    void OnCheckRecipes()
-    {
-        gameScript.possibleRecipes();
-    }
-
 
     //////// Turning ///////////
     void OnTurn(InputValue value)
@@ -422,12 +417,12 @@ public class playerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
                 sideMoveAm = 1;
 
-            sprinting = Input.GetKey(KeyCode.LeftShift);
+            sprinting = Input.GetKey(KeyCode.LeftShift) && !shiftLock;
 
             if (Input.GetKeyDown(KeyCode.Space))
                 OnJump();
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !sprinting)
                 shiftLock = !shiftLock;
 
             if (Input.GetKeyDown(KeyCode.Q))

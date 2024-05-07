@@ -21,6 +21,9 @@ public class gameHandler : MonoBehaviour
     public GameObject clothPrefab;
     public GameObject woodPrefab;
     public GameObject ironPrefab;
+    public GameObject bandagesPrefab;
+    public GameObject gladiusPickup;
+    public GameObject clubPickup;
 
     [Header("Resources")]
     public Transform ResourceTransform;
@@ -104,9 +107,9 @@ public class gameHandler : MonoBehaviour
 
     }
 
-    bool checkIndividualRecipe(Vector3 recipe)
+    public bool checkIndividualRecipe(Vector3 recipe)
     {
-        return (clothPieces > recipe[0] && woodPieces > recipe[1] && ironPieces > recipe[2]);
+        return (clothPieces >= recipe[0] && woodPieces >= recipe[1] && ironPieces >= recipe[2]);
     }
 
 

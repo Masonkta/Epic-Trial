@@ -385,8 +385,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d9427a33979ad438de0f4578c46936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasHit: 0
   Damage: 5
   type: 0
+  Att: {fileID: 0}
 --- !u!54 &6950846414493176111
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -431,7 +433,6 @@ MonoBehaviour:
   keyboardWeapons: {fileID: 0}
   controllerPlayer: {fileID: 0}
   controllerWeapons: {fileID: 0}
-  pickupTime: 0.8
 --- !u!65 &5761972586933695474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -451,8 +452,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 3.9355102, z: 3.6726296}
-  m_Center: {x: 0, y: 2.3878398, z: -0.10953531}
+  m_Size: {x: 35.716034, y: 3.9355106, z: 3.6726296}
+  m_Center: {x: -1.0499817, y: 2.3878398, z: -0.10953535}
 --- !u!1 &7170845720672918480
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,7 +41,6 @@ public class GladiusPickup : MonoBehaviour
             {
                 if (keyboardWeapons.handOpen()) // Keyboard Dude Not Holding Sword Yet
                 {
-                    print("Player 1 picked up Gladius.");
                     keyboardWeapons.getGladius().SetActive(true);
                     Destroy(gameObject); // Destroy Gladius object on the ground
                 }
@@ -52,13 +51,12 @@ public class GladiusPickup : MonoBehaviour
 
     void checkController()
     {
-        if (keyboardWeapons.readyToGrab)
+        if (controllerWeapons.readyToGrab)
         {
             if (Vector3.Distance(transform.position, controllerPlayer.transform.position) < 4f)
             {
                 if (controllerWeapons.handOpen()) // Controller Dude Not Holding Weapons Yet
                 {
-                    print("Player 2 picked up Gladius.");
                     controllerWeapons.getGladius().SetActive(true);
                     Destroy(gameObject); // Destroy Gladius object on the ground
                 }

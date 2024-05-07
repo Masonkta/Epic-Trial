@@ -650,8 +650,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d9427a33979ad438de0f4578c46936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasHit: 0
   Damage: 5
   type: 0
+  Att: {fileID: 0}
 --- !u!114 &5552951793554821346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,8 +728,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d9427a33979ad438de0f4578c46936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasHit: 0
   Damage: 5
   type: 0
+  Att: {fileID: 0}
 --- !u!65 &8234155972779240910
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2642,6 +2646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerOne: 0
+  hardCodeKeyboard: 0
   player: {fileID: 2579658673027936252}
   forwardTransform: {fileID: 6704373011018308775}
   cameraTransform: {fileID: 2252511076879987400}
@@ -2662,7 +2667,7 @@ MonoBehaviour:
   camHeight: 2.5
   camDistance: 6
   minHeightOverGround: 2.5
-  cameraAngle: 0
+  cameraAngle: 180
   footstepsSound: {fileID: 7381269645491541273}
   jumpSound: {fileID: 542997980567476471}
   jumpSoundEffect: {fileID: 8300000, guid: 8c7ed4a1145727e47b1d87078a365f77, type: 3}
@@ -2681,8 +2686,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handIsOpen: 0
+  readyToGrab: 0
   gladius: {fileID: 2278122393407324854}
   club: {fileID: 2081951952699736847}
+  gladiusPickup: {fileID: 0}
+  clubPickup: {fileID: 0}
 --- !u!1 &6118112404806550536
 GameObject:
   m_ObjectHideFlags: 0
