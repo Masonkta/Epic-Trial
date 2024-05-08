@@ -1788,6 +1788,7 @@ MonoBehaviour:
   swingSounds: {fileID: 9155533988884873646}
   swing1: {fileID: 8300000, guid: 21b853f88c4d6d944bffd96d8bb5b04a, type: 3}
   swing2: {fileID: 8300000, guid: 7d6d4b6001995564ebcdc979f0e494d7, type: 3}
+  wpnScrpt: {fileID: 5568561547820016929}
 --- !u!1 &4185395469228067869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2442,6 +2443,7 @@ MonoBehaviour:
   swingSounds: {fileID: 9155533988884873646}
   swing1: {fileID: 8300000, guid: 21b853f88c4d6d944bffd96d8bb5b04a, type: 3}
   swing2: {fileID: 8300000, guid: 7d6d4b6001995564ebcdc979f0e494d7, type: 3}
+  wpnScrpt: {fileID: 5568561547820016929}
 --- !u!1 &5346306621156877506
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,6 +3661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handIsOpen: 0
   readyToGrab: 0
+  swinging: 0
   gladius: {fileID: 5177732467782282927}
   club: {fileID: 4051915702222539956}
   gladiusPickup: {fileID: 7165563976576842586, guid: d224b73dfb272e14c85ad598e276b017,

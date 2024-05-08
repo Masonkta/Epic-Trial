@@ -2954,7 +2954,7 @@ MonoBehaviour:
   wasHit: 0
   Damage: 5
   type: 0
-  Att: {fileID: 0}
+  Att: {fileID: 6660429257822246435}
 --- !u!114 &6660429257822246435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2976,6 +2976,7 @@ MonoBehaviour:
   swingSounds: {fileID: 5972730892115953168}
   swing1: {fileID: 8300000, guid: 21b853f88c4d6d944bffd96d8bb5b04a, type: 3}
   swing2: {fileID: 8300000, guid: 7d6d4b6001995564ebcdc979f0e494d7, type: 3}
+  wpnScrpt: {fileID: 6422631160386219609}
 --- !u!1 &6996866569004116483
 GameObject:
   m_ObjectHideFlags: 0
@@ -3213,10 +3214,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handIsOpen: 0
   readyToGrab: 0
+  swinging: 0
   gladius: {fileID: 6745610127966381481}
   club: {fileID: 8134351395346177363}
-  gladiusPickup: {fileID: 0}
-  clubPickup: {fileID: 0}
+  gladiusPickup: {fileID: 7165563976576842586, guid: d224b73dfb272e14c85ad598e276b017,
+    type: 3}
+  clubPickup: {fileID: 4768297867760235099, guid: ee5e4b24f6537144eae186325669f1f7,
+    type: 3}
 --- !u!96 &6631485435816480137
 TrailRenderer:
   serializedVersion: 3
@@ -3743,7 +3747,7 @@ MonoBehaviour:
   wasHit: 0
   Damage: 5
   type: 0
-  Att: {fileID: 0}
+  Att: {fileID: 8531835486098457531}
 --- !u!114 &8531835486098457531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3765,6 +3769,7 @@ MonoBehaviour:
   swingSounds: {fileID: 5972730892115953168}
   swing1: {fileID: 8300000, guid: 21b853f88c4d6d944bffd96d8bb5b04a, type: 3}
   swing2: {fileID: 8300000, guid: 7d6d4b6001995564ebcdc979f0e494d7, type: 3}
+  wpnScrpt: {fileID: 6422631160386219609}
 --- !u!1 &8137796084088735187
 GameObject:
   m_ObjectHideFlags: 0
