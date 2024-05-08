@@ -3200,6 +3200,7 @@ MonoBehaviour:
   jumpSoundEffect: {fileID: 8300000, guid: 8c7ed4a1145727e47b1d87078a365f77, type: 3}
   landingOnGrass: {fileID: 641713811378559954}
   landingOnGrassSound: {fileID: 8300000, guid: fdcaecf97c532254b8ad9a600b5245ca, type: 3}
+  trail: {fileID: 6631485435816480137}
 --- !u!114 &6422631160386219609
 MonoBehaviour:
   m_ObjectHideFlags: 0

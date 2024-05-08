@@ -94,6 +94,9 @@ public class playerMovement : MonoBehaviour
     Animator playerAnimator;
 
 
+    [Header("Trails")]
+    public TrailRenderer trail;
+
 
     void Start()
     {
@@ -124,6 +127,8 @@ public class playerMovement : MonoBehaviour
         handleAudio();
 
         getLookDirection();
+
+        trail.enabled = isDodging;
     }
 
 
