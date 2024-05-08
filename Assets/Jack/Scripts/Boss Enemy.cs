@@ -8,6 +8,8 @@ public class BossEnemy : MonoBehaviour
     gameHandler gameScript;
     public NavMeshAgent agent;
     public GameObject enemyEyes;
+    public GameObject healthbar;
+    public GameObject healthbar1;
 
     GameObject playerKeyboard;
 
@@ -35,13 +37,23 @@ public class BossEnemy : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    public AudioSource audioSource;
+    public AudioClip audioClipStart;
+    public AudioClip audioClipImpact;
+
+    private bool playedAudio = false;
+
     private void Awake()
     {
+        audioSource.clip = audioClipStart;
+        audioSource.Play();
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         playerKeyboard = gameScript.keyboardPlayer;
         playerController = gameScript.controllerPlayer;
         agent = GetComponent<NavMeshAgent>();
         agent.enabled = false;
+        healthbar.SetActive(false);
+        healthbar1.SetActive(false);
     }
 
     private void Patroling()
@@ -138,6 +150,14 @@ public class BossEnemy : MonoBehaviour
         if (transform.position.y <= 3)
         {
             agent.enabled = true;
+            if (!playedAudio)
+            {
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClipImpact);
+                playedAudio = true;
+                healthbar.SetActive(true);
+                healthbar1.SetActive(true);
+            }
         }
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerArea);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerArea);
