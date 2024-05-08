@@ -3171,7 +3171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerOne: 1
-  hardCodeKeyboard: 0
+  hardCodeKeyboard: 1
   player: {fileID: 4268367709166199194}
   forwardTransform: {fileID: 4483654743284751199}
   cameraTransform: {fileID: 1773912907477644619}

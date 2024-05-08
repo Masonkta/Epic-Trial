@@ -199,10 +199,10 @@ public class Enemy : MonoBehaviour
 
                 }
 
-                TMPro.TextMeshProUGUI playerScoreText = GetPlayerScoreText();
+                //TMPro.TextMeshProUGUI playerScoreText = GetPlayerScoreText();
                 int scoreToAdd = GetScore(Etype) * scoreMultiplier;
                 hs.score += scoreToAdd;
-                playerScoreText.text = "Score: " + hs.score.ToString();
+                //playerScoreText.text = "Score: " + hs.score.ToString();
 
 
                 Instantiate(deathEffect, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);

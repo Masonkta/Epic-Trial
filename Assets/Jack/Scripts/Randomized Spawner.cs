@@ -33,7 +33,7 @@ public class RandomizedSpawner : MonoBehaviour
 
         if (SpawnWave == 2)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
                 Spawn(enemyWeak);
 
             Spawn(enemyMid);
@@ -44,12 +44,12 @@ public class RandomizedSpawner : MonoBehaviour
 
         if (SpawnWave == 3)
         {
-            for (int i = 0; i < 3; i++)
-                Spawn(enemyWeak);
+            for (int i = 0; i < 6; i++)
+                Spawn(enemyMid);
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
-                Spawn(enemyWeak);
+                Spawn(enemyStr);
             }
         }
 
@@ -88,7 +88,9 @@ public class RandomizedSpawner : MonoBehaviour
     void Spawn(GameObject enemyType)
     {
         randomizeSpawn();
-        Instantiate(enemyType, transform.position + new Vector3(xPos, 0f, zPos), Quaternion.identity);
+        Instantiate(enemyType, transform.position + new Vector3(xPos, 0f, zPos), Quaternion.identity, spawnIn);
+        Instantiate(enemyType, p2.position + new Vector3(xPos, 0f, zPos), Quaternion.identity, spawnIn);
+        Instantiate(enemyType, p3.position + new Vector3(xPos, 0f, zPos), Quaternion.identity, spawnIn);
     }
 
 }

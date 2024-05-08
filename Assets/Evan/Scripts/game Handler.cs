@@ -91,9 +91,9 @@ public class gameHandler : MonoBehaviour
         if (name == "Gold")
         {
             gold++;
-            TMPro.TextMeshProUGUI playerScoreText = GetPlayerScoreText();
+            //TMPro.TextMeshProUGUI playerScoreText = GetPlayerScoreText();
             hs.score += 1;
-            playerScoreText.text = "Score: " + hs.score.ToString();
+            //playerScoreText.text = "Score: " + hs.score.ToString();
 
 
         }
