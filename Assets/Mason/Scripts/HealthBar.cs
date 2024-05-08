@@ -26,7 +26,6 @@ public class HealthBar : MonoBehaviour
         // Calculate fill amount based on current health and maximum health
         float fillAmount = (float)_enemy.EnemyHealth / _maxHealth;
 
-        print($"{_enemy.EnemyHealth} {_maxHealth}");
 
         // Update the fill amount of the health bar sprite
         _healthbarSprite.fillAmount = fillAmount;
