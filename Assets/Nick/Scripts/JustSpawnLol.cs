@@ -64,7 +64,7 @@ public class JustSpawnLol : MonoBehaviour
     void Update()
     {
         enemyCount = FindObjectsOfType<Enemy>().Length;
-        Debug.Log(enemyCount);
+        //Debug.Log(enemyCount);
         if (enemyCount == 0)
         {
             SpawnWave++;

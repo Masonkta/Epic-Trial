@@ -40,10 +40,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6896196049991106141, guid: 6bcb3e71894fb3c48a7b226204ef374e,
         type: 3}
+      propertyPath: EnemyHealth
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896196049991106141, guid: 6bcb3e71894fb3c48a7b226204ef374e,
+        type: 3}
       propertyPath: deathEffect
       value: 
       objectReference: {fileID: 3652418002797356281, guid: cd2d5d2087a9c1a4e8b188ee7e396e72,
         type: 3}
+    - target: {fileID: 6896196049991106141, guid: 6bcb3e71894fb3c48a7b226204ef374e,
+        type: 3}
+      propertyPath: EnemyDefence
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8118172071707409710, guid: 6bcb3e71894fb3c48a7b226204ef374e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
