@@ -15,6 +15,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1878842485245817257, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}
+      propertyPath: EnemyHealth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878842485245817257, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
       propertyPath: deathEffect
       value: 
       objectReference: {fileID: 3652418002797356281, guid: cd2d5d2087a9c1a4e8b188ee7e396e72,
