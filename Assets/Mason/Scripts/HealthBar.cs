@@ -18,7 +18,6 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("1");
         UpdateHealthBar();
     }
 

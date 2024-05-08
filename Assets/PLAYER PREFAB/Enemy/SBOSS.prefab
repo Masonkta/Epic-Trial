@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 6896196049991106141, guid: 6bcb3e71894fb3c48a7b226204ef374e,
         type: 3}
       propertyPath: EnemyHealth
-      value: 500
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6896196049991106141, guid: 6bcb3e71894fb3c48a7b226204ef374e,
         type: 3}

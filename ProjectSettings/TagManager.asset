@@ -14,6 +14,7 @@ TagManager:
   - PlayerKeyboard
   - PlayerController
   - ResourceTransform
+  - heatingUp
   layers:
   - Default
   - TransparentFX

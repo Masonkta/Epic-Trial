@@ -33,23 +33,11 @@ public class Enemy : MonoBehaviour
     public int EnemyDamage;
     public EnemyType Etype;
     public ParticleSystem deathEffect;
+    public heatingUp HU;
 
 
-
-    public static int enemiesKilled = 0;
-    public static int scoreMultiplier = 1;
-    public int Double = 2; 
-    public int Triple = 5;
-    float startTime;
-    bool timerStarted = false;
-    float timeFrame = 10f;
-    float timeElapsed = 0f;
     float timeBetweenAttacks = 1f;
     bool alreadyAttacked = false;
-
-    public float dashRange = 5f; // The maximum distance at which the enemy will dash towards the player
-    public float dashSpeed = 5f; // The speed at which the enemy dashes towards the player
-
 
     private const string playerKScoreTextObjectName = "ScoreK";
     private const string playerCScoreTextObjectName = "ScoreC";
@@ -60,6 +48,7 @@ public class Enemy : MonoBehaviour
     {
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         hs = gameScript.GetComponent<HighScoreTest>();
+        HU = GameObject.FindGameObjectWithTag("heatingUp").GetComponent<heatingUp>();
 
         if (EnemyType.Weak == Etype)
         {
@@ -163,78 +152,25 @@ public class Enemy : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void timer()
-    {
-        startTime = Time.time;
-        timerStarted = true;
-
-    }
     // Update is called once per frame
     void Update()
     {
         if (EnemyHealth <= 0)
         {
-            if (!timerStarted)
-            {
-                timer();
-            }
-            timeElapsed = Time.time - startTime;
+            HU.AddKill();
 
-            if (timeElapsed <= timeFrame)
-            {
-                enemiesKilled++;
-
-
-                if (enemiesKilled >= Triple)
-                {
-                    scoreMultiplier = 3;
-                }
-                else if (enemiesKilled >= Double)
-                {
-                    scoreMultiplier = 2;
-                }
-                else
-                {
-                    scoreMultiplier = 1;
-
-                }
-
-                TMPro.TextMeshProUGUI playerKScoreText = GetPlayerScoreText();
-                TMPro.TextMeshProUGUI playerCScoreText = GetPlayerScoreText2();
-                int scoreToAdd = GetScore(Etype) * scoreMultiplier;
-                hs.score += scoreToAdd;
-                playerKScoreText.text = "Score: " + hs.score.ToString();
-                playerCScoreText.text = "Score: " + hs.score.ToString();
+            TMPro.TextMeshProUGUI playerKScoreText = GetPlayerScoreText();
+            TMPro.TextMeshProUGUI playerCScoreText = GetPlayerScoreText2();
+            int scoreToAdd = GetScore(Etype);
+            hs.score += scoreToAdd * HU.scoreMultiplier;
+            playerKScoreText.text = "Score: " + hs.score.ToString();
+            playerCScoreText.text = "Score: " + hs.score.ToString();
 
 
-                Instantiate(deathEffect, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
-                die();
-            }
+            Instantiate(deathEffect, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
+            die();
         }
-        // Calculate the distance between the enemy and the player
-        float distanceToKeyPlayer = Vector3.Distance(transform.position, gameScript.keyboardPlayer.transform.position);
-        float distanceToControllerPlayer = Vector3.Distance(transform.position, gameScript.controllerPlayer.transform.position);
   
-        if (Etype == EnemyType.Fast && distanceToKeyPlayer <= dashRange)
-        {            
-            DashTowardsKeyPlayer();
-        }
-        if (Etype == EnemyType.Fast && distanceToControllerPlayer <= dashRange)
-        {
-            DashTowardsControllerPlayer();
-        }
-
-        // Check if time frame has elapsed and reset counters
-        if (timerStarted)
-        {
-            if (timeElapsed > timeFrame)
-                {
-                    // Reset counters
-                    enemiesKilled = 0;
-                    timerStarted = false;
-                    scoreMultiplier = 1;
-                }
-            }
 
     }
 
@@ -368,22 +304,4 @@ public class Enemy : MonoBehaviour
             currentMetalScrap.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
         }
     }
-    void DashTowardsKeyPlayer()
-    {
-        // Calculate the direction from the enemy to the keyboard player
-        Vector3 direction = (gameScript.keyboardPlayer.transform.position - transform.position).normalized;
-
-
-        transform.position += direction * dashSpeed;
-    }
-
-    void DashTowardsControllerPlayer()
-    {
-        // Calculate the direction from the enemy to the controller player
-        Vector3 direction = (gameScript.controllerPlayer.transform.position - transform.position).normalized;
-
-        // Move the enemy towards the controller player with increased speed for a short duration
-        transform.position += direction * dashSpeed;
-    }
-
 }

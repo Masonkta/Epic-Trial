@@ -59,7 +59,7 @@ public class Weapon : MonoBehaviour
             switch (type)
             {
                 case WeaponType.Gladius:
-                    Damage = 3;
+                    Damage = 3000000; ////////////////////
                     piercing = false;
                     break;
                 case WeaponType.Spear:
