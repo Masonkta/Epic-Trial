@@ -164,6 +164,7 @@ MonoBehaviour:
   Triple: 5
   dashRange: 5
   dashSpeed: 5
+  _healthbarSprite: {fileID: 0}
 --- !u!65 &89412003
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -292,6 +293,7 @@ MonoBehaviour:
   Triple: 5
   dashRange: 5
   dashSpeed: 5
+  _healthbarSprite: {fileID: 0}
 --- !u!65 &270981617
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -526,6 +528,7 @@ MonoBehaviour:
   Triple: 5
   dashRange: 5
   dashSpeed: 5
+  _healthbarSprite: {fileID: 0}
 --- !u!65 &553983100
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -805,6 +808,7 @@ MonoBehaviour:
   Triple: 5
   dashRange: 5
   dashSpeed: 5
+  _healthbarSprite: {fileID: 0}
 --- !u!65 &659785774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1854,7 +1858,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 15.689
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 638514150127756163, guid: f2461279e7a9f2546a3395dc28bdcc9f, type: 3}
+    - {fileID: 6577369229104427327, guid: f2461279e7a9f2546a3395dc28bdcc9f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

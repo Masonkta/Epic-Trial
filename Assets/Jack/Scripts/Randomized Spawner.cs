@@ -10,62 +10,52 @@ public class RandomizedSpawner : MonoBehaviour
     public GameObject enemyWeak;
     public GameObject enemyMid;
     public GameObject enemyStr;
-    public GameObject Spawner;
     private int SpawnWave = 0;
-    private bool allowedToSpawn;
     private int enemyCount;
     private float xPos;
     private float zPos;
-    private int sphereRadius = 20;
+    public float sphereRadius = 20f;
 
-    /*
-    IEnumerator SpawnIt()
-    {
-        yield return new WaitForSeconds(5f);
-        if (allowedToSpawn == true)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                Instantiate(enemyBoi, Spawner.transform);
-                yield return new WaitForSeconds(5f);
-            }
-            allowedToSpawn = false;
-        }
-    }
-    */
+    public Transform p2;
+    public Transform p3;
+    public Transform spawnIn;
+    public GameObject boss;
+
+
     public void SpawnWaves()
     {
         if (SpawnWave == 1)
         {
             for (int i = 0; i < 3; i++)
-            {
-                randomizeSpawn();
-                Debug.Log("Spawning Enemy at random place");    
-                Instantiate(enemyWeak, new Vector3(xPos * 230, 6.0f, zPos * 230), Quaternion.identity);
-            }
+                Spawn(enemyWeak);
         }
+
+
         if (SpawnWave == 2)
         {
             for (int i = 0; i < 3; i++)
-            {
-                randomizeSpawn();
-                Instantiate(enemyWeak, new Vector3(xPos * 230, 6.0f, zPos * 230), Quaternion.identity);
-            }
-            randomizeSpawn();
-            Instantiate(enemyMid, new Vector3(xPos * 230, 2.0f, zPos * 230), Quaternion.identity);
+                Spawn(enemyWeak);
+
+            Spawn(enemyMid);
+            Spawn(enemyMid);
+            
+            Spawn(enemyStr);
         }
+
         if (SpawnWave == 3)
         {
             for (int i = 0; i < 3; i++)
-            {
-                randomizeSpawn();
-                Instantiate(enemyWeak, new Vector3(xPos * 230, 6.0f, zPos * 230), Quaternion.identity);
-            }
+                Spawn(enemyWeak);
+
             for (int i = 0; i < 3; i++)
             {
-                randomizeSpawn();
-                Instantiate(enemyMid, new Vector3(xPos * 230, 6.0f, zPos * 230), Quaternion.identity);
+                Spawn(enemyWeak);
             }
+        }
+
+        if (SpawnWave == 4)
+        {
+            boss.SetActive(true);
         }
     }
 
@@ -83,9 +73,9 @@ public class RandomizedSpawner : MonoBehaviour
 
     void randomizeSpawn()
     {
-        xPos = Random.Range(-1.0f, 1.0f);
-        zPos = Random.Range(-1.0f, 1.0f);
-        if (Physics.CheckSphere(new Vector3(xPos * 230, 6.0f, zPos * 230), sphereRadius))
+        xPos = Random.Range(-sphereRadius, sphereRadius);
+        zPos = Random.Range(-sphereRadius, sphereRadius);
+        if (Physics.CheckSphere(new Vector3(xPos, 0f, zPos), sphereRadius))
         {
             return;
         }
@@ -93,6 +83,12 @@ public class RandomizedSpawner : MonoBehaviour
         {
             randomizeSpawn();
         }
+    }
+
+    void Spawn(GameObject enemyType)
+    {
+        randomizeSpawn();
+        Instantiate(enemyType, transform.position + new Vector3(xPos, 0f, zPos), Quaternion.identity);
     }
 
 }

@@ -79,13 +79,26 @@ public class BasicEnemy : MonoBehaviour
 
     private void Chase()
     {
-        if (Vector3.Distance(transform.position + Vector3.up, playerKeyboard.transform.position) < Vector3.Distance(transform.position + Vector3.up, playerController.transform.position))
+        if (playerKeyboard != null && playerController != null)
         {
-            agent.SetDestination(playerKeyboard.transform.position);
+            if (Vector3.Distance(transform.position + Vector3.up, playerKeyboard.transform.position) < Vector3.Distance(transform.position + Vector3.up, playerController.transform.position))
+            {
+                agent.SetDestination(playerKeyboard.transform.position);
+            }
+            else
+            {
+                agent.SetDestination(playerController.transform.position);
+            }
         }
-        else
+
+        if (playerKeyboard == null && playerController != null)
         {
             agent.SetDestination(playerController.transform.position);
+        }
+
+        if (playerKeyboard != null && playerController == null)
+        {
+            agent.SetDestination(playerKeyboard.transform.position);
         }
     }
 

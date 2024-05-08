@@ -417,6 +417,9 @@ public class playerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
                 sideMoveAm = 1;
 
+            if (Input.GetMouseButtonDown(1))
+                OnDodge();
+
             sprinting = Input.GetKey(KeyCode.LeftShift) && !shiftLock;
 
             if (Input.GetKeyDown(KeyCode.Space))
