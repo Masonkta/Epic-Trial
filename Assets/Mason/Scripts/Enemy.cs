@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     GameObject clothPrefab;
     GameObject woodPrefab;
     GameObject ironPrefab;
+    GameObject skull;
     
 
 
@@ -75,6 +76,7 @@ public class Enemy : MonoBehaviour
         clothPrefab = gameScript.clothPrefab;
         woodPrefab = gameScript.woodPrefab;
         ironPrefab = gameScript.ironPrefab;
+        skull = gameScript.skullPrefab;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -256,8 +258,12 @@ public class Enemy : MonoBehaviour
             dropIron(numberOfIron * gameScript.ResourceDropRate);
         }
 
+        // Drop SKULL
 
-        
+        GameObject currentMetalScrap = Instantiate(skull, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+        float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+        currentMetalScrap.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+
     }
 
 
@@ -304,4 +310,6 @@ public class Enemy : MonoBehaviour
             currentMetalScrap.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
         }
     }
+
+    
 }

@@ -32,6 +32,7 @@ public class gameHandler : MonoBehaviour
     public GameObject woodPrefab;
     public GameObject ironPrefab;
     public GameObject bandagesPrefab;
+    public GameObject skullPrefab;
     public GameObject gladiusPickup;
     public GameObject clubPickup;
 
