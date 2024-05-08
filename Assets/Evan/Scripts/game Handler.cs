@@ -2,6 +2,7 @@ using HighScore;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class gameHandler : MonoBehaviour
@@ -13,13 +14,16 @@ public class gameHandler : MonoBehaviour
 
     gameHandler gameScript;
     HighScoreTest hs;
-    private const string playerScoreTextObjectName = "Score";
+    private const string playerKScoreTextObjectName = "ScoreK";
+    private const string playerCScoreTextObjectName = "ScoreC";
 
     public GameObject keyboardPlayer;
     public float keyboardPlayerHealth;
+    public Image _healthbarSpriteK;
 
     public GameObject controllerPlayer;
     public float controllerPlayerHealth;
+    public Image _healthbarSpriteC;
 
 
     [Header("Needed Prefabs")]
@@ -66,6 +70,9 @@ public class gameHandler : MonoBehaviour
 
         if (keyboardPlayerHealth <= 0f && controllerPlayerHealth <= 0f)
             SceneManager.LoadScene("gameOver");
+
+        _healthbarSpriteK.fillAmount = keyboardPlayerHealth / 100f;
+        _healthbarSpriteC.fillAmount = controllerPlayerHealth / 100f;
     }
 
     //////////////////////////////////////////// INPUT /////////////////////////////////////////////////
@@ -91,9 +98,11 @@ public class gameHandler : MonoBehaviour
         if (name == "Gold")
         {
             gold++;
-            //TMPro.TextMeshProUGUI playerScoreText = GetPlayerScoreText();
+            TMPro.TextMeshProUGUI playerScoreText = GetPlayerScoreText();
+            TMPro.TextMeshProUGUI playerScoreText2 = GetPlayerScoreText2();
             hs.score += 1;
-            //playerScoreText.text = "Score: " + hs.score.ToString();
+            playerScoreText.text = "Score: " + hs.score.ToString();
+            playerScoreText2.text = "Score: " + hs.score.ToString();
 
 
         }
@@ -125,16 +134,30 @@ public class gameHandler : MonoBehaviour
 
     public TMPro.TextMeshProUGUI GetPlayerScoreText()
     {
-        GameObject textObject = GameObject.Find(playerScoreTextObjectName); // Find the GameObject by name
+        GameObject textObject = GameObject.Find(playerKScoreTextObjectName); // Find the GameObject by name
         if (textObject != null)
         {
             return textObject.GetComponentInChildren<TMPro.TextMeshProUGUI>(); // Get TextMeshProUGUI component
         }
         else
         {
-            Debug.LogWarning("Player score text object not found with name: " + playerScoreTextObjectName);
+            Debug.LogWarning("Player score text object not found with name: " + playerKScoreTextObjectName);
             return null;
         }
+    }
+    public TMPro.TextMeshProUGUI GetPlayerScoreText2()
+    {
+        GameObject textObject2 = GameObject.Find(playerCScoreTextObjectName); // Find the GameObject by name
+        if (textObject2 != null)
+        {
+            return textObject2.GetComponentInChildren<TMPro.TextMeshProUGUI>(); // Get TextMeshProUGUI component
+        }
+        else
+        {
+            Debug.LogWarning("Player score text object not found with name: " + playerCScoreTextObjectName);
+            return null;
+        }
+
     }
 
     public bool checkIndividualRecipe(Vector3 recipe)

@@ -36,16 +36,20 @@ public class bandageScript : MonoBehaviour
     void checkWithinRangeOfBothPlayers()
     {
         // Keyboard
-        if (Vector3.Distance(transform.position + Vector3.up, gameScript.keyboardPlayer.transform.position) < pickupDist)
+        if (Vector3.Distance(transform.position + Vector3.up, gameScript.keyboardPlayer.transform.position) < pickupDist && gameScript.keyboardPlayerHealth < 100f)
         {
             gameScript.keyboardPlayerHealth += 5f;
+            if (gameScript.keyboardPlayerHealth > 100f)
+                gameScript.keyboardPlayerHealth = 100f;
             Destroy(gameObject);
         }
 
         // Controller
-        if (Vector3.Distance(transform.position + Vector3.up, gameScript.controllerPlayer.transform.position) < pickupDist)
+        if (Vector3.Distance(transform.position + Vector3.up, gameScript.controllerPlayer.transform.position) < pickupDist && gameScript.controllerPlayerHealth < 100f)
         {
             gameScript.controllerPlayerHealth += 5f;
+            if (gameScript.controllerPlayerHealth > 100f)
+                gameScript.controllerPlayerHealth = 100f;
             Destroy(gameObject);
         }
     }

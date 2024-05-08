@@ -50,9 +50,9 @@ public class Enemy : MonoBehaviour
     public float dashRange = 5f; // The maximum distance at which the enemy will dash towards the player
     public float dashSpeed = 5f; // The speed at which the enemy dashes towards the player
 
-    [SerializeField] private Image _healthbarSprite;
 
-    private const string playerScoreTextObjectName = "Score";
+    private const string playerKScoreTextObjectName = "ScoreK";
+    private const string playerCScoreTextObjectName = "ScoreC";
 
 
     // Start is called before the first frame update
@@ -199,10 +199,12 @@ public class Enemy : MonoBehaviour
 
                 }
 
-                //TMPro.TextMeshProUGUI playerScoreText = GetPlayerScoreText();
+                TMPro.TextMeshProUGUI playerKScoreText = GetPlayerScoreText();
+                TMPro.TextMeshProUGUI playerCScoreText = GetPlayerScoreText2();
                 int scoreToAdd = GetScore(Etype) * scoreMultiplier;
                 hs.score += scoreToAdd;
-                //playerScoreText.text = "Score: " + hs.score.ToString();
+                playerKScoreText.text = "Score: " + hs.score.ToString();
+                playerCScoreText.text = "Score: " + hs.score.ToString();
 
 
                 Instantiate(deathEffect, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
@@ -238,16 +240,32 @@ public class Enemy : MonoBehaviour
 
     public TMPro.TextMeshProUGUI GetPlayerScoreText()
     {
-        GameObject textObject = GameObject.Find(playerScoreTextObjectName); // Find the GameObject by name
+        GameObject textObject = GameObject.Find(playerKScoreTextObjectName); // Find the GameObject by name
         if (textObject != null)
         {
             return textObject.GetComponentInChildren<TMPro.TextMeshProUGUI>(); // Get TextMeshProUGUI component
         }
         else
         {
-            Debug.LogWarning("Player score text object not found with name: " + playerScoreTextObjectName);
+            Debug.LogWarning("Player score text object not found with name: " + playerKScoreTextObjectName);
             return null;
         }
+        
+    }
+
+    public TMPro.TextMeshProUGUI GetPlayerScoreText2()
+    {
+        GameObject textObject2 = GameObject.Find(playerCScoreTextObjectName); // Find the GameObject by name
+        if (textObject2 != null)
+        {
+            return textObject2.GetComponentInChildren<TMPro.TextMeshProUGUI>(); // Get TextMeshProUGUI component
+        }
+        else
+        {
+            Debug.LogWarning("Player score text object not found with name: " + playerCScoreTextObjectName);
+            return null;
+        }
+
     }
 
     // Method to get score based on enemy type

@@ -18,6 +18,7 @@ public class SwordTest : MonoBehaviour
     public AudioClip swing1;
     public AudioClip swing2;
 
+    public playerAccessWeapons wpnScrpt;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class SwordTest : MonoBehaviour
 
     public void Attacking()
     {
+        wpnScrpt.swinging = true;
         canAtt = false;
         Wep.enabled = true;
         anim.SetTrigger("Attack");
@@ -55,5 +57,6 @@ public class SwordTest : MonoBehaviour
         anim.SetTrigger("StopAttack");
         Wep.enabled = false;
         canAtt = true;
+        wpnScrpt.swinging = false;
     }
 }

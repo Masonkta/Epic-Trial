@@ -6,7 +6,9 @@ public class playerAccessWeapons : MonoBehaviour
 {
     public bool handIsOpen;
     public bool readyToGrab;
-    
+
+    public bool swinging;
+
     float timeOfLastDrop;
 
     public GameObject gladius;
@@ -43,31 +45,35 @@ public class playerAccessWeapons : MonoBehaviour
 
     public void OnDropItem()
     {
-        print("DROP");
-        readyToGrab = false;
-
-        if (gladius.activeInHierarchy)
+        if (!swinging)
         {
-            GameObject gladiusPickupComingFromDrop = Instantiate(gladiusPickup, gladius.transform.position, GetComponent<playerMovement>().cameraTransform.rotation);
-            gladiusPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMovement>().getLookDirection() * 8f;
-            gladiusPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
+            readyToGrab = false;
 
 
-            gladius.SetActive(false);
+
+            if (gladius.activeInHierarchy)
+            {
+                GameObject gladiusPickupComingFromDrop = Instantiate(gladiusPickup, gladius.transform.position, GetComponent<playerMovement>().cameraTransform.rotation);
+                gladiusPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMovement>().getLookDirection() * 8f;
+                gladiusPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
+
+
+                gladius.SetActive(false);
+            }
+
+
+            if (club.activeInHierarchy)
+            {
+                GameObject clubPickupComingFromDrop = Instantiate(clubPickup, gladius.transform.position, GetComponent<playerMovement>().cameraTransform.rotation);
+                clubPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMovement>().getLookDirection() * 8f;
+                clubPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
+
+                club.SetActive(false);
+            }
+
+
+            timeOfLastDrop = Time.time;
         }
-
-
-        if (club.activeInHierarchy)
-        {
-            GameObject clubPickupComingFromDrop = Instantiate(clubPickup, gladius.transform.position, GetComponent<playerMovement>().cameraTransform.rotation);
-            clubPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMovement>().getLookDirection() * 8f;
-            clubPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
-
-            club.SetActive(false);
-        }
-
-
-        timeOfLastDrop = Time.time;
     }
 
     public bool handOpen()
