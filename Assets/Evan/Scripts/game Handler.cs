@@ -1,3 +1,4 @@
+using HighScore;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,16 @@ public class gameHandler : MonoBehaviour
     //public string playerOneControls = "---";
     //public string playerTwoControls = "---";
 
+    gameHandler gameScript;
+    HighScoreTest hs;
+    private const string playerScoreTextObjectName = "Score";
+
     public GameObject keyboardPlayer;
     public float keyboardPlayerHealth;
 
     public GameObject controllerPlayer;
     public float controllerPlayerHealth;
+
 
     [Header("Needed Prefabs")]
     public GameObject goldPrefab;
@@ -49,6 +55,8 @@ public class gameHandler : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Cursor.lockState = CursorLockMode.Locked;
         ResourceTransform = GameObject.FindGameObjectWithTag("ResourceTransform").transform;
+        gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
+        hs = gameScript.GetComponent<HighScoreTest>();
     }
 
     void Update()
@@ -80,7 +88,15 @@ public class gameHandler : MonoBehaviour
     
     public void collectResource(string name)
     {
-        if (name == "Gold") gold++;
+        if (name == "Gold")
+        {
+            gold++;
+            TMPro.TextMeshProUGUI playerScoreText = GetPlayerScoreText();
+            hs.score += 1;
+            playerScoreText.text = "Score: " + hs.score.ToString();
+
+
+        }
         if (name == "Cloth") clothPieces++;
         if (name == "Wood") woodPieces++;
         if (name == "Metal Scrap") ironPieces++;
@@ -105,6 +121,20 @@ public class gameHandler : MonoBehaviour
             print("CAN make Wooden Club");
 
 
+    }
+
+    public TMPro.TextMeshProUGUI GetPlayerScoreText()
+    {
+        GameObject textObject = GameObject.Find(playerScoreTextObjectName); // Find the GameObject by name
+        if (textObject != null)
+        {
+            return textObject.GetComponentInChildren<TMPro.TextMeshProUGUI>(); // Get TextMeshProUGUI component
+        }
+        else
+        {
+            Debug.LogWarning("Player score text object not found with name: " + playerScoreTextObjectName);
+            return null;
+        }
     }
 
     public bool checkIndividualRecipe(Vector3 recipe)
