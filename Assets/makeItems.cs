@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.Android.LowLevel;
 
@@ -13,7 +14,11 @@ public class makeItems : MonoBehaviour
 
     public float range = 5f;
 
-    public bool playerInRange = false;
+    public bool playerKInRange = false;
+    public bool playerCInRange = false;
+
+    public GameObject KControls;
+    public GameObject CControls;
 
     // Start is called before the first frame update
     void Start()
@@ -35,17 +40,24 @@ public class makeItems : MonoBehaviour
     void checkPlayers()
     {
         float dK = Vector3.Distance(transform.position, keyboardPlayer.transform.position);
-        float dC = Vector3.Distance(transform.position, keyboardPlayer.transform.position);
-        playerInRange = (dK < range || dC < range);
+        float dC = Vector3.Distance(transform.position, controllerPlayer.transform.position);
+        playerKInRange = (dK < range);
+        playerCInRange = (dC < range);
+
+        KControls.SetActive(playerKInRange);
+        CControls.SetActive(playerCInRange);
     }
 
     void handleInput()
     {
-        if (Input.GetKeyDown(KeyCode.Z)) // Bandages
-            OnCraftBandages();
+        if (playerKInRange)
+        {
+            if (Input.GetKeyDown(KeyCode.Z)) // Bandages
+                OnCraftBandages();
 
-        if (Input.GetKeyDown(KeyCode.X)) // Club
-            OnCraftClub();
+            if (Input.GetKeyDown(KeyCode.X)) // Club
+                OnCraftClub();
+        }
     }
 
     void OnCraftBandages()
