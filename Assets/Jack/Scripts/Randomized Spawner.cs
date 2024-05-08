@@ -63,7 +63,7 @@ public class RandomizedSpawner : MonoBehaviour
     void Update()
     {
         enemyCount = FindObjectsOfType<Enemy>().Length;
-        Debug.Log(enemyCount);
+
         if (enemyCount == 0)
         {
             SpawnWave++;

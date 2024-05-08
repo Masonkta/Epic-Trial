@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour
         }
         if (EnemyType.Boss == Etype)
         {
-            EnemyHealth = 500;
+            EnemyHealth = 250;
             EnemyDefence = 2;
         }
 
@@ -110,13 +110,13 @@ public class Enemy : MonoBehaviour
 
                 if (EnemyType.Heavy == Etype)
                 {
-                    EnemyDamage = 10;
+                    EnemyDamage = 7;
                     gameScript.keyboardPlayerHealth -= EnemyDamage;
                 }
 
                 if (EnemyType.Boss == Etype)
                 {
-                    EnemyDamage = 20;
+                    EnemyDamage = 10;
                     gameScript.keyboardPlayerHealth -= EnemyDamage;
                 }
 
