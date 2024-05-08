@@ -58,7 +58,7 @@ public class Weapon : MonoBehaviour
             switch (type)
             {
                 case WeaponType.Gladius:
-                    Damage = 5;
+                    Damage = 100;
                     piercing = false;
                     break;
                 case WeaponType.Spear:
@@ -72,7 +72,9 @@ public class Weapon : MonoBehaviour
             }
 
             // Apply damage
-            int damageDealt = Mathf.Max(0, Damage - enemy.EnemyDefence);
+            float damageReductionPercentage = enemy.EnemyDefence * 0.01f;
+            float damageMultiplier = 1 - damageReductionPercentage;
+            int damageDealt = Mathf.Max(0, Mathf.RoundToInt(Damage * damageMultiplier));
             if (piercing)
             {
                 wasHit = true;

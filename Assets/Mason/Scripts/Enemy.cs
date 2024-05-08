@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
     public float dashRange = 5f; // The maximum distance at which the enemy will dash towards the player
     public float dashSpeed = 5f; // The speed at which the enemy dashes towards the player
 
+    [SerializeField] private Image _healthbarSprite;
 
 
     // Start is called before the first frame update
