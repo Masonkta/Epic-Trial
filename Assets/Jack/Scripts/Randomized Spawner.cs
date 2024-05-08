@@ -16,7 +16,7 @@ public class RandomizedSpawner : MonoBehaviour
     private int enemyCount;
     private float xPos;
     private float zPos;
-    private int sphereRadius = 5;
+    private int sphereRadius = 20;
 
     /*
     IEnumerator SpawnIt()
@@ -40,7 +40,8 @@ public class RandomizedSpawner : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 randomizeSpawn();
-                Instantiate(enemyWeak, new Vector3(xPos * 230, 2.0f, zPos * 230), Quaternion.identity);
+                Debug.Log("Spawning Enemy at random place");    
+                Instantiate(enemyWeak, new Vector3(xPos * 230, 6.0f, zPos * 230), Quaternion.identity);
             }
         }
         if (SpawnWave == 2)
@@ -48,7 +49,7 @@ public class RandomizedSpawner : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 randomizeSpawn();
-                Instantiate(enemyWeak, new Vector3(xPos * 230, 2.0f, zPos * 230), Quaternion.identity);
+                Instantiate(enemyWeak, new Vector3(xPos * 230, 6.0f, zPos * 230), Quaternion.identity);
             }
             randomizeSpawn();
             Instantiate(enemyMid, new Vector3(xPos * 230, 2.0f, zPos * 230), Quaternion.identity);
@@ -58,12 +59,12 @@ public class RandomizedSpawner : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 randomizeSpawn();
-                Instantiate(enemyWeak, new Vector3(xPos * 230, 2.0f, zPos * 230), Quaternion.identity);
+                Instantiate(enemyWeak, new Vector3(xPos * 230, 6.0f, zPos * 230), Quaternion.identity);
             }
             for (int i = 0; i < 3; i++)
             {
                 randomizeSpawn();
-                Instantiate(enemyMid, new Vector3(xPos * 230, 2.0f, zPos * 230), Quaternion.identity);
+                Instantiate(enemyMid, new Vector3(xPos * 230, 6.0f, zPos * 230), Quaternion.identity);
             }
         }
     }
@@ -84,7 +85,7 @@ public class RandomizedSpawner : MonoBehaviour
     {
         xPos = Random.Range(-1.0f, 1.0f);
         zPos = Random.Range(-1.0f, 1.0f);
-        if (Physics.CheckSphere(new Vector3(xPos * 230, 2.0f, zPos * 230), sphereRadius))
+        if (Physics.CheckSphere(new Vector3(xPos * 230, 6.0f, zPos * 230), sphereRadius))
         {
             return;
         }
