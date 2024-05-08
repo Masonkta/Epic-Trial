@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
 public enum EnemyType
@@ -51,6 +51,8 @@ public class Enemy : MonoBehaviour
     public float dashSpeed = 5f; // The speed at which the enemy dashes towards the player
 
     [SerializeField] private Image _healthbarSprite;
+
+    private const string playerScoreTextObjectName = "Score";
 
 
     // Start is called before the first frame update
@@ -197,8 +199,10 @@ public class Enemy : MonoBehaviour
 
                 }
 
+                TMPro.TextMeshProUGUI playerScoreText = GetPlayerScoreText();
                 int scoreToAdd = GetScore(Etype) * scoreMultiplier;
                 hs.score += scoreToAdd;
+                playerScoreText.text = "Score: " + hs.score.ToString();
 
 
                 Instantiate(deathEffect, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
@@ -230,6 +234,20 @@ public class Enemy : MonoBehaviour
                 }
             }
 
+    }
+
+    public TMPro.TextMeshProUGUI GetPlayerScoreText()
+    {
+        GameObject textObject = GameObject.Find(playerScoreTextObjectName); // Find the GameObject by name
+        if (textObject != null)
+        {
+            return textObject.GetComponentInChildren<TMPro.TextMeshProUGUI>(); // Get TextMeshProUGUI component
+        }
+        else
+        {
+            Debug.LogWarning("Player score text object not found with name: " + playerScoreTextObjectName);
+            return null;
+        }
     }
 
     // Method to get score based on enemy type
