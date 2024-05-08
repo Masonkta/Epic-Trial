@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 77248473}
   - component: {fileID: 77248472}
   - component: {fileID: 77248471}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1884,12 +1884,12 @@ PrefabInstance:
     - target: {fileID: 2806972834641961978, guid: 1d3cf142f6a79db43a7c94bfd9b140d8,
         type: 3}
       propertyPath: keyboardPlayerHealth
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2806972834641961978, guid: 1d3cf142f6a79db43a7c94bfd9b140d8,
         type: 3}
       propertyPath: controllerPlayerHealth
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3207939557254819599, guid: 1d3cf142f6a79db43a7c94bfd9b140d8,
         type: 3}

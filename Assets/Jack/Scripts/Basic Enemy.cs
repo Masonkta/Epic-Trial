@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class BasicEnemy : MonoBehaviour
 {
+    gameHandler gameScript;
     public NavMeshAgent agent;
     public GameObject enemyEyes;
 
@@ -36,8 +37,9 @@ public class BasicEnemy : MonoBehaviour
 
     private void Awake()
     {
-        playerKeyboard = GameObject.FindGameObjectWithTag("PlayerKeyboard");
-        playerController = GameObject.FindGameObjectWithTag("PlayerController");
+        gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
+        playerKeyboard = gameScript.keyboardPlayer;
+        playerController = gameScript.controllerPlayer;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -79,7 +81,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void Chase()
     {
-        if (playerKeyboard != null && playerController != null)
+        if (playerKeyboard.activeInHierarchy && playerController.activeInHierarchy)
         {
             if (Vector3.Distance(transform.position + Vector3.up, playerKeyboard.transform.position) < Vector3.Distance(transform.position + Vector3.up, playerController.transform.position))
             {
@@ -91,12 +93,12 @@ public class BasicEnemy : MonoBehaviour
             }
         }
 
-        if (playerKeyboard == null && playerController != null)
+        if (!playerKeyboard.activeInHierarchy && playerController.activeInHierarchy)
         {
             agent.SetDestination(playerController.transform.position);
         }
 
-        if (playerKeyboard != null && playerController == null)
+        if (playerKeyboard.activeInHierarchy && !playerController.activeInHierarchy)
         {
             agent.SetDestination(playerKeyboard.transform.position);
         }
