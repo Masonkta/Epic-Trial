@@ -391,6 +391,10 @@ public class playerMovement : MonoBehaviour
 
         // Finally Look at the player
         cameraTransform.LookAt(transform.position + cameraTransform.forward + Vector3.up);
+
+        // Unless boss is in air
+        if (bossSpawned && bossFalling)
+            cameraTransform.LookAt(bossScript.gameObject.transform);
     }
 
 

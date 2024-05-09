@@ -44,12 +44,12 @@ public class RandomizedSpawner : MonoBehaviour
 
         if (SpawnWave == 3)
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 1; i++)
                 Spawn(enemyMid);
 
             for (int i = 0; i < 4; i++)
             {
-                Spawn(enemyStr);
+                //Spawn(enemyStr);
             }
         }
 
