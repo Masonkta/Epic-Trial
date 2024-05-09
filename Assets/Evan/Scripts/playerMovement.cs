@@ -400,10 +400,10 @@ public class playerMovement : MonoBehaviour
         if (bossSpawned && bossFalling)
         {
             shiftLock = true;
-            cameraTransform.LookAt(bossScript.gameObject.transform);
+            cameraTransform.LookAt(bossScript.gameObject.transform.position + Vector3.down);
             cameraAngle = 180f;
             actualCamDistance = 5f;
-            actualCamHeight = 0f;
+            actualCamHeight = 1f;
         }
     }
 
