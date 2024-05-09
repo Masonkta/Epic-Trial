@@ -1694,61 +1694,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crafting Table
       objectReference: {fileID: 0}
-    - target: {fileID: 7108084915263258270, guid: f2461279e7a9f2546a3395dc28bdcc9f,
+    - target: {fileID: 6653752105731435744, guid: f2461279e7a9f2546a3395dc28bdcc9f,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.451
-      objectReference: {fileID: 0}
-    - target: {fileID: 7108084915263258270, guid: f2461279e7a9f2546a3395dc28bdcc9f,
+      propertyPath: CControls
+      value: 
+      objectReference: {fileID: 159875967}
+    - target: {fileID: 6653752105731435744, guid: f2461279e7a9f2546a3395dc28bdcc9f,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.98962337
-      objectReference: {fileID: 0}
-    - target: {fileID: 7108084915263258270, guid: f2461279e7a9f2546a3395dc28bdcc9f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.044913884
-      objectReference: {fileID: 0}
-    - target: {fileID: 7108084915263258270, guid: f2461279e7a9f2546a3395dc28bdcc9f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.13634564
-      objectReference: {fileID: 0}
-    - target: {fileID: 7108084915263258270, guid: f2461279e7a9f2546a3395dc28bdcc9f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.006188023
-      objectReference: {fileID: 0}
-    - target: {fileID: 7108084915263258270, guid: f2461279e7a9f2546a3395dc28bdcc9f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 5.197
-      objectReference: {fileID: 0}
-    - target: {fileID: 7108084915263258270, guid: f2461279e7a9f2546a3395dc28bdcc9f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 15.689
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 638514150127756163, guid: f2461279e7a9f2546a3395dc28bdcc9f, type: 3}
-    - {fileID: 6577369229104427327, guid: f2461279e7a9f2546a3395dc28bdcc9f, type: 3}
-    - {fileID: 8559526041533550132, guid: f2461279e7a9f2546a3395dc28bdcc9f, type: 3}
-    - {fileID: 5431850957276674198, guid: f2461279e7a9f2546a3395dc28bdcc9f, type: 3}
+      propertyPath: KControls
+      value: 
+      objectReference: {fileID: 952451459}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 712204857459778525, guid: f2461279e7a9f2546a3395dc28bdcc9f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1594605792}
-    - targetCorrespondingSourceObject: {fileID: 712204857459778525, guid: f2461279e7a9f2546a3395dc28bdcc9f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1594605789}
-    - targetCorrespondingSourceObject: {fileID: 712204857459778525, guid: f2461279e7a9f2546a3395dc28bdcc9f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1594605791}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2461279e7a9f2546a3395dc28bdcc9f, type: 3}
 --- !u!1001 &579697577
 PrefabInstance:
@@ -2280,6 +2239,12 @@ PrefabInstance:
       propertyPath: clothPieces
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 2806972834641961978, guid: 1d3cf142f6a79db43a7c94bfd9b140d8,
+        type: 3}
+      propertyPath: skullPrefab
+      value: 
+      objectReference: {fileID: 8329006429997551155, guid: 9467087f63b77cf4495f2809eacfe46c,
+        type: 3}
     - target: {fileID: 2806972834641961978, guid: 1d3cf142f6a79db43a7c94bfd9b140d8,
         type: 3}
       propertyPath: gladiusPickup
@@ -3581,84 +3546,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573540160}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1594605788 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 712204857459778525, guid: f2461279e7a9f2546a3395dc28bdcc9f,
-    type: 3}
-  m_PrefabInstance: {fileID: 547439759}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1594605789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594605788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14c8cb71d3d7cf345b01139dec8a3da0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameScript: {fileID: 0}
-  keyboardPlayer: {fileID: 0}
-  controllerPlayer: {fileID: 0}
-  range: 5
-  playerKInRange: 0
-  playerCInRange: 0
-  KControls: {fileID: 952451459}
-  CControls: {fileID: 159875967}
---- !u!65 &1594605791
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594605788}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.6993825, y: 2.0338001, z: 6.52843}
-  m_Center: {x: 0.37511706, y: 0.51689994, z: 0.9218097}
---- !u!114 &1594605792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594605788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 98e4487097fbcc3468dd5de8c0fb39ad,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Craft
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1636198675
 GameObject:
   m_ObjectHideFlags: 0
