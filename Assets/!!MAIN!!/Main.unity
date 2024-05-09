@@ -3315,7 +3315,7 @@ MonoBehaviour:
     type: 3}
   enemyStr: {fileID: 6316866960217914392, guid: 463136bc2c1a9474d915b40f8354aa6c,
     type: 3}
-  SpawnWave: 2
+  SpawnWave: 0
   sphereRadius: 20
   p2: {fileID: 746814820}
   p3: {fileID: 743008247}
@@ -4498,6 +4498,11 @@ PrefabInstance:
       propertyPath: bossScript
       value: 
       objectReference: {fileID: 856316305}
+    - target: {fileID: 8811941489667704727, guid: f96a963204b8fee4692a7f8388a0716e,
+        type: 3}
+      propertyPath: bossFalling
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4576,6 +4581,11 @@ PrefabInstance:
       propertyPath: bossScript
       value: 
       objectReference: {fileID: 856316305}
+    - target: {fileID: 4622875858140228651, guid: 6569c13a59f3b06478107207e0615db3,
+        type: 3}
+      propertyPath: bossFalling
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6422631160386219609, guid: 6569c13a59f3b06478107207e0615db3,
         type: 3}
       propertyPath: clubPickup

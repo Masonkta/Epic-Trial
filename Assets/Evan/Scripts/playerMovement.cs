@@ -193,8 +193,11 @@ public class playerMovement : MonoBehaviour
     {
         Vector2 turnInput = value.Get<Vector2>();
 
-        horizontalTurnAmount = turnInput[0];
-        verticalTurnAmount = turnInput[1];
+        if (!bossFalling || !bossSpawned)
+        {
+            horizontalTurnAmount = turnInput[0];
+            verticalTurnAmount = turnInput[1];
+        }
     }
 
     void horizontalTurns()
@@ -246,9 +249,10 @@ public class playerMovement : MonoBehaviour
     void OnMove(InputValue value)
     {
         Vector2 turnInput = value.Get<Vector2>();
-
+        
         sideMoveAm = turnInput[0];
         forwardMoveAm = turnInput[1];
+
 
     }
 
@@ -394,7 +398,13 @@ public class playerMovement : MonoBehaviour
 
         // Unless boss is in air
         if (bossSpawned && bossFalling)
+        {
+            shiftLock = true;
             cameraTransform.LookAt(bossScript.gameObject.transform);
+            cameraAngle = 180f;
+            actualCamDistance = 5f;
+            actualCamHeight = 0f;
+        }
     }
 
 

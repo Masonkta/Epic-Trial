@@ -46,6 +46,8 @@ public class BossEnemy : MonoBehaviour
     // FALLING BOOL
     public bool bossLanded = false;
 
+    public Transform swordTip;
+
     private void Awake()
     {
         audioSource.clip = audioClipStart;
@@ -181,7 +183,22 @@ public class BossEnemy : MonoBehaviour
                 EnemyAnimator.SetTrigger("RUUUN");
                 Chase();
             }
-            Debug.DrawLine(transform.position, agent.destination, Color.red);
         }
+
+        // Sword damage deal
+        if (Vector3.Distance(swordTip.position, gameScript.keyboardPlayer.transform.position) < 3f)
+        {
+            print("DAMAGE");
+            gameScript.keyboardPlayerHealth -= Time.deltaTime * 10f;
+        }
+        
+        if (Vector3.Distance(swordTip.position, gameScript.controllerPlayer.transform.position) < 3f)
+        {
+            print("DAMAGE");
+            gameScript.controllerPlayerHealth -= Time.deltaTime * 3f;
+        }
+
     }
+
+
 }

@@ -44,12 +44,12 @@ public class RandomizedSpawner : MonoBehaviour
 
         if (SpawnWave == 3)
         {
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 7; i++)
                 Spawn(enemyMid);
 
             for (int i = 0; i < 4; i++)
             {
-                //Spawn(enemyStr);
+                Spawn(enemyStr);
             }
         }
 
@@ -69,6 +69,11 @@ public class RandomizedSpawner : MonoBehaviour
             SpawnWave++;
             SpawnWaves();
         }
+
+        // K kills all enemies
+        if (Input.GetKeyDown(KeyCode.K))
+            foreach(Enemy t in FindObjectsOfType<Enemy>())
+                t.GetComponent<Enemy>().EnemyHealth = 0;
     }
 
     void randomizeSpawn()
