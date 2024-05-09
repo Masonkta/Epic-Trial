@@ -43,6 +43,9 @@ public class BossEnemy : MonoBehaviour
 
     private bool playedAudio = false;
 
+    // FALLING BOOL
+    public bool bossLanded = false;
+
     private void Awake()
     {
         audioSource.clip = audioClipStart;
@@ -149,6 +152,7 @@ public class BossEnemy : MonoBehaviour
     {
         if (transform.position.y <= 3)
         {
+            bossLanded = true;
             agent.enabled = true;
             if (!playedAudio)
             {

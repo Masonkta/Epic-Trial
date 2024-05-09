@@ -97,6 +97,12 @@ public class playerMovement : MonoBehaviour
     [Header("Trails")]
     public TrailRenderer trail;
 
+    [Header("Boss for camera")]
+    public GameObject bossObj;
+    public BossEnemy bossScript;
+    public bool bossSpawned = false;
+    public bool bossFalling = false;
+
 
     void Start()
     {
@@ -128,7 +134,8 @@ public class playerMovement : MonoBehaviour
 
         getLookDirection();
 
-        trail.enabled = isDodging;
+        bossStuff();
+
     }
 
 
@@ -344,6 +351,7 @@ public class playerMovement : MonoBehaviour
 
         controller.Move(playerVelocity * Time.deltaTime); // This only affects the player falling and air dashing
 
+        trail.enabled = isDodging;
     }
 
 
@@ -446,6 +454,12 @@ public class playerMovement : MonoBehaviour
     public Vector3 getLookDirection()
     {
         return cameraTransform.forward * 4f + Vector3.up * 2;
+    }
+
+    void bossStuff()
+    {
+        bossSpawned = bossObj.activeInHierarchy;
+        bossFalling = !bossScript.bossLanded;
     }
 
 }
