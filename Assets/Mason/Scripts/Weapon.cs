@@ -59,7 +59,7 @@ public class Weapon : MonoBehaviour
             switch (type)
             {
                 case WeaponType.Gladius:
-                    Damage = 312121; ////////////////////
+                    Damage = 3; ////////////////////
                     piercing = false;
                     break;
                 case WeaponType.Spear:
@@ -67,7 +67,7 @@ public class Weapon : MonoBehaviour
                     piercing = true;
                     break;
                 case WeaponType.Club:
-                    Damage = 7;
+                    Damage = 70;
                     piercing = false;
                     break;
             }

@@ -166,6 +166,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6349730943654380757, guid: 6bcb3e71894fb3c48a7b226204ef374e,
+        type: 3}
+      propertyPath: m_BaseOffset
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6896196049991106141, guid: 6bcb3e71894fb3c48a7b226204ef374e,
         type: 3}
       propertyPath: Etype
