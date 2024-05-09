@@ -10,7 +10,7 @@ public class RandomizedSpawner : MonoBehaviour
     public GameObject enemyWeak;
     public GameObject enemyMid;
     public GameObject enemyStr;
-    private int SpawnWave = 0;
+    public int SpawnWave = 0;
     private int enemyCount;
     private float xPos;
     private float zPos;
