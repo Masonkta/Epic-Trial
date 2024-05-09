@@ -234,6 +234,8 @@ public class Enemy : MonoBehaviour
     void dropItems()
     {
         int numOfGold = Random.Range(3, 10);
+        if (EnemyType.Boss == Etype)
+            numOfGold *= 300;
         dropGold(numOfGold * gameScript.ResourceDropRate);
 
         // Decide how many and what items to drop

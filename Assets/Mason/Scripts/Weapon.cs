@@ -91,9 +91,9 @@ public class Weapon : MonoBehaviour
                 enemy.EnemyHealth -= damageDealt;
 
                 //The funny happens here
-                enemy.transform.localScale = Vector3.one;
-                Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
-                enemy.transform.position -= direction;
+                //enemy.transform.localScale = Vector3.one;
+                //Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
+                //enemy.transform.position -= direction;
                 /*
                 if (BNMY)
                 {

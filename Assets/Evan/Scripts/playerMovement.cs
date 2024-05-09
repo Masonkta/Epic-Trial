@@ -401,15 +401,6 @@ public class playerMovement : MonoBehaviour
         {
             shiftLock = true;
             cameraTransform.LookAt(bossScript.gameObject.transform.position + Vector3.down);
-            /*Vector2 fromLine = bossScript.gameObject.transform.position - a;
-            Vector2 toLine = new Vector2(1, 0); // Assuming one point is always at the origin
-
-            float angle = Vector2.Angle(fromLine, toLine);
-            float sign = Mathf.Sign(Vector3.Cross(fromLine, toLine).z);
-
-            float signedAngle = angle * sign;
-
-            print(signedAngle);*/
             cameraAngle = 180f;
             actualCamDistance = 5f;
             actualCamHeight = 1f;
