@@ -28,7 +28,7 @@ public class BasicEnemy : MonoBehaviour
 
 
     // Attack placeholder
-    private bool CanAtt = true;
+    public bool CanAtt = true;
 
 
     // Enemy States

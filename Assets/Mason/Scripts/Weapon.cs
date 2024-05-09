@@ -52,6 +52,8 @@ public class Weapon : MonoBehaviour
                 return;
 
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            BasicEnemy BNMY = collision.gameObject.GetComponent<BasicEnemy>();
+            Debug.Log(BNMY);
             if (buff)
                 Damage *= 2;
 
@@ -87,15 +89,53 @@ public class Weapon : MonoBehaviour
             {
                 wasHit = true;
                 enemy.EnemyHealth -= damageDealt;
-                //Debug.Log("HIT");
+
+                //The funny happens here
+                enemy.transform.localScale = Vector3.one;
+                Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
+                enemy.transform.position -= direction;
+                /*
+                if (BNMY)
+                {
+                    BNMY.CanAtt = false;
+                    Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
+                    enemy.transform.position -= direction;
+                    BNMY.EnemyAnimator.SetTrigger("STOOOP");
+                    BNMY.CanAtt = true;
+                    Debug.Log(BNMY.CanAtt);
+                }
+                */
                 wasHit = false;
             }
         }
     }
+ 
+ 
+    private void knockBack(GameObject target, Vector3 direction, float length, float overTime)
+    {
+        direction = direction.normalized;
+        StartCoroutine(knockBackCoroutine(target, direction, length, overTime));
+    }
 
-    
-    // Update is called once per frame
-    void Update()
+    IEnumerator knockBackCoroutine(GameObject target, Vector3 direction, float length, float overTime)
+    {
+        float timeleft = overTime;
+        while (timeleft > 0)
+        {
+
+            if (timeleft > Time.deltaTime)
+                target.transform.Translate(direction * Time.deltaTime / overTime * length);
+            else
+                target.transform.Translate(direction * timeleft / overTime * length);
+            timeleft -= Time.deltaTime;
+
+            yield return null;
+        }
+    }
+
+
+// Update is called once per frame
+void Update()
     {
 
     }
