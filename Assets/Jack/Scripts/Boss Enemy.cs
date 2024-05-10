@@ -158,9 +158,9 @@ public class BossEnemy : MonoBehaviour
             agent.enabled = true;
             if (!playedAudio)
             {
-                audioSource.Stop();
-                audioSource.PlayOneShot(audioClipImpact);
-                playedAudio = true;
+                //audioSource.Stop();
+                //audioSource.PlayOneShot(audioClipImpact);
+                //playedAudio = true;
                 healthbar.SetActive(true);
                 healthbar1.SetActive(true);
             }

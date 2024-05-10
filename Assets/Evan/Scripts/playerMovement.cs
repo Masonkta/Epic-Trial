@@ -73,9 +73,6 @@ public class playerMovement : MonoBehaviour
     public float camDistance;
     float initialCamDistance;
     float actualCamDistance;
-    public float minHeightOverGround;
-    float xRotation;
-    float yRotation;
 
 
     [Header("Camera Follow")]
@@ -213,33 +210,9 @@ public class playerMovement : MonoBehaviour
 
     void verticalTurns()
     {
-
-        /*
-         * This was the origonal stuff
         float turnStrength = isPlayerOne ? ySensKeyboard : ySensController;
-        xRotation -= verticalTurnAmount * turnStrength * Time.deltaTime;
-        forwardTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        */
-
-        /*
-         * Tried a few things, nothin workin
-        float xmouse = Input.GetAxis("Mouse X");
-        float turnStrength = isPlayerOne ? ySensKeyboard : ySensController;
-        xRotation += xmouse * turnStrength * Time.deltaTime;
-
-        xRotation = Mathf.Clamp(xRotation, -50f, 55f);
-        Vector3 LOOK = new Vector3(1f, 0f, -10f);
-        Quaternion look2 = Quaternion.Euler(xRotation, 0f, 0f);
-        cameraTransform.position = forwardTransform.position + look2 * LOOK;
-        cameraTransform.LookAt(forwardTransform);
-        */
-
-        /*
-         * This was a last ditch effort
-        float xmouse = Input.GetAxis("Mouse X");
-        float turnStrength = isPlayerOne ? ySensKeyboard : ySensController;
-        forwardTransform.eulerAngles += new Vector3(xmouse * turnStrength, 0, 0);
-        */
+        initialCamHeight -= turnStrength * verticalTurnAmount * Time.deltaTime;
+        initialCamHeight = Mathf.Clamp(initialCamHeight, -1f, 5f);
 
 
     }
@@ -276,6 +249,7 @@ public class playerMovement : MonoBehaviour
         float playerVelocityMagnitude = new Vector2(playerVelocity.x, playerVelocity.z).magnitude;
 
         currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;
+        playerAnimator.speed = currentVelocity/10f + 0.5f;
         isMoving = currentVelocity > 0.75f;
 
         ableToAirDash = !isGrounded && playerVelocity.y > -1f && !airDashing;
@@ -364,7 +338,7 @@ public class playerMovement : MonoBehaviour
     
     void handleCamera()
     {
-        float speedHeight = currentVelocity / 6f;
+        float speedHeight = currentVelocity / 4f;
         float speedDepth = currentVelocity / 2f;
 
         camHeight = initialCamHeight + speedHeight;
@@ -390,8 +364,8 @@ public class playerMovement : MonoBehaviour
             }
         }
 
-        actualCamHeight += (camHeight - actualCamHeight) / 150f;
-        actualCamDistance += (camDistance - actualCamDistance) / 75f;
+        actualCamHeight += (camHeight - actualCamHeight) / 50f;
+        actualCamDistance += (camDistance - actualCamDistance) / 35f;
 
         // Finally Look at the player
         cameraTransform.LookAt(transform.position + cameraTransform.forward + Vector3.up);
