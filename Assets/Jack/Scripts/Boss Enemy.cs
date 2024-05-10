@@ -188,13 +188,13 @@ public class BossEnemy : MonoBehaviour
         // Sword damage deal
         if (Vector3.Distance(swordTip.position, gameScript.keyboardPlayer.transform.position) < 3f)
         {
-            print("DAMAGE");
-            gameScript.keyboardPlayerHealth -= Time.deltaTime * 10f;
+            //print("DAMAGE");
+            gameScript.keyboardPlayerHealth -= Time.deltaTime * 3f;
         }
         
         if (Vector3.Distance(swordTip.position, gameScript.controllerPlayer.transform.position) < 3f)
         {
-            print("DAMAGE");
+            //print("DAMAGE");
             gameScript.controllerPlayerHealth -= Time.deltaTime * 3f;
         }
 
