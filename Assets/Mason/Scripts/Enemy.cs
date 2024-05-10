@@ -5,6 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 
 public enum EnemyType
 {
@@ -42,6 +44,7 @@ public class Enemy : MonoBehaviour
 
     private const string playerKScoreTextObjectName = "ScoreK";
     private const string playerCScoreTextObjectName = "ScoreC";
+    private Gamepad gamepad;
 
 
     // Start is called before the first frame update
@@ -50,6 +53,16 @@ public class Enemy : MonoBehaviour
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         hs = gameScript.GetComponent<HighScoreTest>();
         HU = GameObject.FindGameObjectWithTag("heatingUp").GetComponent<heatingUp>();
+        InputSystem.onDeviceChange += OnDeviceChange;
+        foreach (var device in InputSystem.devices)
+        {
+            if (device is Gamepad)
+            {
+                gamepad = (Gamepad)device;
+                Debug.Log("Xbox controller connected!");
+                break;
+            }
+        }
 
         if (EnemyType.Weak == Etype)
         {
@@ -77,6 +90,40 @@ public class Enemy : MonoBehaviour
         woodPrefab = gameScript.woodPrefab;
         ironPrefab = gameScript.ironPrefab;
         skull = gameScript.skullPrefab;
+    }
+
+    public void Rumble(float intensity, float duration)
+    {
+        if (gamepad != null)
+        {
+            // Make the controller rumble
+            gamepad.SetMotorSpeeds(intensity, intensity);
+            StartCoroutine(StopRumble(duration));
+        }
+        else
+        {
+            Debug.LogWarning("No Xbox controller connected!");
+        }
+    }
+    
+    IEnumerator StopRumble(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        // Stop the rumble after the specified duration
+        gamepad.SetMotorSpeeds(0, 0);
+    }
+    void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        if (device is Gamepad && change == InputDeviceChange.Added && gamepad == null)
+        {
+            gamepad = (Gamepad)device;
+            Debug.Log("Xbox controller connected!");
+        }
+        else if (device is Gamepad && change == InputDeviceChange.Removed && gamepad == device)
+        {
+            gamepad = null;
+            Debug.Log("Xbox controller disconnected!");
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -124,24 +171,28 @@ public class Enemy : MonoBehaviour
                 {
                     EnemyDamage = 2;
                     gameScript.controllerPlayerHealth -= EnemyDamage;
+                    Rumble(0.3f, 0.3f);
                 }
                 
                 if (EnemyType.Medium == Etype)
                 {
                     EnemyDamage = 5;
                     gameScript.controllerPlayerHealth -= EnemyDamage;
+                    Rumble(0.3f, 0.3f);
                 }
                 
                 if (EnemyType.Heavy == Etype)
                 {
                     EnemyDamage = 7;
                     gameScript.controllerPlayerHealth -= EnemyDamage;
+                    Rumble(0.3f, 0.3f);
                 }
 
                 if (EnemyType.Boss == Etype)
                 {
                     EnemyDamage = 10;
                     gameScript.controllerPlayerHealth -= EnemyDamage;
+                    Rumble(0.3f, 0.3f);
                 }
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -152,6 +203,7 @@ public class Enemy : MonoBehaviour
     public void ResetAttack()
     {
         alreadyAttacked = false;
+        StopRumble(0.3f);
     }
 
     // Update is called once per frame
@@ -171,8 +223,12 @@ public class Enemy : MonoBehaviour
 
             Instantiate(deathEffect, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);
             die();
+            StopRumble(0.3f);
         }
-  
+
+        if (gameScript.controllerPlayerHealth <= 0f){
+            StopRumble(0.3f);
+        }
 
     }
 
@@ -228,6 +284,7 @@ public class Enemy : MonoBehaviour
     {
         dropItems();
         Destroy(gameObject);
+        StopRumble(0.3f);
     }
 
 

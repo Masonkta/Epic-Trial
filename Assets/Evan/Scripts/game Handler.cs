@@ -25,7 +25,6 @@ public class gameHandler : MonoBehaviour
     public float controllerPlayerHealth;
     public Image _healthbarSpriteC;
 
-
     [Header("Needed Prefabs")]
     public GameObject goldPrefab;
     public GameObject clothPrefab;
