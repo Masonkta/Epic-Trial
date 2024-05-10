@@ -170,7 +170,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fdcaecf97c532254b8ad9a600b5245ca, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bd375b03a8185c94183f8c947d93c921, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1.2
@@ -3193,7 +3193,6 @@ MonoBehaviour:
   ySensKeyboard: 50
   camHeight: 2.5
   camDistance: 6
-  minHeightOverGround: 2.5
   cameraAngle: 180
   footstepsSound: {fileID: 2079760314858436804}
   jumpSound: {fileID: 8732455779580477063}
@@ -3201,6 +3200,10 @@ MonoBehaviour:
   landingOnGrass: {fileID: 641713811378559954}
   landingOnGrassSound: {fileID: 8300000, guid: fdcaecf97c532254b8ad9a600b5245ca, type: 3}
   trail: {fileID: 6631485435816480137}
+  bossObj: {fileID: 0}
+  bossScript: {fileID: 0}
+  bossSpawned: 0
+  bossFalling: 0
 --- !u!114 &6422631160386219609
 MonoBehaviour:
   m_ObjectHideFlags: 0

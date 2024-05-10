@@ -19,8 +19,13 @@ public class RandomizedSpawner : MonoBehaviour
     public Transform p2;
     public Transform p3;
     public Transform spawnIn;
-    public GameObject boss;
+    public GameObject bossObj;
+    public GameObject SBOSS;
 
+
+    public bool bossGravityEnabled = false;
+    public float bossSpawnedAtTime;
+    public float timerForBoss;
 
     public void SpawnWaves()
     {
@@ -55,7 +60,9 @@ public class RandomizedSpawner : MonoBehaviour
 
         if (SpawnWave == 4)
         {
-            boss.SetActive(true);
+            bossObj.SetActive(true);
+            bossSpawnedAtTime = Time.time;
+            print(bossSpawnedAtTime);
         }
     }
 
@@ -74,6 +81,18 @@ public class RandomizedSpawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
             foreach(Enemy t in FindObjectsOfType<Enemy>())
                 t.GetComponent<Enemy>().EnemyHealth = 0;
+
+        if (bossObj.activeInHierarchy)
+        {
+            if (!bossGravityEnabled)
+            {
+                if (Time.time > bossSpawnedAtTime + timerForBoss)
+                {
+                    SBOSS.GetComponent<Rigidbody>().useGravity = true;
+                    bossGravityEnabled = true;
+                }
+            }
+        }
     }
 
     void randomizeSpawn()
