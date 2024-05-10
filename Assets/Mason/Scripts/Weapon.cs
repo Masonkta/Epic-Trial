@@ -54,7 +54,7 @@ public class Weapon : MonoBehaviour
 
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             BasicEnemy BNMY = collision.gameObject.GetComponent<BasicEnemy>();
-            Debug.Log(BNMY);
+            //Debug.Log(BNMY);
             if (buff)
                 Damage *= 2;
 

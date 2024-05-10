@@ -62,7 +62,7 @@ public class RandomizedSpawner : MonoBehaviour
         {
             bossObj.SetActive(true);
             bossSpawnedAtTime = Time.time;
-            print(bossSpawnedAtTime);
+            //print(bossSpawnedAtTime);
         }
     }
 

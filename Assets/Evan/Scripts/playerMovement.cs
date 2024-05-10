@@ -346,7 +346,7 @@ public class playerMovement : MonoBehaviour
 
         if (shiftLock)
         {
-            camHeight = 5f;
+            camHeight = 6.5f;
             camDistance = 7f;
         }
         
