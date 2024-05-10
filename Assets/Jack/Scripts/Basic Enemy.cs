@@ -73,7 +73,7 @@ public class BasicEnemy : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + xPoint, transform.position.y, transform.position.z + zPoint);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, ground))
+        if (Physics.Raycast(walkPoint, -transform.up, 10f, ground))
         {
             walkPointSet = true;
         }
