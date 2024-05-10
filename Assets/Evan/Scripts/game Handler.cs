@@ -70,7 +70,7 @@ public class gameHandler : MonoBehaviour
         controllerPlayer.SetActive(controllerPlayerHealth >= 0);
 
         if (keyboardPlayerHealth <= 0f && controllerPlayerHealth <= 0f)
-            SceneManager.LoadScene("gameOver");
+            SceneManager.LoadScene("victoryscene");
 
         _healthbarSpriteK.fillAmount = keyboardPlayerHealth / 100f;
         _healthbarSpriteC.fillAmount = controllerPlayerHealth / 100f;

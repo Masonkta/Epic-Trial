@@ -10,7 +10,7 @@ public class HighScoreTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //HS.Init(this, "Ring of Hell");
+        HS.Init(this, "Ring of Hell");
         delay = 1.0f;
     }
 
@@ -22,7 +22,7 @@ public class HighScoreTest : MonoBehaviour
             delay -= Time.deltaTime;
             if (delay < 0)
             {
-                //HS.SubmitHighScore(this, "Mason", score);
+                HS.SubmitHighScore(this, "Mason", score);
             }
         }
     }
