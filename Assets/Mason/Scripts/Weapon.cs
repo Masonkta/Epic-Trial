@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
     private bool tired;
     private bool piercing;
     public bool wasHit = false;
+    public bool isHitting = false;
     public int Damage;
     public WeaponType type;
     public SwordTest Att;
@@ -45,7 +46,7 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (Att.canAtt == false)
+        if (Att.canAtt == false && isHitting == false)
         {
             // Check if collided object is an enemy
             if (!collision.gameObject.CompareTag("Enemy"))
@@ -63,14 +64,18 @@ public class Weapon : MonoBehaviour
                 case WeaponType.Gladius:
                     Damage = 3; ////////////////////
                     piercing = false;
+                    isHitting = true;
+                    StartCoroutine(damaging());
                     break;
                 case WeaponType.Spear:
                     Damage = 10;
                     piercing = true;
+                    isHitting = true;
                     break;
                 case WeaponType.Club:
                     Damage = 70;
                     piercing = false;
+                    isHitting = true;
                     break;
             }
 
@@ -115,6 +120,12 @@ public class Weapon : MonoBehaviour
     {
         direction = direction.normalized;
         StartCoroutine(knockBackCoroutine(target, direction, length, overTime));
+    }
+
+    IEnumerator damaging()
+    {
+        yield return new WaitForSeconds(.0025f);
+        isHitting = false;
     }
 
     IEnumerator knockBackCoroutine(GameObject target, Vector3 direction, float length, float overTime)
