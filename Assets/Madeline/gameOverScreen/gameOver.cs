@@ -2,12 +2,15 @@ using HighScore;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour
 {
     HighScoreTest hs;
     public TextMeshProUGUI highScoreText;
+    public TextMeshProUGUI name1;
+    public TextMeshProUGUI name2;
 
     /*public Button quitButton;
     public Button restartButton;*/
@@ -26,9 +29,13 @@ public class GameOverScreen : MonoBehaviour
 
     private void Update()
     {
-        highScoreText.text = "High Score: " + hs.score;
+        highScoreText.text = "Score: " + hs.score;
     }
 
+    public void submit()
+    {
+        HS.SubmitHighScore(this, name1.text + " and " + name2.text, hs.score);
+    }
     public void QuitGame()
     {
         Application.Quit();

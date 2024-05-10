@@ -51,7 +51,7 @@ public class BossEnemy : MonoBehaviour
     private void Awake()
     {
         audioSource.clip = audioClipStart;
-        audioSource.Play();
+        //audioSource.Play();
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         playerKeyboard = gameScript.keyboardPlayer;
         playerController = gameScript.controllerPlayer;
