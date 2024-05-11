@@ -11,19 +11,5 @@ public class HighScoreTest : MonoBehaviour
     void Start()
     {
         HS.Init(this, "Ring of Hell");
-        delay = 1.0f;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (delay > 0)
-        {
-            delay -= Time.deltaTime;
-            if (delay < 0)
-            {
-                HS.SubmitHighScore(this, "Mason", score);
-            }
-        }
     }
 }
