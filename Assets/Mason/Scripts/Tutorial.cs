@@ -1,25 +1,29 @@
 using UnityEditor.ShaderGraph;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class TutorialTrigger : MonoBehaviour
+public class Tutorial : MonoBehaviour
 {
     public gameHandler gameScript;
-
     public GameObject keyboardPlayer;
     public GameObject controllerPlayer;
-
+    public bool playersCanMove = false;
     public float range = 5f;
+    public float beginningMovementLockTime = 8f;
 
-    public bool playerKInRange = false;
-    public bool playerCInRange = false;
-
+    [Header("CraftingTableStuff")]
+    public GameObject WalkToTableText;
+    public GameObject WalkToTableTextC;
+    public bool playerHasTouchedTable = false;
+    
     public GameObject Craftingtable;
     public GameObject CraftingTutorial;
-    public GameObject CraftingTutorial1;
+    public GameObject CraftingTutorial2;
 
+    [Header("Weapon")]
     public GameObject Weapon;
     public GameObject WeaponTutorial;
-    public GameObject WeaponTutorial1;
+    public GameObject WeaponTutorial2;
 
     private float originalTimeScale; 
 
@@ -32,43 +36,35 @@ public class TutorialTrigger : MonoBehaviour
 
         originalTimeScale = Time.timeScale;
         CraftingTutorial.SetActive(false);
-        CraftingTutorial1.SetActive(false);
+        CraftingTutorial2.SetActive(false);
         WeaponTutorial.SetActive(false);
-        WeaponTutorial1.SetActive(false);
+        WeaponTutorial2.SetActive(false);
     }
 
     void checkPlayers_crafting()
     {
+        WalkToTableText.SetActive(Time.timeSinceLevelLoad < beginningMovementLockTime);
+        WalkToTableTextC.SetActive(Time.timeSinceLevelLoad < beginningMovementLockTime);
+
         float dK = Vector3.Distance(Craftingtable.transform.position, keyboardPlayer.transform.position);
         float dC = Vector3.Distance(Craftingtable.transform.position, controllerPlayer.transform.position);
-        playerKInRange = (dK < range);
-        playerCInRange = (dC < range);
+        bool playerKInRange = (dK < range);
+        bool playerCInRange = (dC < range);
 
-        if (playerKInRange)
-        {
-            CraftingTutorial.SetActive(true);
-        }
-        else
-        {
-            CraftingTutorial.SetActive(false);
-        }
+        CraftingTutorial.SetActive(playerKInRange);
+        CraftingTutorial2.SetActive(playerCInRange);
 
-        if (playerCInRange)
-        {
-            CraftingTutorial1.SetActive(true);
-        }
-        else
-        {
-            CraftingTutorial1.SetActive(false);
-
-        }
+        if ((playerKInRange || playerCInRange) && !playerHasTouchedTable)
+            playerHasTouchedTable = true;
     }
+
+    /*
     void checkPlayers_weapons()
     {
         float dK = Vector3.Distance(Weapon.transform.position, keyboardPlayer.transform.position);
         float dC = Vector3.Distance(Weapon.transform.position, controllerPlayer.transform.position);
-        playerKInRange = (dK < range);
-        playerCInRange = (dC < range);
+        bool playerKInRange = (dK < range);
+        bool playerCInRange = (dC < range);
 
         if (playerKInRange)
         {
@@ -82,26 +78,27 @@ public class TutorialTrigger : MonoBehaviour
 
         if (playerCInRange)
         {
-            WeaponTutorial1.SetActive(true);
+            WeaponTutorial2.SetActive(true);
         }
         else
         {
-            WeaponTutorial1.SetActive(false);
+            WeaponTutorial2.SetActive(false);
 
         }
-    }
+    }*/
 
     void Update()
     {
-        if (Weapon != null)
+        playersCanMove = Time.timeSinceLevelLoad > beginningMovementLockTime;
+        /*if (Weapon != null)
         {
             checkPlayers_weapons();
         }
         else
         {
             WeaponTutorial.SetActive(false);
-            WeaponTutorial1.SetActive(false);
-        }
+            WeaponTutorial2.SetActive(false);
+        }*/
         checkPlayers_crafting();
     }
 }
