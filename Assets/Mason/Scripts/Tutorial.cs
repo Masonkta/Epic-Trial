@@ -15,11 +15,15 @@ public class TutorialTrigger : MonoBehaviour
 
     public GameObject Craftingtable;
     public GameObject CraftingTutorial;
-    public GameObject CraftingTutorial1;
+    public GameObject CraftingTutorial2;
 
     public GameObject Weapon;
     public GameObject WeaponTutorial;
-    public GameObject WeaponTutorial1;
+    public GameObject WeaponTutorial2;
+
+    [Header("Walk to table hint -- 6 seconds")]
+    public GameObject tableHint;
+    public GameObject tableHint2;
 
     private float originalTimeScale; 
 
@@ -32,9 +36,9 @@ public class TutorialTrigger : MonoBehaviour
 
         originalTimeScale = Time.timeScale;
         CraftingTutorial.SetActive(false);
-        CraftingTutorial1.SetActive(false);
+        CraftingTutorial2.SetActive(false);
         WeaponTutorial.SetActive(false);
-        WeaponTutorial1.SetActive(false);
+        WeaponTutorial2.SetActive(false);
     }
 
     void checkPlayers_crafting()
@@ -55,11 +59,11 @@ public class TutorialTrigger : MonoBehaviour
 
         if (playerCInRange)
         {
-            CraftingTutorial1.SetActive(true);
+            CraftingTutorial2.SetActive(true);
         }
         else
         {
-            CraftingTutorial1.SetActive(false);
+            CraftingTutorial2.SetActive(false);
 
         }
     }
@@ -82,17 +86,20 @@ public class TutorialTrigger : MonoBehaviour
 
         if (playerCInRange)
         {
-            WeaponTutorial1.SetActive(true);
+            WeaponTutorial2.SetActive(true);
         }
         else
         {
-            WeaponTutorial1.SetActive(false);
+            WeaponTutorial2.SetActive(false);
 
         }
     }
 
     void Update()
     {
+        tableHint.SetActive(Time.timeSinceLevelLoad < 6f);
+        tableHint2.SetActive(Time.timeSinceLevelLoad < 6f);
+
         if (Weapon != null)
         {
             checkPlayers_weapons();
@@ -100,7 +107,7 @@ public class TutorialTrigger : MonoBehaviour
         else
         {
             WeaponTutorial.SetActive(false);
-            WeaponTutorial1.SetActive(false);
+            WeaponTutorial2.SetActive(false);
         }
         checkPlayers_crafting();
     }

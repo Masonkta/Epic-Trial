@@ -18,6 +18,7 @@ public class playerMovement : MonoBehaviour
 
     public bool isPlayerOne;
     public bool hardCodeKeyboard;
+    public bool isTutorialScene;
     public GameObject player;
     public Transform forwardTransform;
     public Transform cameraTransform;
@@ -133,6 +134,14 @@ public class playerMovement : MonoBehaviour
 
         bossStuff();
 
+
+        // FOR NOW
+
+        if (isTutorialScene && Time.timeSinceLevelLoad < 6f)
+        {
+            cameraAngle = 245f;
+        }
+
     }
 
 
@@ -192,8 +201,16 @@ public class playerMovement : MonoBehaviour
 
         if (!bossFalling || !bossSpawned)
         {
-            horizontalTurnAmount = turnInput[0];
-            verticalTurnAmount = turnInput[1];
+            if (!isTutorialScene || (isTutorialScene && Time.timeSinceLevelLoad > 6f)) //////////////////////////////////////////
+            {
+                horizontalTurnAmount = turnInput[0];
+                verticalTurnAmount = turnInput[1];
+            }
+            else
+            {
+                horizontalTurnAmount = 0f;
+                verticalTurnAmount = 0f;
+            }
         }
     }
 
@@ -223,8 +240,11 @@ public class playerMovement : MonoBehaviour
     {
         Vector2 turnInput = value.Get<Vector2>();
         
-        sideMoveAm = turnInput[0];
-        forwardMoveAm = turnInput[1];
+        if (!isTutorialScene || (isTutorialScene && Time.timeSinceLevelLoad > 6f)) //////////////////////////////////////////
+        {
+            sideMoveAm = turnInput[0];
+            forwardMoveAm = turnInput[1];
+        }
 
 
     }
@@ -249,7 +269,7 @@ public class playerMovement : MonoBehaviour
         float playerVelocityMagnitude = new Vector2(playerVelocity.x, playerVelocity.z).magnitude;
 
         currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;
-        playerAnimator.speed = currentVelocity/10f + 0.5f;
+        playerAnimator.speed = currentVelocity/12f + 0.3f;
         isMoving = currentVelocity > 0.75f;
 
         ableToAirDash = !isGrounded && playerVelocity.y > -1f && !airDashing;
@@ -407,16 +427,21 @@ public class playerMovement : MonoBehaviour
         if (isPlayerOne)
         {
             forwardMoveAm = 0;
-            if (Input.GetKey(KeyCode.W))
-                forwardMoveAm = 1;
-            if (Input.GetKey(KeyCode.S))
-                forwardMoveAm = -1;
-
             sideMoveAm = 0;
-            if (Input.GetKey(KeyCode.A))
-                sideMoveAm = -1;
-            if (Input.GetKey(KeyCode.D))
-                sideMoveAm = 1;
+
+            if (!isTutorialScene || (isTutorialScene && Time.timeSinceLevelLoad > 6f)) //////////////////////////////////////////
+            {
+                if (Input.GetKey(KeyCode.W))
+                    forwardMoveAm = 1;
+                if (Input.GetKey(KeyCode.S))
+                    forwardMoveAm = -1;
+
+                if (Input.GetKey(KeyCode.A))
+                    sideMoveAm = -1;
+                if (Input.GetKey(KeyCode.D))
+                    sideMoveAm = 1;
+            }
+            
 
             if (Input.GetMouseButtonDown(1))
                 OnDodge();
