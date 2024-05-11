@@ -178,9 +178,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wasHit: 0
+  isHitting: 0
   Damage: 5
   type: 0
   Att: {fileID: 0}
+  audioSource: {fileID: 0}
+  deflectSound: {fileID: 8300000, guid: 67dd73a8fb8b99e4d8c8d793c86c4324, type: 3}
 --- !u!54 &740882708829933894
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -248,6 +251,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wasHit: 0
+  isHitting: 0
   Damage: 0
   type: 0
   Att: {fileID: 0}
+  audioSource: {fileID: 0}
+  deflectSound: {fileID: 0}

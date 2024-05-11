@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5988279006076483256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3126220158690957622}
+  - component: {fileID: 8039514594696566210}
+  m_Layer: 11
+  m_Name: Front Armor Collider
+  m_TagString: armor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3126220158690957622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988279006076483256}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2456084347226883803}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8039514594696566210
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988279006076483256}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8248985, y: 5.011698, z: 0.422854}
+  m_Center: {x: 0.002602979, y: -0.07230537, z: 0.44250724}
 --- !u!1001 &2077097371504248654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16,7 +69,7 @@ PrefabInstance:
     - target: {fileID: 1878842485245817257, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}
       propertyPath: EnemyHealth
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1878842485245817257, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}
@@ -214,6 +267,11 @@ PrefabInstance:
       propertyPath: attackRange
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6345617078548329165, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      propertyPath: playerInAttackRange
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8007841460586031092, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -233,7 +291,11 @@ PrefabInstance:
     - {fileID: 5532366489668354178, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
     - {fileID: 7847183712615666677, guid: 703c2d799e003d942a87683ebcfc63cd, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3126220158690957622}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}
@@ -347,6 +409,12 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!4 &2456084347226883803 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4523468621190758805, guid: 703c2d799e003d942a87683ebcfc63cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2077097371504248654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6316866960217914392 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5438466010809645910, guid: 703c2d799e003d942a87683ebcfc63cd,

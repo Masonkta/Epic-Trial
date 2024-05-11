@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
         }
         if (EnemyType.Heavy == Etype)
         {
-            EnemyHealth = 50;
+            EnemyHealth = 30;
             EnemyDefence = 0;
         }
         if (EnemyType.Boss == Etype)

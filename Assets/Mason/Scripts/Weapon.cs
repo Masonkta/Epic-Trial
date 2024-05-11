@@ -21,6 +21,7 @@ public class Weapon : MonoBehaviour
     public int Damage;
     public WeaponType type;
     public SwordTest Att;
+    public AudioSource deflectSound;
 
 
 
@@ -48,69 +49,117 @@ public class Weapon : MonoBehaviour
     {
         if (Att.canAtt == false && isHitting == false)
         {
-            // Check if collided object is an enemy
-            if (!collision.gameObject.CompareTag("Enemy"))
+            // Checks if the collided object is enemy armor
+            if (collision.gameObject.CompareTag("armor"))
+            {
+                deflectSound.Play();
+                Debug.Log("Enemy armor deflected!");
+                Enemy heavy = collision.gameObject.GetComponent<Enemy>();
+                // Calculate damage based on weapon type
+                switch (type)
+                {
+                    case WeaponType.Gladius:
+                        Damage = 3; ////////////////////
+                        piercing = false;
+                        isHitting = true;
+                        StartCoroutine(damaging());
+                        break;
+                    case WeaponType.Spear:
+                        Damage = 10;
+                        piercing = true;
+                        isHitting = true;
+                        break;
+                    case WeaponType.Club:
+                        Damage = 70;
+                        piercing = false;
+                        isHitting = true;
+                        break;
+                }
+
+                // Apply damage
+                int damageDeflect = Mathf.Max(0, Mathf.RoundToInt(Damage * 0.3f));
+                if (piercing)
+                {
+                    wasHit = true;
+                    heavy.EnemyHealth -= Damage;
+                    //Debug.Log("HIT");
+                    wasHit = false;
+                }
+                else
+                {
+                    wasHit = true;
+                    heavy.EnemyHealth -= damageDeflect;
+                    wasHit = false;
+                }
                 return;
-
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            BasicEnemy BNMY = collision.gameObject.GetComponent<BasicEnemy>();
-            //Debug.Log(BNMY);
-            if (buff)
-                Damage *= 2;
-
-            // Calculate damage based on weapon type
-            switch (type)
-            {
-                case WeaponType.Gladius:
-                    Damage = 3; ////////////////////
-                    piercing = false;
-                    isHitting = true;
-                    StartCoroutine(damaging());
-                    break;
-                case WeaponType.Spear:
-                    Damage = 10;
-                    piercing = true;
-                    isHitting = true;
-                    break;
-                case WeaponType.Club:
-                    Damage = 70;
-                    piercing = false;
-                    isHitting = true;
-                    break;
-            }
-
-            // Apply damage
-            float damageReductionPercentage = enemy.EnemyDefence * 0.01f;
-            float damageMultiplier = 1 - damageReductionPercentage;
-            int damageDealt = Mathf.Max(0, Mathf.RoundToInt(Damage * damageMultiplier));
-            if (piercing)
-            {
-                wasHit = true;
-                enemy.EnemyHealth -= Damage;
-                //Debug.Log("HIT");
-                wasHit = false;
             }
             else
-            {
-                wasHit = true;
-                enemy.EnemyHealth -= damageDealt;
+            { // Check if collided object is an enemy
+                if (!collision.gameObject.CompareTag("Enemy"))
+                    return;
 
-                //The funny happens here
-                //enemy.transform.localScale = Vector3.one;
-                //Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
-                //enemy.transform.position -= direction;
-                /*
-                if (BNMY)
+                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+                BasicEnemy BNMY = collision.gameObject.GetComponent<BasicEnemy>();
+                //Debug.Log(BNMY);
+                if (buff)
+                    Damage *= 2;
+
+                // Calculate damage based on weapon type
+                switch (type)
                 {
-                    BNMY.CanAtt = false;
-                    Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
-                    enemy.transform.position -= direction;
-                    BNMY.EnemyAnimator.SetTrigger("STOOOP");
-                    BNMY.CanAtt = true;
-                    Debug.Log(BNMY.CanAtt);
+                    case WeaponType.Gladius:
+                        Damage = 3; ////////////////////
+                        piercing = false;
+                        isHitting = true;
+                        StartCoroutine(damaging());
+                        break;
+                    case WeaponType.Spear:
+                        Damage = 10;
+                        piercing = true;
+                        isHitting = true;
+                        break;
+                    case WeaponType.Club:
+                        Damage = 70;
+                        piercing = false;
+                        isHitting = true;
+                        break;
                 }
-                */
-                wasHit = false;
+
+
+                // Apply damage
+                float damageReductionPercentage = enemy.EnemyDefence * 0.01f;
+                float damageMultiplier = 1 - damageReductionPercentage;
+                int damageDealt = Mathf.Max(0, Mathf.RoundToInt(Damage * damageMultiplier));
+                if (piercing)
+                {
+                    wasHit = true;
+                    enemy.EnemyHealth -= Damage;
+                    //Debug.Log("HIT");
+                    wasHit = false;
+                }
+                else
+                {
+                    wasHit = true;
+                    enemy.EnemyHealth -= damageDealt;
+
+                    //The funny happens here
+                    //enemy.transform.localScale = Vector3.one;
+                    //Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
+                    //enemy.transform.position -= direction;
+                    /*
+                    if (BNMY)
+                    {
+                        BNMY.CanAtt = false;
+                        Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
+                        enemy.transform.position -= direction;
+                        BNMY.EnemyAnimator.SetTrigger("STOOOP");
+                        BNMY.CanAtt = true;
+                        Debug.Log(BNMY.CanAtt);
+                    }
+                    */
+                    wasHit = false;
+                }
+            
             }
         }
     }
