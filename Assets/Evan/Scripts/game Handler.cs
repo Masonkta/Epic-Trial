@@ -63,7 +63,8 @@ public class gameHandler : MonoBehaviour
         hs = gameScript.GetComponent<HighScoreTest>();
 
         // Activate Second Display
-        Display.displays[1].Activate();
+        if (!Application.isEditor)
+            Display.displays[1].Activate();
     }
 
     void Update()
@@ -93,8 +94,10 @@ public class gameHandler : MonoBehaviour
 
     void OnQuitGame()
     {
-        //UnityEditor.EditorApplication.isPlaying = false;
-        Application.Quit();
+        if (Application.isEditor)
+            UnityEditor.EditorApplication.isPlaying = false;
+        else
+            Application.Quit();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////

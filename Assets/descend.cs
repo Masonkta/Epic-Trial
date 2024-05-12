@@ -16,6 +16,6 @@ public class descend : MonoBehaviour
     void Update()
     {
         if (droppingStarted)
-            transform.Translate(Vector3.down * 3f * Time.deltaTime);
+            transform.Translate(Vector3.down * 5f * Time.deltaTime);
     }
 }

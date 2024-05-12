@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+
 //using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -34,6 +36,7 @@ public class Tutorial : MonoBehaviour
     public float gladiusRange = 15f;
     public bool gladiusPickedUp;
     public GameObject firstEnemyByRock;
+    public bool firstEnemyKilled = false;
 
     bool GladiusReadyToBeInspected = true;
 
@@ -58,6 +61,31 @@ public class Tutorial : MonoBehaviour
         WeaponTutorial2.SetActive(false);
     }
 
+    void Update()
+    {
+        checkInitialMovement();
+        
+        checkPlayers_crafting();
+
+        gladiusStuff();
+
+        learnJump();
+    }
+
+
+
+    void checkInitialMovement()
+    {
+        if (!initialMovementGiven)
+        {
+            if (Time.timeSinceLevelLoad > beginningMovementLockTime)
+            {
+                playersCanMove = true;
+                initialMovementGiven = true;
+            }
+        }
+    }
+
     void checkPlayers_crafting()
     {
         WalkToTableText.SetActive(Time.timeSinceLevelLoad < beginningMovementLockTime);
@@ -78,14 +106,12 @@ public class Tutorial : MonoBehaviour
     }
 
     void checkPlayers_weapons()
-    { 
+    {
 
         float dK = Vector3.Distance(gladiusPickup.transform.position, keyboardPlayer.transform.position);
         float dC = Vector3.Distance(gladiusPickup.transform.position, controllerPlayer.transform.position);
         bool playerKInRange = (dK < gladiusRange);
         bool playerCInRange = (dC < gladiusRange);
-
-
 
         if (playerKInRange)
         {
@@ -93,14 +119,12 @@ public class Tutorial : MonoBehaviour
             if (GladiusReadyToBeInspected)
             {
                 GladiusReadyToBeInspected = false;
-                freezePlayers();
+                freezePlayers(gladiusPickup);
                 StartCoroutine(EnableMovementAfterDelay(pickupAweTime));
             }
         }
         else
             WeaponTutorial.SetActive(false);
-
-
 
         if (playerCInRange)
         {
@@ -108,40 +132,14 @@ public class Tutorial : MonoBehaviour
 
             if (GladiusReadyToBeInspected)
             {
-                
-                GladiusReadyToBeInspected = false;
-                freezePlayers();
-                StartCoroutine(EnableMovementAfterDelay(pickupAweTime));
 
+                GladiusReadyToBeInspected = false;
+                freezePlayers(gladiusPickup);
+                StartCoroutine(EnableMovementAfterDelay(pickupAweTime));
             }
         }
         else
             WeaponTutorial2.SetActive(false);
-    }
-
-
-
-    void Update()
-    {
-        checkInitialMovement();
-        
-
-        
-        checkPlayers_crafting();
-
-        gladiusStuff();
-    }
-
-    void checkInitialMovement()
-    {
-        if (!initialMovementGiven)
-        {
-            if (Time.timeSinceLevelLoad > beginningMovementLockTime)
-            {
-                playersCanMove = true;
-                initialMovementGiven = true;
-            }
-        }
     }
 
     void gladiusStuff()
@@ -150,14 +148,26 @@ public class Tutorial : MonoBehaviour
         {
             checkPlayers_weapons();
         }
-        else
+        else if (!gladiusPickedUp)
         {
             gladiusPickedUp = true;
             WeaponTutorial.SetActive(false);
             WeaponTutorial2.SetActive(false);
             StartCoroutine(EnableFirstEnemy());
         }
+
+        if (gladiusPickedUp && !firstEnemyByRock)
+            firstEnemyKilled = true;
     }
+
+    void learnJump()
+    {
+        if (firstEnemyKilled)
+        {
+
+        }
+    }
+
 
     void freezePlayers()
     {
@@ -168,12 +178,37 @@ public class Tutorial : MonoBehaviour
         keyboardPlayer.GetComponent<playerMTutorial>().horizontalTurnAmount = 0f;
         keyboardPlayer.GetComponent<playerMTutorial>().verticalTurnAmount = 0f;
         keyboardPlayer.GetComponent<playerMTutorial>().playerVelocity = Vector3.zero;
+        keyboardPlayer.GetComponent<playerMTutorial>().isDodging = false;
 
         controllerPlayer.GetComponent<playerMTutorial>().forwardMoveAm = 0f;
         controllerPlayer.GetComponent<playerMTutorial>().sideMoveAm = 0f;
         controllerPlayer.GetComponent<playerMTutorial>().horizontalTurnAmount = 0f;
         controllerPlayer.GetComponent<playerMTutorial>().verticalTurnAmount = 0f;
+        controllerPlayer.GetComponent<playerMTutorial>().playerVelocity = Vector3.zero;
+        controllerPlayer.GetComponent<playerMTutorial>().isDodging = false;
+    }
+
+    void freezePlayers(GameObject focusOn)
+    {
+        playersCanMove = false;
+
+        keyboardPlayer.GetComponent<playerMTutorial>().forwardMoveAm = 0f;
+        keyboardPlayer.GetComponent<playerMTutorial>().sideMoveAm = 0f;
+        keyboardPlayer.GetComponent<playerMTutorial>().horizontalTurnAmount = 0f;
+        keyboardPlayer.GetComponent<playerMTutorial>().verticalTurnAmount = 0f;
         keyboardPlayer.GetComponent<playerMTutorial>().playerVelocity = Vector3.zero;
+        keyboardPlayer.GetComponent<playerMTutorial>().isDodging = false;
+        keyboardPlayer.GetComponent<playerMTutorial>().overrideCamera = true;
+        keyboardPlayer.GetComponent<playerMTutorial>().cameraTransform.LookAt(focusOn.transform.position);
+
+        controllerPlayer.GetComponent<playerMTutorial>().forwardMoveAm = 0f;
+        controllerPlayer.GetComponent<playerMTutorial>().sideMoveAm = 0f;
+        controllerPlayer.GetComponent<playerMTutorial>().horizontalTurnAmount = 0f;
+        controllerPlayer.GetComponent<playerMTutorial>().verticalTurnAmount = 0f;
+        controllerPlayer.GetComponent<playerMTutorial>().playerVelocity = Vector3.zero;
+        controllerPlayer.GetComponent<playerMTutorial>().isDodging = false;
+        controllerPlayer.GetComponent<playerMTutorial>().overrideCamera = true;
+        controllerPlayer.GetComponent<playerMTutorial>().cameraTransform.LookAt(focusOn.transform.position);
     }
 
     IEnumerator EnableMovementAfterDelay(float delay)
@@ -181,12 +216,23 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         playersCanMove = true;
+        keyboardPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
+        controllerPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
     }
+
 
     IEnumerator EnableFirstEnemy()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.7f);
 
         if (firstEnemyByRock) firstEnemyByRock.SetActive(true);
     }
+
+    IEnumerator GivePlayersJump()
+    {
+        yield return new WaitForSeconds(1f);
+
+        print("You can now Jump");
+    }
+
 }

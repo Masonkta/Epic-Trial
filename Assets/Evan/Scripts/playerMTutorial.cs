@@ -52,7 +52,7 @@ public class playerMTutorial : MonoBehaviour
     public float dodgeSpeed = 20f;
     public float dodgeTime = 0.4f;
 
-    private bool isDodging;
+    public bool isDodging;
 
 
     [Header("Turning")]
@@ -73,6 +73,7 @@ public class playerMTutorial : MonoBehaviour
     public float camDistance = 6f;
     float initialCamDistance;
     float actualCamDistance;
+    public bool overrideCamera = false;
 
 
     [Header("Camera Follow")]
@@ -246,7 +247,8 @@ public class playerMTutorial : MonoBehaviour
 
     void OnDodge()
     {
-        StartCoroutine(Dodging());
+        if (tutorialScript.playersCanDodge)
+            StartCoroutine(Dodging());
     }
 
     void setSpeed()
@@ -380,7 +382,8 @@ public class playerMTutorial : MonoBehaviour
         actualCamDistance += (camDistance - actualCamDistance) / 135f;
 
         // Finally Look at the player
-        cameraTransform.LookAt(transform.position + cameraTransform.forward + Vector3.up);
+        if (!overrideCamera)
+            cameraTransform.LookAt(transform.position + cameraTransform.forward + Vector3.up);
 
         /*// Unless boss is in air
         if (bossSpawned && bossFalling)
