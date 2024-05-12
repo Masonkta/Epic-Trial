@@ -2429,12 +2429,12 @@ PrefabInstance:
         type: 3}
       propertyPath: CControls
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2138810687}
     - target: {fileID: 6653752105731435744, guid: f2461279e7a9f2546a3395dc28bdcc9f,
         type: 3}
       propertyPath: KControls
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1424505815}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7002,15 +7002,18 @@ MonoBehaviour:
   gameScript: {fileID: 0}
   keyboardPlayer: {fileID: 0}
   controllerPlayer: {fileID: 0}
+  playersCanMove: 0
   range: 5
-  playerKInRange: 0
-  playerCInRange: 0
+  beginningMovementLockTime: 8
+  WalkToTableText: {fileID: 1713461631}
+  WalkToTableTextC: {fileID: 84749830}
+  playerHasTouchedTable: 0
   Craftingtable: {fileID: 1577172309}
   CraftingTutorial: {fileID: 2138810687}
-  CraftingTutorial1: {fileID: 0}
+  CraftingTutorial2: {fileID: 1424505815}
   Weapon: {fileID: 0}
   WeaponTutorial: {fileID: 864172277}
-  WeaponTutorial1: {fileID: 0}
+  WeaponTutorial2: {fileID: 564262362}
 --- !u!4 &1509464738
 Transform:
   m_ObjectHideFlags: 0
@@ -11266,6 +11269,7 @@ MonoBehaviour:
   Damage: 5
   type: 0
   Att: {fileID: 6285819802895469139}
+  deflectSound: {fileID: 0}
 --- !u!114 &1138740202225094883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12449,6 +12453,7 @@ MonoBehaviour:
   Damage: 5
   type: 0
   Att: {fileID: 6660429259036778103}
+  deflectSound: {fileID: 0}
 --- !u!136 &2336626094844477253
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13608,6 +13613,7 @@ MonoBehaviour:
   Damage: 5
   type: 0
   Att: {fileID: 2716915949774140087}
+  deflectSound: {fileID: 0}
 --- !u!4 &3744783185617607861
 Transform:
   m_ObjectHideFlags: 0
@@ -16156,6 +16162,7 @@ MonoBehaviour:
   Damage: 5
   type: 0
   Att: {fileID: 8531835485954558959}
+  deflectSound: {fileID: 0}
 --- !u!1 &6473575408702404342
 GameObject:
   m_ObjectHideFlags: 0
@@ -17904,6 +17911,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0027fbb8d028208488bed62abd0ba44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialScript: {fileID: 1509464737}
+  isPlayerOne: 0
+  hardCodeKeyboard: 0
+  player: {fileID: 4268367710632880590}
+  forwardTransform: {fileID: 4483654742872412939}
+  cameraTransform: {fileID: 1773912909214334239}
+  currentVelocity: 0
+  walkSpeed: 6
+  sprintSpeed: 10
+  groundCheckDistance: 2.2
+  jumpHeight: 3.5
+  airDashSpeed: 20
+  dodgeSpeed: 20
+  dodgeTime: 0.4
+  shiftLock: 0
+  xSensController: 250
+  ySensController: 150
+  xSensKeyboard: 80
+  ySensKeyboard: 40
+  camHeight: 2.5
+  camDistance: 6
+  cameraAngle: 0
+  footstepsSound: {fileID: 2079760314731802768}
+  jumpSound: {fileID: 8732455778900719315}
+  landingOnGrass: {fileID: 641713811504632710}
+  trail: {fileID: 6631485434618234333}
 --- !u!4 &8563868073802995802
 Transform:
   m_ObjectHideFlags: 0
@@ -18095,6 +18128,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0027fbb8d028208488bed62abd0ba44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialScript: {fileID: 1509464737}
+  isPlayerOne: 0
+  hardCodeKeyboard: 0
+  player: {fileID: 5738884729915566551}
+  forwardTransform: {fileID: 8198150945519609374}
+  cameraTransform: {fileID: 1979771939377330228}
+  currentVelocity: 0
+  walkSpeed: 6
+  sprintSpeed: 10
+  groundCheckDistance: 2.2
+  jumpHeight: 2.5
+  airDashSpeed: 6
+  dodgeSpeed: 20
+  dodgeTime: 0.4
+  shiftLock: 0
+  xSensController: 250
+  ySensController: 150
+  xSensKeyboard: 80
+  ySensKeyboard: 25
+  camHeight: 2.5
+  camDistance: 6
+  cameraAngle: 0
+  footstepsSound: {fileID: 7367924640252857159}
+  jumpSound: {fileID: 5627758298521406950}
+  landingOnGrass: {fileID: 424942351478642760}
+  trail: {fileID: 8615171116132684942}
 --- !u!1 &8643875868133714411
 GameObject:
   m_ObjectHideFlags: 0

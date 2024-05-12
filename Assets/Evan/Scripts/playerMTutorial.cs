@@ -26,8 +26,8 @@ public class playerMTutorial : MonoBehaviour
 
     [Header("Moving")]
     public float currentVelocity;
-    public float walkSpeed;
-    public float sprintSpeed;
+    public float walkSpeed = 6f;
+    public float sprintSpeed = 11f;
 
     private float speed;
     private bool isMoving;
@@ -38,9 +38,9 @@ public class playerMTutorial : MonoBehaviour
 
 
     [Header("Jumping")]
-    public float groundCheckDistance;
-    public float jumpHeight;
-    public float airDashSpeed;
+    public float groundCheckDistance = 2.2f;
+    public float jumpHeight = 3.3f;
+    public float airDashSpeed = 20f;
 
     private bool isGrounded;
     private float gravity = Physics.gravity.y;
@@ -57,20 +57,20 @@ public class playerMTutorial : MonoBehaviour
 
     [Header("Turning")]
     public bool shiftLock = false;
-    public float xSensController;
-    public float ySensController;
-    public float xSensKeyboard;
-    public float ySensKeyboard;
+    public float xSensController = 250f;
+    public float ySensController = 150f;
+    public float xSensKeyboard = 80f;
+    public float ySensKeyboard = 25f;
 
     private float horizontalTurnAmount;
     private float verticalTurnAmount;
 
 
     [Header("Camera")]
-    public float camHeight;
+    public float camHeight = 2.5f;
     float initialCamHeight;
     float actualCamHeight;
-    public float camDistance;
+    public float camDistance = 6f;
     float initialCamDistance;
     float actualCamDistance;
 
@@ -82,9 +82,9 @@ public class playerMTutorial : MonoBehaviour
     [Header("Audio")]
     public AudioSource footstepsSound;
     public AudioSource jumpSound;
-    public AudioClip jumpSoundEffect;
+    AudioClip jumpSoundEffect;
     public AudioSource landingOnGrass;
-    public AudioClip landingOnGrassSound;
+    AudioClip landingOnGrassSound;
 
 
     [Header("Animation")]
@@ -109,6 +109,9 @@ public class playerMTutorial : MonoBehaviour
 
         initialCamDistance = camDistance; actualCamDistance = camDistance;
         initialCamHeight = camHeight; actualCamHeight = camHeight;
+
+        jumpSoundEffect = jumpSound.clip;
+        landingOnGrassSound = landingOnGrass.clip;
     }
 
     void Update()
