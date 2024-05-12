@@ -186,8 +186,8 @@ public class Tutorial : MonoBehaviour
 
             if (airDashTip.activeInHierarchy && Time.time > timeFirstEnemyIsKilled + jumpingTipsDelay * 2f)
             {
-                airDashTip.SetActive(true);
-                airDashTip2.SetActive(true);
+                airDashTip.SetActive(false);
+                airDashTip2.SetActive(false);
             }
         }
     }
