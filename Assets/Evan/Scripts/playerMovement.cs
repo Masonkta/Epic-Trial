@@ -147,7 +147,7 @@ public class playerMovement : MonoBehaviour
     void airDash()
     {
         Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed;
-        var moveDir = cameraTransform.TransformDirection(moveDirection); moveDir.y = 1f; // This is our new up force
+        var moveDir = cameraTransform.TransformDirection(moveDirection); moveDir.y = 3f; // This is our new up force
         playerVelocity += moveDir;
         airDashing = true;
 

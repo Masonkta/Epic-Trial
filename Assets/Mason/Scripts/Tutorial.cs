@@ -51,8 +51,8 @@ public class Tutorial : MonoBehaviour
     public GameObject airDashTip;
     public GameObject airDashTip2;
 
-
-
+    [Header("Mason")]
+    public float a;
 
 
 

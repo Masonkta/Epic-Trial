@@ -470,6 +470,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49314977}
   m_CullTransparentMesh: 1
+--- !u!1 &76191939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 76191940}
+  - component: {fileID: 76191942}
+  - component: {fileID: 76191941}
+  m_Layer: 0
+  m_Name: Right Stick Img
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &76191940
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76191939}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 670999772}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 32, y: -156.3}
+  m_SizeDelta: {x: 200, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &76191941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76191939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: cc58b99f773efff46b51b246e6907ff4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &76191942
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76191939}
+  m_CullTransparentMesh: 1
 --- !u!1 &84749830
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,8 +716,6 @@ Transform:
   - {fileID: 1369682626}
   - {fileID: 1668427443}
   - {fileID: 4221488263103769003}
-  - {fileID: 2132231092}
-  - {fileID: 730928124}
   - {fileID: 827876185}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3636,7 +3709,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4706f4c6043dc0145b5b53da5ff3470f, type: 2}
+  - {fileID: 2100000, guid: f9073d81d2a822f4ab034004c4ae76aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3711,7 +3784,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 76191940}
   m_Father: {fileID: 1636198676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3739,7 +3813,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Attacking Mode Toggle:  RS'
+  m_text: 'Attacking Mode Toggle:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 620283c716a2cda44b6c3f0aebaa0462, type: 2}
   m_sharedMaterial: {fileID: -6947414812477616748, guid: 620283c716a2cda44b6c3f0aebaa0462,
@@ -3806,7 +3880,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &670999774
@@ -4178,7 +4252,7 @@ GameObject:
   - component: {fileID: 730928122}
   - component: {fileID: 730928121}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Jumping 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4225,7 +4299,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 55a46dc2e28d49a40a02a5d969efe70e, type: 2}
+  - {fileID: 2100000, guid: d79160699bc43a44996d2e46e21efe17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4264,11 +4338,11 @@ Transform:
   m_GameObject: {fileID: 730928120}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.79, y: 1.45, z: 55.065796}
-  m_LocalScale: {x: 6.03, y: 2.0834856, z: 6.03}
+  m_LocalPosition: {x: -0.5276, y: 0.2693727, z: -0.46476853}
+  m_LocalScale: {x: 0.014150231, y: 0.15376277, z: 0.015669685}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 95587254}
+  m_Father: {fileID: 827876185}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &741277712
 GameObject:
@@ -4667,7 +4741,7 @@ GameObject:
   - component: {fileID: 827876183}
   - component: {fileID: 827876182}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Sand Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4714,7 +4788,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 55a46dc2e28d49a40a02a5d969efe70e, type: 2}
+  - {fileID: 2100000, guid: c41cad2e69b8bcb458b00d58a64234f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4753,10 +4827,12 @@ Transform:
   m_GameObject: {fileID: 827876181}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.140003, y: 2.44, z: 61.105797}
-  m_LocalScale: {x: 6.03, y: 2.0834856, z: 6.03}
+  m_LocalPosition: {x: 172.7013, y: 0, z: 231.952}
+  m_LocalScale: {x: 426.14145, y: 13.55, z: 384.8195}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2132231092}
+  - {fileID: 730928124}
   m_Father: {fileID: 95587254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &843968332
@@ -8088,7 +8164,7 @@ MonoBehaviour:
   keyboardPlayer: {fileID: 0}
   controllerPlayer: {fileID: 0}
   playersCanMove: 0
-  beginningMovementLockTime: 2.5
+  beginningMovementLockTime: 1.7
   playersCanJump: 0
   playersCanAirDash: 0
   playersCanDodge: 0
@@ -8105,7 +8181,7 @@ MonoBehaviour:
   gladiusPickup: {fileID: 7165563975483571956}
   WeaponTutorial: {fileID: 864172277}
   WeaponTutorial2: {fileID: 564262362}
-  pickupAweTime: 2.3
+  pickupAweTime: 1.7
   gladiusRange: 15
   shiftLockTip: {fileID: 31619900}
   shiftLockTip2: {fileID: 670999771}
@@ -8113,11 +8189,12 @@ MonoBehaviour:
   firstEnemyByRock: {fileID: 1369682620}
   firstEnemyKilled: 0
   timeFirstEnemyIsKilled: 0
-  jumpingTipsDelay: 4.4
+  jumpingTipsDelay: 4
   jumpTip: {fileID: 1864257384}
   jumpTip2: {fileID: 1708211900}
   airDashTip: {fileID: 633056913}
   airDashTip2: {fileID: 1811423161}
+  a: 0
 --- !u!4 &1509464738
 Transform:
   m_ObjectHideFlags: 0
@@ -11441,7 +11518,7 @@ GameObject:
   - component: {fileID: 2132231090}
   - component: {fileID: 2132231089}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Jumping 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11488,7 +11565,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 55a46dc2e28d49a40a02a5d969efe70e, type: 2}
+  - {fileID: 2100000, guid: d79160699bc43a44996d2e46e21efe17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11527,11 +11604,11 @@ Transform:
   m_GameObject: {fileID: 2132231088}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -65.748055, y: -1.5038688, z: 44.7558}
-  m_LocalScale: {x: 6.03, y: 6.03, z: 6.03}
+  m_LocalPosition: {x: -0.5624, y: -0.11098663, z: -0.48645195}
+  m_LocalScale: {x: 0.014150231, y: 0.44501844, z: 0.015669685}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 95587254}
+  m_Father: {fileID: 827876185}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &9130425958935057
 Transform:
