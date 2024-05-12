@@ -32,8 +32,8 @@ public class playerMTutorial : MonoBehaviour
     private float speed;
     private bool isMoving;
     private bool sprinting;
-    private float forwardMoveAm;
-    private float sideMoveAm;
+    public float forwardMoveAm;
+    public float sideMoveAm;
     private Vector3 playerVelocity;
 
 
@@ -62,8 +62,8 @@ public class playerMTutorial : MonoBehaviour
     public float xSensKeyboard = 80f;
     public float ySensKeyboard = 25f;
 
-    private float horizontalTurnAmount;
-    private float verticalTurnAmount;
+    public float horizontalTurnAmount;
+    public float verticalTurnAmount;
 
 
     [Header("Camera")]
@@ -254,7 +254,7 @@ public class playerMTutorial : MonoBehaviour
         float playerVelocityMagnitude = new Vector2(playerVelocity.x, playerVelocity.z).magnitude;
 
         currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;
-        playerAnimator.speed = currentVelocity / 10f + 0.5f;
+        playerAnimator.speed = Mathf.Sqrt(currentVelocity) / 7f + 0.4f; //currentVelocity / 10f + 0.5f;
         isMoving = currentVelocity > 0.75f;
 
         ableToAirDash = !isGrounded && playerVelocity.y > -1f && !airDashing;

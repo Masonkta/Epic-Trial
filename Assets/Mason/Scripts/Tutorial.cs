@@ -24,14 +24,20 @@ public class Tutorial : MonoBehaviour
     public GameObject CraftingTutorial;
     public GameObject CraftingTutorial2;
 
-    [Header("Gladius Pickup")]
+    [Header("Sword Pickup")]
     public GameObject gladiusPickup;
     public GameObject WeaponTutorial;
     public GameObject WeaponTutorial2;
     public float pickupAweTime = 6f;
     public float gladiusRange = 15f;
+    public bool gladiusPickedUp;
+    public GameObject firstEnemyByRock;
 
     bool GladiusReadyToBeInspected = true;
+
+
+
+    
 
 
 
@@ -81,21 +87,22 @@ public class Tutorial : MonoBehaviour
         bool playerKInRange = (dK < gladiusRange);
         bool playerCInRange = (dC < gladiusRange);
 
+
+
         if (playerKInRange)
         {
             WeaponTutorial.SetActive(true);
             if (GladiusReadyToBeInspected)
             {
-                playersCanMove = false;
                 GladiusReadyToBeInspected = false;
-                StartCoroutine(EnableMovementAfterDelay());
+                freezePlayers();
+                StartCoroutine(EnableMovementAfterDelay(pickupAweTime));
             }
         }
         else
-        {
             WeaponTutorial.SetActive(false);
 
-        }
+
 
         if (playerCInRange)
         {
@@ -103,26 +110,31 @@ public class Tutorial : MonoBehaviour
 
             if (GladiusReadyToBeInspected)
             {
-                playersCanMove = false;
+                
                 GladiusReadyToBeInspected = false;
-                StartCoroutine(EnableMovementAfterDelay());
+                freezePlayers();
+                StartCoroutine(EnableMovementAfterDelay(pickupAweTime));
 
             }
         }
         else
-        {
             WeaponTutorial2.SetActive(false);
-        }
     }
 
-    IEnumerator EnableMovementAfterDelay()
-    {
-        yield return new WaitForSeconds(6f);
-        
-        playersCanMove = true;
-    }
+
 
     void Update()
+    {
+        checkInitialMovement();
+        
+
+        
+        checkPlayers_crafting();
+
+        gladiusStuff();
+    }
+
+    void checkInitialMovement()
     {
         if (!initialMovementGiven)
         {
@@ -132,16 +144,49 @@ public class Tutorial : MonoBehaviour
                 initialMovementGiven = true;
             }
         }
+    }
 
+    void gladiusStuff()
+    {
         if (gladiusPickup != null)
         {
             checkPlayers_weapons();
         }
         else
         {
+            gladiusPickedUp = true;
             WeaponTutorial.SetActive(false);
             WeaponTutorial2.SetActive(false);
+            StartCoroutine(EnableFirstEnemy());
         }
-        checkPlayers_crafting();
+    }
+
+    void freezePlayers()
+    {
+        playersCanMove = false;
+
+        keyboardPlayer.GetComponent<playerMTutorial>().forwardMoveAm = 0f;
+        keyboardPlayer.GetComponent<playerMTutorial>().sideMoveAm = 0f;
+        keyboardPlayer.GetComponent<playerMTutorial>().horizontalTurnAmount = 0f;
+        keyboardPlayer.GetComponent<playerMTutorial>().verticalTurnAmount = 0f;
+
+        controllerPlayer.GetComponent<playerMTutorial>().forwardMoveAm = 0f;
+        controllerPlayer.GetComponent<playerMTutorial>().sideMoveAm = 0f;
+        controllerPlayer.GetComponent<playerMTutorial>().horizontalTurnAmount = 0f;
+        controllerPlayer.GetComponent<playerMTutorial>().verticalTurnAmount = 0f;
+    }
+
+    IEnumerator EnableMovementAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        playersCanMove = true;
+    }
+
+    IEnumerator EnableFirstEnemy()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (firstEnemyByRock) firstEnemyByRock.SetActive(true);
     }
 }

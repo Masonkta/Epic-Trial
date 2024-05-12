@@ -51,8 +51,13 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
-        hs = gameScript.GetComponent<HighScoreTest>();
-        HU = GameObject.FindGameObjectWithTag("heatingUp").GetComponent<heatingUp>();
+
+        if (gameScript.GetComponent<HighScoreTest>())
+            hs = gameScript.GetComponent<HighScoreTest>();
+
+        if (GameObject.FindGameObjectWithTag("heatingUp"))
+            HU = GameObject.FindGameObjectWithTag("heatingUp").GetComponent<heatingUp>();
+
         InputSystem.onDeviceChange += OnDeviceChange;
         foreach (var device in InputSystem.devices)
         {
@@ -211,14 +216,20 @@ public class Enemy : MonoBehaviour
     {
         if (EnemyHealth <= 0)
         {
-            HU.AddKill();
+            if (HU != null)
+                HU.AddKill();
 
             TMPro.TextMeshProUGUI playerKScoreText = GetPlayerScoreText();
             TMPro.TextMeshProUGUI playerCScoreText = GetPlayerScoreText2();
             int scoreToAdd = GetScore(Etype);
-            hs.score += scoreToAdd * HU.scoreMultiplier;
-            playerKScoreText.text = "Score: " + hs.score.ToString();
-            playerCScoreText.text = "Score: " + hs.score.ToString();
+            
+            if (HU != null)
+            {
+                hs.score += scoreToAdd * HU.scoreMultiplier;
+                playerKScoreText.text = "Score: " + hs.score.ToString();
+                playerCScoreText.text = "Score: " + hs.score.ToString();
+            }
+            
 
 
             Instantiate(deathEffect, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity);

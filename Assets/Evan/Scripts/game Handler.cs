@@ -100,9 +100,12 @@ public class gameHandler : MonoBehaviour
             gold++;
             TMPro.TextMeshProUGUI playerScoreText = GetPlayerScoreText();
             TMPro.TextMeshProUGUI playerScoreText2 = GetPlayerScoreText2();
-            hs.score += 1;
-            playerScoreText.text = "Score: " + hs.score.ToString();
-            playerScoreText2.text = "Score: " + hs.score.ToString();
+            if (hs)
+            {
+                hs.score += 1;
+                playerScoreText.text = "Score: " + hs.score.ToString();
+                playerScoreText2.text = "Score: " + hs.score.ToString();
+            }
 
 
         }
