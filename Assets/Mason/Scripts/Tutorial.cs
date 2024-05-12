@@ -37,12 +37,19 @@ public class Tutorial : MonoBehaviour
     public bool gladiusPickedUp;
     public GameObject firstEnemyByRock;
     public bool firstEnemyKilled = false;
+    public float timeFirstEnemyIsKilled;
 
     bool GladiusReadyToBeInspected = true;
 
+    [Header("Jumping Tips + Stuff")]
+    public float jumpingTipsDelay = 3f;
+    public GameObject jumpTip;
+    public GameObject jumpTip2;
+    public GameObject airDashTip;
+    public GameObject airDashTip2;
 
 
-    
+
 
 
 
@@ -64,10 +71,12 @@ public class Tutorial : MonoBehaviour
     void Update()
     {
         checkInitialMovement();
-        
-        checkPlayers_crafting();
 
-        gladiusStuff();
+        walkUpToCraftingTableAndDropWalls();
+
+        firstEnemyNSwordStuff();
+
+        learnDoubleJump();
     }
 
 
@@ -84,7 +93,7 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    void checkPlayers_crafting()
+    void walkUpToCraftingTableAndDropWalls()
     {
         WalkToTableText.SetActive(Time.timeSinceLevelLoad < beginningMovementLockTime);
         WalkToTableTextC.SetActive(Time.timeSinceLevelLoad < beginningMovementLockTime);
@@ -130,7 +139,6 @@ public class Tutorial : MonoBehaviour
 
             if (GladiusReadyToBeInspected)
             {
-
                 GladiusReadyToBeInspected = false;
                 freezePlayers(gladiusPickup);
                 StartCoroutine(EnableMovementAfterDelay(pickupAweTime));
@@ -140,7 +148,7 @@ public class Tutorial : MonoBehaviour
             WeaponTutorial2.SetActive(false);
     }
 
-    void gladiusStuff()
+    void firstEnemyNSwordStuff()
     {
         if (gladiusPickup != null)
         {
@@ -154,14 +162,37 @@ public class Tutorial : MonoBehaviour
             StartCoroutine(EnableFirstEnemy());
         }
 
-        if (gladiusPickedUp && !firstEnemyByRock && !firstEnemyKilled)
+        if (gladiusPickedUp && !firstEnemyByRock && !firstEnemyKilled) // First Enemy Killed
         {
-            firstEnemyKilled = true;
-            print("You can now jump");
+            firstEnemyKilled = true; timeFirstEnemyIsKilled = Time.time;
+            playersCanJump = true;        // PLAYERS CAN NOW JUMP
+            jumpTip.SetActive(true);
+            jumpTip2.SetActive(true);
+            //print("You can now jump");
+
         }
     }
 
+    void learnDoubleJump()
+    {
+        if (firstEnemyKilled)
+        {
+            if (!playersCanAirDash && Time.time > timeFirstEnemyIsKilled + jumpingTipsDelay)
+            {
+                jumpTip.SetActive(false);  airDashTip.SetActive(true);
+                jumpTip2.SetActive(false); airDashTip2.SetActive(true);
+                playersCanAirDash = true;
+            }
 
+            if (airDashTip.activeInHierarchy && Time.time > timeFirstEnemyIsKilled + jumpingTipsDelay * 2f)
+            {
+                airDashTip.SetActive(true);
+                airDashTip2.SetActive(true);
+            }
+        }
+    }
+
+    //////////////////////////////////////////////
 
     void freezePlayers()
     {
