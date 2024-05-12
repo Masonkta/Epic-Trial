@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,7 +16,8 @@ public class Tutorial : MonoBehaviour
     public GameObject WalkToTableText;
     public GameObject WalkToTableTextC;
     public bool playerHasTouchedTable = false;
-    
+    public List<GameObject> walls;
+
     public GameObject Craftingtable;
     public GameObject CraftingTutorial;
     public GameObject CraftingTutorial2;
@@ -55,7 +57,11 @@ public class Tutorial : MonoBehaviour
         CraftingTutorial2.SetActive(playerCInRange);
 
         if ((playerKInRange || playerCInRange) && !playerHasTouchedTable)
+        {
             playerHasTouchedTable = true;
+            foreach (GameObject wall in walls)
+                wall.SetActive(false);
+        }
     }
 
     /*
