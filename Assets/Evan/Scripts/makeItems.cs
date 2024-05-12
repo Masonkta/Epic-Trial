@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.Android.LowLevel;
+//using UnityEngine.InputSystem.Android.LowLevel;
 
 public class makeItems : MonoBehaviour
 {

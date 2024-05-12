@@ -87,8 +87,8 @@ public class gameHandler : MonoBehaviour
 
     void OnQuitGame()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
-        //Application.Quit();
+        //UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
