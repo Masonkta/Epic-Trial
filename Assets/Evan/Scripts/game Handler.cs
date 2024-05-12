@@ -61,6 +61,9 @@ public class gameHandler : MonoBehaviour
         ResourceTransform = GameObject.FindGameObjectWithTag("ResourceTransform").transform;
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         hs = gameScript.GetComponent<HighScoreTest>();
+
+        // Activate Second Display
+        Display.displays[1].Activate();
     }
 
     void Update()
