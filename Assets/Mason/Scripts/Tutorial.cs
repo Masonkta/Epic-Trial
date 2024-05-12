@@ -9,7 +9,6 @@ public class Tutorial : MonoBehaviour
     public GameObject keyboardPlayer;
     public GameObject controllerPlayer;
     public bool playersCanMove = false;
-    public float range = 5f;
     public float beginningMovementLockTime = 8f;
 
     [Header("CraftingTableStuff")]
@@ -17,15 +16,17 @@ public class Tutorial : MonoBehaviour
     public GameObject WalkToTableTextC;
     public bool playerHasTouchedTable = false;
     public List<GameObject> walls;
+    public float craftingTableRange = 5f;
 
     public GameObject Craftingtable;
     public GameObject CraftingTutorial;
     public GameObject CraftingTutorial2;
 
-    [Header("Weapon")]
-    public GameObject Weapon;
+    [Header("Gladius Pickup")]
+    public GameObject gladiusPickup;
     public GameObject WeaponTutorial;
     public GameObject WeaponTutorial2;
+    public float gladiusRange = 15f;
 
     private float originalTimeScale; 
 
@@ -50,8 +51,8 @@ public class Tutorial : MonoBehaviour
 
         float dK = Vector3.Distance(Craftingtable.transform.position, keyboardPlayer.transform.position);
         float dC = Vector3.Distance(Craftingtable.transform.position, controllerPlayer.transform.position);
-        bool playerKInRange = (dK < range);
-        bool playerCInRange = (dC < range);
+        bool playerKInRange = (dK < craftingTableRange);
+        bool playerCInRange = (dC < craftingTableRange);
 
         CraftingTutorial.SetActive(playerKInRange);
         CraftingTutorial2.SetActive(playerCInRange);
@@ -64,13 +65,12 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    /*
     void checkPlayers_weapons()
     {
-        float dK = Vector3.Distance(Weapon.transform.position, keyboardPlayer.transform.position);
-        float dC = Vector3.Distance(Weapon.transform.position, controllerPlayer.transform.position);
-        bool playerKInRange = (dK < range);
-        bool playerCInRange = (dC < range);
+        float dK = Vector3.Distance(gladiusPickup.transform.position, keyboardPlayer.transform.position);
+        float dC = Vector3.Distance(gladiusPickup.transform.position, controllerPlayer.transform.position);
+        bool playerKInRange = (dK < gladiusRange);
+        bool playerCInRange = (dC < gladiusRange);
 
         if (playerKInRange)
         {
@@ -89,9 +89,8 @@ public class Tutorial : MonoBehaviour
         else
         {
             WeaponTutorial2.SetActive(false);
-
         }
-    }*/
+    }
 
     void Update()
     {
