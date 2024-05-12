@@ -7538,6 +7538,7 @@ MonoBehaviour:
   gladiusRange: 15
   gladiusPickedUp: 0
   firstEnemyByRock: {fileID: 1369682620}
+  firstEnemyKilled: 0
 --- !u!4 &1509464738
 Transform:
   m_ObjectHideFlags: 0
@@ -10693,7 +10694,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4e75d62a31ed46140a0302d3e43d0a63, type: 2}
+  - {fileID: 2100000, guid: 55a46dc2e28d49a40a02a5d969efe70e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10732,7 +10733,7 @@ Transform:
   m_GameObject: {fileID: 2132231088}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.2, y: 4.25, z: 10.5}
+  m_LocalPosition: {x: -69.6, y: 3.05, z: 21.3}
   m_LocalScale: {x: 6.03, y: 6.03, z: 6.03}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -19051,7 +19052,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 1773912909214334239}
   currentVelocity: 0
   walkSpeed: 6
-  sprintSpeed: 10
+  sprintSpeed: 14
   forwardMoveAm: 0
   sideMoveAm: 0
   playerVelocity: {x: 0, y: 0, z: 0}
@@ -19275,7 +19276,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 1979771939377330228}
   currentVelocity: 0
   walkSpeed: 6
-  sprintSpeed: 10
+  sprintSpeed: 14
   forwardMoveAm: 0
   sideMoveAm: 0
   playerVelocity: {x: 0, y: 0, z: 0}

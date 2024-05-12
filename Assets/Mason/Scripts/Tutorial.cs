@@ -68,8 +68,6 @@ public class Tutorial : MonoBehaviour
         checkPlayers_crafting();
 
         gladiusStuff();
-
-        learnJump();
     }
 
 
@@ -156,17 +154,13 @@ public class Tutorial : MonoBehaviour
             StartCoroutine(EnableFirstEnemy());
         }
 
-        if (gladiusPickedUp && !firstEnemyByRock)
-            firstEnemyKilled = true;
-    }
-
-    void learnJump()
-    {
-        if (firstEnemyKilled)
+        if (gladiusPickedUp && !firstEnemyByRock && !firstEnemyKilled)
         {
-
+            firstEnemyKilled = true;
+            print("You can now jump");
         }
     }
+
 
 
     void freezePlayers()
@@ -228,11 +222,5 @@ public class Tutorial : MonoBehaviour
         if (firstEnemyByRock) firstEnemyByRock.SetActive(true);
     }
 
-    IEnumerator GivePlayersJump()
-    {
-        yield return new WaitForSeconds(1f);
-
-        print("You can now Jump");
-    }
 
 }
