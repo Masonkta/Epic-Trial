@@ -16,6 +16,7 @@ public class Tutorial : MonoBehaviour
     public bool playersCanJump;
     public bool playersCanAirDash;
     public bool playersCanDodge;
+    public bool playersCanShiftLock;
 
     bool initialMovementGiven = false;
 
@@ -34,6 +35,8 @@ public class Tutorial : MonoBehaviour
     public GameObject WeaponTutorial2;
     public float pickupAweTime = 6f;
     public float gladiusRange = 15f;
+    public GameObject shiftLockTip;
+    public GameObject shiftLockTip2;
     public bool gladiusPickedUp;
     public GameObject firstEnemyByRock;
     public bool firstEnemyKilled = false;
@@ -123,9 +126,11 @@ public class Tutorial : MonoBehaviour
         if (playerKInRange)
         {
             WeaponTutorial.SetActive(true);
+
             if (GladiusReadyToBeInspected)
             {
                 GladiusReadyToBeInspected = false;
+                playersCanDodge = true;
                 freezePlayers(gladiusPickup);
                 StartCoroutine(EnableMovementAfterDelay(pickupAweTime));
             }
@@ -140,6 +145,7 @@ public class Tutorial : MonoBehaviour
             if (GladiusReadyToBeInspected)
             {
                 GladiusReadyToBeInspected = false;
+                playersCanDodge = true;
                 freezePlayers(gladiusPickup);
                 StartCoroutine(EnableMovementAfterDelay(pickupAweTime));
             }
@@ -156,6 +162,11 @@ public class Tutorial : MonoBehaviour
         }
         else if (!gladiusPickedUp)
         {
+            playersCanShiftLock = true;
+            shiftLockTip.SetActive(true);
+            shiftLockTip2.SetActive(true);
+            StartCoroutine(turnOffShiftLockTip());
+
             gladiusPickedUp = true;
             WeaponTutorial.SetActive(false);
             WeaponTutorial2.SetActive(false);
@@ -248,9 +259,18 @@ public class Tutorial : MonoBehaviour
 
     IEnumerator EnableFirstEnemy()
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.5f);
 
         if (firstEnemyByRock) firstEnemyByRock.SetActive(true);
+    }
+
+    IEnumerator turnOffShiftLockTip()
+    {
+        yield return new WaitForSeconds(3f);
+
+        shiftLockTip.SetActive(false);
+        shiftLockTip2.SetActive(false);
+        print("OKAY ENOUGH");
     }
 
 

@@ -187,7 +187,7 @@ public class playerMTutorial : MonoBehaviour
 
     void OnShiftLock()
     {
-        if (sprinting == false)
+        if (sprinting == false && tutorialScript.playersCanShiftLock)
             shiftLock = !shiftLock;
     }
 
@@ -446,7 +446,7 @@ public class playerMTutorial : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
                 OnJump();
 
-            if (Input.GetKeyDown(KeyCode.E) && !sprinting)
+            if (Input.GetKeyDown(KeyCode.E) && !sprinting && tutorialScript.playersCanShiftLock)
                 shiftLock = !shiftLock;
 
             if (Input.GetKeyDown(KeyCode.Q))
