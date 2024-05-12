@@ -2510,7 +2510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &564262363
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2552,19 +2552,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Attack: RT
 
-    Dash: LT
-
-    Throw Weapon: LB
-
-    Sprint: LSB (Left
-    Stick Button)
-
-    Shift-Lock: RSB (Right Stick Button)
-
-    Jump: A
-
-    Air
-    Dash: A + A'
+    Dash: LT'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4143,19 +4131,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Attack: Left Click
 
-    Dash: Right Click
-
-    Throw Weapon: Q
-
-    Sprint:
-    Shift (While Not Shift-Locked)
-
-    Shift-Lock: E (While Not Sprinting)
-
-    Jump:
-    Spacebar
-
-    Air Dash: Spacebar + Spacebar'
+    Dash: Right Click'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6694,7 +6670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1424505816
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10256,7 +10232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2138810688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18147,10 +18123,10 @@ MonoBehaviour:
   dodgeSpeed: 20
   dodgeTime: 0.4
   shiftLock: 0
-  xSensController: 250
-  ySensController: 150
-  xSensKeyboard: 80
-  ySensKeyboard: 40
+  xSensController: 180
+  ySensController: 110
+  xSensKeyboard: 90
+  ySensKeyboard: 30
   camHeight: 2.5
   camDistance: 6
   cameraAngle: 0
@@ -18359,15 +18335,15 @@ MonoBehaviour:
   walkSpeed: 6
   sprintSpeed: 10
   groundCheckDistance: 2.2
-  jumpHeight: 2.5
+  jumpHeight: 3.5
   airDashSpeed: 20
   dodgeSpeed: 20
   dodgeTime: 0.4
   shiftLock: 0
-  xSensController: 250
-  ySensController: 150
-  xSensKeyboard: 80
-  ySensKeyboard: 25
+  xSensController: 180
+  ySensController: 110
+  xSensKeyboard: 90
+  ySensKeyboard: 30
   camHeight: 2.5
   camDistance: 6
   cameraAngle: 0
