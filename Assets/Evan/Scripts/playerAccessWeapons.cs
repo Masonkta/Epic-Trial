@@ -53,8 +53,8 @@ public class playerAccessWeapons : MonoBehaviour
 
             if (gladius.activeInHierarchy)
             {
-                GameObject gladiusPickupComingFromDrop = Instantiate(gladiusPickup, gladius.transform.position, GetComponent<playerMovement>().cameraTransform.rotation);
-                gladiusPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMovement>().getLookDirection() * 8f;
+                GameObject gladiusPickupComingFromDrop = Instantiate(gladiusPickup, gladius.transform.position, GetComponent<playerMTutorial>().cameraTransform.rotation);
+                gladiusPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMTutorial>().getLookDirection() * 8f;
                 gladiusPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
 
 
@@ -64,8 +64,8 @@ public class playerAccessWeapons : MonoBehaviour
 
             if (club.activeInHierarchy)
             {
-                GameObject clubPickupComingFromDrop = Instantiate(clubPickup, gladius.transform.position, GetComponent<playerMovement>().cameraTransform.rotation);
-                clubPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMovement>().getLookDirection() * 8f;
+                GameObject clubPickupComingFromDrop = Instantiate(clubPickup, gladius.transform.position, GetComponent<playerMTutorial>().cameraTransform.rotation);
+                clubPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMTutorial>().getLookDirection() * 8f;
                 clubPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
 
                 club.SetActive(false);
