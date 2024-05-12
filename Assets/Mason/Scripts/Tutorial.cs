@@ -11,6 +11,7 @@ public class Tutorial : MonoBehaviour
     public GameObject controllerPlayer;
     public bool playersCanMove = false;
     public float beginningMovementLockTime = 8f;
+    bool initialMovementGiven = false;
 
     [Header("CraftingTableStuff")]
     public GameObject WalkToTableText;
@@ -27,10 +28,13 @@ public class Tutorial : MonoBehaviour
     public GameObject gladiusPickup;
     public GameObject WeaponTutorial;
     public GameObject WeaponTutorial2;
+    public float pickupAweTime = 6f;
     public float gladiusRange = 15f;
 
-    bool firstgladius = true;
-    bool gamejuststarted = true;
+    bool GladiusReadyToBeInspected = true;
+
+
+
 
     private float originalTimeScale; 
 
@@ -80,10 +84,10 @@ public class Tutorial : MonoBehaviour
         if (playerKInRange)
         {
             WeaponTutorial.SetActive(true);
-            if (firstgladius)
+            if (GladiusReadyToBeInspected)
             {
                 playersCanMove = false;
-                firstgladius = false;
+                GladiusReadyToBeInspected = false;
                 StartCoroutine(EnableMovementAfterDelay());
             }
         }
@@ -97,10 +101,10 @@ public class Tutorial : MonoBehaviour
         {
             WeaponTutorial2.SetActive(true);
 
-            if (firstgladius)
+            if (GladiusReadyToBeInspected)
             {
                 playersCanMove = false;
-                firstgladius = false;
+                GladiusReadyToBeInspected = false;
                 StartCoroutine(EnableMovementAfterDelay());
 
             }
@@ -113,23 +117,22 @@ public class Tutorial : MonoBehaviour
 
     IEnumerator EnableMovementAfterDelay()
     {
-        
         yield return new WaitForSeconds(6f);
-
         
         playersCanMove = true;
     }
 
     void Update()
     {
-        if (gamejuststarted)
+        if (!initialMovementGiven)
         {
             if (Time.timeSinceLevelLoad > beginningMovementLockTime)
             {
                 playersCanMove = true;
-                gamejuststarted = false;
+                initialMovementGiven = true;
             }
         }
+
         if (gladiusPickup != null)
         {
             checkPlayers_weapons();
