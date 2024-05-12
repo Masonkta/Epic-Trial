@@ -355,17 +355,17 @@ public class playerMovement : MonoBehaviour
 
         float distToCam = Vector3.Distance(transform.position, cameraTransform.position);
         Vector3 toCamera = Vector3.Normalize(cameraTransform.position - transform.position); RaycastHit hit;
-        if (Physics.Raycast(transform.position, toCamera, out hit, distToCam * 1.1f))
+        if (Physics.Raycast(transform.position, toCamera, out hit, distToCam))
         {
             if (hit.transform.gameObject.layer != 6 || true) // Does not hit ground < ALWAYS WILL PASS RIGHT NOW
             {
                 float DistToObject = Vector3.Distance(hit.point, transform.position);
-                actualCamDistance += (DistToObject - actualCamDistance) / 30f;
+                actualCamDistance += (DistToObject - actualCamDistance) / 130f;
             }
         }
 
-        actualCamHeight += (camHeight - actualCamHeight) / 50f;
-        actualCamDistance += (camDistance - actualCamDistance) / 35f;
+        actualCamHeight += (camHeight - actualCamHeight) / 150f;
+        actualCamDistance += (camDistance - actualCamDistance) / 135f;
 
         // Finally Look at the player
         cameraTransform.LookAt(transform.position + cameraTransform.forward + Vector3.up);

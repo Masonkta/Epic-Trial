@@ -63,7 +63,7 @@ public class gameHandler : MonoBehaviour
         hs = gameScript.GetComponent<HighScoreTest>();
 
         // Activate Second Display
-        //Display.displays[1].Activate();
+        Display.displays[1].Activate();
     }
 
     void Update()

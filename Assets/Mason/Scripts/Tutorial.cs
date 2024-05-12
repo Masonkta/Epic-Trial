@@ -11,6 +11,10 @@ public class Tutorial : MonoBehaviour
     public GameObject controllerPlayer;
     public bool playersCanMove = false;
     public float beginningMovementLockTime = 8f;
+    public bool playersCanJump;
+    public bool playersCanAirDash;
+    public bool playersCanDodge;
+
     bool initialMovementGiven = false;
 
     [Header("CraftingTableStuff")]
@@ -68,8 +72,8 @@ public class Tutorial : MonoBehaviour
         if ((playerKInRange || playerCInRange) && !playerHasTouchedTable)
         {
             playerHasTouchedTable = true;
-            foreach (GameObject wall in walls)
-                wall.SetActive(false);
+            foreach (GameObject wall in walls) // Make Walls Drop
+                wall.GetComponent<descend>().droppingStarted = true;
         }
     }
 
@@ -163,11 +167,13 @@ public class Tutorial : MonoBehaviour
         keyboardPlayer.GetComponent<playerMTutorial>().sideMoveAm = 0f;
         keyboardPlayer.GetComponent<playerMTutorial>().horizontalTurnAmount = 0f;
         keyboardPlayer.GetComponent<playerMTutorial>().verticalTurnAmount = 0f;
+        keyboardPlayer.GetComponent<playerMTutorial>().playerVelocity = Vector3.zero;
 
         controllerPlayer.GetComponent<playerMTutorial>().forwardMoveAm = 0f;
         controllerPlayer.GetComponent<playerMTutorial>().sideMoveAm = 0f;
         controllerPlayer.GetComponent<playerMTutorial>().horizontalTurnAmount = 0f;
         controllerPlayer.GetComponent<playerMTutorial>().verticalTurnAmount = 0f;
+        keyboardPlayer.GetComponent<playerMTutorial>().playerVelocity = Vector3.zero;
     }
 
     IEnumerator EnableMovementAfterDelay(float delay)

@@ -34,7 +34,7 @@ public class playerMTutorial : MonoBehaviour
     private bool sprinting;
     public float forwardMoveAm;
     public float sideMoveAm;
-    private Vector3 playerVelocity;
+    public Vector3 playerVelocity;
 
 
     [Header("Jumping")]
@@ -142,18 +142,22 @@ public class playerMTutorial : MonoBehaviour
 
     void Jump()
     {
-        if (!isDodging)
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        if (tutorialScript.playersCanJump)
+            if (!isDodging)
+                playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
 
     void airDash()
     {
-        Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed;
-        var moveDir = cameraTransform.TransformDirection(moveDirection); moveDir.y = 1f; // This is our new up force
-        playerVelocity += moveDir;
-        airDashing = true;
+        if (tutorialScript.playersCanAirDash)
+        {
+            Vector3 moveDirection = new Vector3(sideMoveAm, 0f, forwardMoveAm) * airDashSpeed;
+            var moveDir = cameraTransform.TransformDirection(moveDirection); moveDir.y = 1f; // This is our new up force
+            playerVelocity += moveDir;
+            airDashing = true;
 
-        jumpSound.PlayOneShot(jumpSoundEffect);
+            jumpSound.PlayOneShot(jumpSoundEffect);
+        }
     }
 
     void checkIsGrounded()
@@ -363,17 +367,17 @@ public class playerMTutorial : MonoBehaviour
 
         float distToCam = Vector3.Distance(transform.position, cameraTransform.position);
         Vector3 toCamera = Vector3.Normalize(cameraTransform.position - transform.position); RaycastHit hit;
-        if (Physics.Raycast(transform.position, toCamera, out hit, distToCam * 1.1f))
+        if (Physics.Raycast(transform.position, toCamera, out hit, distToCam))
         {
             if (hit.transform.gameObject.layer != 6 || true) // Does not hit ground < ALWAYS WILL PASS RIGHT NOW
             {
                 float DistToObject = Vector3.Distance(hit.point, transform.position);
-                actualCamDistance += (DistToObject - actualCamDistance) / 30f;
+                actualCamDistance += (DistToObject - actualCamDistance) / 130f;
             }
         }
 
-        actualCamHeight += (camHeight - actualCamHeight) / 50f;
-        actualCamDistance += (camDistance - actualCamDistance) / 35f;
+        actualCamHeight += (camHeight - actualCamHeight) / 150f;
+        actualCamDistance += (camDistance - actualCamDistance) / 135f;
 
         // Finally Look at the player
         cameraTransform.LookAt(transform.position + cameraTransform.forward + Vector3.up);
