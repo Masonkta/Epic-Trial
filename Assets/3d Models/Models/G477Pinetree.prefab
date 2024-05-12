@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6195381841620814478}
   - component: {fileID: 3606053503610994108}
   - component: {fileID: 4464944946375238683}
+  - component: {fileID: 8655478156243986046}
   m_Layer: 0
   m_Name: G477Pinetree
   m_TagString: Untagged
@@ -22930,3 +22931,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.17271377, y: 0.14827098, z: 0.14827098}
   m_Center: {x: -0.12797399, y: 0, z: -0.000000020637836}
+--- !u!114 &8655478156243986046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440092205888945359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.20806378, y: 0.14827098, z: 0.14827098}
+  m_Center: {x: -0.11029899, y: 0, z: -0.000000022351742}
+  m_Area: 1
+  m_AffectedAgents: ffffffff

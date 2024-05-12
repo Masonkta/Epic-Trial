@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -35,6 +36,8 @@ public class BasicEnemy : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    private float timetoPath;
+
     private void Awake()
     {
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
@@ -57,9 +60,10 @@ public class BasicEnemy : MonoBehaviour
         }
         
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
-        if (distanceToWalkPoint.magnitude < 1f)
+        if (distanceToWalkPoint.magnitude < 1f || timetoPath >= 5f)
         {
             walkPointSet = false;
+            timetoPath = 0f;
         }
 
 
@@ -73,7 +77,7 @@ public class BasicEnemy : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + xPoint, transform.position.y, transform.position.z + zPoint);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 10f, ground))
+        if (Physics.Raycast(walkPoint, -transform.up, 15f, ground))
         {
             walkPointSet = true;
         }
@@ -137,6 +141,7 @@ public class BasicEnemy : MonoBehaviour
         {
             enemyEyes.SetActive(false);
             EnemyAnimator.SetTrigger("RUUUN");
+            timetoPath = timetoPath + Time.deltaTime;
             Patroling();
         }
         if (playerInSightRange)
