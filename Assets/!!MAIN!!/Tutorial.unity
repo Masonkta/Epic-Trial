@@ -4461,7 +4461,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6212718690369281339, guid: 1d3cf142f6a79db43a7c94bfd9b140d8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7190,7 +7191,8 @@ MonoBehaviour:
   keyboardPlayer: {fileID: 0}
   controllerPlayer: {fileID: 0}
   playersCanMove: 0
-  range: 5
+  keyboardCanMove: 0
+  controllerCanMove: 0
   beginningMovementLockTime: 4
   WalkToTableText: {fileID: 1713461631}
   WalkToTableTextC: {fileID: 84749830}
@@ -7200,12 +7202,15 @@ MonoBehaviour:
   - {fileID: 839183777}
   - {fileID: 477126340}
   - {fileID: 1433651607}
+  craftingTableRange: 5
   Craftingtable: {fileID: 1577172309}
   CraftingTutorial: {fileID: 2138810687}
   CraftingTutorial2: {fileID: 1424505815}
-  Weapon: {fileID: 0}
+  gladiusPickup: {fileID: 1800729079}
   WeaponTutorial: {fileID: 864172277}
   WeaponTutorial2: {fileID: 564262362}
+  gladiusRange: 15
+  gamejuststarted: 1
 --- !u!4 &1509464738
 Transform:
   m_ObjectHideFlags: 0
@@ -8710,6 +8715,12 @@ RectTransform:
   m_AnchoredPosition: {x: -382.91235, y: 59.99997}
   m_SizeDelta: {x: 215, y: 226}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1800729079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7165563976576842586, guid: d224b73dfb272e14c85ad598e276b017,
+    type: 3}
+  m_PrefabInstance: {fileID: 1094321582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1811727751
 GameObject:
   m_ObjectHideFlags: 0

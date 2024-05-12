@@ -192,7 +192,7 @@ public class playerMTutorial : MonoBehaviour
     {
         Vector2 turnInput = value.Get<Vector2>();
 
-        if (tutorialScript.playersCanMove)
+        if (tutorialScript.playersCanMove && tutorialScript.playerHasTouchedTable)
         {
             horizontalTurnAmount = turnInput[0];
             verticalTurnAmount = turnInput[1];
@@ -227,8 +227,11 @@ public class playerMTutorial : MonoBehaviour
 
         if (tutorialScript.playersCanMove)
         {
-            sideMoveAm = turnInput[0];
-            forwardMoveAm = turnInput[1];
+            if (tutorialScript.playerHasTouchedTable)
+            {
+                sideMoveAm = turnInput[0];
+                forwardMoveAm = turnInput[1];
+            }
         }
 
 
@@ -424,11 +427,13 @@ public class playerMTutorial : MonoBehaviour
                 if (Input.GetKey(KeyCode.S))
                     forwardMoveAm = -1;
 
-                if (Input.GetKey(KeyCode.A))
-                    sideMoveAm = -1;
-                if (Input.GetKey(KeyCode.D))
-                    sideMoveAm = 1;
-                
+                if (tutorialScript.playerHasTouchedTable)
+                {
+                    if (Input.GetKey(KeyCode.A))
+                        sideMoveAm = -1;
+                    if (Input.GetKey(KeyCode.D))
+                        sideMoveAm = 1;
+                }
             }
                 
 
@@ -437,8 +442,11 @@ public class playerMTutorial : MonoBehaviour
 
             sprinting = Input.GetKey(KeyCode.LeftShift) && !shiftLock;
 
-            if (Input.GetKeyDown(KeyCode.Space))
-                OnJump();
+            if (tutorialScript.playersCanMove)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                    OnJump();
+            }
 
             if (Input.GetKeyDown(KeyCode.E) && !sprinting)
                 shiftLock = !shiftLock;
