@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
@@ -27,6 +28,9 @@ public class Tutorial : MonoBehaviour
     public GameObject WeaponTutorial;
     public GameObject WeaponTutorial2;
     public float gladiusRange = 15f;
+
+    bool firstgladius = true;
+    bool gamejuststarted = true;
 
     private float originalTimeScale; 
 
@@ -66,7 +70,8 @@ public class Tutorial : MonoBehaviour
     }
 
     void checkPlayers_weapons()
-    {
+    { 
+
         float dK = Vector3.Distance(gladiusPickup.transform.position, keyboardPlayer.transform.position);
         float dC = Vector3.Distance(gladiusPickup.transform.position, controllerPlayer.transform.position);
         bool playerKInRange = (dK < gladiusRange);
@@ -75,6 +80,12 @@ public class Tutorial : MonoBehaviour
         if (playerKInRange)
         {
             WeaponTutorial.SetActive(true);
+            if (firstgladius)
+            {
+                playersCanMove = false;
+                firstgladius = false;
+                StartCoroutine(EnableMovementAfterDelay());
+            }
         }
         else
         {
@@ -85,6 +96,14 @@ public class Tutorial : MonoBehaviour
         if (playerCInRange)
         {
             WeaponTutorial2.SetActive(true);
+
+            if (firstgladius)
+            {
+                playersCanMove = false;
+                firstgladius = false;
+                StartCoroutine(EnableMovementAfterDelay());
+
+            }
         }
         else
         {
@@ -92,10 +111,26 @@ public class Tutorial : MonoBehaviour
         }
     }
 
+    IEnumerator EnableMovementAfterDelay()
+    {
+        
+        yield return new WaitForSeconds(6f);
+
+        
+        playersCanMove = true;
+    }
+
     void Update()
     {
-        playersCanMove = Time.timeSinceLevelLoad > beginningMovementLockTime;
-        /*if (Weapon != null)
+        if (gamejuststarted)
+        {
+            if (Time.timeSinceLevelLoad > beginningMovementLockTime)
+            {
+                playersCanMove = true;
+                gamejuststarted = false;
+            }
+        }
+        if (gladiusPickup != null)
         {
             checkPlayers_weapons();
         }
@@ -103,7 +138,7 @@ public class Tutorial : MonoBehaviour
         {
             WeaponTutorial.SetActive(false);
             WeaponTutorial2.SetActive(false);
-        }*/
+        }
         checkPlayers_crafting();
     }
 }
