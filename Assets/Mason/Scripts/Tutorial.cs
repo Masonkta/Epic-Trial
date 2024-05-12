@@ -16,13 +16,11 @@ public class Tutorial : MonoBehaviour
     [Header("CraftingTableStuff")]
     public GameObject WalkToTableText;
     public GameObject WalkToTableTextC;
-    public bool playerHasTouchedTable = false;
     public List<GameObject> walls;
     public float craftingTableRange = 5f;
-
     public GameObject Craftingtable;
-    public GameObject CraftingTutorial;
-    public GameObject CraftingTutorial2;
+
+    bool playerHasTouchedTable = false;
 
     [Header("Sword Pickup")]
     public GameObject gladiusPickup;
@@ -52,8 +50,6 @@ public class Tutorial : MonoBehaviour
         controllerPlayer = gameScript.controllerPlayer;
 
         originalTimeScale = Time.timeScale;
-        CraftingTutorial.SetActive(false);
-        CraftingTutorial2.SetActive(false);
         WeaponTutorial.SetActive(false);
         WeaponTutorial2.SetActive(false);
     }
@@ -68,8 +64,6 @@ public class Tutorial : MonoBehaviour
         bool playerKInRange = (dK < craftingTableRange);
         bool playerCInRange = (dC < craftingTableRange);
 
-        CraftingTutorial.SetActive(playerKInRange);
-        CraftingTutorial2.SetActive(playerCInRange);
 
         if ((playerKInRange || playerCInRange) && !playerHasTouchedTable)
         {

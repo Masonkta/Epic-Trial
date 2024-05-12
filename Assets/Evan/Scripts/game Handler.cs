@@ -63,7 +63,7 @@ public class gameHandler : MonoBehaviour
         hs = gameScript.GetComponent<HighScoreTest>();
 
         // Activate Second Display
-        Display.displays[1].Activate();
+        //Display.displays[1].Activate();
     }
 
     void Update()
@@ -76,6 +76,9 @@ public class gameHandler : MonoBehaviour
 
         _healthbarSpriteK.fillAmount = keyboardPlayerHealth / 100f;
         _healthbarSpriteC.fillAmount = controllerPlayerHealth / 100f;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            OnQuitGame();
     }
 
     //////////////////////////////////////////// INPUT /////////////////////////////////////////////////
