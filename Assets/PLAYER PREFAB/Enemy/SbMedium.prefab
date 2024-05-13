@@ -32,7 +32,7 @@ PrefabInstance:
     - target: {fileID: 2141477199034026785, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}
       propertyPath: m_BaseOffset
-      value: 3
+      value: 2.37
       objectReference: {fileID: 0}
     - target: {fileID: 2141477199034026785, guid: 703c2d799e003d942a87683ebcfc63cd,
         type: 3}
@@ -274,7 +274,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 3000
+  m_Intensity: 300
   m_Range: 25
   m_SpotAngle: 90
   m_InnerSpotAngle: 25
@@ -398,7 +398,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 3000
+  m_Intensity: 300
   m_Range: 25
   m_SpotAngle: 90
   m_InnerSpotAngle: 25

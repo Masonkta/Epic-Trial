@@ -187,6 +187,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1078424515230992255, guid: 6bcb3e71894fb3c48a7b226204ef374e,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 2141146685669162297, guid: 6bcb3e71894fb3c48a7b226204ef374e,
         type: 3}
       propertyPath: sightRange
@@ -272,6 +277,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841038450408775731, guid: 6bcb3e71894fb3c48a7b226204ef374e,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8118172071707409710, guid: 6bcb3e71894fb3c48a7b226204ef374e,
         type: 3}

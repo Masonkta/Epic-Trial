@@ -52,6 +52,7 @@ public class gameHandler : MonoBehaviour
     public Vector3 woodClubRecipe = new Vector3(0, 25, 5);
 
 
+
     ////////////////////////////////////////////////////////
 
     void Start()
@@ -73,13 +74,17 @@ public class gameHandler : MonoBehaviour
         controllerPlayer.SetActive(controllerPlayerHealth >= 0);
 
         if (keyboardPlayerHealth <= 0f && controllerPlayerHealth <= 0f)
+            // BOTH PLAYERS DIED
             SceneManager.LoadScene("victoryscene");
 
         _healthbarSpriteK.fillAmount = keyboardPlayerHealth / 100f;
         _healthbarSpriteC.fillAmount = controllerPlayerHealth / 100f;
 
+        ///////////////////////////////////////////////////////////////////////
+
         if (Input.GetKeyDown(KeyCode.Escape))
             OnQuitGame();
+
     }
 
     //////////////////////////////////////////// INPUT /////////////////////////////////////////////////

@@ -48,6 +48,15 @@ public class BossEnemy : MonoBehaviour
 
     public Transform swordTip;
 
+    [Header("Get players over here")]
+    public Transform centerOfBossFight;
+    public float fightDist = 60f;
+    public Transform startOfFightSpot;
+    public GameObject walls;
+
+
+
+
     private void Awake()
     {
         audioSource.clip = audioClipStart;
@@ -161,6 +170,23 @@ public class BossEnemy : MonoBehaviour
     {
         if (transform.position.y <= 3)
         {
+            if (!bossLanded)
+            {
+                // THIS IS WHERE BOSS FIRST LANDS
+                //print("BOSS LANDED");
+                float dK = Vector3.Distance(centerOfBossFight.position, playerKeyboard.transform.position);
+                float dC = Vector3.Distance(centerOfBossFight.position, playerController.transform.position);
+
+                if (dK > fightDist)
+                    playerKeyboard.transform.position = startOfFightSpot.position;
+
+                if (dC > fightDist)
+                    playerController.transform.position = startOfFightSpot.position;
+
+                walls.SetActive(true);
+            }
+
+
             bossLanded = true;
             agent.enabled = true;
             if (!playedAudio)

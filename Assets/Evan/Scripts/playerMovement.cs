@@ -249,7 +249,7 @@ public class playerMovement : MonoBehaviour
         float playerVelocityMagnitude = new Vector2(playerVelocity.x, playerVelocity.z).magnitude;
 
         currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;
-        playerAnimator.speed = currentVelocity/10f + 0.5f;
+        playerAnimator.speed = Mathf.Sqrt(currentVelocity) / 7f + 0.4f; //currentVelocity / 10f + 0.5f;
         isMoving = currentVelocity > 0.75f; bool isMovingLiterallyAtALL = currentVelocity > 0f;
         if (!isMovingLiterallyAtALL && sprinting)
             sprinting = false;

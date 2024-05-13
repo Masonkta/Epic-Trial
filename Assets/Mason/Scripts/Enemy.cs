@@ -330,7 +330,7 @@ public class Enemy : MonoBehaviour
 
         // Drop SKULL
 
-        GameObject currentMetalScrap = Instantiate(skull, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+        GameObject currentMetalScrap = Instantiate(skull, transform.position + Vector3.up + Random.insideUnitSphere, Random.rotation, gameScript.ResourceTransform);
         float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
         currentMetalScrap.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
 
