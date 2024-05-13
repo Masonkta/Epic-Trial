@@ -64,6 +64,9 @@ public class Tutorial : MonoBehaviour
     [Header("On Sand Area")]
     public GameObject newWeaponDropTip;
     public GameObject newWeaponDropTip2;
+    public GameObject newSword;
+    public float stareAtNewSwordTime = 3f;
+    public bool newSwordPickedUp = false;
 
 
 
@@ -234,6 +237,7 @@ public class Tutorial : MonoBehaviour
             {
                 bothPlayersOnPlatform = true;
                 closingFenceForSandPlatform.SetActive(true);
+                StartCoroutine(waitSecondsAfterGateClose(4.5f));
 
                 playersCanThrowWeapons = true;
                 WeaponThrowTip.SetActive(true);
@@ -247,8 +251,9 @@ public class Tutorial : MonoBehaviour
     {
         if (bothPlayersOnPlatform)
         {
-            Vector3 avgPos = keyboardPlayer.transform.position / 2f + controllerPlayer.transform.position / 2f;
-            Debug.DrawRay(avgPos, Vector3.up, Color.red);
+            if (!newSword && !newSwordPickedUp)
+                newSwordPickedUp = true;
+
 
 
 
@@ -310,6 +315,17 @@ public class Tutorial : MonoBehaviour
         controllerPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
     }
 
+    IEnumerator enableMvmtNdisblWpnTip(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        playersCanMove = true;
+        keyboardPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
+        controllerPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
+        newWeaponDropTip.SetActive(false);
+        newWeaponDropTip2.SetActive(false);
+    }
+
 
     IEnumerator EnableFirstEnemy()
     {
@@ -332,9 +348,24 @@ public class Tutorial : MonoBehaviour
 
         WeaponThrowTip.SetActive(false);
         WeaponThrowTip2.SetActive(false);
+    }
+    
+    IEnumerator waitSecondsAfterGateClose(float delay)
+    {
 
-        //newWeaponDropTip.SetActive(true);
-        //newWeaponDropTip2.SetActive(true);
+        yield return new WaitForSeconds(doEverythingInstantly ? 0f : delay);
+
+
+        newWeaponDropTip.SetActive(true);
+        newWeaponDropTip2.SetActive(true);
+        Vector3 avgPos = keyboardPlayer.transform.position / 2f + controllerPlayer.transform.position / 2f;
+        newSword.SetActive(true);
+        newSword.transform.position = avgPos;
+        newSword.GetComponent<Rigidbody>().velocity = Vector3.up * 18f;
+        newSword.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitCircle * 50f;
+
+        freezePlayers(newSword);
+        StartCoroutine(enableMvmtNdisblWpnTip(stareAtNewSwordTime));
     }
 
 

@@ -65,13 +65,13 @@ public class playerAccessWeapons : MonoBehaviour
                 {
                     GameObject gladiusPickupComingFromDrop = Instantiate(gladiusPickup, gladius.transform.position, GetComponent<playerMTutorial>().cameraTransform.rotation);
                     gladiusPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMTutorial>().getLookDirection() * 8f;
-                    gladiusPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
+                    gladiusPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = GetComponent<playerMTutorial>().forwardTransform.right * 100f;
                 }
                 else
                 {
                     GameObject gladiusPickupComingFromDrop = Instantiate(gladiusPickup, gladius.transform.position, GetComponent<playerMovement>().cameraTransform.rotation);
                     gladiusPickupComingFromDrop.GetComponent<Rigidbody>().velocity = GetComponent<playerMovement>().getLookDirection() * 8f;
-                    gladiusPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = transform.right * 100f;
+                    gladiusPickupComingFromDrop.GetComponent<Rigidbody>().angularVelocity = GetComponent<playerMovement>().forwardTransform.right * 100f;
                 }
 
 
