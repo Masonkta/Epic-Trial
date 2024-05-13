@@ -15,9 +15,9 @@ public class Tutorial : MonoBehaviour
     public bool playersCanMove = false;
     public float beginningMovementLockTime = 8f;
     public bool playersCanDodge;
+    public bool playersCanShiftLock;
     public bool playersCanJump;
     public bool playersCanAirDash;
-    public bool playersCanShiftLock;
     public bool playersCanThrowWeapons;
 
     bool initialMovementGiven = false;
@@ -54,9 +54,16 @@ public class Tutorial : MonoBehaviour
     public GameObject airDashTip2;
 
     [Header("Sand Area")]
-    public bool playerKOnPlatform;
-    public bool playerCOnPlatform;
+    bool playerKOnPlatform;
+    bool playerCOnPlatform;
+    public bool bothPlayersOnPlatform = false;
     public GameObject closingFenceForSandPlatform;
+    public GameObject WeaponThrowTip;
+    public GameObject WeaponThrowTip2;
+
+    [Header("On Sand Area")]
+    public GameObject newWeaponDropTip;
+    public GameObject newWeaponDropTip2;
 
 
 
@@ -86,6 +93,8 @@ public class Tutorial : MonoBehaviour
         firstEnemyNSwordStuff();
 
         learnDoubleJump();
+
+        initialStuffWhenPlayersGetToSandPlatform();
 
         sandPlatformTime();
     }
@@ -187,7 +196,10 @@ public class Tutorial : MonoBehaviour
             playersCanJump = true;        // PLAYERS CAN NOW JUMP
             jumpTip.SetActive(true);
             jumpTip2.SetActive(true);
-            //print("You can now jump");
+
+            // Turn off Shift Lock For Both Players
+            keyboardPlayer.GetComponent<playerMTutorial>().shiftLock = false;
+            controllerPlayer.GetComponent<playerMTutorial>().shiftLock = false;
 
         }
     }
@@ -211,14 +223,37 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    void sandPlatformTime()
+    void initialStuffWhenPlayersGetToSandPlatform()
     {
         if (playersCanAirDash)
         {
             playerKOnPlatform = keyboardPlayer.transform.position.y > 12.5f && keyboardPlayer.transform.position.x > -33f;
             playerCOnPlatform = controllerPlayer.transform.position.y > 12.5f && controllerPlayer.transform.position.x > -33f;
-            if (!closingFenceForSandPlatform.activeInHierarchy && playerKOnPlatform && playerCOnPlatform)
+
+            if (!bothPlayersOnPlatform && playerKOnPlatform && playerCOnPlatform) // Both Players Are Now on the platform
+            {
+                bothPlayersOnPlatform = true;
                 closingFenceForSandPlatform.SetActive(true);
+
+                playersCanThrowWeapons = true;
+                WeaponThrowTip.SetActive(true);
+                WeaponThrowTip2.SetActive(true);
+                StartCoroutine(turnOffWeaponThrowTip());
+            }
+        }
+    }
+
+    void sandPlatformTime()
+    {
+        if (bothPlayersOnPlatform)
+        {
+            Vector3 avgPos = keyboardPlayer.transform.position / 2f + controllerPlayer.transform.position / 2f;
+            Debug.DrawRay(avgPos, Vector3.up, Color.red);
+
+
+
+
+
         }
     }
 
@@ -278,18 +313,28 @@ public class Tutorial : MonoBehaviour
 
     IEnumerator EnableFirstEnemy()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(doEverythingInstantly ? 0f : 0.5f);
 
         if (firstEnemyByRock) firstEnemyByRock.SetActive(true);
     }
 
     IEnumerator turnOffShiftLockTip()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(doEverythingInstantly ? 0f : 3f);
 
         shiftLockTip.SetActive(false);
         shiftLockTip2.SetActive(false);
-        print("OKAY ENOUGH");
+    }
+    
+    IEnumerator turnOffWeaponThrowTip()
+    {
+        yield return new WaitForSeconds(doEverythingInstantly ? 0f : 3f);
+
+        WeaponThrowTip.SetActive(false);
+        WeaponThrowTip2.SetActive(false);
+
+        //newWeaponDropTip.SetActive(true);
+        //newWeaponDropTip2.SetActive(true);
     }
 
 

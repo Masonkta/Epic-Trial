@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
             if (device is Gamepad)
             {
                 gamepad = (Gamepad)device;
-                Debug.Log("Xbox controller connected!");
+                //Debug.Log("Xbox controller connected!");
                 break;
             }
         }

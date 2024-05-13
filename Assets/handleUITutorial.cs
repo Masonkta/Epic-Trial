@@ -24,9 +24,9 @@ public class handleUITutorial : MonoBehaviour
     {
         playerKCloth.text = gameScript.clothPieces.ToString();
         playerCCloth.text = gameScript.clothPieces.ToString();
-        playerKWood.text = gameScript.woodPieces.ToString();
-        playerCWood.text = gameScript.woodPieces.ToString();
-        playerKIron.text = gameScript.ironPieces.ToString();
-        playerCIron.text = gameScript.ironPieces.ToString();
+        playerKWood.text  = gameScript.woodPieces.ToString();
+        playerCWood.text  = gameScript.woodPieces.ToString();
+        playerKIron.text  = gameScript.ironPieces.ToString();
+        playerCIron.text  = gameScript.ironPieces.ToString();
     }
 }

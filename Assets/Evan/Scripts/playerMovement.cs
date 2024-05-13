@@ -250,7 +250,9 @@ public class playerMovement : MonoBehaviour
 
         currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;
         playerAnimator.speed = currentVelocity/10f + 0.5f;
-        isMoving = currentVelocity > 0.75f;
+        isMoving = currentVelocity > 0.75f; bool isMovingLiterallyAtALL = currentVelocity > 0f;
+        if (!isMovingLiterallyAtALL && sprinting)
+            sprinting = false;
 
         ableToAirDash = !isGrounded && playerVelocity.y > -1f && !airDashing;
     }
@@ -329,7 +331,7 @@ public class playerMovement : MonoBehaviour
 
         controller.Move(playerVelocity * Time.deltaTime); // This only affects the player falling and air dashing
 
-        trail.enabled = isDodging;
+        trail.enabled = isDodging || sprinting;
     }
 
 

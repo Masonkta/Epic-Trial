@@ -50,9 +50,16 @@ public class playerAccessWeapons : MonoBehaviour
         {
             readyToGrab = false;
 
+            bool canThrow = true;
+            if (SceneManager.GetActiveScene().name == "Tutorial")
+            {
+                Tutorial tutorialScript = GameObject.FindGameObjectWithTag("TutorialHandler").GetComponent<Tutorial>();
 
+                if (tutorialScript)
+                    canThrow = tutorialScript.playersCanThrowWeapons;
+            }
 
-            if (gladius.activeInHierarchy)
+            if (gladius.activeInHierarchy && canThrow)
             {
                 if (SceneManager.GetActiveScene().name == "Tutorial")
                 {
@@ -72,7 +79,7 @@ public class playerAccessWeapons : MonoBehaviour
             }
 
 
-            if (club.activeInHierarchy)
+            if (club.activeInHierarchy && canThrow)
             {
                 if (SceneManager.GetActiveScene().name == "Tutorial")
                 {
