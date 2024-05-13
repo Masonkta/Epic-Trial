@@ -85,6 +85,7 @@ public class playerMovement : MonoBehaviour
     public AudioClip jumpSoundEffect;
     public AudioSource landingOnGrass;
     public AudioClip landingOnGrassSound;
+    public AudioSource MainSong;
 
 
     [Header("Animation")]
@@ -113,6 +114,10 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
+        if (bossSpawned)
+        {
+            MainSong.Stop();
+        }
         checkIsGrounded();
         if (hardCodeKeyboard) hardCodedKeyboardPlayerInput();
 
