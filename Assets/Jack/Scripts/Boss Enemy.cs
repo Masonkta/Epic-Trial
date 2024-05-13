@@ -54,8 +54,11 @@ public class BossEnemy : MonoBehaviour
     public Transform startOfFightSpot;
     public GameObject walls;
 
+    public bool playerCamerasShouldBeShaking = false;
 
-
+    float timeOfBossLand;
+    float camShakeTime = 2.5f;
+    public float shakeIntensity = 0.2f;
 
     private void Awake()
     {
@@ -172,6 +175,7 @@ public class BossEnemy : MonoBehaviour
         {
             if (!bossLanded)
             {
+                timeOfBossLand = Time.time;
                 // THIS IS WHERE BOSS FIRST LANDS
                 //print("BOSS LANDED");
                 float dK = Vector3.Distance(centerOfBossFight.position, playerKeyboard.transform.position);
@@ -184,6 +188,8 @@ public class BossEnemy : MonoBehaviour
                     playerController.transform.position = startOfFightSpot.position;
 
                 walls.SetActive(true);
+
+                playerCamerasShouldBeShaking = true;
             }
 
 
@@ -229,6 +235,18 @@ public class BossEnemy : MonoBehaviour
         {
             //print("DAMAGE");
             gameScript.controllerPlayerHealth -= Time.deltaTime * 3f;
+        }
+
+
+        // Camera Shake Stuff
+        if (playerCamerasShouldBeShaking)
+        {
+            if (bossLanded) shakeIntensity = (camShakeTime - (Time.time - timeOfBossLand)) / camShakeTime;
+            
+            if (Time.time > timeOfBossLand + camShakeTime)
+            {
+                playerCamerasShouldBeShaking = false;
+            }
         }
 
     }

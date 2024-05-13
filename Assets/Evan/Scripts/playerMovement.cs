@@ -99,7 +99,7 @@ public class playerMovement : MonoBehaviour
     public BossEnemy bossScript;
     public bool bossSpawned = false;
     public bool bossFalling = false;
-
+    
 
     void Start()
     {
@@ -369,6 +369,17 @@ public class playerMovement : MonoBehaviour
         actualCamHeight += (camHeight - actualCamHeight) / 150f;
         actualCamDistance += (camDistance - actualCamDistance) / 135f;
 
+        if (bossFalling && bossObj.activeInHierarchy)
+            bossScript.playerCamerasShouldBeShaking = true;
+
+
+        // Camera Shake
+        if (bossScript.playerCamerasShouldBeShaking)
+        {
+            Vector3 originalCamPos = cameraTransform.position;
+            cameraTransform.position = originalCamPos + Random.insideUnitSphere * 0.4f * bossScript.shakeIntensity;
+        }
+
         // Finally Look at the player
         cameraTransform.LookAt(transform.position + cameraTransform.forward + Vector3.up);
 
@@ -381,6 +392,8 @@ public class playerMovement : MonoBehaviour
             actualCamDistance = 5f;
             actualCamHeight = 1f;
         }
+
+
     }
 
 
