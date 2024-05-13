@@ -63,7 +63,7 @@ public class BasicEnemy : MonoBehaviour
         }
         
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
-        if (distanceToWalkPoint.magnitude < 1f || timetoPath >= 5f)
+        if (distanceToWalkPoint.magnitude < 1f || timetoPath >= 3f)
         {
             walkPointSet = false;
             timetoPath = 0f;
