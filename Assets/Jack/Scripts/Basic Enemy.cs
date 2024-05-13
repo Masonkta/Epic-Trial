@@ -92,22 +92,26 @@ public class BasicEnemy : MonoBehaviour
         {
             if (Vector3.Distance(transform.position + Vector3.up, playerKeyboard.transform.position) < Vector3.Distance(transform.position + Vector3.up, playerController.transform.position))
             {
-                agent.SetDestination(playerKeyboard.transform.position);
+                if (agent.isOnNavMesh)
+                    agent.SetDestination(playerKeyboard.transform.position);
             }
             else
             {
-                agent.SetDestination(playerController.transform.position);
+                if (agent.isOnNavMesh)
+                    agent.SetDestination(playerController.transform.position);
             }
         }
 
         if (!playerKeyboard.activeInHierarchy && playerController.activeInHierarchy)
         {
-            agent.SetDestination(playerController.transform.position);
+            if (agent.isOnNavMesh)
+                agent.SetDestination(playerController.transform.position);
         }
 
         if (playerKeyboard.activeInHierarchy && !playerController.activeInHierarchy)
         {
-            agent.SetDestination(playerKeyboard.transform.position);
+            if (agent.isOnNavMesh)
+                agent.SetDestination(playerKeyboard.transform.position);
         }
     }
 

@@ -70,7 +70,10 @@ public class BossEnemy : MonoBehaviour
         {
             if (walkPointSet)
             {
-                agent.SetDestination(walkPoint);
+                if (agent.isOnNavMesh)
+                    agent.SetDestination(walkPoint);
+                else
+                    walkPointSet = false;
 
                 //  this is a line in the SCENE view that shows its patrol spot
                 Debug.DrawLine(transform.position, walkPoint, Color.yellow);
@@ -108,21 +111,25 @@ public class BossEnemy : MonoBehaviour
             {
                 if (Vector3.Distance(transform.position + Vector3.up, playerKeyboard.transform.position) < Vector3.Distance(transform.position + Vector3.up, playerController.transform.position))
                 {
-                    agent.SetDestination(playerKeyboard.transform.position);
+                    if (agent.isOnNavMesh)
+                        agent.SetDestination(playerKeyboard.transform.position);
                 }
                     else
                     {
+                    if (agent.isOnNavMesh)
                         agent.SetDestination(playerController.transform.position);
                     }
             }
             if (!playerKeyboard.activeInHierarchy && playerController.activeInHierarchy)
             {
-                agent.SetDestination(playerController.transform.position);
+                if (agent.isOnNavMesh)
+                    agent.SetDestination(playerController.transform.position);
             }
 
             if (playerKeyboard.activeInHierarchy && !playerController.activeInHierarchy)
             {
-                agent.SetDestination(playerKeyboard.transform.position);
+                if (agent.isOnNavMesh)
+                    agent.SetDestination(playerKeyboard.transform.position);
             }
         }
     }
