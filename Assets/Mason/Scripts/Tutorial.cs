@@ -23,15 +23,20 @@ public class Tutorial : MonoBehaviour
     bool initialMovementGiven = false;
 
     [Header("CraftingTableStuff")]
+    public GameObject craftMenuK;
+    public GameObject craftMenuC;
     public GameObject WalkToTableText;
     public GameObject WalkToTableTextC;
     public List<GameObject> walls;
+    public bool FIRSTWEAPONATTENTION = false;
     public float craftingTableRange = 5f;
     public GameObject Craftingtable;
 
     bool playerHasTouchedTable = false;
 
     [Header("Sword Pickup")]
+    public GameObject walkToRockTip;
+    public GameObject walkToRockTip2;
     public GameObject gladiusPickup;
     public GameObject WeaponTutorial;
     public GameObject WeaponTutorial2;
@@ -125,13 +130,17 @@ public class Tutorial : MonoBehaviour
         float dC = Vector3.Distance(Craftingtable.transform.position, controllerPlayer.transform.position);
         bool playerKInRange = (dK < craftingTableRange);
         bool playerCInRange = (dC < craftingTableRange);
-
+        craftMenuK.SetActive(playerKInRange && !FIRSTWEAPONATTENTION);
+        craftMenuC.SetActive(playerCInRange && !FIRSTWEAPONATTENTION);
 
         if ((playerKInRange || playerCInRange) && !playerHasTouchedTable)
         {
             playerHasTouchedTable = true;
             foreach (GameObject wall in walls) // Make Walls Drop
+            {
                 wall.GetComponent<descend>().droppingStarted = true;
+                wall.GetComponent<descend>().timeOfDrop = Time.time;
+            }
         }
     }
 
@@ -306,6 +315,18 @@ public class Tutorial : MonoBehaviour
         controllerPlayer.GetComponent<playerMTutorial>().cameraTransform.LookAt(focusOn.transform.position);
     }
 
+    IEnumerator EnableMovementAfterDelayNDisabeAHGLADIUS(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        playersCanMove = true;
+        keyboardPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
+        controllerPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
+        walkToRockTip.SetActive(false);
+        walkToRockTip2.SetActive(false);
+        FIRSTWEAPONATTENTION = false;
+    }
+
     IEnumerator EnableMovementAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -326,6 +347,15 @@ public class Tutorial : MonoBehaviour
         newWeaponDropTip2.SetActive(false);
     }
 
+    public void wallsAreDone()
+    {
+        walkToRockTip.SetActive(true);
+        walkToRockTip2.SetActive(true);
+        FIRSTWEAPONATTENTION = true;
+
+        freezePlayers(gladiusPickup);
+        StartCoroutine(EnableMovementAfterDelayNDisabeAHGLADIUS(pickupAweTime));
+    }
 
     IEnumerator EnableFirstEnemy()
     {
