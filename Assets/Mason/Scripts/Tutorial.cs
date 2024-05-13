@@ -8,15 +8,17 @@ using UnityEngine.UIElements;
 
 public class Tutorial : MonoBehaviour
 {
+    public bool doEverythingInstantly;
     public gameHandler gameScript;
     public GameObject keyboardPlayer;
     public GameObject controllerPlayer;
     public bool playersCanMove = false;
     public float beginningMovementLockTime = 8f;
+    public bool playersCanDodge;
     public bool playersCanJump;
     public bool playersCanAirDash;
-    public bool playersCanDodge;
     public bool playersCanShiftLock;
+    public bool playersCanThrowWeapons;
 
     bool initialMovementGiven = false;
 
@@ -51,8 +53,10 @@ public class Tutorial : MonoBehaviour
     public GameObject airDashTip;
     public GameObject airDashTip2;
 
-    [Header("Mason")]
-    public float a;
+    [Header("Sand Area")]
+    public bool playerKOnPlatform;
+    public bool playerCOnPlatform;
+    public GameObject closingFenceForSandPlatform;
 
 
 
@@ -62,13 +66,15 @@ public class Tutorial : MonoBehaviour
     private void Start()
     {
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
-
         keyboardPlayer = gameScript.keyboardPlayer;
         controllerPlayer = gameScript.controllerPlayer;
 
-        originalTimeScale = Time.timeScale;
-        WeaponTutorial.SetActive(false);
-        WeaponTutorial2.SetActive(false);
+        if (doEverythingInstantly)
+        {
+            beginningMovementLockTime = 0f;
+            pickupAweTime = 0f;
+            jumpingTipsDelay = 0f;
+        }
     }
 
     void Update()
@@ -80,6 +86,8 @@ public class Tutorial : MonoBehaviour
         firstEnemyNSwordStuff();
 
         learnDoubleJump();
+
+        sandPlatformTime();
     }
 
 
@@ -200,6 +208,17 @@ public class Tutorial : MonoBehaviour
                 airDashTip.SetActive(false);
                 airDashTip2.SetActive(false);
             }
+        }
+    }
+
+    void sandPlatformTime()
+    {
+        if (playersCanAirDash)
+        {
+            playerKOnPlatform = keyboardPlayer.transform.position.y > 12.5f && keyboardPlayer.transform.position.x > -33f;
+            playerCOnPlatform = controllerPlayer.transform.position.y > 12.5f && controllerPlayer.transform.position.x > -33f;
+            if (!closingFenceForSandPlatform.activeInHierarchy && playerKOnPlatform && playerCOnPlatform)
+                closingFenceForSandPlatform.SetActive(true);
         }
     }
 
