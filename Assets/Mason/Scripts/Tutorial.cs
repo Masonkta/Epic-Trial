@@ -59,6 +59,8 @@ public class Tutorial : MonoBehaviour
     public GameObject airDashTip2;
 
     [Header("Sand Area")]
+    public GameObject walkToSandTip;
+    public GameObject walkToSandTip2;
     bool playerKOnPlatform;
     bool playerCOnPlatform;
     public bool bothPlayersOnPlatform = false;
@@ -239,6 +241,11 @@ public class Tutorial : MonoBehaviour
     {
         if (playersCanAirDash)
         {
+            if (!bothPlayersOnPlatform && !airDashTip.activeSelf)
+            {
+                walkToSandTip.SetActive(true);
+                walkToSandTip2.SetActive(true);
+            }
             playerKOnPlatform = keyboardPlayer.transform.position.y > 12.5f && keyboardPlayer.transform.position.x > -33f;
             playerCOnPlatform = controllerPlayer.transform.position.y > 12.5f && controllerPlayer.transform.position.x > -33f;
 
@@ -325,6 +332,13 @@ public class Tutorial : MonoBehaviour
         walkToRockTip.SetActive(false);
         walkToRockTip2.SetActive(false);
         FIRSTWEAPONATTENTION = false;
+    }
+
+    IEnumerator EnableMovementAfterDelaySand(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        walkToRockTip.SetActive(false);
+        walkToRockTip2.SetActive(false);
     }
 
     IEnumerator EnableMovementAfterDelay(float delay)
