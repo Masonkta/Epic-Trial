@@ -53,7 +53,10 @@ public class BasicEnemy : MonoBehaviour
         }
         if (walkPointSet)
         {
-            agent.SetDestination(walkPoint);
+            if (agent.isOnNavMesh)
+                agent.SetDestination(walkPoint);
+            else
+                walkPointSet = false;
 
             //  this is a line in the SCENE view that shows its patrol spot
             Debug.DrawLine(transform.position, walkPoint, Color.yellow);
