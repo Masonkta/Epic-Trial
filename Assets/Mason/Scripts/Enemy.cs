@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
+using UnityEngine.SceneManagement;
 
 public enum EnemyType
 {
@@ -294,6 +295,10 @@ public class Enemy : MonoBehaviour
     void die()
     {
         dropItems();
+        if (EnemyType.Boss == Etype)
+        {
+            gameScript.WaitAndChangeScene();
+        }
         Destroy(gameObject);
         StopRumble(0.3f);
     }
@@ -335,7 +340,6 @@ public class Enemy : MonoBehaviour
         currentMetalScrap.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
 
     }
-
 
 
     void dropGold(int num)

@@ -43,15 +43,15 @@ public class gameHandler : MonoBehaviour
     public int woodPieces;
     public int ironPieces;
 
-    
-
     [Header("Recipes")] // Cloth,  Wood,  Iron
     public Vector3 bandagesRecipe = new Vector3(5, 0, 0);
     public Vector3 armorRecipe = new Vector3(30, 0, 10);
     public Vector3 spearRecipe = new Vector3(0, 10, 5);
     public Vector3 woodClubRecipe = new Vector3(0, 25, 5);
 
-
+    [Header("Death Cameras")]
+    public GameObject BackUpCamera;
+    public GameObject BackUpCamera1;
 
     ////////////////////////////////////////////////////////
 
@@ -62,7 +62,8 @@ public class gameHandler : MonoBehaviour
         ResourceTransform = GameObject.FindGameObjectWithTag("ResourceTransform").transform;
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         hs = gameScript.GetComponent<HighScoreTest>();
-
+        BackUpCamera.SetActive(false);
+        BackUpCamera1.SetActive(false);
         // Activate Second Display
         if (!Application.isEditor)
             Display.displays[1].Activate();
@@ -70,13 +71,23 @@ public class gameHandler : MonoBehaviour
 
     void Update()
     {
-        keyboardPlayer.SetActive(keyboardPlayerHealth >= 0);
-        controllerPlayer.SetActive(controllerPlayerHealth >= 0);
+        if (keyboardPlayerHealth <= 0)
+        {
+            keyboardPlayer.SetActive(false);
+            BackUpCamera.SetActive(true);
+        }
+
+        if (controllerPlayerHealth <= 0)
+        {
+            controllerPlayer.SetActive(false);
+            BackUpCamera1.SetActive(true);
+        }
 
         if (keyboardPlayerHealth <= 0f && controllerPlayerHealth <= 0f)
+        {
             // BOTH PLAYERS DIED
-            SceneManager.LoadScene("victoryscene");
-
+            SceneManager.LoadScene("gameOver");
+        }
         _healthbarSpriteK.fillAmount = keyboardPlayerHealth / 100f;
         _healthbarSpriteC.fillAmount = controllerPlayerHealth / 100f;
 
@@ -95,6 +106,17 @@ public class gameHandler : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         else if (Cursor.lockState == CursorLockMode.None)
             Cursor.lockState = CursorLockMode.Locked;
+    }
+    public IEnumerator WaitAndChangeScenetask()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("victoryScene");
+    }
+
+    public void WaitAndChangeScene()
+    {
+      
+        StartCoroutine(WaitAndChangeScenetask());
     }
 
     void OnQuitGame()
