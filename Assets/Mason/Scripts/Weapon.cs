@@ -59,7 +59,7 @@ public class Weapon : MonoBehaviour
                 switch (type)
                 {
                     case WeaponType.Gladius:
-                        Damage = 3; ////////////////////
+                        Damage = 4; ////////////////////
                         piercing = false;
                         isHitting = true;
                         StartCoroutine(damaging());
@@ -70,8 +70,8 @@ public class Weapon : MonoBehaviour
                         isHitting = true;
                         break;
                     case WeaponType.Club:
-                        Damage = 70;
-                        piercing = false;
+                        Damage = 7;
+                        piercing = true;
                         isHitting = true;
                         break;
                 }
@@ -110,7 +110,7 @@ public class Weapon : MonoBehaviour
                 switch (type)
                 {
                     case WeaponType.Gladius:
-                        Damage = 3; ////////////////////
+                        Damage = 4; ////////////////////
                         piercing = false;
                         isHitting = true;
                         StartCoroutine(damaging());
@@ -121,21 +121,23 @@ public class Weapon : MonoBehaviour
                         isHitting = true;
                         break;
                     case WeaponType.Club:
-                        Damage = 70;
-                        piercing = false;
+                        Damage = 7;
+                        piercing = true;
                         isHitting = true;
                         break;
                 }
 
 
                 // Apply damage
-                float damageReductionPercentage = enemy.EnemyDefence * 0.01f;
+                float damageReductionPercentage = enemy.EnemyDefence * 0.02f;
                 float damageMultiplier = 1 - damageReductionPercentage;
                 int damageDealt = Mathf.Max(0, Mathf.RoundToInt(Damage * damageMultiplier));
                 if (piercing)
                 {
                     wasHit = true;
                     enemy.EnemyHealth -= Damage;
+                    if (enemy.gameObject.GetComponent<AudioSource>())
+                        enemy.gameObject.GetComponent<AudioSource>().PlayOneShot(enemy.gameObject.GetComponent<AudioSource>().clip);
                     //Debug.Log("HIT");
                     wasHit = false;
                 }
@@ -143,22 +145,24 @@ public class Weapon : MonoBehaviour
                 {
                     wasHit = true;
                     enemy.EnemyHealth -= damageDealt;
+                    if (enemy.gameObject.GetComponent<AudioSource>())
+                        enemy.gameObject.GetComponent<AudioSource>().PlayOneShot(enemy.gameObject.GetComponent<AudioSource>().clip);
 
                     //The funny happens here
                     //enemy.transform.localScale = Vector3.one;
                     //Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
                     //enemy.transform.position -= direction;
-                    /*
-                    if (BNMY)
-                    {
-                        BNMY.CanAtt = false;
-                        Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
-                        enemy.transform.position -= direction;
-                        BNMY.EnemyAnimator.SetTrigger("STOOOP");
-                        BNMY.CanAtt = true;
-                        Debug.Log(BNMY.CanAtt);
-                    }
-                    */
+                        /*
+                        if (BNMY)
+                        {
+                            BNMY.CanAtt = false;
+                            Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
+                            enemy.transform.position -= direction;
+                            BNMY.EnemyAnimator.SetTrigger("STOOOP");
+                            BNMY.CanAtt = true;
+                            Debug.Log(BNMY.CanAtt);
+                        }
+                        */
                     wasHit = false;
                 }
             

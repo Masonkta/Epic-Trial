@@ -236,13 +236,14 @@ public class Tutorial : MonoBehaviour
             {
                 jumpTip.SetActive(false);  airDashTip.SetActive(true);
                 jumpTip2.SetActive(false); airDashTip2.SetActive(true);
-                playersCanAirDash = true; timeOfOpening = Time.time;
+                playersCanAirDash = true;
             }
 
             if (airDashTip.activeInHierarchy && Time.time > (doEverythingInstantly ? 0f : (timeFirstEnemyIsKilled + jumpingTipsDelay * 2f)))
             {
                 airDashTip.SetActive(false);
                 airDashTip2.SetActive(false); // Can now double jump, get up to sand platform
+                timeOfOpening = Time.time;
             }
         }
     }
@@ -278,8 +279,11 @@ public class Tutorial : MonoBehaviour
 
             if (!bothPlayersOnPlatform)
             {
-                walkToSandTip.SetActive(!playerKOnPlatform);
-                walkToSandTip2.SetActive(!playerCOnPlatform);
+                if (!airDashTip.activeSelf)
+                {
+                    walkToSandTip.SetActive(!playerKOnPlatform);
+                    walkToSandTip2.SetActive(!playerCOnPlatform);
+                }
 
                 if (Time.time > timeOfOpening + 10f)
                 {
@@ -314,9 +318,8 @@ public class Tutorial : MonoBehaviour
                 letsGetResourcesTxt.SetActive(true);
                 letsGetResourcesTxt2.SetActive(true);
                 StartCoroutine(turnOffNeedResourcesUI());
+                StartCoroutine(healPlayers());
             }
-
-
 
 
         }
@@ -487,6 +490,20 @@ public class Tutorial : MonoBehaviour
 
         letsGetResourcesTxt.SetActive(false);
         letsGetResourcesTxt2.SetActive(false);
+    }
+    IEnumerator healPlayers()
+    {
+        yield return new WaitForSeconds(doEverythingInstantly ? 0f : resourceTipTimer * 1.3f);
+
+        Vector3 middle = keyboardPlayer.transform.position / 2f + controllerPlayer.transform.position / 2f;
+
+        for (int i = 0; i < 200; i++)
+        {
+            GameObject currentCloth = Instantiate(gameScript.bandagesPrefab, middle + Vector3.up + Random.insideUnitSphere, Random.rotation, gameScript.ResourceTransform);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentCloth.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentCloth.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+        }
     }
 
 }
