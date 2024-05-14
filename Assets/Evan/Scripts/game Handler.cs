@@ -57,7 +57,8 @@ public class gameHandler : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        if (SceneManager.GetActiveScene().name != "Tutorial") DontDestroyOnLoad(gameObject);
+
         Cursor.lockState = CursorLockMode.Locked;
         ResourceTransform = GameObject.FindGameObjectWithTag("ResourceTransform").transform;
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
