@@ -58,7 +58,7 @@ public class makeItemsNoUI : MonoBehaviour
     {
         if (gameScript.checkIndividualRecipe(gameScript.bandagesRecipe) && playerCInRange)
         {
-            print("Made bandages");
+            //print("Made bandages");
             GameObject bandage = Instantiate(gameScript.bandagesPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 
@@ -72,7 +72,7 @@ public class makeItemsNoUI : MonoBehaviour
     {
         if (gameScript.checkIndividualRecipe(gameScript.woodClubRecipe) && playerCInRange)
         {
-            print("Made Club");
+            //print("Made Club");
             GameObject bandage = Instantiate(gameScript.clubPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 

@@ -68,6 +68,7 @@ public class Tutorial : MonoBehaviour
     bool playerKOnPlatform;
     bool playerCOnPlatform;
     public bool bothPlayersOnPlatform = false;
+    public Transform sandTeleportSpot;
     public GameObject closingFenceForSandPlatform;
     public GameObject WeaponThrowTip;
     public GameObject WeaponThrowTip2;
@@ -86,6 +87,11 @@ public class Tutorial : MonoBehaviour
     public GameObject letsGetResourcesTxt;
     public GameObject letsGetResourcesTxt2;
     public float resourceTipTimer = 4.6f;
+    public GameObject secondCraftingTable;
+    public GameObject goCraftTip;
+    public GameObject goCraftTip2;
+    public bool tableCrafted = false;
+
 
     private float originalTimeScale; 
 
@@ -285,16 +291,24 @@ public class Tutorial : MonoBehaviour
                     walkToSandTip2.SetActive(!playerCOnPlatform);
                 }
 
-                if (Time.time > timeOfOpening + 10f)
+                if (Time.time > timeOfOpening + 4f)
                 {
                     walkToSandTip.GetComponent<TextMeshProUGUI>().text = "Remember to Air Dash by double jumping";
                     walkToSandTip2.GetComponent<TextMeshProUGUI>().text = "Remember to Air Dash by double jumping";
                 }
 
-                if (Time.time > timeOfOpening + 20f)
+                if (Time.time > timeOfOpening + 8f)
                 {
                     walkToSandTip.GetComponent<TextMeshProUGUI>().text = "try making sure you are sprinting as well";
                     walkToSandTip2.GetComponent<TextMeshProUGUI>().text = "try making sure you are sprinting as well";
+                }
+                
+                if (Time.time > timeOfOpening + 14f)
+                {
+                    if (!playerKOnPlatform)
+                        keyboardPlayer.transform.position = sandTeleportSpot.position + Random.insideUnitSphere;
+                    if (!playerCOnPlatform)
+                        controllerPlayer.transform.position = sandTeleportSpot.position + Random.insideUnitSphere;
                 }
             }
         }
@@ -318,9 +332,17 @@ public class Tutorial : MonoBehaviour
                 letsGetResourcesTxt.SetActive(true);
                 letsGetResourcesTxt2.SetActive(true);
                 StartCoroutine(turnOffNeedResourcesUI());
-                StartCoroutine(healPlayers());
+                StartCoroutine(blessPlayers());
             }
 
+            if (secondCraftingTable.activeInHierarchy && !tableCrafted)
+            {
+                tableCrafted = true;
+                goCraftTip.SetActive(true);
+                goCraftTip2.SetActive(true);
+                freezePlayers(secondCraftingTable);
+                StartCoroutine(LetThemMoveAgainLawd(2.2f));
+            }
 
         }
     }
@@ -391,13 +413,6 @@ public class Tutorial : MonoBehaviour
         FIRSTWEAPONATTENTION = false;
     }
 
-    IEnumerator EnableMovementAfterDelaySand(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        walkToRockTip.SetActive(false);
-        walkToRockTip2.SetActive(false);
-    }
-
     IEnumerator EnableMovementAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -406,6 +421,8 @@ public class Tutorial : MonoBehaviour
         keyboardPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
         controllerPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
     }
+
+
 
     IEnumerator enableMvmtNdisblWpnTip(float delay)
     {
@@ -419,6 +436,17 @@ public class Tutorial : MonoBehaviour
         newSword.GetComponent<ClubPickup>().enabled = true;
     }
 
+    IEnumerator LetThemMoveAgainLawd(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        playersCanMove = true;
+        keyboardPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
+        controllerPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
+        goCraftTip.SetActive(false);
+        goCraftTip2.SetActive(false);
+    }
+
     public void wallsAreDone()
     {
         walkToRockTip.SetActive(true);
@@ -426,7 +454,7 @@ public class Tutorial : MonoBehaviour
         FIRSTWEAPONATTENTION = true;
 
         freezePlayers(gladiusPickup);
-        StartCoroutine(EnableMovementAfterDelayNDisabeAHGLADIUS(pickupAweTime));
+        StartCoroutine(EnableMovementAfterDelayNDisabeAHGLADIUS(1.6f));
     }
 
     IEnumerator EnableFirstEnemy()
@@ -491,19 +519,42 @@ public class Tutorial : MonoBehaviour
         letsGetResourcesTxt.SetActive(false);
         letsGetResourcesTxt2.SetActive(false);
     }
-    IEnumerator healPlayers()
+    IEnumerator blessPlayers()
     {
         yield return new WaitForSeconds(doEverythingInstantly ? 0f : resourceTipTimer * 1.3f);
 
         Vector3 middle = keyboardPlayer.transform.position / 2f + controllerPlayer.transform.position / 2f;
 
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 20; i++)
         {
             GameObject currentCloth = Instantiate(gameScript.bandagesPrefab, middle + Vector3.up + Random.insideUnitSphere, Random.rotation, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentCloth.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentCloth.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
         }
+        for (int i = 0; i < 100; i++)
+        {
+            GameObject currentCloth = Instantiate(gameScript.clothPrefab, middle + Vector3.up + Random.insideUnitSphere, Random.rotation, gameScript.ResourceTransform);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentCloth.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentCloth.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+        }
+        for (int i = 0; i < 100; i++)
+        {
+            GameObject currentCloth = Instantiate(gameScript.woodPrefab, middle + Vector3.up + Random.insideUnitSphere, Random.rotation, gameScript.ResourceTransform);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentCloth.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentCloth.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+        }
+        for (int i = 0; i < 100; i++)
+        {
+            GameObject currentCloth = Instantiate(gameScript.ironPrefab, middle + Vector3.up + Random.insideUnitSphere, Random.rotation, gameScript.ResourceTransform);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentCloth.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentCloth.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+        }
+
+        secondCraftingTable.SetActive(true);
     }
 
 }

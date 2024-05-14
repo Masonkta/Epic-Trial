@@ -53,7 +53,7 @@ public class Weapon : MonoBehaviour
             if (collision.gameObject.CompareTag("armor"))
             {
                 if (deflectSound) deflectSound.Play();
-                Debug.Log("Enemy armor deflected!");
+                //Debug.Log("Enemy armor deflected!");
                 Enemy heavy = collision.gameObject.GetComponent<Enemy>();
                 // Calculate damage based on weapon type
                 switch (type)
