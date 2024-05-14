@@ -181,6 +181,7 @@ public class BossEnemy : MonoBehaviour
                 float dK = Vector3.Distance(centerOfBossFight.position, playerKeyboard.transform.position);
                 float dC = Vector3.Distance(centerOfBossFight.position, playerController.transform.position);
 
+
                 if (dK > fightDist)
                     playerKeyboard.transform.position = startOfFightSpot.position;
 
