@@ -2,6 +2,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuActions : MonoBehaviour {
+
+    private void Start()
+    {
+        if (!Application.isEditor)
+            Display.displays[1].Activate();
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene("Main"); //idk what the main game scene is called, need to replace with that
