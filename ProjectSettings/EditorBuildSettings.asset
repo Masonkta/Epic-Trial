@@ -21,9 +21,9 @@ EditorBuildSettings:
     path: Assets/!!MAIN!!/Main.unity
     guid: 46bde120c8485c44eadeda82860a5803
   - enabled: 1
-    path: Assets/Madeline/gameOverScreen/gameOver.unity
-    guid: 82de37eb1dda3f54fa472c4c3d3b0a29
-  - enabled: 1
     path: Assets/!!MAIN!!/VictoryScreen/victoryScene.unity
     guid: 294f0be519e45d94299f65c9f3fa5351
+  - enabled: 1
+    path: Assets/!!MAIN!!/VictoryScreen/gameOver.unity
+    guid: 2f174b324a13a1140a84fa7e59bc51d6
   m_configObjects: {}
