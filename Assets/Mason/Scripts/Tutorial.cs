@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 
 //using UnityEditor.ShaderGraph;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Tutorial : MonoBehaviour
@@ -88,9 +89,16 @@ public class Tutorial : MonoBehaviour
     public GameObject letsGetResourcesTxt2;
     public float resourceTipTimer = 4.6f;
     public GameObject secondCraftingTable;
+    public GameObject craftingTxtK;
+    public GameObject craftingTxtC;
     public GameObject goCraftTip;
     public GameObject goCraftTip2;
     public bool tableCrafted = false;
+    public float timeSecondTableCrafted;
+    public bool finalFreezeForPlayers = false;
+    public bool secondTableTouchedYet = false;
+    public GameObject letsGOOK;
+    public GameObject letsGOOC;
 
 
     private float originalTimeScale; 
@@ -291,24 +299,16 @@ public class Tutorial : MonoBehaviour
                     walkToSandTip2.SetActive(!playerCOnPlatform);
                 }
 
-                if (Time.time > timeOfOpening + 4f)
+                if (Time.time > timeOfOpening + 13f)
                 {
                     walkToSandTip.GetComponent<TextMeshProUGUI>().text = "Remember to Air Dash by double jumping";
                     walkToSandTip2.GetComponent<TextMeshProUGUI>().text = "Remember to Air Dash by double jumping";
                 }
 
-                if (Time.time > timeOfOpening + 8f)
+                if (Time.time > timeOfOpening + 24f)
                 {
                     walkToSandTip.GetComponent<TextMeshProUGUI>().text = "try making sure you are sprinting as well";
                     walkToSandTip2.GetComponent<TextMeshProUGUI>().text = "try making sure you are sprinting as well";
-                }
-                
-                if (Time.time > timeOfOpening + 14f)
-                {
-                    if (!playerKOnPlatform)
-                        keyboardPlayer.transform.position = sandTeleportSpot.position + Random.insideUnitSphere;
-                    if (!playerCOnPlatform)
-                        controllerPlayer.transform.position = sandTeleportSpot.position + Random.insideUnitSphere;
                 }
             }
         }
@@ -342,6 +342,34 @@ public class Tutorial : MonoBehaviour
                 goCraftTip2.SetActive(true);
                 freezePlayers(secondCraftingTable);
                 StartCoroutine(LetThemMoveAgainLawd(2.2f));
+            }
+
+            if (tableCrafted)
+            {
+                float dK = Vector3.Distance(secondCraftingTable.transform.position, keyboardPlayer.transform.position);
+                float dC = Vector3.Distance(secondCraftingTable.transform.position, controllerPlayer.transform.position);
+                bool playerKInRange = (dK < craftingTableRange);
+                bool playerCInRange = (dC < craftingTableRange);
+
+                craftMenuK.SetActive(playerKInRange);
+                craftMenuC.SetActive(playerCInRange);
+
+                if ((playerCInRange || playerKInRange) && !secondTableTouchedYet)
+                {
+                    secondTableTouchedYet = true;
+                    timeSecondTableCrafted = Time.time;
+                }
+
+                if (secondTableTouchedYet && Time.time > timeSecondTableCrafted + 10f && !finalFreezeForPlayers)
+                {
+                    finalFreezeForPlayers = true;
+                    letsGOOK.SetActive(true);
+                    letsGOOC.SetActive(true);
+                    freezePlayers();
+                    StartCoroutine(EnableMovementAfterDelayFINAL(7f));
+
+                    
+                }
             }
 
         }
@@ -454,7 +482,7 @@ public class Tutorial : MonoBehaviour
         FIRSTWEAPONATTENTION = true;
 
         freezePlayers(gladiusPickup);
-        StartCoroutine(EnableMovementAfterDelayNDisabeAHGLADIUS(1.6f));
+        StartCoroutine(EnableMovementAfterDelayNDisabeAHGLADIUS(2f));
     }
 
     IEnumerator EnableFirstEnemy()
@@ -555,6 +583,22 @@ public class Tutorial : MonoBehaviour
         }
 
         secondCraftingTable.SetActive(true);
+        craftingTxtK.SetActive(false);
+        craftingTxtC.SetActive(false);
     }
 
+    IEnumerator EnableMovementAfterDelayFINAL(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        playersCanMove = true;
+        keyboardPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
+        controllerPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
+        goToMainScene();
+    }
+
+    void goToMainScene()
+    {
+        SceneManager.LoadScene("Main");
+    }
 }
