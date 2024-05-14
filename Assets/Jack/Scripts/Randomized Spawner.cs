@@ -22,6 +22,8 @@ public class RandomizedSpawner : MonoBehaviour
     public GameObject bossObj;
     public GameObject SBOSS;
 
+    public bool instaKill = true;
+
 
     public bool bossGravityEnabled = false;
     public float bossSpawnedAtTime;
@@ -31,7 +33,7 @@ public class RandomizedSpawner : MonoBehaviour
     {
         if (SpawnWave == 1)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 6; i++)
                 Spawn(enemyWeak);
         }
 
@@ -41,17 +43,17 @@ public class RandomizedSpawner : MonoBehaviour
             for (int i = 0; i < 3; i++)
                 Spawn(enemyWeak);
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
                 Spawn(enemyMid);
         }
 
         if (SpawnWave == 3)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
                 Spawn(enemyMid);
 
-            Spawn(enemyStr);
-            Spawn(enemyStr);
+            for (int i = 0; i < 2; i++)
+                Spawn(enemyStr);
         }
 
         if (SpawnWave == 4)
@@ -84,7 +86,7 @@ public class RandomizedSpawner : MonoBehaviour
         }
 
         // K kills all enemies
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K) && instaKill)
             foreach(Enemy t in FindObjectsOfType<Enemy>())
                 t.GetComponent<Enemy>().EnemyHealth = 0;
 
