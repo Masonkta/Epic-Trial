@@ -71,25 +71,34 @@ public class gameHandler : MonoBehaviour
 
     void Update()
     {
-        if (keyboardPlayerHealth <= 0)
+        if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "Tutorial")
         {
-            keyboardPlayer.SetActive(false);
-            BackUpCamera.SetActive(true);
-        }
+            if (SceneManager.GetActiveScene().name == "Main")
+            {
 
-        if (controllerPlayerHealth <= 0)
-        {
-            controllerPlayer.SetActive(false);
-            BackUpCamera1.SetActive(true);
-        }
+                if (keyboardPlayerHealth <= 0)
+                {
+                    keyboardPlayer.SetActive(false);
+                    BackUpCamera.SetActive(true);
+                }
 
-        if (keyboardPlayerHealth <= 0f && controllerPlayerHealth <= 0f)
-        {
-            // BOTH PLAYERS DIED
-            SceneManager.LoadScene("gameOver");
+                if (controllerPlayerHealth <= 0)
+                {
+                    controllerPlayer.SetActive(false);
+                    BackUpCamera1.SetActive(true);
+                }
+
+                if (keyboardPlayerHealth <= 0f && controllerPlayerHealth <= 0f)
+                {
+                    // BOTH PLAYERS DIED
+                    SceneManager.LoadScene("gameOver");
+                }
+            }
+
+            _healthbarSpriteK.fillAmount = keyboardPlayerHealth / 100f;
+            _healthbarSpriteC.fillAmount = controllerPlayerHealth / 100f;
         }
-        _healthbarSpriteK.fillAmount = keyboardPlayerHealth / 100f;
-        _healthbarSpriteC.fillAmount = controllerPlayerHealth / 100f;
+        
 
         ///////////////////////////////////////////////////////////////////////
 

@@ -31,25 +31,32 @@ public class RandomizedSpawner : MonoBehaviour
     {
         if (SpawnWave == 1)
         {
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < 8; i++)
                 Spawn(enemyWeak);
         }
 
 
         if (SpawnWave == 2)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
                 Spawn(enemyWeak);
 
-            Spawn(enemyMid);
-            Spawn(enemyMid);
-            
-            Spawn(enemyStr);
+            for (int i = 0; i < 3; i++)
+                Spawn(enemyMid);
         }
 
         if (SpawnWave == 3)
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 4; i++)
+                Spawn(enemyMid);
+
+            Spawn(enemyStr);
+            Spawn(enemyStr);
+        }
+
+        if (SpawnWave == 4)
+        {
+            for (int i = 0; i < 2; i++)
                 Spawn(enemyMid);
 
             for (int i = 0; i < 4; i++)
@@ -58,7 +65,7 @@ public class RandomizedSpawner : MonoBehaviour
             }
         }
 
-        if (SpawnWave == 4)
+        if (SpawnWave == 5)
         {
             bossObj.SetActive(true);
             bossSpawnedAtTime = Time.time;

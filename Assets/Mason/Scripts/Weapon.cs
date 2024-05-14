@@ -81,14 +81,16 @@ public class Weapon : MonoBehaviour
                 if (piercing)
                 {
                     wasHit = true;
-                    heavy.EnemyHealth -= Damage;
+                    if (heavy)
+                        heavy.EnemyHealth -= Damage;
                     //Debug.Log("HIT");
                     wasHit = false;
                 }
                 else
                 {
                     wasHit = true;
-                    heavy.EnemyHealth -= damageDeflect;
+                    if (heavy)
+                        heavy.EnemyHealth -= damageDeflect;
                     wasHit = false;
                 }
                 return;
