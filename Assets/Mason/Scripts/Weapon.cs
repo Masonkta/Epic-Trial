@@ -73,6 +73,7 @@ public class Weapon : MonoBehaviour
                         Damage = 7;
                         piercing = true;
                         isHitting = true;
+                        StartCoroutine(damaging());
                         break;
                 }
 
@@ -124,6 +125,7 @@ public class Weapon : MonoBehaviour
                         Damage = 7;
                         piercing = true;
                         isHitting = true;
+                        StartCoroutine(damaging());
                         break;
                 }
 
