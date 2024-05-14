@@ -41,6 +41,7 @@ public class ClubPickup : MonoBehaviour
             {
                 if (keyboardWeapons.handOpen()) // Keyboard Dude Not Holding Sword Yet
                 {
+                    keyboardPlayer.GetComponent<SphereCollider>().radius *= 1.4f;
                     keyboardWeapons.getClub().SetActive(true);
                     Destroy(gameObject); // Destroy Club object on the ground
                 }
@@ -57,6 +58,7 @@ public class ClubPickup : MonoBehaviour
             {
                 if (controllerWeapons.handOpen()) // Controller Dude Not Holding Weapons Yet
                 {
+                    controllerPlayer.GetComponent<SphereCollider>().radius *= 1.4f;
                     controllerWeapons.getClub().SetActive(true);
                     Destroy(gameObject); // Destroy Club object on the ground
                 }

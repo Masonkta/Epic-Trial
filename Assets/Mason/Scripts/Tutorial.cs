@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 
 //using UnityEditor.ShaderGraph;
@@ -45,9 +46,11 @@ public class Tutorial : MonoBehaviour
     public GameObject shiftLockTip;
     public GameObject shiftLockTip2;
     public bool gladiusPickedUp;
+    public AudioSource swordDrawSource;
     public GameObject firstEnemyByRock;
     public bool firstEnemyKilled = false;
     public float timeFirstEnemyIsKilled;
+    public float shiftLockTipTime = 3.8f;
 
     bool GladiusReadyToBeInspected = true;
 
@@ -61,6 +64,7 @@ public class Tutorial : MonoBehaviour
     [Header("Sand Area")]
     public GameObject walkToSandTip;
     public GameObject walkToSandTip2;
+    public float timeOfOpening;
     bool playerKOnPlatform;
     bool playerCOnPlatform;
     public bool bothPlayersOnPlatform = false;
@@ -74,9 +78,14 @@ public class Tutorial : MonoBehaviour
     public GameObject newSword;
     public float stareAtNewSwordTime = 3f;
     public bool newSwordPickedUp = false;
+    public GameObject SbenemyHeavyK;
+    public GameObject SbenemyHeavyC;
+    public bool secondWaveDone = false;
 
-
-
+    [Header("Farming Time")]
+    public GameObject letsGetResourcesTxt;
+    public GameObject letsGetResourcesTxt2;
+    public float resourceTipTimer = 4.6f;
 
     private float originalTimeScale; 
 
@@ -161,7 +170,6 @@ public class Tutorial : MonoBehaviour
             if (GladiusReadyToBeInspected)
             {
                 GladiusReadyToBeInspected = false;
-                playersCanDodge = true;
                 freezePlayers(gladiusPickup);
                 StartCoroutine(EnableMovementAfterDelay(pickupAweTime));
             }
@@ -191,14 +199,16 @@ public class Tutorial : MonoBehaviour
         {
             checkPlayers_weapons();
         }
-        else if (!gladiusPickedUp)
+        else if (!gladiusPickedUp) // Gladius was pulled from sword
         {
+            swordDrawSource.PlayOneShot(swordDrawSource.clip);
             playersCanShiftLock = true;
             shiftLockTip.SetActive(true);
             shiftLockTip2.SetActive(true);
             StartCoroutine(turnOffShiftLockTip());
 
             gladiusPickedUp = true;
+            playersCanDodge = true;
             WeaponTutorial.SetActive(false);
             WeaponTutorial2.SetActive(false);
             StartCoroutine(EnableFirstEnemy());
@@ -207,7 +217,7 @@ public class Tutorial : MonoBehaviour
         if (gladiusPickedUp && !firstEnemyByRock && !firstEnemyKilled) // First Enemy Killed
         {
             firstEnemyKilled = true; timeFirstEnemyIsKilled = Time.time;
-            playersCanJump = true;        // PLAYERS CAN NOW JUMP
+            playersCanJump = true;
             jumpTip.SetActive(true);
             jumpTip2.SetActive(true);
 
@@ -222,17 +232,17 @@ public class Tutorial : MonoBehaviour
     {
         if (firstEnemyKilled)
         {
-            if (!playersCanAirDash && Time.time > timeFirstEnemyIsKilled + jumpingTipsDelay)
+            if (!playersCanAirDash && Time.time > (doEverythingInstantly ? 0f : (timeFirstEnemyIsKilled + jumpingTipsDelay)))
             {
                 jumpTip.SetActive(false);  airDashTip.SetActive(true);
                 jumpTip2.SetActive(false); airDashTip2.SetActive(true);
-                playersCanAirDash = true;
+                playersCanAirDash = true; timeOfOpening = Time.time;
             }
 
-            if (airDashTip.activeInHierarchy && Time.time > timeFirstEnemyIsKilled + jumpingTipsDelay * 2f)
+            if (airDashTip.activeInHierarchy && Time.time > (doEverythingInstantly ? 0f : (timeFirstEnemyIsKilled + jumpingTipsDelay * 2f)))
             {
                 airDashTip.SetActive(false);
-                airDashTip2.SetActive(false);
+                airDashTip2.SetActive(false); // Can now double jump, get up to sand platform
             }
         }
     }
@@ -245,6 +255,8 @@ public class Tutorial : MonoBehaviour
             {
                 walkToSandTip.SetActive(true);
                 walkToSandTip2.SetActive(true);
+                walkToSandTip.GetComponent<TextMeshProUGUI>().text = "Get On to the sand platform";
+                walkToSandTip2.GetComponent<TextMeshProUGUI>().text = "Get On to the sand platform";
             }
             playerKOnPlatform = keyboardPlayer.transform.position.y > 12.5f && keyboardPlayer.transform.position.x > -33f;
             playerCOnPlatform = controllerPlayer.transform.position.y > 12.5f && controllerPlayer.transform.position.x > -33f;
@@ -252,6 +264,9 @@ public class Tutorial : MonoBehaviour
             if (!bothPlayersOnPlatform && playerKOnPlatform && playerCOnPlatform) // Both Players Are Now on the platform
             {
                 bothPlayersOnPlatform = true;
+                walkToSandTip.SetActive(false);
+                walkToSandTip2.SetActive(false);
+
                 closingFenceForSandPlatform.SetActive(true);
                 StartCoroutine(waitSecondsAfterGateClose(4.5f));
 
@@ -260,17 +275,46 @@ public class Tutorial : MonoBehaviour
                 WeaponThrowTip2.SetActive(true);
                 StartCoroutine(turnOffWeaponThrowTip());
             }
+
+            if (!bothPlayersOnPlatform)
+            {
+                walkToSandTip.SetActive(!playerKOnPlatform);
+                walkToSandTip2.SetActive(!playerCOnPlatform);
+
+                if (Time.time > timeOfOpening + 10f)
+                {
+                    walkToSandTip.GetComponent<TextMeshProUGUI>().text = "Remember to Air Dash by double jumping";
+                    walkToSandTip2.GetComponent<TextMeshProUGUI>().text = "Remember to Air Dash by double jumping";
+                }
+
+                if (Time.time > timeOfOpening + 20f)
+                {
+                    walkToSandTip.GetComponent<TextMeshProUGUI>().text = "try making sure you are sprinting as well";
+                    walkToSandTip2.GetComponent<TextMeshProUGUI>().text = "try making sure you are sprinting as well";
+                }
+            }
         }
+
     }
 
     void sandPlatformTime()
     {
         if (bothPlayersOnPlatform)
         {
-            if (!newSword && !newSwordPickedUp)
+            if (!newSword && !newSwordPickedUp) // Club is picked up
+            {
                 newSwordPickedUp = true;
+                StartCoroutine(SpawnSomeMoreEnemiesAfterDelay());
+            }
 
+            if (!SbenemyHeavyK && !SbenemyHeavyC && !secondWaveDone)
+            {
+                secondWaveDone = true;
 
+                letsGetResourcesTxt.SetActive(true);
+                letsGetResourcesTxt2.SetActive(true);
+                StartCoroutine(turnOffNeedResourcesUI());
+            }
 
 
 
@@ -278,7 +322,17 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    //////////////////////////////////////////////
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 
     void freezePlayers()
     {
@@ -359,6 +413,7 @@ public class Tutorial : MonoBehaviour
         controllerPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
         newWeaponDropTip.SetActive(false);
         newWeaponDropTip2.SetActive(false);
+        newSword.GetComponent<ClubPickup>().enabled = true;
     }
 
     public void wallsAreDone()
@@ -373,15 +428,27 @@ public class Tutorial : MonoBehaviour
 
     IEnumerator EnableFirstEnemy()
     {
-        yield return new WaitForSeconds(doEverythingInstantly ? 0f : 0.5f);
+        yield return new WaitForSeconds(0.5f);
 
         if (firstEnemyByRock) firstEnemyByRock.SetActive(true);
     }
 
+    IEnumerator SpawnSomeMoreEnemiesAfterDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        SbenemyHeavyK.SetActive(true);
+        SbenemyHeavyC.SetActive(true);
+        SbenemyHeavyK.transform.position = keyboardPlayer.transform.position + Vector3.up + Random.insideUnitSphere * 2f;
+        SbenemyHeavyC.transform.position = controllerPlayer.transform.position + Vector3.up + Random.insideUnitSphere * 2f;
+
+    }
+
     IEnumerator turnOffShiftLockTip()
     {
-        yield return new WaitForSeconds(doEverythingInstantly ? 0f : 3f);
+        yield return new WaitForSeconds(doEverythingInstantly ? 0f : shiftLockTipTime);
 
+        Time.timeScale = 1f;
         shiftLockTip.SetActive(false);
         shiftLockTip2.SetActive(false);
     }
@@ -407,10 +474,19 @@ public class Tutorial : MonoBehaviour
         newSword.transform.position = avgPos;
         newSword.GetComponent<Rigidbody>().velocity = Vector3.up * 18f;
         newSword.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitCircle * 50f;
+        newSword.GetComponent<ClubPickup>().enabled = false;
 
         freezePlayers(newSword);
         StartCoroutine(enableMvmtNdisblWpnTip(stareAtNewSwordTime));
     }
 
+
+    IEnumerator turnOffNeedResourcesUI()
+    {
+        yield return new WaitForSeconds(doEverythingInstantly ? 0f : resourceTipTimer);
+
+        letsGetResourcesTxt.SetActive(false);
+        letsGetResourcesTxt2.SetActive(false);
+    }
 
 }

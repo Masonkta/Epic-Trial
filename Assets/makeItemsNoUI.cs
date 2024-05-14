@@ -12,7 +12,7 @@ public class makeItemsNoUI : MonoBehaviour
     public GameObject keyboardPlayer;
     public GameObject controllerPlayer;
 
-    public float range = 5f;
+    public float range = 6f;
 
     public bool playerKInRange = false;
     public bool playerCInRange = false;

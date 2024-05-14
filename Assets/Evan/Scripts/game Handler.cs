@@ -62,8 +62,8 @@ public class gameHandler : MonoBehaviour
         ResourceTransform = GameObject.FindGameObjectWithTag("ResourceTransform").transform;
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         hs = gameScript.GetComponent<HighScoreTest>();
-        BackUpCamera.SetActive(false);
-        BackUpCamera1.SetActive(false);
+        if (BackUpCamera) BackUpCamera.SetActive(false);
+        if (BackUpCamera1) BackUpCamera1.SetActive(false);
         // Activate Second Display
         if (!Application.isEditor)
             Display.displays[1].Activate();
