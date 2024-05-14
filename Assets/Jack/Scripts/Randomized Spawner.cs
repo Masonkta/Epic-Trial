@@ -33,7 +33,7 @@ public class RandomizedSpawner : MonoBehaviour
     {
         if (SpawnWave == 1)
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
                 Spawn(enemyWeak);
         }
 
