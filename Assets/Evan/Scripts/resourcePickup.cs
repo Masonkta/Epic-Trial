@@ -9,7 +9,7 @@ public class resourcePickup : MonoBehaviour
     public List<GameObject> players = new List<GameObject>();
 
     float timeOfSpawn;
-    float pickupDist = 5f;
+    float pickupDist = 6.5f;
     float pickupTimer = 1f;
     Rigidbody rb;
 

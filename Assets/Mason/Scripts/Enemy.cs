@@ -308,7 +308,7 @@ public class Enemy : MonoBehaviour
     {
         int numOfGold = Random.Range(3, 10);
         if (EnemyType.Boss == Etype)
-            numOfGold *= 20;
+            numOfGold *= 50;
         dropGold(numOfGold * gameScript.ResourceDropRate);
 
         // Decide how many and what items to drop
@@ -336,6 +336,8 @@ public class Enemy : MonoBehaviour
         // Drop SKULL
 
         GameObject currentMetalScrap = Instantiate(skull, transform.position + Vector3.up + Random.insideUnitSphere, Random.rotation, gameScript.ResourceTransform);
+        if (EnemyType.Boss == Etype)
+            currentMetalScrap.transform.localScale *= 2f;
         float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
         currentMetalScrap.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
 

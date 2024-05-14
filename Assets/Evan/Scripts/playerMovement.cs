@@ -391,6 +391,7 @@ public class playerMovement : MonoBehaviour
         // Unless boss is in air
         if (bossSpawned && bossFalling)
         {
+            sprinting = true;
             shiftLock = true;
             cameraTransform.LookAt(bossScript.gameObject.transform.position + Vector3.down);
             cameraAngle = 180f;
