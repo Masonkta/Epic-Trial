@@ -86,7 +86,7 @@ public class RandomizedSpawner : MonoBehaviour
         }
 
         // K kills all enemies
-        if (Input.GetKeyDown(KeyCode.K) && instaKill)
+        if (Input.GetKeyDown(KeyCode.K) && Input.GetKey(KeyCode.O) && instaKill)
             foreach(Enemy t in FindObjectsOfType<Enemy>())
                 t.GetComponent<Enemy>().EnemyHealth = 0;
 
