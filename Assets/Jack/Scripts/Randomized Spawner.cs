@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class RandomizedSpawner : MonoBehaviour
     public GameObject enemyStr;
     public int SpawnWave = 0;
     private int enemyCount;
+    public TextMeshProUGUI enemyCounterK;
+    public TextMeshProUGUI enemyCounterC;
     private float xPos;
     private float zPos;
     public float sphereRadius = 20f;
@@ -78,6 +81,10 @@ public class RandomizedSpawner : MonoBehaviour
     void Update()
     {
         enemyCount = FindObjectsOfType<Enemy>().Length;
+
+        // Update Enemy Counter UI's
+        enemyCounterK.text = $"Wave {SpawnWave}\n\nEnemies\nAlive: {enemyCount}";
+        enemyCounterC.text = $"Wave {SpawnWave}\n\nEnemies\nAlive: {enemyCount}";
 
         if (enemyCount == 0)
         {

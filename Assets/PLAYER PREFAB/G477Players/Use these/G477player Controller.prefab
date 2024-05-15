@@ -5451,9 +5451,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.83
-  m_Height: 18.92
+  m_Height: 18.25
   m_Direction: 1
-  m_Center: {x: -2.67, y: -4.4, z: 0.6}
+  m_Center: {x: -1.27, y: -5.5, z: 0.5}
 --- !u!114 &832217126137490859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5523,27 +5523,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b41e973bf3093042ae6efd51997308f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOne: 0
   hardCodeKeyboard: 0
   player: {fileID: 5103757198258697918}
   forwardTransform: {fileID: 7909438961930521226}
   cameraTransform: {fileID: 2223533321436782093}
   playerObj: {fileID: 3626158211613711065}
   currentVelocity: 0
-  walkSpeed: 6
-  sprintSpeed: 13
+  walkSpeed: 7
+  sprintSpeed: 16
   groundCheckDistance: 2.2
   jumpHeight: 3.3
   airDashSpeed: 18
-  dodgeSpeed: 22
+  dodgeSpeed: 25
   dodgeTime: 0.33
   shiftLock: 0
-  xSensController: 250
-  ySensController: 150
-  xSensKeyboard: 80
-  ySensKeyboard: 50
-  camHeight: 2.5
-  camDistance: 6
+  xSens: 100
+  ySens: 65
+  camHeight: 0.5
+  camDistance: 5.5
   cameraAngle: 180
   footstepsSound: {fileID: 3808861588156978920}
   jumpSound: {fileID: 6985053371523493679}
@@ -5551,7 +5548,7 @@ MonoBehaviour:
   landingOnGrass: {fileID: 5697031692649517084}
   landingOnGrassSound: {fileID: 8300000, guid: fdcaecf97c532254b8ad9a600b5245ca, type: 3}
   MainSong: {fileID: 2195778548786217522}
-  trail: {fileID: 0}
+  trail: {fileID: 7146560048956826311}
   bossObj: {fileID: 0}
   bossScript: {fileID: 0}
   bossSpawned: 0

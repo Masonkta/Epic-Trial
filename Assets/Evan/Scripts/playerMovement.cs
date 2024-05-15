@@ -358,12 +358,12 @@ public class playerMovement : MonoBehaviour
             if (hit.transform.gameObject.layer != 6 || true) // Does not hit ground < ALWAYS WILL PASS RIGHT NOW
             {
                 float DistToObject = Vector3.Distance(hit.point, transform.position);
-                actualCamDistance += (DistToObject - actualCamDistance) / 30f;
+                actualCamDistance += (DistToObject - actualCamDistance) / 20f;
             }
         }
 
-        actualCamHeight += (camHeight - actualCamHeight) / 30f;
-        actualCamDistance += (camDistance - actualCamDistance) / 35f;
+        actualCamHeight += (camHeight - actualCamHeight) / 20f;
+        actualCamDistance += (camDistance - actualCamDistance) / 20f;
 
         if (bossFalling && bossObj.activeInHierarchy)
             bossScript.playerCamerasShouldBeShaking = true;
