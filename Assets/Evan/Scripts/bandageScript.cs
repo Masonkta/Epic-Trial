@@ -38,7 +38,7 @@ public class bandageScript : MonoBehaviour
         // Keyboard
         if (Vector3.Distance(transform.position + Vector3.up, gameScript.keyboardPlayer.transform.position) < pickupDist && gameScript.keyboardPlayerHealth < 100f)
         {
-            gameScript.keyboardPlayerHealth += 5f;
+            gameScript.keyboardPlayerHealth += healthRestored;
             if (gameScript.keyboardPlayerHealth > 100f)
                 gameScript.keyboardPlayerHealth = 100f;
             Destroy(gameObject);
@@ -47,7 +47,7 @@ public class bandageScript : MonoBehaviour
         // Controller
         if (Vector3.Distance(transform.position + Vector3.up, gameScript.controllerPlayer.transform.position) < pickupDist && gameScript.controllerPlayerHealth < 100f)
         {
-            gameScript.controllerPlayerHealth += 5f;
+            gameScript.controllerPlayerHealth += healthRestored;
             if (gameScript.controllerPlayerHealth > 100f)
                 gameScript.controllerPlayerHealth = 100f;
             Destroy(gameObject);
