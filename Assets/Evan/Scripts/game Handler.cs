@@ -7,12 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class gameHandler : MonoBehaviour
 {
-    //public GameObject playerOne;
-    //public GameObject playerTwo;
-    //public string playerOneControls = "---";
-    //public string playerTwoControls = "---";
-
-    gameHandler gameScript;
     HighScoreTest hs;
     private const string playerKScoreTextObjectName = "ScoreK";
     private const string playerCScoreTextObjectName = "ScoreC";
@@ -37,7 +31,7 @@ public class gameHandler : MonoBehaviour
 
     [Header("Resources")]
     public Transform ResourceTransform;
-    public int ResourceDropRate = 1;
+    public int ResourceDropRate = 3;
     public int gold;
     public int clothPieces;
     public int woodPieces;
@@ -57,12 +51,9 @@ public class gameHandler : MonoBehaviour
 
     void Start()
     {
-        if (SceneManager.GetActiveScene().name != "Tutorial") DontDestroyOnLoad(gameObject);
-
         Cursor.lockState = CursorLockMode.Locked;
         ResourceTransform = GameObject.FindGameObjectWithTag("ResourceTransform").transform;
-        gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
-        hs = gameScript.GetComponent<HighScoreTest>();
+        if (BackUpCamera) BackUpCamera.SetActive(false);
         if (BackUpCamera) BackUpCamera.SetActive(false);
         if (BackUpCamera1) BackUpCamera1.SetActive(false);
         // Activate Second Display

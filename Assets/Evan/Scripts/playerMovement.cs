@@ -16,7 +16,6 @@ public class playerMovement : MonoBehaviour
     gameHandler gameScript;
     CharacterController controller;
 
-    public bool isPlayerOne;
     public bool hardCodeKeyboard;
     public GameObject player;
     public Transform forwardTransform;
@@ -57,10 +56,8 @@ public class playerMovement : MonoBehaviour
 
     [Header("Turning")]
     public bool shiftLock = false;
-    public float xSensController;
-    public float ySensController;
-    public float xSensKeyboard;
-    public float ySensKeyboard;
+    public float xSens;
+    public float ySens;
 
     private float horizontalTurnAmount;
     private float verticalTurnAmount;
@@ -115,9 +112,9 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
         if (bossSpawned)
-        {
-            MainSong.Stop();
-        }
+            gameScript.gameObject.GetComponent<AudioSource>().enabled = false;
+
+
         checkIsGrounded();
         if (hardCodeKeyboard) hardCodedKeyboardPlayerInput();
 
@@ -205,8 +202,7 @@ public class playerMovement : MonoBehaviour
     void horizontalTurns()
     {
 
-        float turnStrength = isPlayerOne ? xSensKeyboard : xSensController;
-        cameraAngle += horizontalTurnAmount * turnStrength * Time.deltaTime;
+        cameraAngle += horizontalTurnAmount * xSens * Time.deltaTime;
         if (cameraAngle > 360f) cameraAngle -= 360f;
         if (cameraAngle < 0f) cameraAngle += 360f;
 
@@ -215,8 +211,7 @@ public class playerMovement : MonoBehaviour
 
     void verticalTurns()
     {
-        float turnStrength = isPlayerOne ? ySensKeyboard : ySensController;
-        initialCamHeight -= turnStrength * verticalTurnAmount * Time.deltaTime;
+        initialCamHeight -= ySens * verticalTurnAmount * Time.deltaTime;
         initialCamHeight = Mathf.Clamp(initialCamHeight, -1f, 5f);
 
 
@@ -292,13 +287,9 @@ public class playerMovement : MonoBehaviour
 
         //playerAnimator.SetTrigger(isMoving ? "Go" : "Stop");
         if (isMoving)
-        {
             playerAnimator.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
-        }
         else
-        {
             playerAnimator.SetFloat("Speed", 0.0f, 0.1f, Time.deltaTime);
-        }
 
         if (!airDashing && !isDodging)
         {
@@ -367,12 +358,12 @@ public class playerMovement : MonoBehaviour
             if (hit.transform.gameObject.layer != 6 || true) // Does not hit ground < ALWAYS WILL PASS RIGHT NOW
             {
                 float DistToObject = Vector3.Distance(hit.point, transform.position);
-                actualCamDistance += (DistToObject - actualCamDistance) / 130f;
+                actualCamDistance += (DistToObject - actualCamDistance) / 30f;
             }
         }
 
-        actualCamHeight += (camHeight - actualCamHeight) / 150f;
-        actualCamDistance += (camDistance - actualCamDistance) / 135f;
+        actualCamHeight += (camHeight - actualCamHeight) / 30f;
+        actualCamDistance += (camDistance - actualCamDistance) / 35f;
 
         if (bossFalling && bossObj.activeInHierarchy)
             bossScript.playerCamerasShouldBeShaking = true;
@@ -425,7 +416,7 @@ public class playerMovement : MonoBehaviour
 
     void hardCodedKeyboardPlayerInput()
     {
-        if (isPlayerOne)
+        if (hardCodeKeyboard)
         {
             forwardMoveAm = 0;
             if (Input.GetKey(KeyCode.W))
@@ -442,19 +433,21 @@ public class playerMovement : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
                 OnDodge();
 
-            sprinting = Input.GetKey(KeyCode.LeftShift) && !shiftLock;
+            sprinting = Input.GetKey(KeyCode.LeftShift);
+
+            if (sprinting && shiftLock) shiftLock = false;
 
             if (Input.GetKeyDown(KeyCode.Space))
                 OnJump();
 
-            if (Input.GetKeyDown(KeyCode.E) && !sprinting)
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                sprinting = false;
                 shiftLock = !shiftLock;
+            }
 
             if (Input.GetKeyDown(KeyCode.Q))
                 GetComponent<playerAccessWeapons>().OnDropItem();
-
-            if (Input.GetKeyDown(KeyCode.R))
-                gameScript.possibleRecipes();
 
         }
     }
@@ -468,6 +461,11 @@ public class playerMovement : MonoBehaviour
     void bossStuff()
     {
         bossSpawned = bossObj.activeInHierarchy;
+        
+        if (bossSpawned)
+            if(gameScript.gameObject.GetComponent<AudioSource>().enabled)
+                gameScript.gameObject.GetComponent<AudioSource>().enabled = false;
+
         bossFalling = !bossScript.bossLanded;
     }
 
