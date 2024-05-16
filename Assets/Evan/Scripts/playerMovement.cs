@@ -51,6 +51,7 @@ public class playerMovement : MonoBehaviour
     public float dodgeSpeed = 20f;
     public float dodgeTime = 0.4f;
 
+    public bool canDodge = true;
     private bool isDodging;
 
 
@@ -72,17 +73,14 @@ public class playerMovement : MonoBehaviour
     float actualCamDistance;
 
 
-    [Header("Camera Follow")]
-    public float cameraAngle;
+    //[Header("Camera Follow")]
+    private float cameraAngle = 180f;
 
 
     [Header("Audio")]
     public AudioSource footstepsSound;
     public AudioSource jumpSound;
-    public AudioClip jumpSoundEffect;
     public AudioSource landingOnGrass;
-    public AudioClip landingOnGrassSound;
-    public AudioSource MainSong;
 
 
     [Header("Animation")]
@@ -91,6 +89,7 @@ public class playerMovement : MonoBehaviour
 
     [Header("Trails")]
     public TrailRenderer trail;
+    public Color initialTrailColor;
 
     [Header("Boss for camera")]
     public GameObject bossObj;
@@ -107,6 +106,7 @@ public class playerMovement : MonoBehaviour
 
         initialCamDistance = camDistance; actualCamDistance = camDistance;
         initialCamHeight = camHeight; actualCamHeight = camHeight;
+        initialTrailColor = trail.startColor;
     }
 
     void Update()
@@ -119,13 +119,11 @@ public class playerMovement : MonoBehaviour
         if (hardCodeKeyboard) hardCodedKeyboardPlayerInput();
 
         // Turning // 
-        horizontalTurns();
-        verticalTurns();
+        Turn();
 
         // Moving //
         move();
-        if (isGrounded)
-            playerAnimator.SetTrigger("Land");
+        
 
         // Camera //
         handleCamera();
@@ -137,6 +135,45 @@ public class playerMovement : MonoBehaviour
 
         bossStuff();
 
+    }
+
+
+    void hardCodedKeyboardPlayerInput()
+    {
+        if (hardCodeKeyboard)
+        {
+            forwardMoveAm = 0;
+            if (Input.GetKey(KeyCode.W))
+                forwardMoveAm = 1;
+            if (Input.GetKey(KeyCode.S))
+                forwardMoveAm = -1;
+
+            sideMoveAm = 0;
+            if (Input.GetKey(KeyCode.A))
+                sideMoveAm = -1;
+            if (Input.GetKey(KeyCode.D))
+                sideMoveAm = 1;
+
+            if (Input.GetMouseButtonDown(1))
+                OnDodge();
+
+            sprinting = Input.GetKey(KeyCode.LeftShift);
+
+            if (sprinting && shiftLock) shiftLock = false;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                OnJump();
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                sprinting = false;
+                shiftLock = !shiftLock;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+                GetComponent<playerAccessWeapons>().OnDropItem();
+
+        }
     }
 
 
@@ -158,23 +195,11 @@ public class playerMovement : MonoBehaviour
         playerVelocity += moveDir;
         airDashing = true;
 
-        jumpSound.PlayOneShot(jumpSoundEffect);
+        jumpSound.PlayOneShot(jumpSound.clip);
     }
 
-    void checkIsGrounded()
-    {
-        bool prev = isGrounded;
 
-        isGrounded = controller.isGrounded || Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
-        //Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
 
-        if (!prev && isGrounded && playerVelocity.y < -6f)
-        {   // We just landed and were falling a decent bit
-            landingOnGrass.PlayOneShot(landingOnGrassSound);
-        }
-
-        if (isGrounded) airDashing = false;
-    }
 
 
     void OnJump()
@@ -204,22 +229,18 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    void horizontalTurns()
+    void Turn()
     {
 
+        // Horiz
         cameraAngle += horizontalTurnAmount * xSens * Time.deltaTime;
         if (cameraAngle > 360f) cameraAngle -= 360f;
         if (cameraAngle < 0f) cameraAngle += 360f;
 
-        //if (shiftLock) cameraAngle = 180f;
-    }
-
-    void verticalTurns()
-    {
+        // Vert
         initialCamHeight -= ySens * verticalTurnAmount * Time.deltaTime;
         initialCamHeight = Mathf.Clamp(initialCamHeight, -1f, 5f);
-
-
+        //if (shiftLock) cameraAngle = 180f;
     }
 
     //// Moving ////
@@ -230,8 +251,6 @@ public class playerMovement : MonoBehaviour
         
         sideMoveAm = turnInput[0];
         forwardMoveAm = turnInput[1];
-
-
     }
 
     void OnSprint()
@@ -254,7 +273,8 @@ public class playerMovement : MonoBehaviour
         float playerVelocityMagnitude = new Vector2(playerVelocity.x, playerVelocity.z).magnitude;
 
         currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;
-        playerAnimator.speed = Mathf.Sqrt(currentVelocity) / 7f + 0.4f; //currentVelocity / 10f + 0.5f;
+        playerAnimator.speed = Mathf.Sqrt(currentVelocity) / 7f + 0.5f; //currentVelocity / 10f + 0.5f;
+
         isMoving = currentVelocity > 0.75f; bool isMovingLiterallyAtALL = currentVelocity > 0f;
         if (!isMovingLiterallyAtALL && sprinting)
             sprinting = false;
@@ -264,26 +284,34 @@ public class playerMovement : MonoBehaviour
 
     IEnumerator Dodging()
     {
-        if (isGrounded && !isDodging)
+        if (isGrounded && !isDodging && canDodge)
         {
+            canDodge = false; StartCoroutine(resetDodge());
             Vector3 dod = new Vector3(sideMoveAm, 0f, forwardMoveAm) * dodgeSpeed;
             var moveDir = (cameraTransform.TransformDirection(dod)); moveDir.y = 0f;
             if (moveDir.magnitude != 0){
-            Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+                Quaternion targetRotation = Quaternion.LookRotation(moveDir);
 
-            isDodging = true; float timer = 0;
+                isDodging = true; float timer = 0;
 
-            while (timer < dodgeTime)
-            {
-                controller.Move(moveDir * Time.deltaTime);
-                if (!shiftLock) player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.25f); // Only turn to face dash direction if player is not in shift lock, otherwise we want to face forward
-                timer += Time.deltaTime;
-                yield return null;
-            }
+                while (timer < dodgeTime)
+                {
+                    controller.Move(moveDir * Time.deltaTime);
+                    if (!shiftLock) player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.25f); // Only turn to face dash direction if player is not in shift lock, otherwise we want to face forward
+                    timer += Time.deltaTime;
+                    yield return null;
+                }
 
-                isDodging = false;
+                    isDodging = false;
             }
         }
+    }
+
+    IEnumerator resetDodge()
+    {
+        yield return new WaitForSeconds(1f);
+
+        canDodge = true;
     }
 
     void move()
@@ -314,25 +342,34 @@ public class playerMovement : MonoBehaviour
                 player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.05f);
             }
 
-            if (shiftLock)
-            {
+            if (shiftLock) {
                 Vector3 playerForward = cameraTransform.TransformDirection(Vector3.forward); playerForward.y = 0f;
                 Quaternion targetRotation = Quaternion.LookRotation(playerForward);
-                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.05f);
-            }
-
+                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, 0.05f); }
         }
 
-        if (isGrounded && playerVelocity.y < 0)
-            playerVelocity = Vector3.down * 3.5f; // Reset player velocity to (0, -3.5, 0)
 
-
-
+        if (isGrounded && playerVelocity.y < 0) playerVelocity = Vector3.down * 3.5f; // Reset player velocity to (0, -3.5, 0)
         playerVelocity.y += gravity * Time.deltaTime * (isDodging ? 3f : 1f); 
-
         controller.Move(playerVelocity * Time.deltaTime); // This only affects the player falling and air dashing
 
-        trail.enabled = isDodging || sprinting;
+
+        //////////////  Trail Stuff  ////////////
+        trail.startWidth = isDodging ? 1f : sprinting ? 0.4f : 0.2f;
+        
+        // Color of trail 
+        if (isDodging) trail.startColor = initialTrailColor;
+        if (sprinting && !isDodging) trail.startColor = Color.white;
+
+        // Length of trail
+        if (isDodging || sprinting) trail.time = 0.3f;
+        else trail.time += (0f - trail.time) / 30f;
+        trail.enabled = (trail.time > 0.05f);
+
+
+        if (isGrounded)
+            playerAnimator.SetTrigger("Land");
+
     }
 
 
@@ -409,53 +446,8 @@ public class playerMovement : MonoBehaviour
         
         // Set Pitch of Footsteps Audio based on the player speed
         footstepsSound.pitch = (1.35f - 0.8f) / 10f * Mathf.Clamp(currentVelocity, 0f, sprintSpeed) + 0.8f;
-
-
     }
 
-    ///
-    /// 
-    /// 
-    /// 
-    ///// RANDOM NEEDS TO BE MOVED //////
-
-    void hardCodedKeyboardPlayerInput()
-    {
-        if (hardCodeKeyboard)
-        {
-            forwardMoveAm = 0;
-            if (Input.GetKey(KeyCode.W))
-                forwardMoveAm = 1;
-            if (Input.GetKey(KeyCode.S))
-                forwardMoveAm = -1;
-
-            sideMoveAm = 0;
-            if (Input.GetKey(KeyCode.A))
-                sideMoveAm = -1;
-            if (Input.GetKey(KeyCode.D))
-                sideMoveAm = 1;
-
-            if (Input.GetMouseButtonDown(1))
-                OnDodge();
-
-            sprinting = Input.GetKey(KeyCode.LeftShift);
-
-            if (sprinting && shiftLock) shiftLock = false;
-
-            if (Input.GetKeyDown(KeyCode.Space))
-                OnJump();
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                sprinting = false;
-                shiftLock = !shiftLock;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Q))
-                GetComponent<playerAccessWeapons>().OnDropItem();
-
-        }
-    }
 
 
     public Vector3 getLookDirection()
@@ -474,4 +466,18 @@ public class playerMovement : MonoBehaviour
         bossFalling = !bossScript.bossLanded;
     }
 
+    void checkIsGrounded()
+    {
+        bool prev = isGrounded;
+
+        isGrounded = controller.isGrounded || Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
+        //Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
+
+        if (!prev && isGrounded && playerVelocity.y < -6f)
+        {   // We just landed and were falling a decent bit
+            landingOnGrass.PlayOneShot(landingOnGrass.clip);
+        }
+
+        if (isGrounded) airDashing = false;
+    }
 }

@@ -62,9 +62,10 @@ public class BossEnemy : MonoBehaviour
 
     private void Awake()
     {
+        gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         audioSource.clip = audioClipStart;
         //audioSource.Play();
-        gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
+        gameScript.gameObject.GetComponent<AudioSource>().enabled = false;
         playerKeyboard = gameScript.keyboardPlayer;
         playerController = gameScript.controllerPlayer;
         agent = GetComponent<NavMeshAgent>();

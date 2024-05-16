@@ -1583,134 +1583,6 @@ Transform:
   - {fileID: 8643083861275124256}
   m_Father: {fileID: 4390619203973392839}
   m_LocalEulerAnglesHint: {x: 6.2579684, y: 15.643239, z: -10.690567}
---- !u!1 &3258105703766313280
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8304771481971534975}
-  - component: {fileID: 2195778548786217522}
-  m_Layer: 7
-  m_Name: Main Song
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8304771481971534975
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3258105703766313280}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2644483201580037107}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &2195778548786217522
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3258105703766313280}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fd7d4b2062d73de40a01f2bdb48ffba9, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &3269454137389274764
 GameObject:
   m_ObjectHideFlags: 0
@@ -4271,7 +4143,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4861862408356501614}
-  - {fileID: 8304771481971534975}
   - {fileID: 6790308151702916718}
   - {fileID: 2049166584020140587}
   - {fileID: 4569136493188440507}
@@ -5510,7 +5381,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
-  m_Center: {x: -2.67, y: -4.4, z: 0.6}
+  m_Center: {x: -1.28, y: -4.4, z: 0.5}
 --- !u!114 &1776775081671982990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5536,19 +5407,17 @@ MonoBehaviour:
   airDashSpeed: 18
   dodgeSpeed: 25
   dodgeTime: 0.33
+  canDodge: 1
   shiftLock: 0
-  xSens: 100
+  xSens: 140
   ySens: 65
   camHeight: 0.5
   camDistance: 5.5
-  cameraAngle: 180
   footstepsSound: {fileID: 3808861588156978920}
   jumpSound: {fileID: 6985053371523493679}
-  jumpSoundEffect: {fileID: 8300000, guid: 8c7ed4a1145727e47b1d87078a365f77, type: 3}
   landingOnGrass: {fileID: 5697031692649517084}
-  landingOnGrassSound: {fileID: 8300000, guid: fdcaecf97c532254b8ad9a600b5245ca, type: 3}
-  MainSong: {fileID: 2195778548786217522}
   trail: {fileID: 7146560048956826311}
+  initialTrailColor: {r: 0, g: 0, b: 0, a: 0}
   bossObj: {fileID: 0}
   bossScript: {fileID: 0}
   bossSpawned: 0

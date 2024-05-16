@@ -2015,7 +2015,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
-  m_Center: {x: -2.67, y: -4.4, z: 0.6}
+  m_Center: {x: -1.26, y: -4.4, z: 0.48}
 --- !u!114 &7783189618724992628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2041,17 +2041,15 @@ MonoBehaviour:
   airDashSpeed: 18
   dodgeSpeed: 25
   dodgeTime: 0.33
+  canDodge: 1
   shiftLock: 0
-  xSens: 160
-  ySens: 100
+  xSens: 200
+  ySens: 120
   camHeight: 0.5
   camDistance: 5.5
-  cameraAngle: 180
   footstepsSound: {fileID: 3739152442494915419}
   jumpSound: {fileID: 7124670518680517059}
-  jumpSoundEffect: {fileID: 8300000, guid: 8c7ed4a1145727e47b1d87078a365f77, type: 3}
   landingOnGrass: {fileID: 2189806924574102657}
-  landingOnGrassSound: {fileID: 8300000, guid: fdcaecf97c532254b8ad9a600b5245ca, type: 3}
   MainSong: {fileID: 2283644493357688060}
   trail: {fileID: 753370358202672782}
   bossObj: {fileID: 0}
