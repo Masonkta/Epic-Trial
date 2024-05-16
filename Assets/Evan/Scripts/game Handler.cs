@@ -18,6 +18,7 @@ public class gameHandler : MonoBehaviour
     public GameObject controllerPlayer;
     public float controllerPlayerHealth;
     public Image _healthbarSpriteC;
+    public RumbleHaptics controllerRumble;
 
     [Header("Needed Prefabs")]
     public GameObject goldPrefab;
@@ -65,6 +66,7 @@ public class gameHandler : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "Tutorial")
         {
+
             if (SceneManager.GetActiveScene().name == "Main")
             {
 
@@ -202,5 +204,8 @@ public class gameHandler : MonoBehaviour
         return (clothPieces >= recipe[0] && woodPieces >= recipe[1] && ironPieces >= recipe[2]);
     }
 
-
+    public float GetControllerHealth()
+    {
+        return controllerPlayerHealth;
+    }
 }
