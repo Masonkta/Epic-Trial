@@ -124,6 +124,8 @@ public class playerMovement : MonoBehaviour
 
         // Moving //
         move();
+        if (isGrounded)
+            playerAnimator.SetTrigger("Land");
 
         // Camera //
         handleCamera();
@@ -143,7 +145,10 @@ public class playerMovement : MonoBehaviour
     void Jump()
     {
         if (!isDodging)
+        {
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            playerAnimator.SetTrigger("Jump");
+        }
     }
 
     void airDash()
