@@ -38,18 +38,14 @@ public class bandageScript : MonoBehaviour
         // Keyboard
         if (Vector3.Distance(transform.position + Vector3.up, gameScript.keyboardPlayer.transform.position) < pickupDist && gameScript.keyboardPlayerHealth < 100f)
         {
-            gameScript.keyboardPlayerHealth += healthRestored;
-            if (gameScript.keyboardPlayerHealth > 100f)
-                gameScript.keyboardPlayerHealth = 100f;
+            gameScript.collectKeyboardBandages();
             Destroy(gameObject);
         }
 
         // Controller
         if (Vector3.Distance(transform.position + Vector3.up, gameScript.controllerPlayer.transform.position) < pickupDist && gameScript.controllerPlayerHealth < 100f)
         {
-            gameScript.controllerPlayerHealth += healthRestored;
-            if (gameScript.controllerPlayerHealth > 100f)
-                gameScript.controllerPlayerHealth = 100f;
+            gameScript.collectControllerBandages();
             Destroy(gameObject);
         }
     }

@@ -173,6 +173,9 @@ public class playerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
                 GetComponent<playerAccessWeapons>().OnDropItem();
 
+            if (Input.GetKeyDown(KeyCode.E))
+                gameScript.useKeyboardBandage();
+
         }
     }
 
@@ -200,7 +203,10 @@ public class playerMovement : MonoBehaviour
 
 
 
-
+    void UseBandage()
+    {
+        gameScript.useControllerBandage();
+    }
 
     void OnJump()
     {
