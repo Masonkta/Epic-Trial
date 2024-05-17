@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -176,6 +177,9 @@ public class playerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
                 gameScript.useKeyboardBandage();
 
+            if(Input.GetKeyDown(KeyCode.R))
+                gameScript.useControllerBandage();
+
         }
     }
 
@@ -201,10 +205,9 @@ public class playerMovement : MonoBehaviour
         jumpSound.PlayOneShot(jumpSound.clip);
     }
 
-
-
-    void UseBandage()
+    void OnUseBandage()
     {
+        Console.Write("bandage used");
         gameScript.useControllerBandage();
     }
 
@@ -421,7 +424,7 @@ public class playerMovement : MonoBehaviour
         if (bossScript.playerCamerasShouldBeShaking)
         {
             Vector3 originalCamPos = cameraTransform.position;
-            cameraTransform.position = originalCamPos + Random.insideUnitSphere * 0.4f * bossScript.shakeIntensity;
+            cameraTransform.position = originalCamPos + UnityEngine.Random.insideUnitSphere * 0.4f * bossScript.shakeIntensity;
         }
 
         // Finally Look at the player
