@@ -107,6 +107,15 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UseBandge"",
+                    ""type"": ""Button"",
+                    ""id"": ""e122caff-95dc-4180-bd5c-9e3765bd71f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -208,6 +217,17 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
                     ""action"": ""DropItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c4bdbdd-517b-4048-9bce-d21a13d6bc23"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseBandge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -273,6 +293,7 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
         m_Controller_ShiftLock = m_Controller.FindAction("ShiftLock", throwIfNotFound: true);
         m_Controller_CheckRecipes = m_Controller.FindAction("CheckRecipes", throwIfNotFound: true);
         m_Controller_DropItem = m_Controller.FindAction("DropItem", throwIfNotFound: true);
+        m_Controller_UseBandge = m_Controller.FindAction("UseBandge", throwIfNotFound: true);
         // Craft
         m_Craft = asset.FindActionMap("Craft", throwIfNotFound: true);
         m_Craft_CraftBandages = m_Craft.FindAction("CraftBandages", throwIfNotFound: true);
@@ -347,6 +368,7 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_ShiftLock;
     private readonly InputAction m_Controller_CheckRecipes;
     private readonly InputAction m_Controller_DropItem;
+    private readonly InputAction m_Controller_UseBandge;
     public struct ControllerActions
     {
         private @_Controller m_Wrapper;
@@ -360,6 +382,7 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
         public InputAction @ShiftLock => m_Wrapper.m_Controller_ShiftLock;
         public InputAction @CheckRecipes => m_Wrapper.m_Controller_CheckRecipes;
         public InputAction @DropItem => m_Wrapper.m_Controller_DropItem;
+        public InputAction @UseBandge => m_Wrapper.m_Controller_UseBandge;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -396,6 +419,9 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
             @DropItem.started += instance.OnDropItem;
             @DropItem.performed += instance.OnDropItem;
             @DropItem.canceled += instance.OnDropItem;
+            @UseBandge.started += instance.OnUseBandge;
+            @UseBandge.performed += instance.OnUseBandge;
+            @UseBandge.canceled += instance.OnUseBandge;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -427,6 +453,9 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
             @DropItem.started -= instance.OnDropItem;
             @DropItem.performed -= instance.OnDropItem;
             @DropItem.canceled -= instance.OnDropItem;
+            @UseBandge.started -= instance.OnUseBandge;
+            @UseBandge.performed -= instance.OnUseBandge;
+            @UseBandge.canceled -= instance.OnUseBandge;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -509,6 +538,7 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
         void OnShiftLock(InputAction.CallbackContext context);
         void OnCheckRecipes(InputAction.CallbackContext context);
         void OnDropItem(InputAction.CallbackContext context);
+        void OnUseBandge(InputAction.CallbackContext context);
     }
     public interface ICraftActions
     {

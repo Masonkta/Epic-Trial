@@ -37,6 +37,8 @@ public class gameHandler : MonoBehaviour
     public int clothPieces;
     public int woodPieces;
     public int ironPieces;
+    public int keyboardPlayerBandages;
+    public int controllerPlayerBandages;
 
     [Header("Recipes")] // Cloth,  Wood,  Iron
     public Vector3 bandagesRecipe = new Vector3(5, 0, 0);
@@ -148,6 +150,39 @@ public class gameHandler : MonoBehaviour
         if (name == "Cloth") clothPieces++;
         if (name == "Wood") woodPieces++;
         if (name == "Metal Scrap") ironPieces++;
+    }
+
+    public void collectKeyboardBandages()
+    {
+        keyboardPlayerBandages++;
+    }
+
+    public void collectControllerBandages()
+    {
+        controllerPlayerBandages++;
+    }
+
+    public void useKeyboardBandage()
+    {
+        if (keyboardPlayerBandages != 0)
+        {
+            keyboardPlayerHealth += 20;
+            if (keyboardPlayerHealth > 100f)
+                keyboardPlayerHealth = 100f;
+            keyboardPlayerBandages--;
+        }
+    }
+
+    public void useControllerBandage()
+    {
+        if (controllerPlayerBandages != 0)
+        {
+            controllerPlayerHealth += 20;
+            if (controllerPlayerHealth > 100f)
+                controllerPlayerHealth = 100f;
+            controllerPlayerBandages--;
+        }
+
     }
 
     public void possibleRecipes()
