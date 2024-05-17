@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+//using UnityEditor.ShaderGraph.Serialization;
+
 //using UnityEditor.Experimental.GraphView;
 //using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
@@ -51,6 +53,7 @@ public class playerMovement : MonoBehaviour
     [Header("Dodging")]
     public float dodgeSpeed = 20f;
     public float dodgeTime = 0.4f;
+    private float dodgeEnd;
 
     public bool canDodge = true;
     private bool isDodging;
@@ -319,7 +322,8 @@ public class playerMovement : MonoBehaviour
                     yield return null;
                 }
 
-                    isDodging = false;
+                isDodging = false;
+                dodgeEnd = Time.time;
             }
         }
     }
@@ -493,6 +497,15 @@ public class playerMovement : MonoBehaviour
         if (!prev && isGrounded && playerVelocity.y < -6f)
         {   // We just landed and were falling a decent bit
             landingOnGrass.PlayOneShot(landingOnGrass.clip);
+
+            if (!isDodging && Time.time > dodgeEnd + 1) {
+                float fallDmg = Mathf.Exp(-playerVelocity.y / 19f);
+
+                if (fallDmg > 5f) {
+                    if (hardCodeKeyboard) gameScript.keyboardPlayerHealth -= fallDmg;
+                    else gameScript.controllerPlayerHealth -= fallDmg;
+                }
+            }
         }
 
         if (isGrounded) airDashing = false;

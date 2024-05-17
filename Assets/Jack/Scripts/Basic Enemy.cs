@@ -82,23 +82,21 @@ public class BasicEnemy : MonoBehaviour
         ////////////////////////////////////////////////////////////////  evans shit
         
         // hol up make them drift towards players a bit tho
-        if (gameScript.keyboardPlayerHealth > 0 && gameScript.controllerPlayerHealth > 0) // Both Players
+        if (gameScript.keyboardPlayerHealth > 0f && gameScript.controllerPlayerHealth > 0f) // Both Players
         {
             Vector3 avgPosOfPlayers = playerKeyboard.transform.position / 2 + playerController.transform.position / 2;
             Vector3 dirToMiddle = Vector3.Normalize(avgPosOfPlayers - walkPoint);
-            walkPoint += dirToMiddle * 2;
+            walkPoint += dirToMiddle * 2f;
         }
-        if (gameScript.keyboardPlayerHealth > 0 && gameScript.controllerPlayerHealth < 0) // Just Keyboard
+        if (gameScript.keyboardPlayerHealth > 0f && gameScript.controllerPlayerHealth <= 0f) // Just Keyboard
         {
-            Debug.DrawLine(walkPoint, playerKeyboard.transform.position);
             Vector3 dirToPlayer = Vector3.Normalize(playerKeyboard.transform.position - walkPoint);
-            walkPoint += dirToPlayer * 4;
+            walkPoint += dirToPlayer * 2f;
         }
-        if (gameScript.keyboardPlayerHealth < 0 && gameScript.controllerPlayerHealth > 0) // Just Controller
+        if (gameScript.keyboardPlayerHealth <= 0f && gameScript.controllerPlayerHealth > 0f) // Just Controller
         {
-            Debug.DrawLine(walkPoint, playerController.transform.position);
             Vector3 dirToPlayer = Vector3.Normalize(playerController.transform.position - walkPoint);
-            walkPoint += dirToPlayer * 4;
+            walkPoint += dirToPlayer * 2f;
         }
 
         
