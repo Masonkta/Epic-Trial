@@ -36,17 +36,17 @@ public class RandomizedSpawner : MonoBehaviour
     {
         if (SpawnWave == 1)
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 6; i++)
                 Spawn(enemyWeak);
         }
 
 
         if (SpawnWave == 2)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
                 Spawn(enemyWeak);
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
                 Spawn(enemyMid);
         }
 
@@ -55,22 +55,12 @@ public class RandomizedSpawner : MonoBehaviour
             for (int i = 0; i < 3; i++)
                 Spawn(enemyMid);
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 4; i++)
                 Spawn(enemyStr);
         }
+
 
         if (SpawnWave == 4)
-        {
-            for (int i = 0; i < 2; i++)
-                Spawn(enemyMid);
-
-            for (int i = 0; i < 4; i++)
-            {
-                Spawn(enemyStr);
-            }
-        }
-
-        if (SpawnWave == 5)
         {
             bossObj.SetActive(true);
             bossSpawnedAtTime = Time.time;
@@ -83,8 +73,17 @@ public class RandomizedSpawner : MonoBehaviour
         enemyCount = FindObjectsOfType<Enemy>().Length;
 
         // Update Enemy Counter UI's
-        enemyCounterK.text = $"Wave {SpawnWave}\n\nEnemies\nAlive: {enemyCount}";
-        enemyCounterC.text = $"Wave {SpawnWave}\n\nEnemies\nAlive: {enemyCount}";
+        if (SpawnWave < 4)
+        {
+            enemyCounterK.text = $"Wave {SpawnWave}/3\n\nEnemies\nAlive: {enemyCount}";
+            enemyCounterC.text = $"Wave {SpawnWave}/3\n\nEnemies\nAlive: {enemyCount}";
+        }
+        if (SpawnWave == 4)
+        {
+            enemyCounterK.text = "Wave *";
+            enemyCounterC.text = "Wave *";
+            // Madi enable image of skull here
+        }
 
         if (enemyCount == 0)
         {
