@@ -61,17 +61,17 @@ public class Enemy : MonoBehaviour
 
         if (EnemyType.Weak == Etype)
         {
-            EnemyHealth = 10;
+            EnemyHealth = 12;
             EnemyDefence = 0;
         }
         if (EnemyType.Medium == Etype)
         {
-            EnemyHealth = 15;
+            EnemyHealth = 18;
             EnemyDefence = 0;
         }
         if (EnemyType.Heavy == Etype)
         {
-            EnemyHealth = 30;
+            EnemyHealth = 32;
             EnemyDefence = 0;
         }
         if (EnemyType.Boss == Etype)
@@ -96,61 +96,38 @@ public class Enemy : MonoBehaviour
             if (!alreadyAttacked)
             {
                 if (EnemyType.Weak == Etype)
-                {
-                    EnemyDamage = 2;
-                    gameScript.keyboardPlayerHealth -= EnemyDamage;
-                }
+                    gameScript.keyboardPlayerHealth -= 2;
 
                 if (EnemyType.Medium == Etype)
-                {
-                    EnemyDamage = 5;
-                    gameScript.keyboardPlayerHealth -= EnemyDamage;
-                }
+                    gameScript.keyboardPlayerHealth -= 5;
 
                 if (EnemyType.Heavy == Etype)
-                {
-                    EnemyDamage = 7;
-                    gameScript.keyboardPlayerHealth -= EnemyDamage;
-                }
+                    gameScript.keyboardPlayerHealth -= 7;
 
                 if (EnemyType.Boss == Etype)
-                {
-                    EnemyDamage = 10;
-                    gameScript.keyboardPlayerHealth -= EnemyDamage;
-                }
+                    gameScript.keyboardPlayerHealth -= 10;
 
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
             }
         }
-            //}
+
         if (collision.gameObject.CompareTag("PlayerController"))
         {
             if (!alreadyAttacked)
             {
                 if (EnemyType.Weak == Etype)
-                {
-                    EnemyDamage = 2;
-                    gameScript.controllerPlayerHealth -= EnemyDamage;
-                }
+                    gameScript.controllerPlayerHealth -= 2;
                 
                 if (EnemyType.Medium == Etype)
-                {
-                    EnemyDamage = 5;
-                    gameScript.controllerPlayerHealth -= EnemyDamage;
-                }
+                    gameScript.controllerPlayerHealth -= 5;
                 
                 if (EnemyType.Heavy == Etype)
-                {
-                    EnemyDamage = 7;
-                    gameScript.controllerPlayerHealth -= EnemyDamage;
-                }
+                    gameScript.controllerPlayerHealth -= 7;
 
                 if (EnemyType.Boss == Etype)
-                {
-                    EnemyDamage = 10;
-                    gameScript.controllerPlayerHealth -= EnemyDamage;
-                }
+                    gameScript.controllerPlayerHealth -= 10;
+
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
             }
@@ -282,11 +259,10 @@ public class Enemy : MonoBehaviour
 
         // Drop SKULL
 
-        GameObject currentMetalScrap = Instantiate(skull, transform.position + Vector3.up + Random.insideUnitSphere, Random.rotation, gameScript.ResourceTransform);
-        if (EnemyType.Boss == Etype)
-            currentMetalScrap.transform.localScale *= 2f;
+        GameObject enemySkull = Instantiate(skull, transform.position + Vector3.up + Random.insideUnitSphere, Random.rotation, gameScript.ResourceTransform);
+        if (EnemyType.Boss == Etype) enemySkull.transform.localScale *= 2f;
         float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
-        currentMetalScrap.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+        enemySkull.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
 
     }
 

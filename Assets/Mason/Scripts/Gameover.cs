@@ -15,6 +15,7 @@ public class Gameover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
         hs_trigger = GameObject.FindGameObjectWithTag("highscore");
         if (hs_trigger.GetComponent<HighScoreTest>())
             hs = hs_trigger.GetComponent<HighScoreTest>();

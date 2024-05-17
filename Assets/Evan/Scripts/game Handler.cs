@@ -93,6 +93,10 @@ public class gameHandler : MonoBehaviour
 
             _healthbarSpriteK.fillAmount = keyboardPlayerHealth / 100f;
             _healthbarSpriteC.fillAmount = controllerPlayerHealth / 100f;
+
+
+            if (Input.GetKeyDown(KeyCode.R))
+                useControllerBandage();
         }
         
 
@@ -114,13 +118,12 @@ public class gameHandler : MonoBehaviour
     }
     public IEnumerator WaitAndChangeScenetask()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("victoryScene");
     }
 
     public void WaitAndChangeScene()
     {
-      
         StartCoroutine(WaitAndChangeScenetask());
     }
 
@@ -164,9 +167,9 @@ public class gameHandler : MonoBehaviour
 
     public void useKeyboardBandage()
     {
-        if (keyboardPlayerBandages != 0)
+        if (keyboardPlayerBandages > 0)
         {
-            keyboardPlayerHealth += 20;
+            keyboardPlayerHealth += 20f;
             if (keyboardPlayerHealth > 100f)
                 keyboardPlayerHealth = 100f;
             keyboardPlayerBandages--;
@@ -175,9 +178,9 @@ public class gameHandler : MonoBehaviour
 
     public void useControllerBandage()
     {
-        if (controllerPlayerBandages != 0)
+        if (controllerPlayerBandages > 0)
         {
-            controllerPlayerHealth += 20;
+            controllerPlayerHealth += 20f;
             if (controllerPlayerHealth > 100f)
                 controllerPlayerHealth = 100f;
             controllerPlayerBandages--;
@@ -185,26 +188,6 @@ public class gameHandler : MonoBehaviour
 
     }
 
-    public void possibleRecipes()
-    {
-        // Check Bandages
-        if (checkIndividualRecipe(bandagesRecipe))
-            print("CAN make Bandages");
-
-        // Check Armor
-        if (checkIndividualRecipe(armorRecipe))
-            print("CAN make Armor");
-
-        // Check Spear
-        if (checkIndividualRecipe(spearRecipe))
-            print("CAN make Spear");
-
-        // Check Wooden Club
-        if (checkIndividualRecipe(woodClubRecipe))
-            print("CAN make Wooden Club");
-
-
-    }
 
     public TMPro.TextMeshProUGUI GetPlayerScoreText()
     {

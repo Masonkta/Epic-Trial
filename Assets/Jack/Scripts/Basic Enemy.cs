@@ -11,7 +11,6 @@ public class BasicEnemy : MonoBehaviour
     public GameObject enemyEyes;
 
     GameObject playerKeyboard;
-
     GameObject playerController;
 
     public GameObject Enemy;
@@ -79,6 +78,32 @@ public class BasicEnemy : MonoBehaviour
         float xPoint = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + xPoint, transform.position.y, transform.position.z + zPoint);
+
+        ////////////////////////////////////////////////////////////////  evans shit
+        
+        // hol up make them drift towards players a bit tho
+        if (gameScript.keyboardPlayerHealth > 0 && gameScript.controllerPlayerHealth > 0) // Both Players
+        {
+            Vector3 avgPosOfPlayers = playerKeyboard.transform.position / 2 + playerController.transform.position / 2;
+            Vector3 dirToMiddle = Vector3.Normalize(avgPosOfPlayers - walkPoint);
+            walkPoint += dirToMiddle * 2;
+        }
+        if (gameScript.keyboardPlayerHealth > 0 && gameScript.controllerPlayerHealth < 0) // Just Keyboard
+        {
+            Debug.DrawLine(walkPoint, playerKeyboard.transform.position);
+            Vector3 dirToPlayer = Vector3.Normalize(playerKeyboard.transform.position - walkPoint);
+            walkPoint += dirToPlayer * 4;
+        }
+        if (gameScript.keyboardPlayerHealth < 0 && gameScript.controllerPlayerHealth > 0) // Just Controller
+        {
+            Debug.DrawLine(walkPoint, playerController.transform.position);
+            Vector3 dirToPlayer = Vector3.Normalize(playerController.transform.position - walkPoint);
+            walkPoint += dirToPlayer * 4;
+        }
+
+        
+
+        ////////////////////////////////////////////////////////////////   back to jack
 
         if (Physics.Raycast(walkPoint, -transform.up, 15f, ground))
         {

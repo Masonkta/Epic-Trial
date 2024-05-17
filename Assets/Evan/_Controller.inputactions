@@ -87,9 +87,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "UseBandge",
+                    "name": "heal",
                     "type": "Button",
-                    "id": "e122caff-95dc-4180-bd5c-9e3765bd71f6",
+                    "id": "e50fa4f4-d2d7-4a7f-9117-c25cfb220f29",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -198,12 +198,12 @@
                 },
                 {
                     "name": "",
-                    "id": "0c4bdbdd-517b-4048-9bce-d21a13d6bc23",
+                    "id": "734f1485-548d-4104-a19e-eb584438f07d",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UseBandge",
+                    "action": "heal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

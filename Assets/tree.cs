@@ -7,12 +7,15 @@ public class tree : MonoBehaviour
     private gameHandler gameScript;
     private playerAccessWeapons playerKHand;
     private playerAccessWeapons playerCHand;
-    public float dK;
-    public float dC;
+    private float dK;
+    private float dC;
     private GameObject woodPiece;
 
     public bool canBeHit = true;
     private float nextHitTime;
+    public float treeCooldown = 0.8f;
+    private float moveDownDist = 0.2f;
+    public bool funny;
     public int hitsDone = 0;
 
     void Start()
@@ -43,10 +46,10 @@ public class tree : MonoBehaviour
     void takeHitAndDropWood()
     {
         canBeHit = false;
-        nextHitTime = Time.time + 1.5f;
+        nextHitTime = Time.time + treeCooldown;
         hitsDone++;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < gameScript.ResourceDropRate; i++)
         {
             GameObject currentWood = Instantiate(woodPiece, transform.position + Vector3.up + Random.insideUnitSphere * 2f, Quaternion.identity, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
@@ -55,7 +58,8 @@ public class tree : MonoBehaviour
         }
 
         transform.localScale *= 0.9f;
-        transform.Translate(Vector3.down * 0.2f);
+        if (funny) transform.Translate(transform.up * moveDownDist);
+        else transform.Translate(Vector3.down * moveDownDist);
 
         if (hitsDone >= 5)
             Destroy(gameObject);

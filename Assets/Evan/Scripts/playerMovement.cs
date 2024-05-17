@@ -175,10 +175,11 @@ public class playerMovement : MonoBehaviour
                 GetComponent<playerAccessWeapons>().OnDropItem();
 
             if (Input.GetKeyDown(KeyCode.E))
+            {
                 gameScript.useKeyboardBandage();
+                print("Keyboard healed");
+            }
 
-            if(Input.GetKeyDown(KeyCode.R))
-                gameScript.useControllerBandage();
 
         }
     }
@@ -205,11 +206,18 @@ public class playerMovement : MonoBehaviour
         jumpSound.PlayOneShot(jumpSound.clip);
     }
 
-    void OnUseBandage()
+    /*void OnUseBandage()
     {
-        Console.Write("bandage used");
+        print("bandage used");
         gameScript.useControllerBandage();
+    }*/
+
+    void OnHeal()
+    {
+        print("Controller Healed");
     }
+
+
 
     void OnJump()
     {
@@ -221,8 +229,8 @@ public class playerMovement : MonoBehaviour
 
     void OnShiftLock()
     {
-        if (sprinting == false)
-            shiftLock = !shiftLock;
+        sprinting = false;
+        shiftLock = !shiftLock;
     }
 
 
@@ -264,8 +272,8 @@ public class playerMovement : MonoBehaviour
 
     void OnSprint()
     {
-        if (shiftLock == false)
-            sprinting = !sprinting;
+        shiftLock = false;
+        sprinting = !sprinting;
     }
 
     void OnDodge()
@@ -387,16 +395,16 @@ public class playerMovement : MonoBehaviour
     
     void handleCamera()
     {
-        float speedHeight = currentVelocity / 4f;
-        float speedDepth = currentVelocity / 2f;
+        float speedHeight = currentVelocity / 6f;
+        float speedDepth = currentVelocity / 4f;
 
         camHeight = initialCamHeight + speedHeight;
         camDistance = initialCamDistance + speedDepth;
 
         if (shiftLock)
         {
-            camHeight = 6.5f;
-            camDistance = 7f;
+            camHeight = 4.8f;
+            camDistance = 6.5f;
         }
         
         // Position the camera around the player
@@ -436,8 +444,8 @@ public class playerMovement : MonoBehaviour
             sprinting = true;
             shiftLock = true;
             cameraTransform.LookAt(bossScript.gameObject.transform.position + Vector3.down);
-            cameraAngle = 180f;
-            actualCamDistance = 5f;
+            //cameraAngle = 180f;
+            actualCamDistance = 6f;
             actualCamHeight = 1f;
         }
 

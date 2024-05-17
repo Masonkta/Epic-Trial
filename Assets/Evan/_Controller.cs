@@ -109,9 +109,9 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""UseBandge"",
+                    ""name"": ""heal"",
                     ""type"": ""Button"",
-                    ""id"": ""e122caff-95dc-4180-bd5c-9e3765bd71f6"",
+                    ""id"": ""e50fa4f4-d2d7-4a7f-9117-c25cfb220f29"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -220,12 +220,12 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0c4bdbdd-517b-4048-9bce-d21a13d6bc23"",
+                    ""id"": ""734f1485-548d-4104-a19e-eb584438f07d"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""UseBandge"",
+                    ""action"": ""heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -293,7 +293,7 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
         m_Controller_ShiftLock = m_Controller.FindAction("ShiftLock", throwIfNotFound: true);
         m_Controller_CheckRecipes = m_Controller.FindAction("CheckRecipes", throwIfNotFound: true);
         m_Controller_DropItem = m_Controller.FindAction("DropItem", throwIfNotFound: true);
-        m_Controller_UseBandge = m_Controller.FindAction("UseBandge", throwIfNotFound: true);
+        m_Controller_heal = m_Controller.FindAction("heal", throwIfNotFound: true);
         // Craft
         m_Craft = asset.FindActionMap("Craft", throwIfNotFound: true);
         m_Craft_CraftBandages = m_Craft.FindAction("CraftBandages", throwIfNotFound: true);
@@ -368,7 +368,7 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_ShiftLock;
     private readonly InputAction m_Controller_CheckRecipes;
     private readonly InputAction m_Controller_DropItem;
-    private readonly InputAction m_Controller_UseBandge;
+    private readonly InputAction m_Controller_heal;
     public struct ControllerActions
     {
         private @_Controller m_Wrapper;
@@ -382,7 +382,7 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
         public InputAction @ShiftLock => m_Wrapper.m_Controller_ShiftLock;
         public InputAction @CheckRecipes => m_Wrapper.m_Controller_CheckRecipes;
         public InputAction @DropItem => m_Wrapper.m_Controller_DropItem;
-        public InputAction @UseBandge => m_Wrapper.m_Controller_UseBandge;
+        public InputAction @heal => m_Wrapper.m_Controller_heal;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -419,9 +419,9 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
             @DropItem.started += instance.OnDropItem;
             @DropItem.performed += instance.OnDropItem;
             @DropItem.canceled += instance.OnDropItem;
-            @UseBandge.started += instance.OnUseBandge;
-            @UseBandge.performed += instance.OnUseBandge;
-            @UseBandge.canceled += instance.OnUseBandge;
+            @heal.started += instance.OnHeal;
+            @heal.performed += instance.OnHeal;
+            @heal.canceled += instance.OnHeal;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -453,9 +453,9 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
             @DropItem.started -= instance.OnDropItem;
             @DropItem.performed -= instance.OnDropItem;
             @DropItem.canceled -= instance.OnDropItem;
-            @UseBandge.started -= instance.OnUseBandge;
-            @UseBandge.performed -= instance.OnUseBandge;
-            @UseBandge.canceled -= instance.OnUseBandge;
+            @heal.started -= instance.OnHeal;
+            @heal.performed -= instance.OnHeal;
+            @heal.canceled -= instance.OnHeal;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -538,7 +538,7 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
         void OnShiftLock(InputAction.CallbackContext context);
         void OnCheckRecipes(InputAction.CallbackContext context);
         void OnDropItem(InputAction.CallbackContext context);
-        void OnUseBandge(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
     }
     public interface ICraftActions
     {
