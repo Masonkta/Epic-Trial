@@ -15,6 +15,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1969689438136477806, guid: e51cfd5056343074a9ca978f3dde0315,
         type: 3}
+      propertyPath: colorToApply.g
+      value: 0.6032526
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969689438136477806, guid: e51cfd5056343074a9ca978f3dde0315,
+        type: 3}
       propertyPath: frames.Array.size
       value: 8
       objectReference: {fileID: 0}
