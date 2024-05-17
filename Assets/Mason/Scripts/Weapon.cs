@@ -147,6 +147,13 @@ public class Weapon : MonoBehaviour
                 {
                     wasHit = true;
                     enemy.EnemyHealth -= damageDealt;
+                    
+                    print(enemy.gameObject.name);
+                    if (enemy.gameObject.name == "Tree")
+                    {
+                        print("Drop Wood");
+                    }
+
                     if (enemy.gameObject.GetComponent<AudioSource>())
                         enemy.gameObject.GetComponent<AudioSource>().PlayOneShot(enemy.gameObject.GetComponent<AudioSource>().clip);
 

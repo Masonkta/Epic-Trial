@@ -12,6 +12,7 @@ public class playerAccessWeapons : MonoBehaviour
 
     float timeOfLastDrop;
 
+    public GameObject wpnHolder;
     public GameObject gladius;
     public GameObject club;
 
@@ -106,5 +107,10 @@ public class playerAccessWeapons : MonoBehaviour
     public bool handOpen()
     {
         return !(gladius.activeInHierarchy || club.activeInHierarchy);
+    }
+
+    public GameObject getHandObject()
+    {
+        return wpnHolder;
     }
 }
