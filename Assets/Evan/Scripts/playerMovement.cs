@@ -444,7 +444,7 @@ public class playerMovement : MonoBehaviour
             sprinting = true;
             shiftLock = true;
             cameraTransform.LookAt(bossScript.gameObject.transform.position + Vector3.down);
-            //cameraAngle = 180f;
+            cameraAngle = 180f;
             actualCamDistance = 6f;
             actualCamHeight = 1f;
         }
