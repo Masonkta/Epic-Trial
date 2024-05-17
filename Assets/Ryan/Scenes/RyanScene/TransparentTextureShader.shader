@@ -3,19 +3,16 @@ Shader "Custom/TransparentTextureShader"
     Properties
     {
         _MainTex("Texture", 2D) = "white" {}
+        _ColorToApply("Color To Apply", Color) = (1,1,1,1)
     }
 
     SubShader
     {
-        Tags
-        {
-            "Queue"="Transparent" // Render this after opaque geometry and alpha tested geometry
-            "RenderType"="Transparent" // Tag as transparent
-        }
-        
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
+
         Pass
         {
-            Blend SrcAlpha OneMinusSrcAlpha // Standard alpha blending
+            Blend SrcAlpha OneMinusSrcAlpha
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -37,6 +34,8 @@ Shader "Custom/TransparentTextureShader"
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
+            fixed4 _ColorToApply;
+
             v2f vert(appdata v)
             {
                 v2f o;
@@ -48,9 +47,9 @@ Shader "Custom/TransparentTextureShader"
 
             fixed4 frag(v2f i) : SV_Target
             {
+                // Sample the texture and apply the color change
                 fixed4 col = tex2D(_MainTex, i.uv);
-                // Apply transparency using the alpha channel of the texture
-                col.a *= col.a;
+                col *= _ColorToApply;
                 return col;
             }
             ENDCG

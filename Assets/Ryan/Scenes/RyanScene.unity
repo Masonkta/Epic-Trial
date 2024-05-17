@@ -20019,12 +20019,15 @@ MonoBehaviour:
   enemyStr: {fileID: 6316866960217914392, guid: 463136bc2c1a9474d915b40f8354aa6c,
     type: 3}
   SpawnWave: 0
+  enemyCounterK: {fileID: 0}
+  enemyCounterC: {fileID: 0}
   sphereRadius: 50
   p2: {fileID: 930884693}
   p3: {fileID: 2869493}
   spawnIn: {fileID: 1065425970}
   bossObj: {fileID: 352639883}
   SBOSS: {fileID: 397156185}
+  instaKill: 1
   bossGravityEnabled: 0
   bossSpawnedAtTime: 0
   timerForBoss: 2.8
@@ -40748,16 +40751,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Audience
-      objectReference: {fileID: 0}
-    - target: {fileID: 6987211778570951437, guid: e51cfd5056343074a9ca978f3dde0315,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.43999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 6987211778570951437, guid: e51cfd5056343074a9ca978f3dde0315,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3188402
       objectReference: {fileID: 0}
     - target: {fileID: 6987211778570951437, guid: e51cfd5056343074a9ca978f3dde0315,
         type: 3}
