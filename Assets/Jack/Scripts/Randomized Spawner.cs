@@ -19,6 +19,7 @@ public class RandomizedSpawner : MonoBehaviour
     private float zPos;
     public float sphereRadius = 20f;
 
+    public Transform p1;
     public Transform p2;
     public Transform p3;
     public Transform spawnIn;
@@ -126,7 +127,7 @@ public class RandomizedSpawner : MonoBehaviour
     void Spawn(GameObject enemyType)
     {
         randomizeSpawn();
-        Instantiate(enemyType, transform.position + new Vector3(xPos, 0f, zPos), Quaternion.identity, spawnIn);
+        Instantiate(enemyType, p1.position + new Vector3(xPos, 0f, zPos), Quaternion.identity, spawnIn);
         Instantiate(enemyType, p2.position + new Vector3(xPos, 0f, zPos), Quaternion.identity, spawnIn);
         Instantiate(enemyType, p3.position + new Vector3(xPos, 0f, zPos), Quaternion.identity, spawnIn);
     }
