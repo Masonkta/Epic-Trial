@@ -2,6 +2,7 @@ using HighScore;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HighScoreTest : MonoBehaviour
 {
@@ -11,5 +12,13 @@ public class HighScoreTest : MonoBehaviour
     void Start()
     {
         HS.Init(this, "Ring of Hell");
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name != "Tutorial")
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }

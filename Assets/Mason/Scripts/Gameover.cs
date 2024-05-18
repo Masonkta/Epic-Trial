@@ -10,16 +10,19 @@ public class Gameover : MonoBehaviour
     GameObject hs_trigger;
     HighScoreTest hs;
     public TextMeshProUGUI points;
+    public TextMeshProUGUI points2;
     public TextMeshProUGUI name1;
     public TextMeshProUGUI name2;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
-        //hs_trigger = GameObject.FindGameObjectWithTag("highscore");
+        hs_trigger = GameObject.FindGameObjectWithTag("HighScore");
         if (hs_trigger.GetComponent<HighScoreTest>())
             hs = hs_trigger.GetComponent<HighScoreTest>();
         points.text = "Score: " + hs.score.ToString();
+        points2.text = "Score: " + hs.score.ToString();
+
 
     }
 

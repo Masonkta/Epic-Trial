@@ -21,6 +21,7 @@ public enum EnemyType
 public class Enemy : MonoBehaviour
 {
     gameHandler gameScript;
+    GameObject hs_trigger;
     HighScoreTest hs;
 
     // Resources To Drop
@@ -48,17 +49,31 @@ public class Enemy : MonoBehaviour
     private Gamepad gamepad;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
-        gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
 
-        if (gameScript.GetComponent<HighScoreTest>())
-            hs = gameScript.GetComponent<HighScoreTest>();
+            if (gameScript.GetComponent<HighScoreTest>())
+                hs = gameScript.GetComponent<HighScoreTest>();
 
-        if (GameObject.FindGameObjectWithTag("heatingUp"))
-            HU = GameObject.FindGameObjectWithTag("heatingUp").GetComponent<heatingUp>();
+            if (GameObject.FindGameObjectWithTag("heatingUp"))
+                HU = GameObject.FindGameObjectWithTag("heatingUp").GetComponent<heatingUp>();
+        }
+        if (SceneManager.GetActiveScene().name != "Tutorial" && SceneManager.GetActiveScene().name != "startScreen")
+        {
+            gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
 
+            hs_trigger = GameObject.FindGameObjectWithTag("HighScore");
+            if (hs_trigger.GetComponent<HighScoreTest>())
+                hs = hs_trigger.GetComponent<HighScoreTest>();
+
+            if (GameObject.FindGameObjectWithTag("heatingUp"))
+                HU = GameObject.FindGameObjectWithTag("heatingUp").GetComponent<heatingUp>();
+        }
         if (EnemyType.Weak == Etype)
         {
             EnemyHealth = 12;
@@ -224,7 +239,7 @@ public class Enemy : MonoBehaviour
         {
             gameScript.WaitAndChangeScene();
         }
-        Destroy(gameObject, 0.3f);
+        Destroy(gameObject);
     }
 
 

@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class gameHandler : MonoBehaviour
 {
     HighScoreTest hs;
+    GameObject hs_trigger;
     private const string playerKScoreTextObjectName = "ScoreK";
     private const string playerCScoreTextObjectName = "ScoreC";
 
@@ -63,6 +64,12 @@ public class gameHandler : MonoBehaviour
         // Activate Second Display
         if (!Application.isEditor)
             Display.displays[1].Activate();
+        if (SceneManager.GetActiveScene().name != "Tutorial" && SceneManager.GetActiveScene().name != "startScreen")
+        {
+            hs_trigger = GameObject.FindGameObjectWithTag("HighScore");
+            if (hs_trigger.GetComponent<HighScoreTest>())
+                hs = hs_trigger.GetComponent<HighScoreTest>();
+        }
     }
 
     void Update()
