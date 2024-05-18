@@ -11,6 +11,7 @@ public class resourcePickup : MonoBehaviour
     float pickupDist = 6.5f;
     float pickupTimer = 1f;
     Rigidbody rb;
+    MeshRenderer rendered;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class resourcePickup : MonoBehaviour
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         timeOfSpawn = Time.time;
         rb = GetComponent<Rigidbody>();
+        rendered = GetComponent<MeshRenderer>();
 
         if (resourceType == "Gold")
         {
@@ -48,15 +50,39 @@ public class resourcePickup : MonoBehaviour
         // Keyboard
         if (Vector3.Distance(transform.position + Vector3.up, gameScript.keyboardPlayer.transform.position) < realRange)
         {
-            gameScript.collectResource(resourceType);
-            Destroy(gameObject);
+            if (resourceType != "Berries")
+            {
+                gameScript.collectResource(resourceType);
+                Destroy(gameObject);
+            }
+            else
+            {
+                if (rendered.enabled == true)
+                {
+                    gameScript.collectResource(resourceType);
+                    rendered.enabled = false;
+                    StartCoroutine(RespawnBerry());
+                }
+            }
         }
 
         // Controller
         if (Vector3.Distance(transform.position + Vector3.up, gameScript.controllerPlayer.transform.position) < realRange)
         {
-            gameScript.collectResource(resourceType);
-            Destroy(gameObject);
+            if (resourceType != "Berries")
+            {
+                gameScript.collectResource(resourceType);
+                Destroy(gameObject);
+            }
+            else
+            {
+                if (rendered.enabled == true)
+                {
+                    gameScript.collectResource(resourceType);
+                    rendered.enabled = false;
+                    StartCoroutine(RespawnBerry());
+                }
+            }
         }
     }
 
@@ -85,6 +111,12 @@ public class resourcePickup : MonoBehaviour
             float pullForce = mag * 1200f;
             rb.AddForce(pullDir * pullForce * Time.deltaTime, ForceMode.Force);
         }
+    }
+
+    IEnumerator RespawnBerry()
+    {
+        yield return new WaitForSeconds(5f);
+        rendered.enabled = true;
     }
 
 }

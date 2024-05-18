@@ -37,6 +37,7 @@ public class gameHandler : MonoBehaviour
     public int clothPieces;
     public int woodPieces;
     public int ironPieces;
+    public int Berries;
     public int keyboardPlayerBandages;
     public int controllerPlayerBandages;
 
@@ -153,6 +154,7 @@ public class gameHandler : MonoBehaviour
         if (name == "Cloth") clothPieces++;
         if (name == "Wood") woodPieces++;
         if (name == "Metal Scrap") ironPieces++;
+        if (name == "Berries") Berries++;
     }
 
     public void collectKeyboardBandages()
