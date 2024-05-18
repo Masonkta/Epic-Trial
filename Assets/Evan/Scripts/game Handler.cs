@@ -99,6 +99,19 @@ public class gameHandler : MonoBehaviour
                 }
             }
 
+            if (SceneManager.GetActiveScene().name == "The Final")
+            {
+                if (keyboardPlayerHealth <= 0)
+                {
+                    keyboardPlayer.SetActive(false);
+                }
+
+                if (controllerPlayerHealth <= 0)
+                {
+                    controllerPlayer.SetActive(false);
+                }
+            }
+
             _healthbarSpriteK.fillAmount = keyboardPlayerHealth / 100f;
             _healthbarSpriteC.fillAmount = controllerPlayerHealth / 100f;
 
