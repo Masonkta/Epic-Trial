@@ -66,7 +66,7 @@ public class gameHandler : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "Tutorial")
+        if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "Tutorial" || SceneManager.GetActiveScene().name == "The Final")
         {
 
             if (SceneManager.GetActiveScene().name == "Main")
@@ -167,7 +167,7 @@ public class gameHandler : MonoBehaviour
 
     public void useKeyboardBandage()
     {
-        if (keyboardPlayerBandages > 0)
+        if (keyboardPlayerBandages > 0 && keyboardPlayerHealth < 100f)
         {
             keyboardPlayerHealth += 20f;
             if (keyboardPlayerHealth > 100f)
@@ -178,7 +178,7 @@ public class gameHandler : MonoBehaviour
 
     public void useControllerBandage()
     {
-        if (controllerPlayerBandages > 0)
+        if (controllerPlayerBandages > 0 && keyboardPlayerHealth < 100f)
         {
             controllerPlayerHealth += 20f;
             if (controllerPlayerHealth > 100f)

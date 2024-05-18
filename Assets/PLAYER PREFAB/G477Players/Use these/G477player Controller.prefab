@@ -3544,7 +3544,7 @@ MonoBehaviour:
   wasHit: 0
   isHitting: 0
   Damage: 5
-  type: 0
+  type: 2
   Att: {fileID: 3128196157287993494}
   deflectSound: {fileID: 0}
 --- !u!114 &3128196157287993494
@@ -3705,7 +3705,7 @@ MonoBehaviour:
   wasHit: 0
   isHitting: 0
   Damage: 7
-  type: 2
+  type: 1
   Att: {fileID: 2254501447664372640}
   deflectSound: {fileID: 0}
 --- !u!114 &2254501447664372640
@@ -4437,9 +4437,9 @@ Transform:
   m_LocalScale: {x: 4.38073, y: 3.909594, z: 4.385202}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3385701887648784109}
   - {fileID: 8791604365875977688}
   - {fileID: 3492382694414175662}
+  - {fileID: 3385701887648784109}
   m_Father: {fileID: 7580150848858033665}
   m_LocalEulerAnglesHint: {x: 21.203, y: 28.907, z: -12.468}
 --- !u!1 &6837099764590887964
@@ -5879,8 +5879,8 @@ MonoBehaviour:
   dodgeTime: 0.33
   canDodge: 1
   shiftLock: 0
-  xSens: 150
-  ySens: 30
+  xSens: 100
+  ySens: 65
   camHeight: 0.5
   camDistance: 5.5
   footstepsSound: {fileID: 3808861588156978920}

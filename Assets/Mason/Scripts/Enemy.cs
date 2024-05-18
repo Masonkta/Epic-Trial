@@ -224,7 +224,7 @@ public class Enemy : MonoBehaviour
         {
             gameScript.WaitAndChangeScene();
         }
-        Destroy(gameObject);
+        Destroy(gameObject, 0.3f);
     }
 
 

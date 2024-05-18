@@ -6,9 +6,9 @@ using UnityEngine;
 
 public enum WeaponType
 {
-    Gladius,
-    Spear,
+    Fist,
     Club,
+    Gladius,
 }
 
 public class Weapon : MonoBehaviour
@@ -58,23 +58,26 @@ public class Weapon : MonoBehaviour
                 // Calculate damage based on weapon type
                 switch (type)
                 {
-                    case WeaponType.Gladius:
-                        Damage = 4; ////////////////////
+                    case WeaponType.Fist:
+                        Damage = 2;
                         piercing = false;
                         isHitting = true;
                         StartCoroutine(damaging());
                         break;
-                    case WeaponType.Spear:
-                        Damage = 10;
-                        piercing = true;
-                        isHitting = true;
-                        break;
                     case WeaponType.Club:
-                        Damage = 7;
+                        Damage = 4;
+                        piercing = false;
+                        isHitting = true;
+                        StartCoroutine(damaging());
+                        break;
+                    case WeaponType.Gladius:
+                        Damage = 7; ////////////////////
                         piercing = true;
                         isHitting = true;
                         StartCoroutine(damaging());
                         break;
+
+
                 }
 
                 // Apply damage
@@ -110,23 +113,25 @@ public class Weapon : MonoBehaviour
                 // Calculate damage based on weapon type
                 switch (type)
                 {
-                    case WeaponType.Gladius:
-                        Damage = 4; ////////////////////
+                    case WeaponType.Fist:
+                        Damage = 2;
                         piercing = false;
                         isHitting = true;
                         StartCoroutine(damaging());
                         break;
-                    case WeaponType.Spear:
-                        Damage = 10;
-                        piercing = true;
-                        isHitting = true;
-                        break;
                     case WeaponType.Club:
-                        Damage = 7;
+                        Damage = 4;
+                        piercing = false;
+                        isHitting = true;
+                        StartCoroutine(damaging());
+                        break;
+                    case WeaponType.Gladius:
+                        Damage = 7; ////////////////////
                         piercing = true;
                         isHitting = true;
                         StartCoroutine(damaging());
                         break;
+
                 }
 
 

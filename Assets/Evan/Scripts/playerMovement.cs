@@ -177,11 +177,8 @@ public class playerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
                 GetComponent<playerAccessWeapons>().OnDropItem();
 
-            if (Input.GetKeyDown(KeyCode.E))
-            {
+            if (Input.GetKeyDown(KeyCode.R))
                 gameScript.useKeyboardBandage();
-                print("Keyboard healed");
-            }
 
 
         }

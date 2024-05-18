@@ -16,7 +16,7 @@ public class Gameover : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
-        hs_trigger = GameObject.FindGameObjectWithTag("highscore");
+        //hs_trigger = GameObject.FindGameObjectWithTag("highscore");
         if (hs_trigger.GetComponent<HighScoreTest>())
             hs = hs_trigger.GetComponent<HighScoreTest>();
         points.text = "Score: " + hs.score.ToString();

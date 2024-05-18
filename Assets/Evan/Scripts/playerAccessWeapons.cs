@@ -47,7 +47,7 @@ public class playerAccessWeapons : MonoBehaviour
 
     public void OnDropItem()
     {
-        if (!swinging)
+        if (!swinging && SceneManager.GetActiveScene().name != "The Final")
         {
             readyToGrab = false;
 
