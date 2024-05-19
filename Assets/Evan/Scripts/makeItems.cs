@@ -57,6 +57,9 @@ public class makeItems : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X)) // Club
                 OnCraftClubKK();
+            
+            if (Input.GetKeyDown(KeyCode.C)) // Gladius
+                OnCraftGladiusKK();
         }
     }
 
@@ -75,7 +78,7 @@ public class makeItems : MonoBehaviour
 
     void OnCraftGladius()
     {
-        if (gameScript.checkIndividualRecipe(gameScript.bandagesRecipe) && playerCInRange)
+        if (gameScript.checkRecipe("Gladius") && playerCInRange)
         {
             GameObject bandage = Instantiate(gameScript.gladiusPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
@@ -123,6 +126,20 @@ public class makeItems : MonoBehaviour
             gameScript.clothPieces -= (int)gameScript.woodClubRecipe[0];
             gameScript.woodPieces -= (int)gameScript.woodClubRecipe[1];
             gameScript.ironPieces -= (int)gameScript.woodClubRecipe[2];
+        }
+    }
+
+
+    void OnCraftGladiusKK()
+    {
+        if (gameScript.checkRecipe("Gladius"))
+        {
+            GameObject bandage = Instantiate(gameScript.gladiusPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+
+            gameScript.clothPieces -= (int)gameScript.bandagesRecipe[0];
+            gameScript.woodPieces -= (int)gameScript.bandagesRecipe[1];
+            gameScript.ironPieces -= (int)gameScript.bandagesRecipe[2];
         }
     }
 }

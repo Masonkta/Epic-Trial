@@ -35,9 +35,9 @@ public class Iron : MonoBehaviour
             dK = Vector3.Distance(transform.position, playerKHand.getHandObject().transform.position);
             dC = Vector3.Distance(transform.position, playerCHand.getHandObject().transform.position);
 
-            if (dK < 5f && playerKHand.swinging)
+            if (dK < 7f && playerKHand.swinging)
                 takeHitAndDropIron();
-            if (dC < 5f && playerCHand.swinging)
+            if (dC < 7f && playerCHand.swinging)
                 takeHitAndDropIron();
         }
 

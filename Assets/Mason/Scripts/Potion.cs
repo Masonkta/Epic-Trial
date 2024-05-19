@@ -17,16 +17,16 @@ public class Potion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.V))
         {
-            throwdashpotion();
-            throwpoisonpotion();
+            throwdashpotionkeyboard();
+            throwpoisonpotionkeyboard();
 
         }
     }
     public void throwpoisonpotion()
     {
-        if (gameScript.keyboardPlayerPotions == 1)
+        if (gameScript.controllerPlayerpoisonPotions)
         {
             GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
@@ -36,9 +36,29 @@ public class Potion : MonoBehaviour
     }
     public void throwdashpotion()
     {
-        if (gameScript.keyboardPlayerPotions == 1)
+        if (gameScript.controllerPlayerdashPotions)
         {
             GameObject currentPotion = Instantiate(dashPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+        }
+    }
+    public void throwdashpotionkeyboard()
+    {
+        if (gameScript.keyboardPlayerpoisonPotions)
+        {
+            GameObject currentPotion = Instantiate(dashPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+        }
+    }
+    public void throwpoisonpotionkeyboard()
+    {
+        if (gameScript.keyboardPlayerdashPotions)
+        {
+            GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
