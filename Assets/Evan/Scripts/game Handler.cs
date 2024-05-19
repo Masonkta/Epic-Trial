@@ -45,8 +45,6 @@ public class gameHandler : MonoBehaviour
 
     [Header("Recipes")] // Cloth,  Wood,  Iron
     public Vector3 bandagesRecipe = new Vector3(5, 0, 0);
-    public Vector3 armorRecipe = new Vector3(30, 0, 10);
-    public Vector3 spearRecipe = new Vector3(0, 10, 5);
     public Vector3 woodClubRecipe = new Vector3(0, 25, 5);
 
     [Header("Death Cameras")]
@@ -71,7 +69,7 @@ public class gameHandler : MonoBehaviour
         // Activate Second Display
         if (!Application.isEditor)
             Display.displays[1].Activate();
-        if (SceneManager.GetActiveScene().name != "Tutorial" && SceneManager.GetActiveScene().name != "startScreen")
+        if (SceneManager.GetActiveScene().name != "Tutorial" && SceneManager.GetActiveScene().name != "startScreen" && SceneManager.GetActiveScene().name != "The Final")
         {
             hs_trigger = GameObject.FindGameObjectWithTag("HighScore");
             if (hs_trigger.GetComponent<HighScoreTest>())
@@ -235,33 +233,30 @@ public class gameHandler : MonoBehaviour
     {
         GameObject textObject = GameObject.Find(playerKScoreTextObjectName); // Find the GameObject by name
         if (textObject != null)
-        {
             return textObject.GetComponentInChildren<TMPro.TextMeshProUGUI>(); // Get TextMeshProUGUI component
-        }
-        else
-        {
-            Debug.LogWarning("Player score text object not found with name: " + playerKScoreTextObjectName);
-            return null;
-        }
+        return null;
     }
     public TMPro.TextMeshProUGUI GetPlayerScoreText2()
     {
         GameObject textObject2 = GameObject.Find(playerCScoreTextObjectName); // Find the GameObject by name
         if (textObject2 != null)
-        {
             return textObject2.GetComponentInChildren<TMPro.TextMeshProUGUI>(); // Get TextMeshProUGUI component
-        }
-        else
-        {
-            Debug.LogWarning("Player score text object not found with name: " + playerCScoreTextObjectName);
-            return null;
-        }
+        return null;
 
     }
 
     public bool checkIndividualRecipe(Vector3 recipe)
     {
         return (clothPieces >= recipe[0] && woodPieces >= recipe[1] && ironPieces >= recipe[2]);
+    }
+
+    public bool checkRecipe(string name)
+    {
+        if (name == "Gladius")
+        {
+            return (clothPieces >= 0);
+        }
+        return true;
     }
 
     public float GetControllerHealth()

@@ -253,24 +253,11 @@ public class Enemy : MonoBehaviour
         // Decide how many and what items to drop
         float threshToDetermine = Random.value;
         
-        if (threshToDetermine <= 0.5f) // Start with cloth ( 50% )
-        {
-            float clothCountThresh = Random.value;
-            int numberOfCloth = clothCountThresh <= 0.1f ? 3 : (clothCountThresh <= 0.5f ? 2 : 1); // 10% for 3, 40% for 2, 50% for 1
-            dropCloth(numberOfCloth * 2 * gameScript.ResourceDropRate);
-        }
-
-        else if (threshToDetermine <= 0.85f) // Start with wood ( 35% )
-        {
-            int numberOfWood = Random.value < 0.4f ? 2 : 1; // 40% for duplicate
-            dropWood(numberOfWood * gameScript.ResourceDropRate);
-        }
+        float clothCountThresh = Random.value;
+        int numberOfCloth = clothCountThresh <= 0.1f ? 3 : (clothCountThresh <= 0.5f ? 2 : 1); // 10% for 3, 40% for 2, 50% for 1
+        dropCloth(numberOfCloth * 2 * gameScript.ResourceDropRate);
         
-        else // Start with metal ( 15% )
-        {
-            int numberOfIron = Random.value < 0.1f ? 2 : 1; // 10% for duplicate
-            dropIron(numberOfIron * gameScript.ResourceDropRate);
-        }
+
 
         // Drop SKULL
 

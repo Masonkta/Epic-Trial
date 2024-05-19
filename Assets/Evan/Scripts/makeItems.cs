@@ -64,8 +64,20 @@ public class makeItems : MonoBehaviour
     {
         if (gameScript.checkIndividualRecipe(gameScript.bandagesRecipe) && playerCInRange)
         {
-            print("Made bandages");
             GameObject bandage = Instantiate(gameScript.bandagesPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+
+            gameScript.clothPieces -= (int)gameScript.bandagesRecipe[0];
+            gameScript.woodPieces -= (int)gameScript.bandagesRecipe[1];
+            gameScript.ironPieces -= (int)gameScript.bandagesRecipe[2];
+        }
+    }
+
+    void OnCraftGladius()
+    {
+        if (gameScript.checkIndividualRecipe(gameScript.bandagesRecipe) && playerCInRange)
+        {
+            GameObject bandage = Instantiate(gameScript.gladiusPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 
             gameScript.clothPieces -= (int)gameScript.bandagesRecipe[0];
@@ -78,7 +90,6 @@ public class makeItems : MonoBehaviour
     {
         if (gameScript.checkIndividualRecipe(gameScript.woodClubRecipe) && playerCInRange)
         {
-            print("Made Club");
             GameObject bandage = Instantiate(gameScript.clubPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 
@@ -92,7 +103,6 @@ public class makeItems : MonoBehaviour
     {
         if (gameScript.checkIndividualRecipe(gameScript.bandagesRecipe))
         {
-            print("Made bandages");
             GameObject bandage = Instantiate(gameScript.bandagesPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 
