@@ -65,14 +65,24 @@ public class makeItems : MonoBehaviour
 
     void OnCraftBandages()
     {
-        if (gameScript.checkIndividualRecipe(gameScript.bandagesRecipe) && playerCInRange)
+        if (gameScript.checkRecipe("Bandage") && playerCInRange)
         {
             GameObject bandage = Instantiate(gameScript.bandagesPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 
-            gameScript.clothPieces -= (int)gameScript.bandagesRecipe[0];
-            gameScript.woodPieces -= (int)gameScript.bandagesRecipe[1];
-            gameScript.ironPieces -= (int)gameScript.bandagesRecipe[2];
+            gameScript.clothPieces -= 10;
+        }
+    }    
+
+    void OnCraftClub()
+    {
+        if (gameScript.checkRecipe("Club") && playerCInRange)
+        {
+            GameObject bandage = Instantiate(gameScript.clubPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+
+            gameScript.clothPieces -= 10;
+            gameScript.woodPieces -= 20;
         }
     }
 
@@ -83,49 +93,32 @@ public class makeItems : MonoBehaviour
             GameObject bandage = Instantiate(gameScript.gladiusPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 
-            gameScript.clothPieces -= (int)gameScript.bandagesRecipe[0];
-            gameScript.woodPieces -= (int)gameScript.bandagesRecipe[1];
-            gameScript.ironPieces -= (int)gameScript.bandagesRecipe[2];
-        }
-    }
-
-    void OnCraftClub()
-    {
-        if (gameScript.checkIndividualRecipe(gameScript.woodClubRecipe) && playerCInRange)
-        {
-            GameObject bandage = Instantiate(gameScript.clubPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
-
-            gameScript.clothPieces -= (int)gameScript.woodClubRecipe[0];
-            gameScript.woodPieces -= (int)gameScript.woodClubRecipe[1];
-            gameScript.ironPieces -= (int)gameScript.woodClubRecipe[2];
+            gameScript.clothPieces -= 10;
+            gameScript.woodPieces -= 10;
+            gameScript.ironPieces -= 25;
         }
     }
 
     void OnCraftBandagesKK()
     {
-        if (gameScript.checkIndividualRecipe(gameScript.bandagesRecipe))
+        if (gameScript.checkRecipe("Bandage"))
         {
             GameObject bandage = Instantiate(gameScript.bandagesPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 
-            gameScript.clothPieces -= (int)gameScript.bandagesRecipe[0];
-            gameScript.woodPieces -= (int)gameScript.bandagesRecipe[1];
-            gameScript.ironPieces -= (int)gameScript.bandagesRecipe[2];
+            gameScript.clothPieces -= 10;
         }
     }
 
     void OnCraftClubKK()
     {
-        if (gameScript.checkIndividualRecipe(gameScript.woodClubRecipe))
+        if (gameScript.checkRecipe("Club"))
         {
-            print("Made Club");
             GameObject bandage = Instantiate(gameScript.clubPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 
-            gameScript.clothPieces -= (int)gameScript.woodClubRecipe[0];
-            gameScript.woodPieces -= (int)gameScript.woodClubRecipe[1];
-            gameScript.ironPieces -= (int)gameScript.woodClubRecipe[2];
+            gameScript.clothPieces -= 10;
+            gameScript.woodPieces -= 25;
         }
     }
 
@@ -137,9 +130,9 @@ public class makeItems : MonoBehaviour
             GameObject bandage = Instantiate(gameScript.gladiusPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 
-            gameScript.clothPieces -= (int)gameScript.bandagesRecipe[0];
-            gameScript.woodPieces -= (int)gameScript.bandagesRecipe[1];
-            gameScript.ironPieces -= (int)gameScript.bandagesRecipe[2];
+            gameScript.clothPieces -= 10;
+            gameScript.woodPieces -= 10;
+            gameScript.ironPieces -= 25;
         }
     }
 }

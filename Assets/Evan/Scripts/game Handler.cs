@@ -256,11 +256,18 @@ public class gameHandler : MonoBehaviour
 
     public bool checkRecipe(string name)
     {
+        if (name == "Club")
+            return (woodPieces >= 25 && clothPieces >= 10);
+        
         if (name == "Gladius")
-        {
-            return (clothPieces >= 0);
-        }
-        return true;
+            return (clothPieces >= 10 && woodPieces >= 10 && ironPieces >= 25);
+        
+        if (name == "Bandage")
+            return (clothPieces >= 10);
+
+
+
+        return false;
     }
 
     public float GetControllerHealth()
