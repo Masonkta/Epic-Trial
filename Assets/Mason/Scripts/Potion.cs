@@ -23,7 +23,7 @@ public class Potion : MonoBehaviour
             throwpoisonpotionkeyboard();
 
         }
-    }
+    } 
     public void throwpoisonpotion()
     {
         if (gameScript.controllerPlayerpoisonPotions)
@@ -32,6 +32,7 @@ public class Potion : MonoBehaviour
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+            gameScript.controllerPlayerpoisonPotions = false;
         }
     }
     public void throwdashpotion()
@@ -42,6 +43,7 @@ public class Potion : MonoBehaviour
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+            gameScript.controllerPlayerdashPotions = false;
         }
     }
     public void throwdashpotionkeyboard()
@@ -52,6 +54,7 @@ public class Potion : MonoBehaviour
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+            gameScript.keyboardPlayerdashPotions = false;
         }
     }
     public void throwpoisonpotionkeyboard()
@@ -62,6 +65,7 @@ public class Potion : MonoBehaviour
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+            gameScript.keyboardPlayerpoisonPotions = false;
         }
     }
 }
