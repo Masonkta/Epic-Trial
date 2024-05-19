@@ -41,6 +41,7 @@ public class gameHandler : MonoBehaviour
     public int ironPieces;
     public int Berries;
     public int keyboardPlayerBandages;
+    public int keyboardPlayerPotions;
     public int controllerPlayerBandages;
 
     [Header("Recipes")] // Cloth,  Wood,  Iron

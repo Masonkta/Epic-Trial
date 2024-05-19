@@ -216,6 +216,11 @@ public class playerMovement : MonoBehaviour
     {
         print("Controller Healed");
     }
+    
+    void OnPotion()
+    {
+        print("Potion");
+    }
 
 
 

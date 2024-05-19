@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public enum WeaponType
 
 public class Weapon : MonoBehaviour
 {
-    private bool buff;
+    private bool poison;
     private bool tired;
     private bool piercing;
     public bool wasHit = false;
@@ -28,20 +29,19 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buff = false;
+        poison = false;
     }
 
-    private IEnumerator buffed()
+    public void applypoison()
     {
-        if (tired == false)
-        {
-            buff = true;
-            yield return new WaitForSeconds(10);
-            buff = false;
-        }
-        tired = true;
-        yield return new WaitForSeconds(60);
-        tired = false;
+        StartCoroutine(poisonbuff());
+    }
+    private IEnumerator poisonbuff()
+    {
+        
+        poison = true;
+        yield return new WaitForSeconds(10);
+        poison = false;
         yield break;
     }
 
@@ -107,7 +107,7 @@ public class Weapon : MonoBehaviour
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 BasicEnemy BNMY = collision.gameObject.GetComponent<BasicEnemy>();
                 //Debug.Log(BNMY);
-                if (buff)
+                if (poison)
                     Damage *= 2;
 
                 // Calculate damage based on weapon type
@@ -211,6 +211,7 @@ public class Weapon : MonoBehaviour
 
             yield return null;
         }
+
     }
 
 
@@ -220,9 +221,4 @@ void Update()
 
     }
 
-    void OnKeyboardBuff()
-    {
-        //print("BUFF");
-        buffed();
-    }
 }

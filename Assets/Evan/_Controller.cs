@@ -116,6 +116,24 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""throwdashpotion"",
+                    ""type"": ""Button"",
+                    ""id"": ""f881edd5-9591-4320-897f-0e290fa9d508"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""throwpoisonpotion"",
+                    ""type"": ""Button"",
+                    ""id"": ""442b1947-c212-4ea9-b401-1e9e0b158717"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -228,6 +246,28 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
                     ""action"": ""heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d727a663-70f1-4b5b-9aeb-b65e5911989e"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""throwdashpotion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1395b3e4-5135-4edf-8b1c-e9f1b3033e3c"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""throwpoisonpotion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -294,6 +334,8 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
         m_Controller_CheckRecipes = m_Controller.FindAction("CheckRecipes", throwIfNotFound: true);
         m_Controller_DropItem = m_Controller.FindAction("DropItem", throwIfNotFound: true);
         m_Controller_heal = m_Controller.FindAction("heal", throwIfNotFound: true);
+        m_Controller_throwdashpotion = m_Controller.FindAction("throwdashpotion", throwIfNotFound: true);
+        m_Controller_throwpoisonpotion = m_Controller.FindAction("throwpoisonpotion", throwIfNotFound: true);
         // Craft
         m_Craft = asset.FindActionMap("Craft", throwIfNotFound: true);
         m_Craft_CraftBandages = m_Craft.FindAction("CraftBandages", throwIfNotFound: true);
@@ -369,6 +411,8 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_CheckRecipes;
     private readonly InputAction m_Controller_DropItem;
     private readonly InputAction m_Controller_heal;
+    private readonly InputAction m_Controller_throwdashpotion;
+    private readonly InputAction m_Controller_throwpoisonpotion;
     public struct ControllerActions
     {
         private @_Controller m_Wrapper;
@@ -383,6 +427,8 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
         public InputAction @CheckRecipes => m_Wrapper.m_Controller_CheckRecipes;
         public InputAction @DropItem => m_Wrapper.m_Controller_DropItem;
         public InputAction @heal => m_Wrapper.m_Controller_heal;
+        public InputAction @throwdashpotion => m_Wrapper.m_Controller_throwdashpotion;
+        public InputAction @throwpoisonpotion => m_Wrapper.m_Controller_throwpoisonpotion;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -422,6 +468,12 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
             @heal.started += instance.OnHeal;
             @heal.performed += instance.OnHeal;
             @heal.canceled += instance.OnHeal;
+            @throwdashpotion.started += instance.OnThrowdashpotion;
+            @throwdashpotion.performed += instance.OnThrowdashpotion;
+            @throwdashpotion.canceled += instance.OnThrowdashpotion;
+            @throwpoisonpotion.started += instance.OnThrowpoisonpotion;
+            @throwpoisonpotion.performed += instance.OnThrowpoisonpotion;
+            @throwpoisonpotion.canceled += instance.OnThrowpoisonpotion;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -456,6 +508,12 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
             @heal.started -= instance.OnHeal;
             @heal.performed -= instance.OnHeal;
             @heal.canceled -= instance.OnHeal;
+            @throwdashpotion.started -= instance.OnThrowdashpotion;
+            @throwdashpotion.performed -= instance.OnThrowdashpotion;
+            @throwdashpotion.canceled -= instance.OnThrowdashpotion;
+            @throwpoisonpotion.started -= instance.OnThrowpoisonpotion;
+            @throwpoisonpotion.performed -= instance.OnThrowpoisonpotion;
+            @throwpoisonpotion.canceled -= instance.OnThrowpoisonpotion;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -539,6 +597,8 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
         void OnCheckRecipes(InputAction.CallbackContext context);
         void OnDropItem(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
+        void OnThrowdashpotion(InputAction.CallbackContext context);
+        void OnThrowpoisonpotion(InputAction.CallbackContext context);
     }
     public interface ICraftActions
     {
