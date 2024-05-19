@@ -254,8 +254,8 @@ public class Enemy : MonoBehaviour
         float threshToDetermine = Random.value;
         
         float clothCountThresh = Random.value;
-        int numberOfCloth = clothCountThresh <= 0.1f ? 3 : (clothCountThresh <= 0.5f ? 2 : 1); // 10% for 3, 40% for 2, 50% for 1
-        dropCloth(numberOfCloth * 2 * gameScript.ResourceDropRate);
+        int numberOfCloth = clothCountThresh <= 0.3f ? 2 : 1; // 30% for 2, 70% for 1
+        dropCloth(numberOfCloth * gameScript.ResourceDropRate);
         
 
 
