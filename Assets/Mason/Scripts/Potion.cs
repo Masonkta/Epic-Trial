@@ -34,6 +34,7 @@ public class Potion : MonoBehaviour
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
             gameScript.controllerPlayerpoisonPotions = false;
         }
+        else return;
     }
     public void throwdashpotion()
     {
@@ -45,6 +46,8 @@ public class Potion : MonoBehaviour
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
             gameScript.controllerPlayerdashPotions = false;
         }
+        else
+            return;
     }
     public void throwdashpotionkeyboard()
     {
@@ -56,6 +59,7 @@ public class Potion : MonoBehaviour
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
             gameScript.keyboardPlayerdashPotions = false;
         }
+        else return;
     }
     public void throwpoisonpotionkeyboard()
     {
@@ -67,5 +71,6 @@ public class Potion : MonoBehaviour
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
             gameScript.keyboardPlayerpoisonPotions = false;
         }
+        else return;
     }
 }
