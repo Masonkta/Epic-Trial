@@ -139,8 +139,8 @@ public class gameHandler : MonoBehaviour
     }
     public IEnumerator WaitAndChangeScenetask()
     {
-        yield return new WaitForSeconds(6f);
-        SceneManager.LoadScene("victoryScene");
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("The Final");
     }
 
     public void WaitAndChangeScene()
