@@ -14,6 +14,8 @@ public class handleUIMain : MonoBehaviour
     public TextMeshProUGUI playerCWood;
     public TextMeshProUGUI playerKIron;
     public TextMeshProUGUI playerCIron;
+    public TextMeshProUGUI playerKBerries;
+    public TextMeshProUGUI playerCBerries;
 
     [Header("Usable")]
     public TextMeshProUGUI playerKBandages;
@@ -36,6 +38,9 @@ public class handleUIMain : MonoBehaviour
         playerCWood.text = gameScript.woodPieces.ToString();
         playerKIron.text = gameScript.ironPieces.ToString();
         playerCIron.text = gameScript.ironPieces.ToString();
+        playerKBerries.text = gameScript.Berries.ToString();
+        playerCBerries.text = gameScript.Berries.ToString();
+
 
         // Useable
         playerKBandages.text = gameScript.keyboardPlayerBandages.ToString();

@@ -27,6 +27,9 @@ public class resourcePickup : MonoBehaviour
             pickupTimer = 0.1f;
         }
 
+        if (resourceType == "Berries")
+            pickupDist = 2.6f;
+
 
     }
 
