@@ -260,6 +260,16 @@ public class gameHandler : MonoBehaviour
         controllerPlayerPoisonPotion = true;
     }
 
+    public void collectKeyboardDashPotion()
+    {
+        keyboardPlayerDashPotion = true;
+    }
+
+    public void collectControllerDashPotion()
+    {
+        controllerPlayerDashPotion = true;
+    }
+
     public void turnOnArmorK()
     {
         playerKsArmor.SetActive(true);

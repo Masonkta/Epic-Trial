@@ -42,7 +42,7 @@ public class PoisonPotion : MonoBehaviour
             }
         }
         // Controller
-        if (!gameScript.keyboardPlayerPoisonPotion)
+        if (!gameScript.controllerPlayerPoisonPotion)
         {
             if (Vector3.Distance(transform.position + Vector3.up, gameScript.controllerPlayer.transform.position) < pickupDist)
             {

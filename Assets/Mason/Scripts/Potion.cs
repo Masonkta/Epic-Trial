@@ -28,27 +28,6 @@ public class Potion : MonoBehaviour
             throwdashpotionkeyboard();
         }
     } 
-    public void throwpoisonpotion()
-    {
-
-        if (gameScript.controllerPlayerPoisonPotion == true)
-        {
-            GameObject potion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-            potion.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
-            gameScript.controllerPlayerPoisonPotion = false;
-        }
-        else return;
-    }
-    public void throwdashpotion()
-    {
-        if (gameScript.controllerPlayerDashPotion)
-        {
-            GameObject potion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-            potion.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
-            gameScript.controllerPlayerDashPotion = false;
-        }
-        else return;
-    }
     public void throwdashpotionkeyboard()
     {
         if (gameScript.keyboardPlayerDashPotion)
@@ -58,6 +37,7 @@ public class Potion : MonoBehaviour
             currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
             gameScript.keyboardPlayerDashPotion = false;
+            StartCoroutine(DestroyAfterDelay(1f, currentPotion));
         }
         else return;
     }
@@ -70,7 +50,7 @@ public class Potion : MonoBehaviour
             currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
             gameScript.keyboardPlayerPoisonPotion = false;
-            StartCoroutine(DestroyAfterDelay(2f, currentPotion));
+            StartCoroutine(DestroyAfterDelay(1f, currentPotion));
             
         }
     }
