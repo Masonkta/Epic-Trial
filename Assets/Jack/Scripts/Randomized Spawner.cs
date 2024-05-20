@@ -11,8 +11,13 @@ public class RandomizedSpawner : MonoBehaviour
     public GameObject enemyWeak;
     public GameObject enemyMid;
     public GameObject enemyStr;
+    public Material Skin1;
+    public Material Skin2;
+    public Material Skin3;
+    public Material Skin4;
     public int SpawnWave = 0;
     private int enemyCount;
+    private int randomizedColor;
     public TextMeshProUGUI enemyCounterK;
     public TextMeshProUGUI enemyCounterC;
     private float xPos;
@@ -39,6 +44,14 @@ public class RandomizedSpawner : MonoBehaviour
         {
             for (int i = 0; i < 6; i++)
                 Spawn(enemyWeak);
+            foreach(Enemy t in FindObjectsOfType<Enemy>())
+            {
+                randomizedColor = Random.Range(1, 4);
+                GameObject empty = t.transform.GetChild(0).gameObject;
+                GameObject mlayer = empty.transform.GetChild(1).gameObject;
+                var skin = mlayer.GetComponent<Renderer>();
+                skin.material = determineColor(randomizedColor);
+            }
         }
 
 
@@ -49,6 +62,14 @@ public class RandomizedSpawner : MonoBehaviour
 
             for (int i = 0; i < 3; i++)
                 Spawn(enemyMid);
+            foreach (Enemy t in FindObjectsOfType<Enemy>())
+            {
+                randomizedColor = Random.Range(1, 4);
+                GameObject empty = t.transform.GetChild(0).gameObject;
+                GameObject mlayer = empty.transform.GetChild(1).gameObject;
+                var skin = mlayer.GetComponent<Renderer>();
+                skin.material = determineColor(randomizedColor);
+            }
         }
 
         if (SpawnWave == 3)
@@ -58,6 +79,14 @@ public class RandomizedSpawner : MonoBehaviour
 
             for (int i = 0; i < 4; i++)
                 Spawn(enemyStr);
+            foreach (Enemy t in FindObjectsOfType<Enemy>())
+            {
+                randomizedColor = Random.Range(1, 4);
+                GameObject empty = t.transform.GetChild(0).gameObject;
+                GameObject mlayer = empty.transform.GetChild(1).gameObject;
+                var skin = mlayer.GetComponent<Renderer>();
+                skin.material = determineColor(randomizedColor);
+            }
         }
 
 
@@ -68,6 +97,21 @@ public class RandomizedSpawner : MonoBehaviour
         }
     }
 
+
+    public Material determineColor(int num)
+    {
+        if (num == 1){
+            return Skin1;
+        }
+        else if (num == 2) { 
+            return Skin2;
+        }
+        else if (num == 3)
+        {
+            return Skin3;
+        }
+        else { return Skin4; }
+    }
     // Update is called once per frame
     void Update()
     {
