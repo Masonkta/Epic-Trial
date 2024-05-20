@@ -20,6 +20,7 @@ public class Potion : MonoBehaviour
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         player1 = GameObject.FindGameObjectWithTag("PlayerKeyboard").GetComponent<playerAccessWeapons>();
         p1gladiuscheck = player1.gladius;
+        p1clubcheck = player1.club;
     }
 
     void Update()
@@ -32,14 +33,12 @@ public class Potion : MonoBehaviour
         {
             p1weapon = p1clubcheck.GetComponent<Weapon>();
         }
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKey(KeyCode.T))
         {
-            Debug.Log("WORK!?!");
             throwpoisonpotionkeyboard();
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKey(KeyCode.R))
         {
-            Debug.Log("WORK!?!");
             throwdashpotionkeyboard();
         }
     }
@@ -67,7 +66,10 @@ public class Potion : MonoBehaviour
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
             gameScript.keyboardPlayerPoisonPotion = false;
             StartCoroutine(DestroyAfterDelay(1f, currentPotion));
-            p1weapon.applypoison();
+            if (p1weapon != null)
+            {
+                p1weapon.applypoison();
+            }
             
         }
     }

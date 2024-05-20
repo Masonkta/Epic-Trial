@@ -18,6 +18,7 @@ public class Potion2 : MonoBehaviour
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         player2 = GameObject.FindGameObjectWithTag("PlayerController").GetComponent<playerAccessWeapons>();
         p2gladiuscheck = player2.gladius;
+        p2clubcheck = player2.club;
     }
 
     private void Update()
@@ -33,19 +34,21 @@ public class Potion2 : MonoBehaviour
     }
     void Onthrowpoisonpotion()
     {
-        Debug.Log("Got this far");
         if (gameScript.controllerPlayerPoisonPotion)
         {
             GameObject currentPotion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             currentPotion.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
             gameScript.controllerPlayerPoisonPotion = false;
             StartCoroutine(DestroyAfterDelay(1f, currentPotion));
+            if (p2weapon != null)
+            {
+                p2weapon.applypoison();
+            }
         }
         else return;
     }
     void Onthrowdashpotion()
     {
-        Debug.Log("Got this far");
         if (gameScript.controllerPlayerDashPotion)
         {
             GameObject currentPotion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
