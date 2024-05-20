@@ -29,6 +29,10 @@ public class gameHandler : MonoBehaviour
     public GameObject ironPrefab;
     public GameObject bandagesPrefab;
     public GameObject skullPrefab;
+    public GameObject PoisonPrefab;
+    public GameObject DashPrefab;
+    public GameObject ArmorKPrefab;
+    public GameObject ArmorCPrefab;
     public GameObject gladiusPickup;
     public GameObject clubPickup;
 
@@ -40,16 +44,13 @@ public class gameHandler : MonoBehaviour
     public int woodPieces;
     public int ironPieces;
     public int Berries;
+    public int Feathers;
     public int keyboardPlayerBandages;
-    public bool keyboardPlayerdashPotions;
-    public bool keyboardPlayerpoisonPotions;
-    public bool controllerPlayerdashPotions;
-    public bool controllerPlayerpoisonPotions;
+    public bool keyboardPlayerDashPotion;
+    public bool keyboardPlayerPoisonPotion;
+    public bool controllerPlayerDashPotion;
+    public bool controllerPlayerPoisonPotion;
     public int controllerPlayerBandages;
-
-    [Header("Recipes")] // Cloth,  Wood,  Iron
-    public Vector3 bandagesRecipe = new Vector3(5, 0, 0);
-    public Vector3 woodClubRecipe = new Vector3(0, 25, 5);
 
     [Header("Death Cameras")]
     public GameObject BackUpCamera;
@@ -197,6 +198,7 @@ public class gameHandler : MonoBehaviour
         if (name == "Wood") woodPieces++;
         if (name == "Metal Scrap") ironPieces++;
         if (name == "Berries") Berries++;
+        if (name == "Feathers") Feathers++;
     }
 
     public void collectKeyboardBandages()
@@ -232,6 +234,16 @@ public class gameHandler : MonoBehaviour
 
     }
 
+    public void collectKeyboardPoisonPotion()
+    {
+        keyboardPlayerPoisonPotion = true;
+    }
+
+    public void collectControllerPoisonPotion()
+    {
+        controllerPlayerPoisonPotion = true;
+    }
+
 
     public TMPro.TextMeshProUGUI GetPlayerScoreText()
     {
@@ -265,7 +277,14 @@ public class gameHandler : MonoBehaviour
         if (name == "Bandage")
             return (clothPieces >= 10);
 
+        if (name == "Potion Poison")
+            return (Berries >= 15);
 
+        if (name == "Potion Dash")
+            return (Feathers >= 5);
+
+        if (name == "Armor")
+            return (clothPieces >= 15 && Feathers >= 10 && ironPieces >= 50);
 
         return false;
     }
