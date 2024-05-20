@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -30463,6 +30463,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912032027}
   m_Mesh: {fileID: -1550514412580984892, guid: 6d48b15adace0b041bae6f85bfd9f568, type: 3}
+--- !u!1 &1915586288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1915586290}
+  - component: {fileID: 1915586289}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1915586289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915586288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
+--- !u!4 &1915586290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915586288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -89.50479, y: 0.5913162, z: -65.85651}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1916102637
 GameObject:
   m_ObjectHideFlags: 0
@@ -35600,12 +35649,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a14230eef3fa11458aaf20633f62ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sword: {fileID: 5353778476441340597}
   attackCoolDown: 0.5
   canAtt: 1
-  Wep: {fileID: 5116696196293282082}
+  ImStuck: 0
   rightHandTransform: {fileID: 8404402640253400812}
+  Sword: {fileID: 5353778476441340597}
+  Wep: {fileID: 5116696196293282082}
   anim: {fileID: 7506505846857591461}
+  Armor: {fileID: 0}
   swingSounds: {fileID: 353970018263685039}
   swing1: {fileID: 8300000, guid: 21b853f88c4d6d944bffd96d8bb5b04a, type: 3}
   swing2: {fileID: 8300000, guid: 7d6d4b6001995564ebcdc979f0e494d7, type: 3}
@@ -37573,12 +37624,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a14230eef3fa11458aaf20633f62ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sword: {fileID: 4359676286833536913}
   attackCoolDown: 0.5
   canAtt: 1
-  Wep: {fileID: 715607597387986987}
+  ImStuck: 0
   rightHandTransform: {fileID: 5411707687479144383}
+  Sword: {fileID: 4359676286833536913}
+  Wep: {fileID: 715607597387986987}
   anim: {fileID: 3334504314525768891}
+  Armor: {fileID: 0}
   swingSounds: {fileID: 3104440368276157210}
   swing1: {fileID: 8300000, guid: 21b853f88c4d6d944bffd96d8bb5b04a, type: 3}
   swing2: {fileID: 8300000, guid: 7d6d4b6001995564ebcdc979f0e494d7, type: 3}
@@ -41836,3 +41889,4 @@ SceneRoots:
   - {fileID: 1199662151}
   - {fileID: 3029586695458658766}
   - {fileID: 3626158210055304202}
+  - {fileID: 1915586290}
