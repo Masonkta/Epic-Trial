@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Potion : MonoBehaviour
@@ -12,6 +13,7 @@ public class Potion : MonoBehaviour
     GameObject p1clubcheck;
     Weapon p1weapon;
     bool fist;
+    public GameObject tip;
 
 
 
@@ -67,19 +69,32 @@ public class Potion : MonoBehaviour
     }
     public void throwpoisonpotionkeyboard()
     {
-        if (gameScript.keyboardPlayerPoisonPotion && !fist)
+        if (!fist)
         {
-            GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
-            currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
-            currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
-            gameScript.keyboardPlayerPoisonPotion = false;
-            StartCoroutine(DestroyAfterDelay(1f, currentPotion));
-            if (p1weapon != null)
+            if (gameScript.keyboardPlayerPoisonPotion)
             {
-                p1weapon.applypoison();
+                GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+                float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+                currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+                currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+                gameScript.keyboardPlayerPoisonPotion = false;
+                StartCoroutine(DestroyAfterDelay(1f, currentPotion));
+                if (p1weapon != null)
+                {
+                    p1weapon.applypoison();
+                }
+            }
+            else
+            {
+                return;
             }
             
+        }
+        else
+        {
+            tip.SetActive(true);
+            StartCoroutine(tipDuration(3f));
+
         }
     }
     IEnumerator DestroyAfterDelay(float delay, GameObject obj)
@@ -91,5 +106,10 @@ public class Potion : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         gameScript.playerKUsingDashPotion = false;
+    }
+    IEnumerator tipDuration(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        tip.SetActive(false);
     }
 }

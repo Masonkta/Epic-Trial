@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Potion2 : MonoBehaviour
@@ -12,6 +13,7 @@ public class Potion2 : MonoBehaviour
     GameObject p2clubcheck;
     Weapon p2weapon;
     bool fist;
+    public GameObject tip;
 
     // Start is called before the first frame update
     void Start()
@@ -41,18 +43,33 @@ public class Potion2 : MonoBehaviour
     }
     void Onthrowpoisonpotion()
     {
-        if (gameScript.controllerPlayerPoisonPotion && !fist)
+        if (!fist)
         {
-            GameObject currentPotion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-            currentPotion.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
-            gameScript.controllerPlayerPoisonPotion = false;
-            StartCoroutine(DestroyAfterDelay(1f, currentPotion));
-            if (p2weapon != null)
+            if (gameScript.controllerPlayerPoisonPotion)
             {
-                p2weapon.applypoison();
+                GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+                float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+                currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+                currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+                gameScript.controllerPlayerPoisonPotion = false;
+                StartCoroutine(DestroyAfterDelay(1f, currentPotion));
+                if (p2weapon != null)
+                {
+                    p2weapon.applypoison();
+                }
             }
+            else
+            {
+                return;
+            }
+
         }
-        else return;
+        else
+        {
+            tip.SetActive(true);
+            StartCoroutine(tipDuration(3f));
+
+        }
     }
     void Onthrowdashpotion()
     {
@@ -77,5 +94,10 @@ public class Potion2 : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         gameScript.playerCUsingDashPotion = false;
+    }
+    IEnumerator tipDuration(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        tip.SetActive(false);
     }
 }

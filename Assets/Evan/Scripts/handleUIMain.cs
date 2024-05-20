@@ -20,10 +20,12 @@ public class handleUIMain : MonoBehaviour
     [Header("Usable")]
     public TextMeshProUGUI playerKBandages;
     public TextMeshProUGUI playerCBandages;
-    public TextMeshProUGUI placerKPoisionPotion;
-    public TextMeshProUGUI placerCPoisionPotion;
-    public TextMeshProUGUI placerKDashPotion;
-    public TextMeshProUGUI placerCDashPotion;
+    public TextMeshProUGUI playerKPoisionPotion;
+    public TextMeshProUGUI playerCPoisionPotion;
+    public TextMeshProUGUI playerKDashPotion;
+    public TextMeshProUGUI playerCDashPotion;
+    public TextMeshProUGUI playerKFeathers;
+    public TextMeshProUGUI playerCFeathers;
 
     // Start is called before the first frame update
     void Start()
@@ -43,46 +45,48 @@ public class handleUIMain : MonoBehaviour
         playerCIron.text = gameScript.ironPieces.ToString();
         playerKBerries.text = gameScript.Berries.ToString();
         playerCBerries.text = gameScript.Berries.ToString();
+        playerKFeathers.text = gameScript.Feathers.ToString();
+        playerCFeathers.text = gameScript.Feathers.ToString();
 
         if (gameScript.keyboardPlayerPoisonPotion)
         {
-            placerKPoisionPotion.text = "1";
+            playerKPoisionPotion.text = "1";
         }
 
         else
 
         {
-            placerKPoisionPotion.text = "0";
+            playerKPoisionPotion.text = "0";
         }
 
         if (gameScript.controllerPlayerPoisonPotion)
         {
-            placerCPoisionPotion.text = "1";
+            playerCPoisionPotion.text = "1";
         }
 
         else
         {
-            placerCPoisionPotion.text = "0";
+            playerCPoisionPotion.text = "0";
         }
 
         if (gameScript.keyboardPlayerDashPotion)
         {
-            placerKDashPotion.text = "1";
+            playerKDashPotion.text = "1";
         }
 
         else
         {
-            placerKDashPotion.text = "0";
+            playerKDashPotion.text = "0";
         }
 
         if (gameScript.controllerPlayerDashPotion)
         {
-            placerCDashPotion.text = "1";
+            playerCDashPotion.text = "1";
         }
 
         else
         {
-            placerCDashPotion.text = "0";
+            playerCDashPotion.text = "0";
         }
 
         // Useable
