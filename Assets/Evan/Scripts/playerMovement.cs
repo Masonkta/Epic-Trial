@@ -116,6 +116,9 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
+        if (hardCodeKeyboard && gameScript.playerKUsingDashPotion)
+            canDodge = true;
+
         if (bossSpawned)
             gameScript.gameObject.GetComponent<AudioSource>().enabled = false;
 

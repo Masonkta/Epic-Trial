@@ -33,27 +33,21 @@ public class armorPickup : MonoBehaviour
     void checkWithinRangeOfBothPlayers()
     {
         // Keyboard
-        if (!gameScript.keyboardPlayerPoisonPotion)
+        if (!gameScript.playerKHasArmor)
         {
             if (Vector3.Distance(transform.position + Vector3.up, gameScript.keyboardPlayer.transform.position) < pickupDist)
-            {
-                if (!gameScript.playerKHasArmor)
-                {
+            {     
                     gameScript.turnOnArmorK();
                     Destroy(gameObject);
-                }
             }
         }
         // Controller
-        if (!gameScript.keyboardPlayerPoisonPotion)
+        if (!gameScript.playerCHasArmor)
         {
             if (Vector3.Distance(transform.position + Vector3.up, gameScript.controllerPlayer.transform.position) < pickupDist)
             {
-                if (!gameScript.playerCHasArmor)
-                {
                     gameScript.turnOnArmorC();
                     Destroy(gameObject);
-                }
             }
         }
     }

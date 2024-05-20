@@ -61,6 +61,8 @@ public class gameHandler : MonoBehaviour
     public bool controllerPlayerDashPotion;
     public bool controllerPlayerPoisonPotion;
     public int controllerPlayerBandages;
+    public bool playerKUsingDashPotion;
+    public bool playerCUsingDashPotion;
 
     [Header("Death Cameras")]
     public GameObject BackUpCamera;

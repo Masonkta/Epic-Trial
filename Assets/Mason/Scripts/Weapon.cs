@@ -62,7 +62,6 @@ public class Weapon : MonoBehaviour
                         Damage = 2;
                         piercing = false;
                         isHitting = true;
-                        if (poison) Damage *= 2;
                         StartCoroutine(damaging());
                         break;
                     case WeaponType.Club:
@@ -118,7 +117,6 @@ public class Weapon : MonoBehaviour
                         Damage = 2;
                         piercing = false;
                         isHitting = true;
-                        if (poison) Damage *= 2;
                         StartCoroutine(damaging());
                         break;
                     case WeaponType.Club:

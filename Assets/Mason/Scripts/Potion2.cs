@@ -11,6 +11,7 @@ public class Potion2 : MonoBehaviour
     GameObject p2gladiuscheck;
     GameObject p2clubcheck;
     Weapon p2weapon;
+    bool fist;
 
     // Start is called before the first frame update
     void Start()
@@ -26,15 +27,21 @@ public class Potion2 : MonoBehaviour
         if (p2gladiuscheck.activeInHierarchy)
         {
             p2weapon = p2gladiuscheck.GetComponent<Weapon>();
+            fist = false;
         }
         if (p2clubcheck.activeInHierarchy)
         {
             p2weapon = p2clubcheck.GetComponent<Weapon>();
+            fist = false;
+        }
+        if (!p2clubcheck.activeInHierarchy && !p2gladiuscheck.activeInHierarchy)
+        {
+            fist = true;
         }
     }
     void Onthrowpoisonpotion()
     {
-        if (gameScript.controllerPlayerPoisonPotion)
+        if (gameScript.controllerPlayerPoisonPotion && !fist)
         {
             GameObject currentPotion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             currentPotion.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
@@ -55,6 +62,8 @@ public class Potion2 : MonoBehaviour
             currentPotion.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
             gameScript.controllerPlayerDashPotion = false;
             StartCoroutine(DestroyAfterDelay(1f, currentPotion));
+            gameScript.playerCUsingDashPotion = true;
+            StartCoroutine(DashEffect(10f));
         }
         else return;
     }
@@ -63,5 +72,10 @@ public class Potion2 : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Destroy(obj);
+    }
+    IEnumerator DashEffect(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        gameScript.playerCUsingDashPotion = false;
     }
 }

@@ -11,6 +11,7 @@ public class Potion : MonoBehaviour
     GameObject p1gladiuscheck;
     GameObject p1clubcheck;
     Weapon p1weapon;
+    bool fist;
 
 
 
@@ -28,11 +29,17 @@ public class Potion : MonoBehaviour
         if (p1gladiuscheck.activeInHierarchy)
         {
             p1weapon = p1gladiuscheck.GetComponent<Weapon>();
+            fist = false;
         }
         if (p1clubcheck.activeInHierarchy)
         {
             p1weapon = p1clubcheck.GetComponent<Weapon>();
+            fist = false;
         }
+        if (!p1clubcheck.activeInHierarchy && !p1gladiuscheck.activeInHierarchy)
+        {
+            fist = true;
+        }    
         if (Input.GetKey(KeyCode.T))
         {
             throwpoisonpotionkeyboard();
@@ -53,12 +60,14 @@ public class Potion : MonoBehaviour
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
             gameScript.keyboardPlayerDashPotion = false;
             StartCoroutine(DestroyAfterDelay(1f, currentPotion));
+            gameScript.playerKUsingDashPotion = true;
+            StartCoroutine(DashEffect(10f));
         }
         else return;
     }
     public void throwpoisonpotionkeyboard()
     {
-        if (gameScript.keyboardPlayerPoisonPotion)
+        if (gameScript.keyboardPlayerPoisonPotion && !fist)
         {
             GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
@@ -77,5 +86,10 @@ public class Potion : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Destroy(obj);
+    }
+    IEnumerator DashEffect(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        gameScript.playerKUsingDashPotion = false;
     }
 }
