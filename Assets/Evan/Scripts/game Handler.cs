@@ -143,11 +143,13 @@ public class gameHandler : MonoBehaviour
                 if (keyboardPlayerHealth <= 0)
                 {
                     keyboardPlayer.SetActive(false);
+                    WaitAndChangeToVictory();
                 }
 
                 if (controllerPlayerHealth <= 0)
                 {
                     controllerPlayer.SetActive(false);
+                    WaitAndChangeToVictory();
                 }
             }
 
@@ -182,9 +184,20 @@ public class gameHandler : MonoBehaviour
         SceneManager.LoadScene("The Final");
     }
 
+    public IEnumerator WaitAndChangeVictoryScene()
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("victoryScene");
+    }
+
     public void WaitAndChangeScene()
     {
         StartCoroutine(WaitAndChangeScenetask());
+    }
+
+    public void WaitAndChangeToVictory()
+    {
+        StartCoroutine(WaitAndChangeVictoryScene());
     }
 
     void OnQuitGame()
