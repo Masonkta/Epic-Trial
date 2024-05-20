@@ -25,6 +25,7 @@ public class BasicEnemy : MonoBehaviour
 
     [Header("Animation")]
     public Animator EnemyAnimator;
+    public Animator ARMOR;
 
 
     // Attack placeholder
@@ -150,6 +151,8 @@ public class BasicEnemy : MonoBehaviour
     {
         CanAtt = false;
         EnemyAnimator.SetTrigger("ATTAAACK");
+        if (ARMOR)
+            ARMOR.SetTrigger("ATTAAACK");
         StartCoroutine(ResetAtt());
     }
 
@@ -158,6 +161,8 @@ public class BasicEnemy : MonoBehaviour
         yield return new WaitForSeconds(attackCoolDown);
         Chase();
         EnemyAnimator.SetTrigger("STOOOP");
+        if (ARMOR)
+            ARMOR.SetTrigger("STOOOP");
         CanAtt = true;
     }
 
@@ -171,6 +176,8 @@ public class BasicEnemy : MonoBehaviour
         {
             enemyEyes.SetActive(false);
             EnemyAnimator.SetTrigger("RUUUN");
+            if (ARMOR)
+                ARMOR.SetTrigger("RUUUN");
             timetoPath = timetoPath + Time.deltaTime;
             Patroling();
         }
@@ -180,6 +187,8 @@ public class BasicEnemy : MonoBehaviour
             if (CanAtt)
             {
                 EnemyAnimator.SetTrigger("RUUUN");
+                if (ARMOR)
+                    ARMOR.SetTrigger("RUUUN");
                 Chase();
             }
             Debug.DrawLine(transform.position, agent.destination, Color.red);

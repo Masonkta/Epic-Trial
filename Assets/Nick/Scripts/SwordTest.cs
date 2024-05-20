@@ -12,6 +12,7 @@ public class SwordTest : MonoBehaviour
     public Transform rightHandTransform;
 
     public Animator anim;
+    public Animator Armor;
 
     [Header("Audio")]
     public AudioSource swingSounds;
@@ -38,6 +39,7 @@ public class SwordTest : MonoBehaviour
         canAtt = false;
         Wep.enabled = true;
         anim.SetTrigger("Attack");
+        Armor.SetTrigger("Attack");
         StartCoroutine(ResetAtt());
 
         playSwordSwingSound();
@@ -55,6 +57,7 @@ public class SwordTest : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCoolDown);
         anim.SetTrigger("StopAttack");
+        Armor.SetTrigger("StopAttack");
         Wep.enabled = false;
         canAtt = true;
         wpnScrpt.swinging = false;

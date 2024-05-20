@@ -89,6 +89,7 @@ public class playerMovement : MonoBehaviour
 
     [Header("Animation")]
     Animator playerAnimator;
+    public Animator Armor;
 
 
     [Header("Trails")]
@@ -193,6 +194,7 @@ public class playerMovement : MonoBehaviour
         {
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             playerAnimator.SetTrigger("Jump");
+            Armor.SetTrigger("Jump");
         }
     }
 
@@ -296,6 +298,7 @@ public class playerMovement : MonoBehaviour
 
         currentVelocity = magOfMovement * speed * (airDashing ? 0 : 1) + playerVelocityMagnitude;
         playerAnimator.speed = Mathf.Sqrt(currentVelocity) / 7f + 0.5f; //currentVelocity / 10f + 0.5f;
+        Armor.speed = Mathf.Sqrt(currentVelocity) / 7f + 0.5f;
 
         isMoving = currentVelocity > 0.75f; bool isMovingLiterallyAtALL = currentVelocity > 0f;
         if (!isMovingLiterallyAtALL && sprinting)
@@ -343,9 +346,15 @@ public class playerMovement : MonoBehaviour
 
         //playerAnimator.SetTrigger(isMoving ? "Go" : "Stop");
         if (isMoving)
+        {
             playerAnimator.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
+            Armor.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
+        }
         else
+        { 
             playerAnimator.SetFloat("Speed", 0.0f, 0.1f, Time.deltaTime);
+            Armor.SetFloat("Speed", 0.0f, 0.1f, Time.deltaTime);
+        }
 
         if (!airDashing && !isDodging)
         {
@@ -391,8 +400,10 @@ public class playerMovement : MonoBehaviour
 
 
         if (isGrounded)
+        {
             playerAnimator.SetTrigger("Land");
-
+            Armor.SetTrigger("Land");
+        }
     }
 
 
