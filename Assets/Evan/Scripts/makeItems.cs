@@ -52,14 +52,23 @@ public class makeItems : MonoBehaviour
     {
         if (playerKInRange)
         {
-            if (Input.GetKeyDown(KeyCode.Z)) // Bandages
+            if (Input.GetKeyDown(KeyCode.Alpha1)) // Bandages
                 OnCraftBandagesKK();
 
-            if (Input.GetKeyDown(KeyCode.X)) // Club
+            if (Input.GetKeyDown(KeyCode.Alpha2)) // Club
                 OnCraftClubKK();
-            
-            if (Input.GetKeyDown(KeyCode.C)) // Gladius
+
+            if (Input.GetKeyDown(KeyCode.Alpha3)) // Gladius
                 OnCraftGladiusKK();
+
+            if (Input.GetKeyDown(KeyCode.Alpha4)) // Poison Potion
+                OnCraftPotionPoisonKK();
+
+            if (Input.GetKeyDown(KeyCode.Alpha5)) // Dash Potion
+                OnCraftPotionDashKK();
+
+            if (Input.GetKeyDown(KeyCode.Alpha6)) // Armor
+                OnCraftArmorKK();
         }
     }
 
@@ -98,6 +107,40 @@ public class makeItems : MonoBehaviour
             gameScript.ironPieces -= 25;
         }
     }
+    void OnCraftPotionPoison()
+    {
+        if (gameScript.checkRecipe("Potion Poison") && playerCInRange)
+        {
+            GameObject bandage = Instantiate(gameScript.PoisonPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+
+            gameScript.Berries -= 15;
+        }
+    }
+
+    void OnCraftPotionDash()
+    {
+        if (gameScript.checkRecipe("Potion Dash") && playerCInRange)
+        {
+            GameObject bandage = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+
+            gameScript.Feathers -= 5;
+        }
+    }
+
+    void OnCraftArmor()
+    {
+        if (gameScript.checkRecipe("Armor") && playerCInRange)
+        {
+            GameObject bandage = Instantiate(gameScript.ArmorCPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+
+            gameScript.clothPieces -= 15;
+            gameScript.ironPieces -= 50;
+            gameScript.Feathers -= 10;
+        }
+    }
 
     void OnCraftBandagesKK()
     {
@@ -121,8 +164,6 @@ public class makeItems : MonoBehaviour
             gameScript.woodPieces -= 25;
         }
     }
-
-
     void OnCraftGladiusKK()
     {
         if (gameScript.checkRecipe("Gladius"))
@@ -133,6 +174,41 @@ public class makeItems : MonoBehaviour
             gameScript.clothPieces -= 10;
             gameScript.woodPieces -= 10;
             gameScript.ironPieces -= 25;
+        }
+    }
+
+    void OnCraftPotionPoisonKK()
+    {
+        if (gameScript.checkRecipe("Potion Poison"))
+        {
+            GameObject bandage = Instantiate(gameScript.PoisonPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+
+            gameScript.Berries -= 15;
+        }
+    }
+
+    void OnCraftPotionDashKK()
+    {
+        if (gameScript.checkRecipe("Potion Dash"))
+        {
+            GameObject bandage = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+
+            gameScript.Feathers -= 5;
+        }
+    }
+
+    void OnCraftArmorKK()
+    {
+        if (gameScript.checkRecipe("Armor"))
+        {
+            GameObject bandage = Instantiate(gameScript.ArmorKPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+
+            gameScript.clothPieces -= 15;
+            gameScript.ironPieces -= 50;
+            gameScript.Feathers -= 10;
         }
     }
 }

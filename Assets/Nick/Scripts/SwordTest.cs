@@ -5,12 +5,17 @@ using UnityEngine.InputSystem.XR;
 
 public class SwordTest : MonoBehaviour
 {
-    public GameObject Sword;
+    [Header("Settings")]
     public float attackCoolDown = 1.0f;
     public bool canAtt = true;
-    public Weapon Wep;
+    public bool ImStuck = false;
     public Transform rightHandTransform;
 
+    [Header("Scripts")]
+    public GameObject Sword;
+    public Weapon Wep;
+
+    [Header("Animators")]
     public Animator anim;
     public Animator Armor;
 
@@ -22,13 +27,6 @@ public class SwordTest : MonoBehaviour
     public playerAccessWeapons wpnScrpt;
 
     // Start is called before the first frame update
-    void Update()
-    {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && (canAtt == true))
-        {
-            anim.SetTrigger("StopAttack");
-        }
-    }
 
     void Start()
     {
@@ -37,7 +35,7 @@ public class SwordTest : MonoBehaviour
 
     void OnAttack()
     {
-        if (canAtt)
+        if (canAtt && !anim.IsInTransition(0))
             Attacking();
     }
 
@@ -46,11 +44,12 @@ public class SwordTest : MonoBehaviour
         wpnScrpt.swinging = true;
         canAtt = false;
         Wep.enabled = true;
+
         anim.SetTrigger("Attack");
         if (Armor)  
             Armor.SetTrigger("Attack");
-        StartCoroutine(ResetAtt());
 
+        StartCoroutine(ResetAtt());
         playSwordSwingSound();
     }
 
@@ -65,9 +64,11 @@ public class SwordTest : MonoBehaviour
     IEnumerator ResetAtt()
     {
         yield return new WaitForSeconds(attackCoolDown);
+
         anim.SetTrigger("StopAttack");
         if (Armor)
             Armor.SetTrigger("StopAttack");
+
         Wep.enabled = false;
         canAtt = true;
         wpnScrpt.swinging = false;
