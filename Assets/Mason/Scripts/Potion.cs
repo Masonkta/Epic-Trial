@@ -7,6 +7,7 @@ public class Potion : MonoBehaviour
     public GameObject poisonPrefab;
     public GameObject dashPrefab;
     gameHandler gameScript;
+    Weapon weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -17,24 +18,23 @@ public class Potion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKey(KeyCode.T))
         {
             throwpoisonpotionkeyboard();
 
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKey(KeyCode.R))
         {
             throwdashpotionkeyboard();
         }
     } 
     public void throwpoisonpotion()
     {
-        if (gameScript.controllerPlayerPoisonPotion)
+
+        if (gameScript.controllerPlayerPoisonPotion == true)
         {
-            GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
-            currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
-            currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+            GameObject potion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            potion.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
             gameScript.controllerPlayerPoisonPotion = false;
         }
         else return;
@@ -43,42 +43,40 @@ public class Potion : MonoBehaviour
     {
         if (gameScript.controllerPlayerDashPotion)
         {
-            GameObject currentPotion = Instantiate(dashPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
-            currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
-            currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+            GameObject potion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            potion.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
             gameScript.controllerPlayerDashPotion = false;
         }
         else return;
     }
     public void throwdashpotionkeyboard()
     {
-        if (gameScript.keyboardPlayerPoisonPotion)
+        if (gameScript.keyboardPlayerDashPotion)
         {
             GameObject currentPotion = Instantiate(dashPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
-            gameScript.keyboardPlayerPoisonPotion = false;
+            gameScript.keyboardPlayerDashPotion = false;
         }
         else return;
     }
     public void throwpoisonpotionkeyboard()
     {
-        if (gameScript.keyboardPlayerDashPotion)
+        if (gameScript.keyboardPlayerPoisonPotion)
         {
             GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
-            gameScript.keyboardPlayerDashPotion = false;
-            StartCoroutine(DestroyAfterDelay(7f));
+            gameScript.keyboardPlayerPoisonPotion = false;
+            StartCoroutine(DestroyAfterDelay(2f, currentPotion));
+            
         }
-        else return;
     }
-    IEnumerator DestroyAfterDelay(float delay)
+    IEnumerator DestroyAfterDelay(float delay, GameObject obj)
     {
         yield return new WaitForSeconds(delay);
-        Destroy(gameObject);
+        Destroy(obj);
     }
 }
