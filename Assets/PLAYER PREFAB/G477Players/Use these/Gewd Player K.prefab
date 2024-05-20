@@ -2040,11 +2040,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a14230eef3fa11458aaf20633f62ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sword: {fileID: 1975919692049136140}
   attackCoolDown: 0.5
   canAtt: 1
-  Wep: {fileID: 5640777467596809770}
+  ImStuck: 0
   rightHandTransform: {fileID: 2130778338633852465}
+  Sword: {fileID: 1975919692049136140}
+  Wep: {fileID: 5640777467596809770}
   anim: {fileID: 25798893886746385}
   Armor: {fileID: 2054816524684275834}
   swingSounds: {fileID: 960377520991145404}
@@ -9828,11 +9829,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a14230eef3fa11458aaf20633f62ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sword: {fileID: 7588092016593889815}
   attackCoolDown: 0.5
   canAtt: 1
-  Wep: {fileID: 1344263319728411504}
+  ImStuck: 0
   rightHandTransform: {fileID: 2130778338633852465}
+  Sword: {fileID: 7588092016593889815}
+  Wep: {fileID: 1344263319728411504}
   anim: {fileID: 25798893886746385}
   Armor: {fileID: 2054816524684275834}
   swingSounds: {fileID: 960377520991145404}
@@ -10023,11 +10025,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a14230eef3fa11458aaf20633f62ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sword: {fileID: 7683640925913462699}
   attackCoolDown: 0.5
   canAtt: 1
-  Wep: {fileID: 951328453655211029}
+  ImStuck: 0
   rightHandTransform: {fileID: 2130778338633852465}
+  Sword: {fileID: 7683640925913462699}
+  Wep: {fileID: 951328453655211029}
   anim: {fileID: 25798893886746385}
   Armor: {fileID: 2054816524684275834}
   swingSounds: {fileID: 960377520991145404}

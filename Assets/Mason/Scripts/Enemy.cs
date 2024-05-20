@@ -111,16 +111,16 @@ public class Enemy : MonoBehaviour
             if (!alreadyAttacked)
             {
                 if (EnemyType.Weak == Etype)
-                    gameScript.keyboardPlayerHealth -= 2;
+                    gameScript.keyboardPlayerHealth -= 2 * gameScript.playerKDmgMult;
 
                 if (EnemyType.Medium == Etype)
-                    gameScript.keyboardPlayerHealth -= 5;
+                    gameScript.keyboardPlayerHealth -= 5 * gameScript.playerKDmgMult;
 
                 if (EnemyType.Heavy == Etype)
-                    gameScript.keyboardPlayerHealth -= 7;
+                    gameScript.keyboardPlayerHealth -= 7 * gameScript.playerKDmgMult;
 
                 if (EnemyType.Boss == Etype)
-                    gameScript.keyboardPlayerHealth -= 10;
+                    gameScript.keyboardPlayerHealth -= 10 * gameScript.playerKDmgMult;
 
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -132,16 +132,16 @@ public class Enemy : MonoBehaviour
             if (!alreadyAttacked)
             {
                 if (EnemyType.Weak == Etype)
-                    gameScript.controllerPlayerHealth -= 2;
+                    gameScript.controllerPlayerHealth -= 2 * gameScript.playerCDmgMult;
                 
                 if (EnemyType.Medium == Etype)
-                    gameScript.controllerPlayerHealth -= 5;
+                    gameScript.controllerPlayerHealth -= 5 * gameScript.playerCDmgMult;
                 
                 if (EnemyType.Heavy == Etype)
-                    gameScript.controllerPlayerHealth -= 7;
+                    gameScript.controllerPlayerHealth -= 7 * gameScript.playerCDmgMult;
 
                 if (EnemyType.Boss == Etype)
-                    gameScript.controllerPlayerHealth -= 10;
+                    gameScript.controllerPlayerHealth -= 10 * gameScript.playerCDmgMult;
 
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);

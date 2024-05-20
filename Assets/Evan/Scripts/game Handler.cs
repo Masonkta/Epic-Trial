@@ -31,10 +31,20 @@ public class gameHandler : MonoBehaviour
     public GameObject skullPrefab;
     public GameObject PoisonPrefab;
     public GameObject DashPrefab;
-    public GameObject ArmorKPrefab;
-    public GameObject ArmorCPrefab;
+
     public GameObject gladiusPickup;
     public GameObject clubPickup;
+
+    [Header("Armor Stuff")]
+    public GameObject ArmorKPrefab;
+    public GameObject playerKsArmor;
+    public bool playerKHasArmor;
+    public float playerKDmgMult = 1f;
+
+    public GameObject ArmorCPrefab;
+    public GameObject playerCsArmor;
+    public bool playerCHasArmor;
+    public float playerCDmgMult = 1f;
 
     [Header("Resources")]
     public Transform ResourceTransform;
@@ -56,6 +66,7 @@ public class gameHandler : MonoBehaviour
     public GameObject BackUpCamera;
     public GameObject BackUpCamera1;
     public GameObject SpectatorCam;
+    public GameObject SpectatorCam2;
     private float respawnTime = 15f;
     private float respawnTimer;
     private bool keyboardDead = false;
@@ -67,7 +78,6 @@ public class gameHandler : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         ResourceTransform = GameObject.FindGameObjectWithTag("ResourceTransform").transform;
-        if (BackUpCamera) BackUpCamera.SetActive(false);
         if (BackUpCamera) BackUpCamera.SetActive(false);
         if (BackUpCamera1) BackUpCamera1.SetActive(false);
         if (SpectatorCam) SpectatorCam.SetActive(false);
@@ -107,7 +117,7 @@ public class gameHandler : MonoBehaviour
                 {
                     respawnTimer -= Time.deltaTime;
                     controllerPlayer.SetActive(false);
-                    SpectatorCam.SetActive(true);
+                    SpectatorCam2.SetActive(true);
                     controllerDead = true;
                     if (respawnTimer <= 0)
                     {
@@ -120,6 +130,12 @@ public class gameHandler : MonoBehaviour
                     // BOTH PLAYERS DIED
                     SceneManager.LoadScene("gameOver");
                 }
+
+                // Check for armor
+                playerKHasArmor = playerKsArmor.activeInHierarchy;
+                playerCHasArmor = playerCsArmor.activeInHierarchy;
+                playerKDmgMult = playerKHasArmor ? 0.33f : 1f;
+                playerCDmgMult = playerCHasArmor ? 0.33f : 1f;
             }
 
             if (SceneManager.GetActiveScene().name == "The Final")
@@ -244,6 +260,18 @@ public class gameHandler : MonoBehaviour
         controllerPlayerPoisonPotion = true;
     }
 
+    public void turnOnArmorK()
+    {
+        playerKsArmor.SetActive(true);
+        print("Player K now has armor");
+    }
+
+    public void turnOnArmorC()
+    {
+        playerCsArmor.SetActive(true);
+        print("Player C now has armor");
+    }
+
 
     public TMPro.TextMeshProUGUI GetPlayerScoreText()
     {
@@ -259,11 +287,6 @@ public class gameHandler : MonoBehaviour
             return textObject2.GetComponentInChildren<TMPro.TextMeshProUGUI>(); // Get TextMeshProUGUI component
         return null;
 
-    }
-
-    public bool checkIndividualRecipe(Vector3 recipe)
-    {
-        return (clothPieces >= recipe[0] && woodPieces >= recipe[1] && ironPieces >= recipe[2]);
     }
 
     public bool checkRecipe(string name)
@@ -314,6 +337,7 @@ public class gameHandler : MonoBehaviour
         }
 
         SpectatorCam.SetActive(false);
+        SpectatorCam2.SetActive(false);
         respawnTimer = respawnTime;
     }
 }

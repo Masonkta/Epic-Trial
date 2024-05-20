@@ -1779,6 +1779,7 @@ MonoBehaviour:
   walkPointRange: 5
   attackCoolDown: 1
   EnemyAnimator: {fileID: 2225886502586243258}
+  ARMOR: {fileID: 0}
   CanAtt: 1
   sightRange: 35
   attackRange: 7
@@ -1796,7 +1797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b53d66348c049468e810a59c86988a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 5
+  EnemyHealth: 28
   EnemyDefence: 0
   EnemyDamage: 0
   Etype: 1

@@ -118,7 +118,7 @@ public class BossEnemy : MonoBehaviour
 
     private void Chase()
     {
-        if (transform.position.y <= 3)
+        if (transform.position.y <= 83f)
         {
             if (playerKeyboard.activeInHierarchy && playerController.activeInHierarchy)
             {
@@ -172,7 +172,7 @@ public class BossEnemy : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y <= 3)
+        if (transform.position.y <= 83f)
         {
             if (!bossLanded)
             {
@@ -230,13 +230,13 @@ public class BossEnemy : MonoBehaviour
         if (Vector3.Distance(swordTip.position, gameScript.keyboardPlayer.transform.position) < 3f)
         {
             //print("DAMAGE");
-            gameScript.keyboardPlayerHealth -= Time.deltaTime * 3f;
+            gameScript.keyboardPlayerHealth -= Time.deltaTime * 5f * gameScript.playerKDmgMult;
         }
         
         if (Vector3.Distance(swordTip.position, gameScript.controllerPlayer.transform.position) < 3f)
         {
             //print("DAMAGE");
-            gameScript.controllerPlayerHealth -= Time.deltaTime * 3f;
+            gameScript.controllerPlayerHealth -= Time.deltaTime * 5f * gameScript.playerCDmgMult;
         }
 
 

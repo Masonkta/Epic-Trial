@@ -1990,10 +1990,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b53d66348c049468e810a59c86988a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 5
+  EnemyHealth: 50
   EnemyDefence: 5
   EnemyDamage: 0
-  Etype: 0
+  Etype: 3
   deathEffect: {fileID: 3652418002797356281, guid: cd2d5d2087a9c1a4e8b188ee7e396e72,
     type: 3}
   HU: {fileID: 0}
