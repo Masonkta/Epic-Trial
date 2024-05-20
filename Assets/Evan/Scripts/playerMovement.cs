@@ -150,13 +150,23 @@ public class playerMovement : MonoBehaviour
             forwardMoveAm = 0;
             if (Input.GetKey(KeyCode.W))
                 forwardMoveAm = 1;
+            if (Input.GetKey(KeyCode.UpArrow))
+                forwardMoveAm = 1;
+
             if (Input.GetKey(KeyCode.S))
+                forwardMoveAm = -1;
+            if (Input.GetKey(KeyCode.DownArrow))
                 forwardMoveAm = -1;
 
             sideMoveAm = 0;
             if (Input.GetKey(KeyCode.A))
                 sideMoveAm = -1;
+            if (Input.GetKey(KeyCode.LeftArrow))
+                sideMoveAm = -1;
+
             if (Input.GetKey(KeyCode.D))
+                sideMoveAm = 1;
+            if (Input.GetKey(KeyCode.RightArrow))
                 sideMoveAm = 1;
 
             if (Input.GetMouseButtonDown(1))
