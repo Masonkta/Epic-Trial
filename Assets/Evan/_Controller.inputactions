@@ -217,7 +217,7 @@
                 {
                     "name": "",
                     "id": "734f1485-548d-4104-a19e-eb584438f07d",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -228,7 +228,7 @@
                 {
                     "name": "",
                     "id": "d727a663-70f1-4b5b-9aeb-b65e5911989e",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -239,7 +239,7 @@
                 {
                     "name": "",
                     "id": "1395b3e4-5135-4edf-8b1c-e9f1b3033e3c",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -270,6 +270,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CraftPotionPoison",
+                    "type": "Button",
+                    "id": "622eb1c9-7188-470c-b671-c316c0136b24",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CraftPotionDash",
+                    "type": "Button",
+                    "id": "7c66d562-67a3-4a0a-9126-6c840bad2d2e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CraftArmor",
+                    "type": "Button",
+                    "id": "04ddaa51-51fe-4e2a-a372-1ac4966da64e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CraftGladius",
+                    "type": "Button",
+                    "id": "21471052-827f-4a9c-bcee-1a710466f4cd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -292,6 +328,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "CraftClub",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f5aa751-ed71-4a29-b397-8812995f3be6",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CraftPotionPoison",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b78aed2-2d57-4fb8-9468-41d8d7515129",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CraftPotionDash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53cd4263-41e4-408c-b6a2-d5b4fbad9743",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CraftArmor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66b01b43-88ed-4aa4-bbed-73fafd4ff375",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CraftGladius",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

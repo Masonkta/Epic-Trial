@@ -15,10 +15,10 @@ public class Potion2 : MonoBehaviour
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
     }
 
-    public void throwpoisonpotion()
+    void Onthrowpoisonpotion()
     {
-
-        if (gameScript.controllerPlayerPoisonPotion == true)
+        Debug.Log("Got this far");
+        if (gameScript.controllerPlayerPoisonPotion)
         {
             GameObject currentPotion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
             currentPotion.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
@@ -27,8 +27,9 @@ public class Potion2 : MonoBehaviour
         }
         else return;
     }
-    public void throwdashpotion()
+    void Onthrowdashpotion()
     {
+        Debug.Log("Got this far");
         if (gameScript.controllerPlayerDashPotion)
         {
             GameObject currentPotion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);

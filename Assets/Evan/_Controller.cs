@@ -239,7 +239,7 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""734f1485-548d-4104-a19e-eb584438f07d"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -250,7 +250,7 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d727a663-70f1-4b5b-9aeb-b65e5911989e"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -261,7 +261,7 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1395b3e4-5135-4edf-8b1c-e9f1b3033e3c"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -292,6 +292,42 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CraftPotionPoison"",
+                    ""type"": ""Button"",
+                    ""id"": ""622eb1c9-7188-470c-b671-c316c0136b24"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CraftPotionDash"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c66d562-67a3-4a0a-9126-6c840bad2d2e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CraftArmor"",
+                    ""type"": ""Button"",
+                    ""id"": ""04ddaa51-51fe-4e2a-a372-1ac4966da64e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CraftGladius"",
+                    ""type"": ""Button"",
+                    ""id"": ""21471052-827f-4a9c-bcee-1a710466f4cd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -314,6 +350,50 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CraftClub"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f5aa751-ed71-4a29-b397-8812995f3be6"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CraftPotionPoison"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b78aed2-2d57-4fb8-9468-41d8d7515129"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CraftPotionDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53cd4263-41e4-408c-b6a2-d5b4fbad9743"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CraftArmor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66b01b43-88ed-4aa4-bbed-73fafd4ff375"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CraftGladius"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -340,6 +420,10 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
         m_Craft = asset.FindActionMap("Craft", throwIfNotFound: true);
         m_Craft_CraftBandages = m_Craft.FindAction("CraftBandages", throwIfNotFound: true);
         m_Craft_CraftClub = m_Craft.FindAction("CraftClub", throwIfNotFound: true);
+        m_Craft_CraftPotionPoison = m_Craft.FindAction("CraftPotionPoison", throwIfNotFound: true);
+        m_Craft_CraftPotionDash = m_Craft.FindAction("CraftPotionDash", throwIfNotFound: true);
+        m_Craft_CraftArmor = m_Craft.FindAction("CraftArmor", throwIfNotFound: true);
+        m_Craft_CraftGladius = m_Craft.FindAction("CraftGladius", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -537,12 +621,20 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
     private List<ICraftActions> m_CraftActionsCallbackInterfaces = new List<ICraftActions>();
     private readonly InputAction m_Craft_CraftBandages;
     private readonly InputAction m_Craft_CraftClub;
+    private readonly InputAction m_Craft_CraftPotionPoison;
+    private readonly InputAction m_Craft_CraftPotionDash;
+    private readonly InputAction m_Craft_CraftArmor;
+    private readonly InputAction m_Craft_CraftGladius;
     public struct CraftActions
     {
         private @_Controller m_Wrapper;
         public CraftActions(@_Controller wrapper) { m_Wrapper = wrapper; }
         public InputAction @CraftBandages => m_Wrapper.m_Craft_CraftBandages;
         public InputAction @CraftClub => m_Wrapper.m_Craft_CraftClub;
+        public InputAction @CraftPotionPoison => m_Wrapper.m_Craft_CraftPotionPoison;
+        public InputAction @CraftPotionDash => m_Wrapper.m_Craft_CraftPotionDash;
+        public InputAction @CraftArmor => m_Wrapper.m_Craft_CraftArmor;
+        public InputAction @CraftGladius => m_Wrapper.m_Craft_CraftGladius;
         public InputActionMap Get() { return m_Wrapper.m_Craft; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -558,6 +650,18 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
             @CraftClub.started += instance.OnCraftClub;
             @CraftClub.performed += instance.OnCraftClub;
             @CraftClub.canceled += instance.OnCraftClub;
+            @CraftPotionPoison.started += instance.OnCraftPotionPoison;
+            @CraftPotionPoison.performed += instance.OnCraftPotionPoison;
+            @CraftPotionPoison.canceled += instance.OnCraftPotionPoison;
+            @CraftPotionDash.started += instance.OnCraftPotionDash;
+            @CraftPotionDash.performed += instance.OnCraftPotionDash;
+            @CraftPotionDash.canceled += instance.OnCraftPotionDash;
+            @CraftArmor.started += instance.OnCraftArmor;
+            @CraftArmor.performed += instance.OnCraftArmor;
+            @CraftArmor.canceled += instance.OnCraftArmor;
+            @CraftGladius.started += instance.OnCraftGladius;
+            @CraftGladius.performed += instance.OnCraftGladius;
+            @CraftGladius.canceled += instance.OnCraftGladius;
         }
 
         private void UnregisterCallbacks(ICraftActions instance)
@@ -568,6 +672,18 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
             @CraftClub.started -= instance.OnCraftClub;
             @CraftClub.performed -= instance.OnCraftClub;
             @CraftClub.canceled -= instance.OnCraftClub;
+            @CraftPotionPoison.started -= instance.OnCraftPotionPoison;
+            @CraftPotionPoison.performed -= instance.OnCraftPotionPoison;
+            @CraftPotionPoison.canceled -= instance.OnCraftPotionPoison;
+            @CraftPotionDash.started -= instance.OnCraftPotionDash;
+            @CraftPotionDash.performed -= instance.OnCraftPotionDash;
+            @CraftPotionDash.canceled -= instance.OnCraftPotionDash;
+            @CraftArmor.started -= instance.OnCraftArmor;
+            @CraftArmor.performed -= instance.OnCraftArmor;
+            @CraftArmor.canceled -= instance.OnCraftArmor;
+            @CraftGladius.started -= instance.OnCraftGladius;
+            @CraftGladius.performed -= instance.OnCraftGladius;
+            @CraftGladius.canceled -= instance.OnCraftGladius;
         }
 
         public void RemoveCallbacks(ICraftActions instance)
@@ -604,5 +720,9 @@ public partial class @_Controller: IInputActionCollection2, IDisposable
     {
         void OnCraftBandages(InputAction.CallbackContext context);
         void OnCraftClub(InputAction.CallbackContext context);
+        void OnCraftPotionPoison(InputAction.CallbackContext context);
+        void OnCraftPotionDash(InputAction.CallbackContext context);
+        void OnCraftArmor(InputAction.CallbackContext context);
+        void OnCraftGladius(InputAction.CallbackContext context);
     }
 }
