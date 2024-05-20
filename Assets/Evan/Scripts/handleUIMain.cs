@@ -20,7 +20,10 @@ public class handleUIMain : MonoBehaviour
     [Header("Usable")]
     public TextMeshProUGUI playerKBandages;
     public TextMeshProUGUI playerCBandages;
-
+    public TextMeshProUGUI placerKPoisionPotion;
+    public TextMeshProUGUI placerCPoisionPotion;
+    public TextMeshProUGUI placerKDashPotion;
+    public TextMeshProUGUI placerCDashPotion;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +44,46 @@ public class handleUIMain : MonoBehaviour
         playerKBerries.text = gameScript.Berries.ToString();
         playerCBerries.text = gameScript.Berries.ToString();
 
+        if (gameScript.keyboardPlayerPoisonPotion)
+        {
+            placerKPoisionPotion.text = "1";
+        }
+
+        else
+
+        {
+            placerKPoisionPotion.text = "0";
+        }
+
+        if (gameScript.controllerPlayerPoisonPotion)
+        {
+            placerCPoisionPotion.text = "1";
+        }
+
+        else
+        {
+            placerCPoisionPotion.text = "0";
+        }
+
+        if (gameScript.keyboardPlayerDashPotion)
+        {
+            placerKDashPotion.text = "1";
+        }
+
+        else
+        {
+            placerKDashPotion.text = "0";
+        }
+
+        if (gameScript.controllerPlayerDashPotion)
+        {
+            placerCDashPotion.text = "1";
+        }
+
+        else
+        {
+            placerCDashPotion.text = "0";
+        }
 
         // Useable
         playerKBandages.text = gameScript.keyboardPlayerBandages.ToString();

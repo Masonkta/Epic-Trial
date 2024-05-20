@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
     {
         
         poison = true;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(20f);
         poison = false;
         yield break;
     }
@@ -62,18 +62,21 @@ public class Weapon : MonoBehaviour
                         Damage = 2;
                         piercing = false;
                         isHitting = true;
+                        if (poison) Damage *= 2;
                         StartCoroutine(damaging());
                         break;
                     case WeaponType.Club:
                         Damage = 4;
                         piercing = false;
                         isHitting = true;
+                        if (poison) Damage *= 2;
                         StartCoroutine(damaging());
                         break;
                     case WeaponType.Gladius:
                         Damage = 7; ////////////////////
                         piercing = true;
                         isHitting = true;
+                        if (poison) Damage *= 2;
                         StartCoroutine(damaging());
                         break;
 
@@ -107,8 +110,6 @@ public class Weapon : MonoBehaviour
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 BasicEnemy BNMY = collision.gameObject.GetComponent<BasicEnemy>();
                 //Debug.Log(BNMY);
-                if (poison)
-                    Damage *= 2;
 
                 // Calculate damage based on weapon type
                 switch (type)
@@ -117,18 +118,21 @@ public class Weapon : MonoBehaviour
                         Damage = 2;
                         piercing = false;
                         isHitting = true;
+                        if (poison) Damage *= 2;
                         StartCoroutine(damaging());
                         break;
                     case WeaponType.Club:
                         Damage = 4;
                         piercing = false;
                         isHitting = true;
+                        if (poison) Damage *= 2;
                         StartCoroutine(damaging());
                         break;
                     case WeaponType.Gladius:
                         Damage = 7; ////////////////////
                         piercing = true;
                         isHitting = true;
+                        if (poison) Damage *= 2;
                         StartCoroutine(damaging());
                         break;
 

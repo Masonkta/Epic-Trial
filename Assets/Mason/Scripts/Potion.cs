@@ -7,27 +7,43 @@ public class Potion : MonoBehaviour
     public GameObject poisonPrefab;
     public GameObject dashPrefab;
     gameHandler gameScript;
-    Weapon weapon;
+    playerAccessWeapons player1;
+    GameObject p1gladiuscheck;
+    GameObject p1clubcheck;
+    Weapon p1weapon;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
+        player1 = GameObject.FindGameObjectWithTag("PlayerKeyboard").GetComponent<playerAccessWeapons>();
+        p1gladiuscheck = player1.gladius;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.T))
+        if (p1gladiuscheck.activeInHierarchy)
         {
-            throwpoisonpotionkeyboard();
-
+            p1weapon = p1gladiuscheck.GetComponent<Weapon>();
         }
-        if (Input.GetKey(KeyCode.R))
+        if (p1clubcheck.activeInHierarchy)
         {
+            p1weapon = p1clubcheck.GetComponent<Weapon>();
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("WORK!?!");
+            throwpoisonpotionkeyboard();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("WORK!?!");
             throwdashpotionkeyboard();
         }
-    } 
+    }
+
     public void throwdashpotionkeyboard()
     {
         if (gameScript.keyboardPlayerDashPotion)
@@ -51,6 +67,7 @@ public class Potion : MonoBehaviour
             currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
             gameScript.keyboardPlayerPoisonPotion = false;
             StartCoroutine(DestroyAfterDelay(1f, currentPotion));
+            p1weapon.applypoison();
             
         }
     }

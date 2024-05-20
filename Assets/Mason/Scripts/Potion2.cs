@@ -7,14 +7,30 @@ public class Potion2 : MonoBehaviour
     public GameObject poisonPrefab;
     public GameObject dashPrefab;
     gameHandler gameScript;
-    Weapon weapon;
+    playerAccessWeapons player2;
+    GameObject p2gladiuscheck;
+    GameObject p2clubcheck;
+    Weapon p2weapon;
 
     // Start is called before the first frame update
     void Start()
     {
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
+        player2 = GameObject.FindGameObjectWithTag("PlayerController").GetComponent<playerAccessWeapons>();
+        p2gladiuscheck = player2.gladius;
     }
 
+    private void Update()
+    {
+        if (p2gladiuscheck.activeInHierarchy)
+        {
+            p2weapon = p2gladiuscheck.GetComponent<Weapon>();
+        }
+        if (p2clubcheck.activeInHierarchy)
+        {
+            p2weapon = p2clubcheck.GetComponent<Weapon>();
+        }
+    }
     void Onthrowpoisonpotion()
     {
         Debug.Log("Got this far");
