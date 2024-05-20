@@ -22,6 +22,14 @@ public class SwordTest : MonoBehaviour
     public playerAccessWeapons wpnScrpt;
 
     // Start is called before the first frame update
+    void Update()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && (canAtt == true))
+        {
+            anim.SetTrigger("StopAttack");
+        }
+    }
+
     void Start()
     {
         Wep.enabled = false;
@@ -39,7 +47,8 @@ public class SwordTest : MonoBehaviour
         canAtt = false;
         Wep.enabled = true;
         anim.SetTrigger("Attack");
-        Armor.SetTrigger("Attack");
+        if (Armor)  
+            Armor.SetTrigger("Attack");
         StartCoroutine(ResetAtt());
 
         playSwordSwingSound();
@@ -57,7 +66,8 @@ public class SwordTest : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCoolDown);
         anim.SetTrigger("StopAttack");
-        Armor.SetTrigger("StopAttack");
+        if (Armor)
+            Armor.SetTrigger("StopAttack");
         Wep.enabled = false;
         canAtt = true;
         wpnScrpt.swinging = false;

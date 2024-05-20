@@ -89,7 +89,7 @@ public class playerMTutorial : MonoBehaviour
 
 
     [Header("Animation")]
-    Animator playerAnimator;
+    public Animator playerAnimator;
 
 
     [Header("Trails")]
@@ -106,7 +106,6 @@ public class playerMTutorial : MonoBehaviour
     {
         gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
         controller = GetComponent<CharacterController>();
-        playerAnimator = player.GetComponent<Animator>();
 
         initialCamDistance = camDistance; actualCamDistance = camDistance;
         initialCamHeight = camHeight; actualCamHeight = camHeight;
