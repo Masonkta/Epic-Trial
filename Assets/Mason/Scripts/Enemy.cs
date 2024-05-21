@@ -261,7 +261,7 @@ public class Enemy : MonoBehaviour
         int numberOfFeathers = 0;
         if (EnemyType.Heavy == Etype)
         {
-            numberOfFeathers = 2;
+            numberOfFeathers = 3;
             dropFeathers(numberOfFeathers * gameScript.ResourceDropRate);
         }
 
