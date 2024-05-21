@@ -186,7 +186,9 @@ public class playerMTutorial : MonoBehaviour
 
     void OnShiftLock()
     {
-        if (sprinting == false && tutorialScript.playersCanShiftLock)
+        sprinting = false;
+
+        if (tutorialScript.playersCanShiftLock)
             shiftLock = !shiftLock;
     }
 
@@ -240,8 +242,8 @@ public class playerMTutorial : MonoBehaviour
 
     void OnSprint()
     {
-        if (shiftLock == false)
-            sprinting = !sprinting;
+        shiftLock = false;
+        sprinting = !sprinting;
     }
 
     void OnDodge()
@@ -447,8 +449,10 @@ public class playerMTutorial : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
                 OnJump();
 
-            if (Input.GetKeyDown(KeyCode.E) && !sprinting && tutorialScript.playersCanShiftLock)
+            if (Input.GetKeyDown(KeyCode.E) && tutorialScript.playersCanShiftLock)
+            {
                 shiftLock = !shiftLock;
+            }
 
             if (Input.GetKeyDown(KeyCode.Q))
                 GetComponent<playerAccessWeapons>().OnDropItem();

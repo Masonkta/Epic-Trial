@@ -61,6 +61,7 @@ public class Tutorial : MonoBehaviour
     public GameObject jumpTip2;
     public GameObject airDashTip;
     public GameObject airDashTip2;
+    public bool rockNTreeTipsGiven = false;
 
     [Header("Sand Area")]
     public GameObject walkToSandTip;
@@ -184,8 +185,6 @@ public class Tutorial : MonoBehaviour
             if (GladiusReadyToBeInspected)
             {
                 GladiusReadyToBeInspected = false;
-                freezePlayers(gladiusPickup);
-                StartCoroutine(EnableMovementAfterDelay(pickupAweTime));
             }
         }
         else
@@ -199,8 +198,6 @@ public class Tutorial : MonoBehaviour
             {
                 GladiusReadyToBeInspected = false;
                 playersCanDodge = true;
-                freezePlayers(gladiusPickup);
-                StartCoroutine(EnableMovementAfterDelay(pickupAweTime));
             }
         }
         else
@@ -258,6 +255,8 @@ public class Tutorial : MonoBehaviour
                 airDashTip.SetActive(false);
                 airDashTip2.SetActive(false); // Can now double jump, get up to sand platform
                 timeOfOpening = Time.time;
+                rockNTreeTipsGiven = false;
+                StartCoroutine(turnOffRockNTreeTips());
             }
         }
     }
@@ -595,6 +594,13 @@ public class Tutorial : MonoBehaviour
         keyboardPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
         controllerPlayer.GetComponent<playerMTutorial>().overrideCamera = false;
         goToMainScene();
+    }
+
+    IEnumerator turnOffRockNTreeTips()
+    {
+        yield return new WaitForSeconds(5f);
+
+        rockNTreeTipsGiven = true;
     }
 
     void goToMainScene()
