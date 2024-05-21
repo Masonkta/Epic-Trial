@@ -61,7 +61,7 @@ public class tree : MonoBehaviour
         }
 
         transform.localScale *= 0.9f;
-        if (funny) transform.Translate(transform.up * moveDownDist * 1.4f);
+        if (funny) transform.Translate(transform.up * moveDownDist * 1.7f);
         else transform.Translate(Vector3.down * moveDownDist);
 
         if (hitsDone >= 5)
