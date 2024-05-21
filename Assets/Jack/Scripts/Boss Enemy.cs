@@ -180,10 +180,13 @@ public class BossEnemy : MonoBehaviour
                 // THIS IS WHERE BOSS FIRST LANDS
                 //print("BOSS LANDED");
 
-                //playerKeyboard.transform.position = new Vector3(-171.4f, 85.0f, 89.6f);
-                playerKeyboard.transform.Translate(Vector3.up * 10f);
+                playerKeyboard.GetComponent<CharacterController>().enabled = false;
+                playerKeyboard.transform.position = new Vector3(-171.4f, 85.0f, 89.6f);
+                playerKeyboard.GetComponent<CharacterController>().enabled = true;
 
-                playerController.transform.position = new Vector3(-171.4f, 85.0f, 89.6f);
+                playerController.GetComponent<CharacterController>().enabled = false;
+                playerController.transform.position = new Vector3(-172.4f, 86.0f, 89.6f);
+                playerController.GetComponent<CharacterController>().enabled = true;
 
                 walls.SetActive(true);
 
