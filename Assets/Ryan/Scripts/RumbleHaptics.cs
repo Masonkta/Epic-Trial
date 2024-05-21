@@ -57,29 +57,15 @@ public class RumbleHaptics : MonoBehaviour
         }
     }
 
-    public void OnToggleChange(bool tickOn)
-    {
-        if(tickOn)
-        {
-        }
-        else
-        {
-        }
-        toggle = tickOn;
-    }
 
     void Update()
     {
         float currentHealth = GameHandler.GetControllerHealth();
-        uiToggle = GetComponent<Toggle>();
-        if (toggle == true)
+        // Check for changes in player health
+        if (currentHealth < previousHealth)
         {
-            // Check for changes in player health
-            if (currentHealth < previousHealth)
-            {
-                // Player health has dropped
-                StartRumble(0.4f, 0.2f);
-            }
+        // Player health has dropped
+        StartRumble(0.4f, 0.2f);
         }
 
         else if (currentHealth > previousHealth)
