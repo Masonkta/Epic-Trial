@@ -109,25 +109,35 @@ public class gameHandler : MonoBehaviour
 
                 if (keyboardPlayerHealth <= 0)
                 {
-                    respawnTimer -= Time.deltaTime;
                     keyboardPlayer.SetActive(false);
-                    SpectatorCam.SetActive(true);
-                    keyboardDead = true;
-                    if (respawnTimer <= 0)
+                    if (GameObject.FindGameObjectWithTag("spawner").GetComponent<RandomizedSpawner>().SpawnWave != 4)
                     {
-                        RespawnPlayers();
+                        respawnTimer -= Time.deltaTime;
+                        SpectatorCam.SetActive(true);
+                        keyboardDead = true;
+                        if (respawnTimer <= 0)
+                        {
+                            RespawnPlayers();
+                        }
+                    } else {
+                        BackUpCamera.SetActive(true);
                     }
                 }
 
                 if (controllerPlayerHealth <= 0)
                 {
-                    respawnTimer -= Time.deltaTime;
                     controllerPlayer.SetActive(false);
-                    SpectatorCam2.SetActive(true);
-                    controllerDead = true;
-                    if (respawnTimer <= 0)
+                    if (GameObject.FindGameObjectWithTag("spawner").GetComponent<RandomizedSpawner>().SpawnWave != 4)
                     {
-                        RespawnPlayers();
+                        respawnTimer -= Time.deltaTime;
+                        SpectatorCam2.SetActive(true);
+                        controllerDead = true;
+                        if (respawnTimer <= 0)
+                        {
+                            RespawnPlayers();
+                        }
+                    } else {
+                        BackUpCamera1.SetActive(true);
                     }
                 }
 
@@ -375,16 +385,6 @@ public class gameHandler : MonoBehaviour
             SpectatorCam2.SetActive(false);
             respawnTimer = respawnTime;
         }
-        else 
-        {
-            if (keyboardPlayerHealth <= 0){
-                keyboardPlayer.SetActive(false);
-                BackUpCamera.SetActive(true);
-            }
-            else if (controllerPlayerHealth <= 0){
-                controllerPlayer.SetActive(false);
-                BackUpCamera1.SetActive(true);
-            }
-        }
+        else return;
     }
 }
