@@ -61,6 +61,8 @@ public class Tutorial : MonoBehaviour
     public GameObject jumpTip2;
     public GameObject airDashTip;
     public GameObject airDashTip2;
+    public GameObject rockNTreesTip;
+    public GameObject rockNTreesTip2;
     public bool rockNTreeTipsGiven = false;
 
     [Header("Sand Area")]
@@ -254,8 +256,8 @@ public class Tutorial : MonoBehaviour
             {
                 airDashTip.SetActive(false);
                 airDashTip2.SetActive(false); // Can now double jump, get up to sand platform
-                timeOfOpening = Time.time;
-                rockNTreeTipsGiven = false;
+                
+                rockNTreesTip.SetActive(true); rockNTreesTip2.SetActive(true);
                 StartCoroutine(turnOffRockNTreeTips());
             }
         }
@@ -263,7 +265,7 @@ public class Tutorial : MonoBehaviour
 
     void initialStuffWhenPlayersGetToSandPlatform()
     {
-        if (playersCanAirDash)
+        if (playersCanAirDash && rockNTreeTipsGiven)
         {
             if (!bothPlayersOnPlatform && !airDashTip.activeSelf)
             {
@@ -598,9 +600,13 @@ public class Tutorial : MonoBehaviour
 
     IEnumerator turnOffRockNTreeTips()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(8f);
+
+        rockNTreesTip.SetActive(false);
+        rockNTreesTip2.SetActive(false);
 
         rockNTreeTipsGiven = true;
+        timeOfOpening = Time.time;
     }
 
     void goToMainScene()

@@ -444,13 +444,17 @@ public class playerMTutorial : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
                 OnDodge();
 
-            sprinting = Input.GetKey(KeyCode.LeftShift) && !shiftLock;
+            sprinting = Input.GetKey(KeyCode.LeftShift);
+
+            if (sprinting)
+                shiftLock = false;
 
             if (Input.GetKeyDown(KeyCode.Space))
                 OnJump();
 
             if (Input.GetKeyDown(KeyCode.E) && tutorialScript.playersCanShiftLock)
             {
+                sprinting = false;
                 shiftLock = !shiftLock;
             }
 

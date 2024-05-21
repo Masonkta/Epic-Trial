@@ -230,7 +230,7 @@ public class playerMovement : MonoBehaviour
 
     void OnHeal()
     {
-        gameScript.useControllerBandage();
+        if (gameScript) gameScript.useControllerBandage();
     }
     
     void OnPotion()
