@@ -259,11 +259,11 @@ public class Enemy : MonoBehaviour
         dropCloth(numberOfCloth * gameScript.ResourceDropRate);
         float featherCountThresh = Random.value;
         int numberOfFeathers = 0;
-        if (EnemyType.Medium == Etype)
+        if (EnemyType.Heavy == Etype)
         {
-            numberOfFeathers = featherCountThresh <= 0.3f ? 2 : 1;
+            numberOfFeathers = 1;
+            dropFeathers(numberOfFeathers * gameScript.ResourceDropRate);
         }
-        dropFeathers(numberOfFeathers * gameScript.ResourceDropRate);
 
 
 

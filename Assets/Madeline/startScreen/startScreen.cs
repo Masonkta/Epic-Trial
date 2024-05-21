@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuActions : MonoBehaviour {
+    public GameObject MainMenu;
+    public GameObject OptionsMenu;
 
     private void Start()
     {
@@ -18,7 +20,11 @@ public class MenuActions : MonoBehaviour {
     {
         SceneManager.LoadScene("Tutorial");
     }
-
+    public void Options()
+    {
+        MainMenu.SetActive(false);
+        OptionsMenu.SetActive(true);
+    }
     public void QuitGame()
     {
         Debug.Log("quit button pushed");
