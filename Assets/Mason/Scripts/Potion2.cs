@@ -41,11 +41,12 @@ public class Potion2 : MonoBehaviour
             fist = true;
         }
     }
-    void Onthrowpoisonpotion()
+    void OnThrowpoisonpotion()
     {
-        if (!fist)
+        if (gameScript.controllerPlayerPoisonPotion)
         {
-            if (gameScript.controllerPlayerPoisonPotion) {
+            if (!fist)
+        {
                 if (!gameScript.playerCUsingPoisonPotion)
                 {
                     GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
@@ -74,7 +75,7 @@ public class Potion2 : MonoBehaviour
 
         }
     }
-    void Onthrowdashpotion()
+    void OnThrowdashpotion()
     {
         if (gameScript.controllerPlayerDashPotion) {
             if (!gameScript.playerCUsingDashPotion)

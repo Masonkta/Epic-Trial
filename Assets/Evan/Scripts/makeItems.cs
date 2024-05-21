@@ -61,11 +61,11 @@ public class makeItems : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha3)) // Gladius
                 OnCraftGladiusKK();
 
-            if (Input.GetKeyDown(KeyCode.Alpha4)) // Poison Potion
-                OnCraftPotionPoisonKK();
-
-            if (Input.GetKeyDown(KeyCode.Alpha5)) // Dash Potion
+            if (Input.GetKeyDown(KeyCode.Alpha4)) // Dash Potion
                 OnCraftPotionDashKK();
+
+            if (Input.GetKeyDown(KeyCode.Alpha5)) // Poison Potion
+                OnCraftPotionPoisonKK();
 
             if (Input.GetKeyDown(KeyCode.Alpha6)) // Armor
                 OnCraftArmorKK();
