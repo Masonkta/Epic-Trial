@@ -179,15 +179,11 @@ public class BossEnemy : MonoBehaviour
                 timeOfBossLand = Time.time;
                 // THIS IS WHERE BOSS FIRST LANDS
                 //print("BOSS LANDED");
-                float dK = Vector3.Distance(centerOfBossFight.position, playerKeyboard.transform.position);
-                float dC = Vector3.Distance(centerOfBossFight.position, playerController.transform.position);
 
+                //playerKeyboard.transform.position = new Vector3(-171.4f, 85.0f, 89.6f);
+                playerKeyboard.transform.Translate(Vector3.up * 10f);
 
-                if (dK > fightDist)
-                    playerKeyboard.transform.position = startOfFightSpot.position;
-
-                if (dC > fightDist)
-                    playerController.transform.position = startOfFightSpot.position;
+                playerController.transform.position = new Vector3(-171.4f, 85.0f, 89.6f);
 
                 walls.SetActive(true);
 

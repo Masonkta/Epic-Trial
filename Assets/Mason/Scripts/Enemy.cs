@@ -275,7 +275,7 @@ public class Enemy : MonoBehaviour
         enemySkull.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
 
     }
-
+    
 
     void dropGold(int num)
     {
