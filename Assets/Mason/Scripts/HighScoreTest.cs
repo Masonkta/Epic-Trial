@@ -11,7 +11,7 @@ public class HighScoreTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HS.Init(this, "Ring of Hell");
+        HS.Init(this, "Champion Of The Arena");
     }
 
     private void Update()
