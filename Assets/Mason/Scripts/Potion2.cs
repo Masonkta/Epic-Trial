@@ -45,17 +45,20 @@ public class Potion2 : MonoBehaviour
     {
         if (!fist)
         {
-            if (gameScript.controllerPlayerPoisonPotion)
-            {
-                GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-                float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
-                currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
-                currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
-                gameScript.controllerPlayerPoisonPotion = false;
-                StartCoroutine(DestroyAfterDelay(1f, currentPotion));
-                if (p2weapon != null)
+            if (gameScript.controllerPlayerPoisonPotion) {
+                if (!gameScript.playerCUsingPoisonPotion)
                 {
-                    p2weapon.applypoison();
+                    GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+                    float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+                    currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+                    currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+                    gameScript.controllerPlayerPoisonPotion = false;
+                    StartCoroutine(DestroyAfterDelay(1f, currentPotion));
+                    if (p2weapon != null)
+                    {
+                        gameScript.playerCUsingPoisonPotion = true;
+                        p2weapon.applypoisonC();
+                    }
                 }
             }
             else
@@ -73,14 +76,16 @@ public class Potion2 : MonoBehaviour
     }
     void Onthrowdashpotion()
     {
-        if (gameScript.controllerPlayerDashPotion)
-        {
-            GameObject currentPotion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-            currentPotion.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
-            gameScript.controllerPlayerDashPotion = false;
-            StartCoroutine(DestroyAfterDelay(1f, currentPotion));
-            gameScript.playerCUsingDashPotion = true;
-            StartCoroutine(DashEffect(10f));
+        if (gameScript.controllerPlayerDashPotion) {
+            if (!gameScript.playerCUsingDashPotion)
+            {
+                GameObject currentPotion = Instantiate(gameScript.DashPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+                currentPotion.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+                gameScript.controllerPlayerDashPotion = false;
+                StartCoroutine(DestroyAfterDelay(1f, currentPotion));
+                gameScript.playerCUsingDashPotion = true;
+                StartCoroutine(DashEffect(15f));
+            }
         }
         else return;
     }

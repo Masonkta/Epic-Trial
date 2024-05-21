@@ -56,14 +56,17 @@ public class Potion : MonoBehaviour
     {
         if (gameScript.keyboardPlayerDashPotion)
         {
-            GameObject currentPotion = Instantiate(dashPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
-            currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
-            currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
-            gameScript.keyboardPlayerDashPotion = false;
-            StartCoroutine(DestroyAfterDelay(1f, currentPotion));
-            gameScript.playerKUsingDashPotion = true;
-            StartCoroutine(DashEffect(10f));
+            if (!gameScript.playerKUsingDashPotion)
+            {
+                GameObject currentPotion = Instantiate(dashPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+                float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+                currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+                currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+                gameScript.keyboardPlayerDashPotion = false;
+                StartCoroutine(DestroyAfterDelay(1f, currentPotion));
+                gameScript.playerKUsingDashPotion = true;
+                StartCoroutine(DashEffect(15f));
+            }
         }
         else return;
     }
@@ -73,15 +76,19 @@ public class Potion : MonoBehaviour
         {
             if (gameScript.keyboardPlayerPoisonPotion)
             {
-                GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-                float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
-                currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
-                currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
-                gameScript.keyboardPlayerPoisonPotion = false;
-                StartCoroutine(DestroyAfterDelay(1f, currentPotion));
-                if (p1weapon != null)
+                if (!gameScript.playerKUsingPoisonPotion)
                 {
-                    p1weapon.applypoison();
+                    GameObject currentPotion = Instantiate(poisonPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+                    float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+                    currentPotion.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+                    currentPotion.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+                    gameScript.keyboardPlayerPoisonPotion = false;
+                    StartCoroutine(DestroyAfterDelay(1f, currentPotion));
+                    if (p1weapon != null)
+                    {
+                        gameScript.playerKUsingPoisonPotion = true;
+                        p1weapon.applypoisonK();
+                    }
                 }
             }
             else

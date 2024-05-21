@@ -31,6 +31,7 @@ public class resourcePickup : MonoBehaviour
             pickupDist = 2.6f;
 
 
+
     }
 
     // Update is called once per frame

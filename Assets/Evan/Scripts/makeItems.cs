@@ -91,7 +91,7 @@ public class makeItems : MonoBehaviour
             bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 
             gameScript.clothPieces -= 10;
-            gameScript.woodPieces -= 20;
+            gameScript.woodPieces -= 25;
         }
     }
 

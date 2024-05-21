@@ -23,6 +23,7 @@ public class Weapon : MonoBehaviour
     public WeaponType type;
     public SwordTest Att;
     public AudioSource deflectSound;
+    gameHandler gameScript;
 
 
 
@@ -30,17 +31,32 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         poison = false;
+        gameScript = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<gameHandler>();
     }
 
-    public void applypoison()
+    public void applypoisonK()
     {
-        StartCoroutine(poisonbuff());
+        StartCoroutine(poisonbuffK());
     }
-    private IEnumerator poisonbuff()
+
+    public void applypoisonC()
     {
-        
+        StartCoroutine(poisonbuffC());
+    }
+    private IEnumerator poisonbuffK()
+    {
         poison = true;
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(15f);
+        gameScript.playerKUsingPoisonPotion = false;
+        poison = false;
+        yield break;
+    }
+
+    private IEnumerator poisonbuffC()
+    {
+        poison = true;
+        yield return new WaitForSeconds(15f);
+        gameScript.playerCUsingPoisonPotion = false;
         poison = false;
         yield break;
     }

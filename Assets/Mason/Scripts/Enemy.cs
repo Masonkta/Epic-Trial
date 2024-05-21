@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     GameObject woodPrefab;
     GameObject ironPrefab;
     GameObject skull;
+    GameObject featherPrefab;
     
 
 
@@ -100,6 +101,7 @@ public class Enemy : MonoBehaviour
         woodPrefab = gameScript.woodPrefab;
         ironPrefab = gameScript.ironPrefab;
         skull = gameScript.skullPrefab;
+        featherPrefab = gameScript.FeatherPrefab;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -252,16 +254,22 @@ public class Enemy : MonoBehaviour
 
         // Decide how many and what items to drop
         float threshToDetermine = Random.value;
-        
         float clothCountThresh = Random.value;
         int numberOfCloth = clothCountThresh <= 0.3f ? 2 : 1; // 30% for 2, 70% for 1
         dropCloth(numberOfCloth * gameScript.ResourceDropRate);
-        
+        float featherCountThresh = Random.value;
+        int numberOfFeathers = 0;
+        if (EnemyType.Medium == Etype)
+        {
+            numberOfFeathers = featherCountThresh <= 0.3f ? 2 : 1;
+        }
+        dropFeathers(numberOfFeathers * gameScript.ResourceDropRate);
 
 
-        // Drop SKULL
 
-        GameObject enemySkull = Instantiate(skull, transform.position + Vector3.up + Random.insideUnitSphere, Random.rotation, gameScript.ResourceTransform);
+            // Drop SKULL
+
+            GameObject enemySkull = Instantiate(skull, transform.position + Vector3.up + Random.insideUnitSphere, Random.rotation, gameScript.ResourceTransform);
         if (EnemyType.Boss == Etype) enemySkull.transform.localScale *= 2f;
         float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
         enemySkull.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
@@ -288,6 +296,16 @@ public class Enemy : MonoBehaviour
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
             currentCloth.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
             currentCloth.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
+        }
+    }
+    void dropFeathers(int num)
+    {
+        for (int i = 0; i < num; i++)
+        {                                  //       VVV   Change this
+            GameObject currentFeather = Instantiate(featherPrefab, transform.position + Vector3.up + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentFeather.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentFeather.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
         }
     }
 

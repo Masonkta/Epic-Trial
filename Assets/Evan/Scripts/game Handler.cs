@@ -31,6 +31,7 @@ public class gameHandler : MonoBehaviour
     public GameObject skullPrefab;
     public GameObject PoisonPrefab;
     public GameObject DashPrefab;
+    public GameObject FeatherPrefab;
 
     public GameObject gladiusPickup;
     public GameObject clubPickup;
@@ -56,13 +57,15 @@ public class gameHandler : MonoBehaviour
     public int Berries;
     public int Feathers;
     public int keyboardPlayerBandages;
+    public int controllerPlayerBandages;
     public bool keyboardPlayerDashPotion;
     public bool keyboardPlayerPoisonPotion;
     public bool controllerPlayerDashPotion;
     public bool controllerPlayerPoisonPotion;
-    public int controllerPlayerBandages;
     public bool playerKUsingDashPotion;
     public bool playerCUsingDashPotion;
+    public bool playerKUsingPoisonPotion;
+    public bool playerCUsingPoisonPotion;
 
     [Header("Death Cameras")]
     public GameObject BackUpCamera;
@@ -159,15 +162,12 @@ public class gameHandler : MonoBehaviour
             _healthbarSpriteC.fillAmount = controllerPlayerHealth / 100f;
 
 
-            if (Input.GetKeyDown(KeyCode.R))
-                useControllerBandage();
+            if (Input.GetKeyDown(KeyCode.F))
+                useKeyboardBandage();
         }
         
 
         ///////////////////////////////////////////////////////////////////////
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            OnQuitGame();
 
     }
 
