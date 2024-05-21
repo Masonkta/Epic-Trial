@@ -354,6 +354,7 @@ public class gameHandler : MonoBehaviour
             keyboardPlayer.transform.position = respawnPosition;
             keyboardPlayerHealth = 50f;
             keyboardDead = false;
+            hs.score = (int)(hs.score * 0.6);
         }
 
         if (controllerDead)
@@ -363,10 +364,12 @@ public class gameHandler : MonoBehaviour
             controllerPlayer.transform.position = respawnPosition;
             controllerPlayerHealth = 50f;
             controllerDead = false;
+            hs.score = (int)(hs.score * 0.6);
         }
 
         SpectatorCam.SetActive(false);
         SpectatorCam2.SetActive(false);
         respawnTimer = respawnTime;
+
     }
 }
