@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using HighScore;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Gameover : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Gameover : MonoBehaviour
     public TextMeshProUGUI points2;
     public TextMeshProUGUI name1;
     public TextMeshProUGUI name2;
+    public GameObject send;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +31,13 @@ public class Gameover : MonoBehaviour
     public void submit()
     {
         HS.SubmitHighScore(this, name1.text + " and " + name2.text, hs.score);
+        send.SetActive(false);
+
     }
 
-    public void restart()
+    public void quit()
     {
-        SceneManager.LoadScene("startScreen");
+        Application.Quit();
     }
 
     // Update is called once per frame
