@@ -377,6 +377,16 @@ public class gameHandler : MonoBehaviour
             SpectatorCam2.SetActive(false);
             respawnTimer = respawnTime;
         }
-        else return;
+        else 
+        {
+            if (keyboardPlayerHealth <= 0){
+                keyboardPlayer.SetActive(false);
+                BackUpCamera.SetActive(true);
+            }
+            else if (controllerPlayerHealth <= 0){
+                controllerPlayer.SetActive(false);
+                BackUpCamera1.SetActive(true);
+            }
+        }
     }
 }
