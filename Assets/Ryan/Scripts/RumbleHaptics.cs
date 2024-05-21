@@ -3,12 +3,17 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 using System.Collections; 
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.UI;
+using UnityEngine.UI;
+using TMPro;
 
 public class RumbleHaptics : MonoBehaviour
 {
     private Gamepad gamepad;
     private bool isRumbling = false;
     private float previousHealth;
+    bool toggle;
+    public Toggle uiToggle;
 
     private gameHandler GameHandler;
 
@@ -52,22 +57,31 @@ public class RumbleHaptics : MonoBehaviour
         }
     }
 
+    public void OnToggleChange(bool tickOn)
+    {
+        if(tickOn)
+        {
+        }
+        else
+        {
+        }
+        toggle = tickOn;
+    }
+
     void Update()
     {
-        if (gamepad == null)
-        {
-            Debug.LogWarning("No Xbox controller connected!");
-            return;
-        }
-
         float currentHealth = GameHandler.GetControllerHealth();
-
-        // Check for changes in player health
-        if (currentHealth < previousHealth)
+        uiToggle = GetComponent<Toggle>();
+        if (toggle == true)
         {
-            // Player health has dropped
-            StartRumble(0.4f, 0.2f);
+            // Check for changes in player health
+            if (currentHealth < previousHealth)
+            {
+                // Player health has dropped
+                StartRumble(0.4f, 0.2f);
+            }
         }
+
         else if (currentHealth > previousHealth)
         {
             // Player health has increased (regained health)
@@ -94,6 +108,7 @@ public class RumbleHaptics : MonoBehaviour
         }
     }
 
+
     System.Collections.IEnumerator StopRumble(float duration)
     {
         yield return new WaitForSeconds(duration);
@@ -105,9 +120,22 @@ public class RumbleHaptics : MonoBehaviour
 
     public void StopRumbleFunc()
     {
-        gamepad.SetMotorSpeeds(0, 0);
-        isRumbling = false;
-        print(isRumbling);
+        if (gamepad != null)
+        {
+            gamepad.SetMotorSpeeds(0, 0);
+            isRumbling = false;
+            print(isRumbling);
+        }
+    }
+
+    public void toggleOn()
+    {
+        toggle = true;
+    }
+
+    public void toggleOff()
+    {
+        toggle = false;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

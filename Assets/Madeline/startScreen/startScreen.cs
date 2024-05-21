@@ -22,16 +22,7 @@ public class MenuActions : MonoBehaviour {
     {
         SceneManager.LoadScene("Tutorial");
     }
-    public void Options()
-    {
-        MainMenu.SetActive(false);
-        OptionsMenu.SetActive(true);
-    }
-    public void Main()
-    {
-        MainMenu.SetActive(true);
-        OptionsMenu.SetActive(false);
-    }
+
     public void QuitGame()
     {
         Debug.Log("quit button pushed");
