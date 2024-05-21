@@ -133,6 +133,7 @@ public class gameHandler : MonoBehaviour
                 if (keyboardPlayerHealth <= 0f && controllerPlayerHealth <= 0f)
                 {
                     // BOTH PLAYERS DIED
+                    controllerRumble.StopRumbleFunc();
                     SceneManager.LoadScene("gameOver");
                 }
 
@@ -183,12 +184,14 @@ public class gameHandler : MonoBehaviour
     public IEnumerator WaitAndChangeScenetask()
     {
         yield return new WaitForSeconds(10f);
+        controllerRumble.StopRumbleFunc();
         SceneManager.LoadScene("The Final");
     }
 
     public IEnumerator WaitAndChangeVictoryScene()
     {
         yield return new WaitForSeconds(10f);
+        controllerRumble.StopRumbleFunc();
         SceneManager.LoadScene("victoryScene");
     }
 
@@ -204,6 +207,7 @@ public class gameHandler : MonoBehaviour
 
     void OnQuitGame()
     {
+        controllerRumble.StopRumbleFunc();
         Application.Quit();
     }
 

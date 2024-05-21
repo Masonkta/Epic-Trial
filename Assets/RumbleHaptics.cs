@@ -103,6 +103,13 @@ public class RumbleHaptics : MonoBehaviour
         print(isRumbling);
     }
 
+    public void StopRumbleFunc()
+    {
+        gamepad.SetMotorSpeeds(0, 0);
+        isRumbling = false;
+        print(isRumbling);
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Stop the rumble when the scene changes
