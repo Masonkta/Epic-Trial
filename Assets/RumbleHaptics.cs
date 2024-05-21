@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
-using System.Collections; // Added using directive for IEnumerator
+using System.Collections; 
+using UnityEngine.SceneManagement;
 
 public class RumbleHaptics : MonoBehaviour
 {
@@ -36,6 +37,9 @@ public class RumbleHaptics : MonoBehaviour
 
         // Subscribe to Input System events
         InputSystem.onDeviceChange += OnDeviceChange;
+        
+        // Subscribe to scene change events
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDeviceChange(InputDevice device, InputDeviceChange change)
@@ -81,6 +85,7 @@ public class RumbleHaptics : MonoBehaviour
             // Make the controller rumble
             gamepad.SetMotorSpeeds(intensity, intensity);
             isRumbling = true;
+            print(isRumbling);
             StartCoroutine(StopRumble(duration));
         }
         else
@@ -95,11 +100,26 @@ public class RumbleHaptics : MonoBehaviour
         // Stop the rumble after the specified duration
         gamepad.SetMotorSpeeds(0, 0);
         isRumbling = false;
+        print(isRumbling);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Stop the rumble when the scene changes
+        if (gamepad != null)
+        {
+            gamepad.SetMotorSpeeds(0, 0);
+            isRumbling = false;
+            print(isRumbling);
+        }
     }
 
     void OnDestroy()
     {
         // Unsubscribe from Input System events
         InputSystem.onDeviceChange -= OnDeviceChange;
+
+        // Unsubscribe from scene change events
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
