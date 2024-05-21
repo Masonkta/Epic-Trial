@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class handleUIMain : MonoBehaviour
 {
@@ -16,16 +17,16 @@ public class handleUIMain : MonoBehaviour
     public TextMeshProUGUI playerCIron;
     public TextMeshProUGUI playerKBerries;
     public TextMeshProUGUI playerCBerries;
+    public TextMeshProUGUI playerKFeathers;
+    public TextMeshProUGUI playerCFeathers;
 
     [Header("Usable")]
     public TextMeshProUGUI playerKBandages;
     public TextMeshProUGUI playerCBandages;
-    public TextMeshProUGUI playerKPoisionPotion;
-    public TextMeshProUGUI playerCPoisionPotion;
-    public TextMeshProUGUI playerKDashPotion;
-    public TextMeshProUGUI playerCDashPotion;
-    public TextMeshProUGUI playerKFeathers;
-    public TextMeshProUGUI playerCFeathers;
+    public Image playerKPoisionPotion;
+    public Image playerCPoisionPotion;
+    public Image playerKDashPotion;
+    public Image playerCDashPotion;
 
     // Start is called before the first frame update
     void Start()
@@ -48,49 +49,35 @@ public class handleUIMain : MonoBehaviour
         playerKFeathers.text = gameScript.Feathers.ToString();
         playerCFeathers.text = gameScript.Feathers.ToString();
 
-        if (gameScript.keyboardPlayerPoisonPotion)
-        {
-            playerKPoisionPotion.text = "1";
-        }
 
-        else
+        
 
-        {
-            playerKPoisionPotion.text = "0";
-        }
-
-        if (gameScript.controllerPlayerPoisonPotion)
-        {
-            playerCPoisionPotion.text = "1";
-        }
-
-        else
-        {
-            playerCPoisionPotion.text = "0";
-        }
-
-        if (gameScript.keyboardPlayerDashPotion)
-        {
-            playerKDashPotion.text = "1";
-        }
-
-        else
-        {
-            playerKDashPotion.text = "0";
-        }
-
-        if (gameScript.controllerPlayerDashPotion)
-        {
-            playerCDashPotion.text = "1";
-        }
-
-        else
-        {
-            playerCDashPotion.text = "0";
-        }
 
         // Useable
         playerKBandages.text = gameScript.keyboardPlayerBandages.ToString();
         playerCBandages.text = gameScript.controllerPlayerBandages.ToString();
+
+        // Poison Potion
+        if (gameScript.keyboardPlayerPoisonPotion)
+            playerKPoisionPotion.color = new Color(1f, 1f, 1f, 1f);
+        else
+            playerKPoisionPotion.color = new Color(1f, 1f, 1f, 0.25f);
+
+
+        if (gameScript.controllerPlayerPoisonPotion)
+            playerCPoisionPotion.color = new Color(1f, 1f, 1f, 1f);
+        else
+            playerCPoisionPotion.color = new Color(1f, 1f, 1f, 0.25f);
+
+        // Dash Potion
+        if (gameScript.keyboardPlayerDashPotion)
+            playerKDashPotion.color = new Color(1f, 1f, 1f, 1f);
+        else
+            playerKDashPotion.color = new Color(1f, 1f, 1f, 0.25f);
+
+        if (gameScript.controllerPlayerDashPotion)
+            playerCDashPotion.color = new Color(1f, 1f, 1f, 1f);
+        else
+            playerCDashPotion.color = new Color(1f, 1f, 1f, 0.25f);
     }
 }
