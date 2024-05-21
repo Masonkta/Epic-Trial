@@ -50,7 +50,7 @@ public class Iron : MonoBehaviour
         nextHitTime = Time.time + rockCooldown;
         hitsDone++;
 
-        for (int i = 0; i < gameScript.ResourceDropRate + 1; i++)
+        for (int i = 0; i < gameScript.ResourceDropRate; i++)
         {
             GameObject currentIron = Instantiate(ironPiece, transform.position + Vector3.up + Random.insideUnitSphere * 2f, Quaternion.identity, gameScript.ResourceTransform);
             float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);

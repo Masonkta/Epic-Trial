@@ -16,7 +16,7 @@ using static UnityEngine.Tilemaps.Tilemap;
 
 public class playerMovement : MonoBehaviour
 {
-    gameHandler gameScript;
+    public gameHandler gameScript;
     CharacterController controller;
 
     public bool hardCodeKeyboard;
@@ -119,6 +119,9 @@ public class playerMovement : MonoBehaviour
         if (hardCodeKeyboard && gameScript.playerKUsingDashPotion)
             canDodge = true;
 
+        if (!hardCodeKeyboard && gameScript.playerCUsingDashPotion)
+            canDodge = true;
+
         if (bossSpawned)
             gameScript.gameObject.GetComponent<AudioSource>().enabled = false;
 
@@ -191,7 +194,7 @@ public class playerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
                 GetComponent<playerAccessWeapons>().OnDropItem();
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.F))
                 gameScript.useKeyboardBandage();
 
 
@@ -230,6 +233,7 @@ public class playerMovement : MonoBehaviour
 
     void OnHeal()
     {
+        print(1);
         if (gameScript) gameScript.useControllerBandage();
     }
     
@@ -350,7 +354,7 @@ public class playerMovement : MonoBehaviour
 
     IEnumerator resetDodge()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.7f);
 
         canDodge = true;
     }

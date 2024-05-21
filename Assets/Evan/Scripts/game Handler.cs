@@ -185,14 +185,14 @@ public class gameHandler : MonoBehaviour
     public IEnumerator WaitAndChangeScenetask()
     {
         yield return new WaitForSeconds(10f);
-        controllerRumble.StopRumbleFunc();
+        if (controllerRumble)  controllerRumble.StopRumbleFunc();
         SceneManager.LoadScene("The Final");
     }
 
     public IEnumerator WaitAndChangeVictoryScene()
     {
         yield return new WaitForSeconds(10f);
-        controllerRumble.StopRumbleFunc();
+        if (controllerRumble) controllerRumble.StopRumbleFunc();
         SceneManager.LoadScene("victoryScene");
     }
 
@@ -208,7 +208,7 @@ public class gameHandler : MonoBehaviour
 
     void OnQuitGame()
     {
-        controllerRumble.StopRumbleFunc();
+        if (controllerRumble) controllerRumble.StopRumbleFunc();
         Application.Quit();
     }
 
@@ -260,7 +260,7 @@ public class gameHandler : MonoBehaviour
 
     public void useControllerBandage()
     {
-        if (controllerPlayerBandages > 0 && keyboardPlayerHealth < 100f)
+        if (controllerPlayerBandages > 0 && controllerPlayerHealth < 100f)
         {
             controllerPlayerHealth += 20f;
             if (controllerPlayerHealth > 100f)
@@ -293,13 +293,11 @@ public class gameHandler : MonoBehaviour
     public void turnOnArmorK()
     {
         playerKsArmor.SetActive(true);
-        print("Player K now has armor");
     }
 
     public void turnOnArmorC()
     {
         playerCsArmor.SetActive(true);
-        print("Player C now has armor");
     }
 
 

@@ -49,15 +49,12 @@ public class tree : MonoBehaviour
         nextHitTime = Time.time + treeCooldown;
         hitsDone++;
 
-        if (hitsDone % 2 == 1)
+        for (int i = 0; i < gameScript.ResourceDropRate; i++)
         {
-            for (int i = 0; i < gameScript.ResourceDropRate; i++)
-            {
-                GameObject currentWood = Instantiate(woodPiece, transform.position + Vector3.up + Random.insideUnitSphere * 2f, Quaternion.identity, gameScript.ResourceTransform);
-                float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
-                currentWood.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
-                currentWood.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
-            }
+            GameObject currentWood = Instantiate(woodPiece, transform.position + Vector3.up + Random.insideUnitSphere * 2f, Quaternion.identity, gameScript.ResourceTransform);
+            float angle = Random.Range(0, Mathf.PI * 2); float mag = Random.Range(2f, 5f);
+            currentWood.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sin(angle) * mag, 10f, Mathf.Cos(angle) * mag);
+            currentWood.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 22f;
         }
 
         transform.localScale *= 0.9f;

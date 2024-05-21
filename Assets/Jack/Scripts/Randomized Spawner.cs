@@ -130,8 +130,8 @@ public class RandomizedSpawner : MonoBehaviour
         }
         if (SpawnWave == 4)
         {
-            enemyCounterK.text = "Wave *";
-            enemyCounterC.text = "Wave *";
+            enemyCounterK.text = "BOSS";
+            enemyCounterC.text = "BOSS";
             // Madi enable image of skull here
         }
 
