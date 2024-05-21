@@ -62,6 +62,10 @@ public class RandomizedSpawner : MonoBehaviour
 
             for (int i = 0; i < 3; i++)
                 Spawn(enemyMid);
+
+            for (int i = 0; i < 2; i++)
+                Spawn(enemyStr);
+
             foreach (Enemy t in FindObjectsOfType<Enemy>())
             {
                 randomizedColor = Random.Range(1, 4);
@@ -74,11 +78,12 @@ public class RandomizedSpawner : MonoBehaviour
 
         if (SpawnWave == 3)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
                 Spawn(enemyMid);
 
             for (int i = 0; i < 4; i++)
                 Spawn(enemyStr);
+
             foreach (Enemy t in FindObjectsOfType<Enemy>())
             {
                 randomizedColor = Random.Range(1, 4);
