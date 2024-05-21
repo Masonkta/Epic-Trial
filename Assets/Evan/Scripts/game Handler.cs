@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 public class gameHandler : MonoBehaviour
 {
@@ -348,28 +349,34 @@ public class gameHandler : MonoBehaviour
 
     void RespawnPlayers()
     {
-        if (keyboardDead)
-        {
-            keyboardPlayer.SetActive(true);
-            keyboardPlayer.transform.position = respawnPosition;
-            keyboardPlayerHealth = 50f;
-            keyboardDead = false;
-            hs.score = (int)(hs.score * 0.6);
-        }
-
-        if (controllerDead)
+        if (GameObject.FindGameObjectWithTag("spawner").GetComponent<RandomizedSpawner>().SpawnWave != 4)
         {
 
-            controllerPlayer.SetActive(true);
-            controllerPlayer.transform.position = respawnPosition;
-            controllerPlayerHealth = 50f;
-            controllerDead = false;
-            hs.score = (int)(hs.score * 0.6);
+            if (keyboardDead)
+            {
+                keyboardPlayer.SetActive(true);
+                keyboardPlayer.transform.position = respawnPosition;
+                keyboardPlayerHealth = 50f;
+                keyboardDead = false;
+                keyboardPlayer.GetComponent<playerAccessWeapons>().swinging = false;
+                hs.score = (int)(hs.score * 0.6);
+            }
+
+            if (controllerDead)
+            {
+
+                controllerPlayer.SetActive(true);
+                controllerPlayer.transform.position = respawnPosition;
+                controllerPlayerHealth = 50f;
+                controllerDead = false;
+                controllerPlayer.GetComponent<playerAccessWeapons>().swinging = false;
+                hs.score = (int)(hs.score * 0.6);
+            }
+
+            SpectatorCam.SetActive(false);
+            SpectatorCam2.SetActive(false);
+            respawnTimer = respawnTime;
         }
-
-        SpectatorCam.SetActive(false);
-        SpectatorCam2.SetActive(false);
-        respawnTimer = respawnTime;
-
+        else return;
     }
 }

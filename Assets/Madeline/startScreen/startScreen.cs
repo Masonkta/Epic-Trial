@@ -9,6 +9,8 @@ public class MenuActions : MonoBehaviour {
     {
         if (!Application.isEditor)
             Display.displays[1].Activate();
+        MainMenu.SetActive(true);
+        OptionsMenu.SetActive(false);
     }
 
     public void PlayGame()
@@ -24,6 +26,11 @@ public class MenuActions : MonoBehaviour {
     {
         MainMenu.SetActive(false);
         OptionsMenu.SetActive(true);
+    }
+    public void Main()
+    {
+        MainMenu.SetActive(true);
+        OptionsMenu.SetActive(false);
     }
     public void QuitGame()
     {
