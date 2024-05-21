@@ -16,6 +16,7 @@ public class makeItemsNoUI : MonoBehaviour
 
     public bool playerKInRange = false;
     public bool playerCInRange = false;
+    public bool actuallyCraft = false;
 
     // Start is called before the first frame update
     void Start()
@@ -46,24 +47,43 @@ public class makeItemsNoUI : MonoBehaviour
     {
         if (playerKInRange)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) // Bandages
-                OnCraftBandagesKK();
+            if (actuallyCraft) {
+                if (Input.GetKeyDown(KeyCode.Alpha1)) // Bandages
+                    OnCraftBandagesKK();
 
-            if (Input.GetKeyDown(KeyCode.Alpha2)) // Club
-                OnCraftClubKK();
+                if (Input.GetKeyDown(KeyCode.Alpha2)) // Club
+                    OnCraftClubKK();
+
+                if (Input.GetKeyDown(KeyCode.Alpha3)) // Gladius
+                    OnCraftGladiusKK();
+            }
         }
     }
 
     void OnCraftBandages()
     {
-        GameObject bandage = Instantiate(gameScript.bandagesPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-        bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+        if (actuallyCraft){
+            GameObject bandage = Instantiate(gameScript.bandagesPrefab, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+        }
     }
 
     void OnCraftClub()
     {
-        GameObject bandage = Instantiate(gameScript.clubPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
-        bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+        if (actuallyCraft)
+        {
+            GameObject bandage = Instantiate(gameScript.clubPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+        }
+
+    }
+    void OnCraftGladius()
+    {
+        if (actuallyCraft)
+        {
+            GameObject bandage = Instantiate(gameScript.gladiusPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+            bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+        }
 
     }
 
@@ -77,6 +97,12 @@ public class makeItemsNoUI : MonoBehaviour
     void OnCraftClubKK()
     {
         GameObject bandage = Instantiate(gameScript.clubPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
+        bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
+
+    }
+    void OnCraftGladiusKK()
+    {
+        GameObject bandage = Instantiate(gameScript.gladiusPickup, transform.position + Vector3.up * 4f + Random.insideUnitSphere, Quaternion.identity, gameScript.ResourceTransform);
         bandage.GetComponent<Rigidbody>().velocity = Vector3.up * 10f;
 
     }

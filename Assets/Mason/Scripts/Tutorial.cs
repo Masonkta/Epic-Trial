@@ -311,6 +311,14 @@ public class Tutorial : MonoBehaviour
                     walkToSandTip.GetComponent<TextMeshProUGUI>().text = "try making sure you are sprinting as well";
                     walkToSandTip2.GetComponent<TextMeshProUGUI>().text = "try making sure you are sprinting as well";
                 }
+
+                if (Time.time > timeOfOpening + 35f)
+                {
+                    if (!playerKOnPlatform)
+                        keyboardPlayer.transform.position = sandTeleportSpot.position;
+                    if (!playerCOnPlatform)
+                        controllerPlayer.transform.position = sandTeleportSpot.position;
+                }
             }
         }
 
@@ -584,8 +592,8 @@ public class Tutorial : MonoBehaviour
         }
 
         secondCraftingTable.SetActive(true);
-        craftingTxtK.SetActive(false);
-        craftingTxtC.SetActive(false);
+        if (craftingTxtK) craftingTxtK.SetActive(false);
+        if (craftingTxtC) craftingTxtC.SetActive(false);
     }
 
     IEnumerator EnableMovementAfterDelayFINAL(float delay)
